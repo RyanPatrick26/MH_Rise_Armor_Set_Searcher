@@ -20,18 +20,16 @@ public interface ArmorDao {
     @Query("DELETE FROM armor_tbl")
     void deleteAll();
 
-    @Query("SELECT * FROM armor_tbl WHERE gender = :gender OR 'Both'")
-    LiveData<ArrayList<Armor>> getAllArmor(Gender gender);
+    @Query("SELECT * FROM armor_tbl")
+    LiveData<ArrayList<Armor>> getAllArmor();
 
-    @Query("SELECT * FROM armor_tbl WHERE armorId = :id")
+    @Query("SELECT * FROM armor_tbl WHERE armorId == :id")
     LiveData<Armor> getArmor(long id);
 
-    @Query("SELECT * FROM armor_tbl WHERE armor_type = :armorType & gender = :gender OR 'Both'")
+    @Query("SELECT * FROM armor_tbl WHERE armor_type == :armorType & gender == :gender OR 'Both'")
     LiveData<ArrayList<Armor>> getAllArmorOfType(ArmorType armorType, Gender gender);
 
-    @Query("SELECT * FROM armor_tbl WHERE rarity = :rarity & gender = :gender OR 'Both'")
+    @Query("SELECT * FROM armor_tbl WHERE rarity == :rarity & gender == :gender OR 'Both'")
     LiveData<ArrayList<Armor>> getAllArmorOfRarity(int rarity, Gender gender);
 
-    @Update
-    void update(Armor armor);
 }
