@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MH Rise Armor Set Searcher</string>
-
     <!--region Armor Names -->
     <!--region rarity 7-->
     <string name="damascus_head">Damascus Helm</string>
