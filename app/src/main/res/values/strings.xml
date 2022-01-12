@@ -1,3 +1,507 @@
 <resources>
     <string name="app_name">MH Rise Armor Set Searcher</string>
+
+    <!--region Armor Names -->
+    <!--region rarity 7-->
+    <string name="damascus_head">Damascus Helm</string>
+    <string name="damascus_chest">Damascus Mail</string>
+    <string name="damascus_arms">Damascus Vambraces</string>
+    <string name="damascus_waist">Damascus Coil</string>
+    <string name="damascus_legs">Damascus Greaves</string>
+
+    <string name="ibushi_head_1">Ibushi\'s Helm</string>
+    <string name="ibushi_breastplate_1">Ibushi\'s Breastplate</string>
+    <string name="ibushi_pauldrons_1">Ibushi\'s Pauldrons</string>
+    <string name="ibushi_fauld_1">Ibushi\'s Fauld</string>
+    <string name="ibushi_foot_1">Ibushi\'s Foot</string>
+
+    <string name="ibushi_head_2">Ibushi\'s Helm+</string>
+    <string name="ibushi_breastplate_2">Ibushi\'s Breastplate+</string>
+    <string name="ibushi_pauldrons_2">Ibushi\'s Pauldrons+</string>
+    <string name="ibushi_fauld_2">Ibushi\'s Fauld+</string>
+    <string name="ibushi_foot_2">Ibushi\'s Foot+</string>
+
+    <string name="narwa_head_1">Narwa\'s Helm</string>
+    <string name="narwa_breastplate_1">Narwa\'s Breastplate</string>
+    <string name="narwa_pauldrons_1">Narwa\'s Pauldrons</string>
+    <string name="narwa_fauld_1">Narwa\'s Fauld</string>
+    <string name="narwa_foot_1">Narwa\'s Foot</string>
+
+    <string name="narwa_head_2">Narwa\'s Helm+</string>
+    <string name="narwa_breastplate_2">Narwa\'s Breastplate+</string>
+    <string name="narwa_pauldrons_2">Narwa\'s Pauldrons+</string>
+    <string name="narwa_fauld_2">Narwa\'s Fauld+</string>
+    <string name="narwa_foot_2">Narwa\'s Foot+</string>
+
+    <string name="kushala_head">Kushala Glare</string>
+    <string name="kushala_chest">Kushala Cista</string>
+    <string name="kushala_arms">Kushala Grip</string>
+    <string name="kushala_waist">Kushala Cocoon</string>
+    <string name="kushala_legs">Kushala Crus</string>
+
+    <string name="mizuha_head">Mizuha Cap</string>
+    <string name="mizuha_chest">Mizuha Guards</string>
+    <string name="mizuha_arms">Mizuha Sleeves</string>
+    <string name="mizuha_waist">Mizuha Sash</string>
+    <string name="mizuha_legs">Mizuha Gaiters</string>
+
+    <string name="kaiser_head">Kaiser Crown</string>
+    <string name="kaiser_chest">Kaiser Mail</string>
+    <string name="kaiser_arms">Kaiser Vambraces</string>
+    <string name="kaiser_waist">Kaiser Coil</string>
+    <string name="kaiser_legs">Kaiser Greaves</string>
+
+    <string name="golden_head">Golden Headress</string>
+    <string name="golden_chest">Golden Haori</string>
+    <string name="golden_arms">Golden Kote</string>
+    <string name="golden_waist">Golden Obi</string>
+    <string name="golden_legs">Golden Hakama</string>
+
+    <string name="valstrax_head">Valstrax Helm</string>
+    <string name="valstrax_chest">Valstrax Mail</string>
+    <string name="valstrax_arms">Valstrax Vambraces</string>
+    <string name="valstrax_waist">Valstrax Coil</string>
+    <string name="valstrax_legs">Valstrax Greaves</string>
+
+    <string name="bazel_head">Bazelgeuse Helm</string>
+    <string name="bazel_chest">Bazelgeuse Mail</string>
+    <string name="bazel_arms">Bazelgeuse Braces</string>
+    <string name="bazel_waist">Bazelgeuse Coil</string>
+    <string name="bazel_legs">Bazelgeuse Greaves</string>
+
+    <string name="flame_seal">Flame Seal</string>
+    <string name="canynce_tail">Canyne Tail</string>
+    <!-- endregion -->
+
+    <!--region rarity 6-->
+    <string name="aelucanth_head">Aelucanth Vertex S</string>
+    <string name="aelucanth_chest">Aelucanth Thorax S</string>
+    <string name="aelucanth_arms">Aelucanth Brachia S</string>
+    <string name="aelucanth_waist">Aelucanth Elytra S</string>
+    <string name="aelucanth_legs">Aelucanth Crura S</string>
+
+
+    <string name="rhopessa_head">Rhopessa Vertex S</string>
+    <string name="rhopessa_chest">Rhopessa Thorax S</string>
+    <string name="rhopessa_arms">Rhopessa Brachia S</string>
+    <string name="rhopessa_waist">Rhopessa Elytra S</string>
+    <string name="rhopessa_legs">Rhopessa Crura S</string>
+
+    <string name="jelly_head">Jelly Hat S</string>
+    <string name="jelly_chest">Jelly Vest S</string>
+    <string name="jelly_arms">Jelly Gloves S</string>
+    <string name="jelly_waist">Jelly Coil S</string>
+    <string name="jelly_legs">Jelly Boots S</string>
+
+    <string name="rakna_head">Rakna Helm</string>
+    <string name="rakna_chest">Rakna Mail</string>
+    <string name="rakna_arms">Rakna Armguards</string>
+    <string name="rakna_waist">Rakna Coil</string>
+    <string name="rakna_legs">Rakna Greaves</string>
+
+    <string name="goss_head">Goss Harag Helm S</string>
+    <string name="goss_chest">Goss Harag Mail S</string>
+    <string name="goss_arms">Goss Harag Braces S</string>
+    <string name="goss_waist">Goss Harag Coil S</string>
+    <string name="goss_legs">Goss Harag Greaves S</string>
+
+    <string name="almudron_head">Almudron Helm S</string>
+    <string name="almudron_chest">Almudron Mail S</string>
+    <string name="almudron_arms">Almudron Vambraces S</string>
+    <string name="almudron_waist">Almudron Coil S</string>
+    <string name="almudron_legs">Almudron Greaves S</string>
+
+    <string name="narga_head">Nargacuga Helm S</string>
+    <string name="narga_chest">Nargacuga Mail S</string>
+    <string name="narga_arms">Nargacuga Braces S</string>
+    <string name="narga_waist">Nargacuga Coil S</string>
+    <string name="narga_legs">Nargacuga Greaves S</string>
+
+    <string name="rathalos_head">Rathalos Helm S</string>
+    <string name="rathalos_chest">Rathalos Mail S</string>
+    <string name="rathalos_arms">Rathalos Vambraces S</string>
+    <string name="rathalos_waist">Rathalos Coil S</string>
+    <string name="rathalos_legs">Rathalos Greaves</string>
+
+    <string name="tigrex_head">Tigrex Helm S</string>
+    <string name="tigrex_chest">Tigrex Mail S</string>
+    <string name="tigrex_arms">Tigrex Vambraces S</string>
+    <string name="tigrex_waist">Tigrex Coil S</string>
+    <string name="tigrex_legs">Tigrex Greaves S</string>
+
+    <string name="diablos_head">Diablos Helm S</string>
+    <string name="diablos_chest">Diablos Mail S</string>
+    <string name="diablos_arms">Diablos Vambraces S</string>
+    <string name="diablos_waist">Diablos Coil S</string>
+    <string name="diablos_legs">Diablos Greaves S</string>
+
+    <string name="zinogre_head">Zinogre Helm S</string>
+    <string name="zinogre_chest">Zinogre Mail S</string>
+    <string name="zinogre_arms">Zinogre Vambraces S</string>
+    <string name="zinogre_waist">Zinogre Coil S</string>
+    <string name="zinogre_legs">Zinogre Greaves S</string>
+
+    <string name="anja_head">Anjanath Helm S</string>
+    <string name="anja_chest">Anjanath Mail S</string>
+    <string name="anja_arms">Anjanath Vambraces S</string>
+    <string name="anja_waist">Anjanath Coil S</string>
+    <string name="anja_legs">Anjanath Greaves S</string>
+
+    <string name="sinister_head">Sinister Helm S</string>
+    <string name="sinister_chest">Sinister Mail S</string>
+    <string name="sinister_arms">Sinister Vambraces S</string>
+    <string name="sinister_waist">Sinister Coil S</string>
+    <string name="sinister_legs">Sinister Greaves S</string>
+
+    <string name="mizu_head">Mizutsune Helm S</string>
+    <string name="mizu_chest">Mizutsune Mail S</string>
+    <string name="mizu_arms">Mizutsune Vambraces S</string>
+    <string name="mizu_waist">Mizutsune Coil S</string>
+    <string name="mizu_legs">Mizutsune Greaves S</string>
+
+    <string name="brigade_head">Brigade Helm S</string>
+    <string name="brigade_chest">Brigade Mai Sl</string>
+    <string name="brigade_arms">Brigade Vambraces S</string>
+    <string name="brigade_waist">Brigade Coil S</string>
+    <string name="brigade_legs">Brigade Greaves S</string>
+
+
+    <string name="gargwa_mask">Gargwa Mask S</string>
+    <string name="cunning_specs">Cunning Specs</string>
+    <string name="might_bow_feather">Mighty Bow Feather</string>
+    <string name="black_leather_legs">Black Leather Legs</string>
+
+    <!-- endregion -->
+
+    <!--region rarity 5-->
+    <string name="dober_head">Dober Helm</string>
+    <string name="dober_chest">Dober Mail</string>
+    <string name="dober_arms">Dober Vambraces</string>
+    <string name="dober_waist">Dober Coil</string>
+    <string name="dober_legs">Dober Greaves</string>
+
+    <string name="melahoa_head">Melahoa Hat S</string>
+    <string name="melahoa_chest">Melahoa Jacket S</string>
+    <string name="melahoa_arms">Melahoa Branch S</string>
+    <string name="melahoa_waist">Melahoa Folia S</string>
+    <string name="melahoa_legs">Melahoa Roots S</string>
+
+    <string name="makluva_head">Makluva Hood S</string>
+    <string name="makluva_chest">Makluva Cover S</string>
+    <string name="makluva_arms">Makluva Sleeves S</string>
+    <string name="makluva_waist">Makluva Coil S</string>
+    <string name="makluva_legs">Makluva Plants S</string>
+
+    <string name="death_stench_head">Death Stench Brain S</string>
+    <string name="death_stench_chest">Death Stench Muscle S</string>
+    <string name="death_stench_arms">Death Stench Grip S</string>
+    <string name="death_stench_waist">Death Stench Bowels S</string>
+    <string name="death_stench_legs">Death Stench Heel S</string>
+
+    <string name="mosgharl_head">Mosgharl Vizor S</string>
+    <string name="mosgharl_chest">Mosgharl Ribplate S</string>
+    <string name="mosgharl_arms">Mosgharl Creeper S</string>
+    <string name="mosgharl_waist">Mosgharl Folia S</string>
+    <string name="mosgharl_legs">Mosgharl Roots S</string>
+
+    <string name="vaik_head">Vaik Helm S</string>
+    <string name="vaik_chest">Vaik Mail S</string>
+    <string name="vaik_arms">Vaik Braces S</string>
+    <string name="vaik_waist">Vaik Coil S</string>
+    <string name="vaik_legs">Vaik Greaves S</string>
+
+    <string name="utsuhi_v_head">Utushi Mask (V) S</string>
+    <string name="utsuhi_v_chest">Utushi Chest (V) S</string>
+    <string name="utsuhi_v_arms">Utushi Braces (V) S</string>
+    <string name="utsuhi_v_waist">Utushi Tassets (V) S</string>
+    <string name="utsuhi_v_legs">Utushi Greaves (V) S</string>
+
+    <string name="channeler_head">Channeler\'s Hair-tie S</string>
+    <string name="channeler_chest">Channeler\'s Robe S</string>
+    <string name="channeler_arms">Channeler\'s Hope S</string>
+    <string name="channeler_waist">Channeler\'s Obi S</string>
+    <string name="channeler_legs">Channeler\'s Hakma S</string>
+
+    <string name="utsuhi_h_head">Utushi Mask (H) S</string>
+    <string name="utsuhi_h_chest">Utushi Chest (H) S</string>
+    <string name="utsuhi_h_arms">Utushi Braces (H) S</string>
+    <string name="utsuhi_h_waist">Utushi Tassets (H) S</string>
+    <string name="utsuhi_h_legs">Utushi Greaves (H) S</string>
+
+    <string name="medium_head">Medium\'s Hair-tie S</string>
+    <string name="medium_chest">Medium\'s Robe S</string>
+    <string name="medium_arms">Medium\'s Hope S</string>
+    <string name="medium_waist">Medium\'s Obi S</string>
+    <string name="medium_legs">Medium\'s Hakma S</string>
+
+    <string name="studded_head">S. Studded Hat S</string>
+    <string name="studded_chest">S. Studded Vest S</string>
+    <string name="studded_arms">S. Studded Gloves S</string>
+    <string name="studded_waist">S. Studded Sash S</string>
+    <string name="studded_legs">S. Studded Sandals S</string>
+
+    <string name="bishaten_head">Bishaten Helm S</string>
+    <string name="bishaten_chest">Bishaten Mail S</string>
+    <string name="bishaten_arms">Bishaten Vambraces S</string>
+    <string name="bishaten_waist">Bishaten Coil S</string>
+    <string name="bishaten_legs">Bishaten Greaves S</string>
+
+    <string name="somnacanth_head">Somnacanth Helm S</string>
+    <string name="somnacanth_chest">Somnacanth Mail S</string>
+    <string name="somnacanth_arms">Somnacanth Braces S</string>
+    <string name="somnacanth_waist">Somnacanth Coil S</string>
+    <string name="somnacanth_legs">Somnacanth Greaves S</string>
+
+    <string name="remobra_head">Remobra Headgear S</string>
+    <string name="remobra_chest">Remobra Suit S</string>
+    <string name="remobra_arms">Remobra Gloves S</string>
+    <string name="remobra_waist">Remobra Belt S</string>
+    <string name="remobra_legs">Remobra Feets S</string>
+
+    <string name="barioth_head">Barioth Helm S</string>
+    <string name="barioth_chest">Barioth Mail S</string>
+    <string name="barioth_arms">Barioth Vambraces S</string>
+    <string name="barioth_waist">Barioth Coil S</string>
+    <string name="barioth_legs">Barioth Greaves S</string>
+
+    <string name="rathian_head">Rathian Helm S</string>
+    <string name="rathian_chest">Rathian Mail S</string>
+    <string name="rathian_arms">Rathian Braces S</string>
+    <string name="rathian_waist">Rathian Coil S</string>
+    <string name="rathian_legs">Rathian Greaves S</string>
+
+    <string name="basarios_head">Basarios Helm S</string>
+    <string name="basarios_chest">Basarios Mail S</string>
+    <string name="basarios_arms">Basarios Vambraces S</string>
+    <string name="basarios_waist">Basarios Coil S</string>
+    <string name="basarios_legs">Basarios Greaves S</string>
+
+    <string name="pukei_head">Pukei-Pukei Helm S</string>
+    <string name="pukei_chest">Pukei-Pukei Mail S</string>
+    <string name="pukei_arms">Pukei-Pukei Braces S</string>
+    <string name="pukei_waist">Pukei-Pukei Coil S</string>
+    <string name="pukei_legs">Pukei-Pukei Greaves S</string>
+
+    <string name="jyura_head">Jyuratodas Helm</string>
+    <string name="jyura_chest">Jyuratodas Mail</string>
+    <string name="jyura_arms">Jyuratodas Braces</string>
+    <string name="jyura_waist">Jyuratodas Coil</string>
+    <string name="jyura_legs">Jyuratodas Greaves</string>
+
+    <string name="tobi_head">Tobi-Kadachi Helm S</string>
+    <string name="tobi_chest">Tobi-Kadachi Mail S</string>
+    <string name="tobi_arms">Tobi-Kadachi Braces S</string>
+    <string name="tobi_waist">Tobi-Kadachi Coil S</string>
+    <string name="tobi_legs">Tobi-Kadachi Greaves S</string>
+
+    <string name="uroktor_chest">Uroktor Torso S</string>
+    <string name="uroktor_waist">Uroktor Coil S</string>
+    <string name="chrome_waist">Chrome Metal Coil</string>
+    <string name="chrome_legs">Chrome Metal Boots</string>
+    <string name="skull_head">Skull Visage S</string>
+    <!--endregion-->
+    <!-- endregion -->
+    <!--region Gem Names -->
+    <string name="mastery">Master Jewel 2</string>
+    <string name="handicraft">Handicraft Jewel 3</string>
+    <string name="fate">Fate Jewel 3</string>
+    <string name="hellfire">Hellfire Jewel 3</string>
+    <string name="leap">Leap Jewel 3</string>
+    <string name="salvo">Salvo Jewel 3</string>
+    <string name="thrift">Thrift Jewel 2</string>
+    <string name="razor">Razor Jewel 2</string>
+    <string name="spread">Spread Jewel 3</string>
+    <string name="pierce">Pierce Jewel 3</string>
+    <string name="forceshot">Forceshot Jewel 3</string>
+    <string name="sharp">Sharp Jewel 2</string>
+    <string name="blast">Blast Jewel 2</string>
+    <string name="sleep">Sleep Jewel 2</string>
+    <string name="paralyzer">Paralyzer Jewel 2</string>
+    <string name="throttle">Throttle Jewel 2</string>
+    <string name="crisis">Crisis Jewel 2</string>
+    <string name="furor">Furor Jewel 2</string>
+    <string name="flawless">Flawless Jewel 2</string>
+    <string name="challenger">Challenger Jewel 2</string>
+    <string name="tenderizer">Tenderizer Jewel 2</string>
+    <string name="critical">Critical Jewel 2</string>
+    <string name="capacity">Capacity Jewel 3</string>
+    <string name="guardian">Guardian Jewel 3</string>
+    <string name="fungiform">Fungiform Jewel 3</string>
+    <string name="draw">Draw Jewel 3</string>
+    <string name="precise">Precise Jewel 2</string>
+    <string name="crit_element">Crit Element Jewel 2</string>
+    <string name="artillery">Artillery Jewel 2</string>
+    <string name="sprinter">Sprinter Jewel 2</string>
+    <string name="charger">Charger Jewel 2</string>
+    <string name="minds_eye">Mind\'s Eye Jewel 2</string>
+    <string name="potential">Potential Jewel 2</string>
+    <string name="trueshot">Trueshot Jewel 2</string>
+    <string name="magazine">Magazine Jewel 2</string>
+    <string name="shield">Shield Jewel 2</string>
+    <string name="ironwall">Ironwall Jewel 2</string>
+    <string name="refresh">Refresh Jewel 2</string>
+    <string name="enhancer">Enhancer Jewel 2</string>
+    <string name="mighty">Mighty Jewel 2</string>
+    <string name="attack">Attack Jewel 2</string>
+    <string name="expert">Expert Jewel 2</string>
+    <string name="quickswitch">Quickswitch Jewel 2</string>
+    <string name="absorber">Absorber Jewel 1</string>
+    <string name="blunt">Blunt Jewel 2</string>
+    <string name="quickload">Quickload Jewel 1</string>
+    <string name="steadfast">Steadfast Jewel 2</string>
+    <string name="footing">Footing Jewel 2</string>
+    <string name="earplug">Earplug Jewel 3</string>
+    <string name="counter">Counter Jewel 2</string>
+    <string name="bubble">Bubble Jewel 2</string>
+    <string name="sniper">Sniper Jewel 1</string>
+    <string name="gambit">Gambit Jewel 2</string>
+    <string name="jumping">Jumping Jewel 2</string>
+    <string name="evasion">Evasion Jewel 2</string>
+    <string name="brace">Brace Jewel 1</string>
+    <string name="sheath">Sheath Jewel 2</string>
+    <string name="wind_res">Wind Res Jewel 1</string>
+    <string name="ko">KO Jewel 2</string>
+    <string name="friendship">Friendship Jewel 2</string>
+    <string name="destroyer">Destroyer Jewel 2</string>
+    <string name="resistor">Resistor Jewel 2</string>
+    <string name="gobbler">Gobbler Jewel 2</string>
+    <string name="protection">Protection Jewel 2</string>
+    <string name="wall_run">Wall Run Jewel 2</string>
+    <string name="wirebug">Wirebug Jewel 2</string>
+    <string name="grinder">Grinder Jewel 1</string>
+    <string name="enduring">Enduring Jewel 2</string>
+    <string name="recovery">Recovery Jewel 1</string>
+    <string name="medicine">Medicine Jewel 2</string>
+    <string name="sonorous">Sonorous Jewel 1</string>
+    <string name="drain">Drain Jewel 1</string>
+    <string name="physique">Physique Jewel 2</string>
+    <string name="venom">Venom Jewel 1</string>
+    <string name="slider">Slider Jewel 1</string>
+    <string name="bomber">Bomber Jewel 1</string>
+    <string name="blaze">Blaze Jewel 1</string>
+    <string name="stream">Stream Jewel 1</string>
+    <string name="bolt">Bolt Jewel 1</string>
+    <string name="dragon">Dragon Jewel 1</string>
+    <string name="defense">Defense Jewel 1</string>
+    <string name="carver">Carver Jewel 1</string>
+    <string name="rodeo">Rodeo Jewel 2</string>
+    <string name="hungerless">Hungerless Jewel 1</string>
+    <string name="satiated">Satiated Jewel 1</string>
+    <string name="muck">Muck Jewel 1</string>
+    <string name="diversion">Diversion Jewel 1</string>
+    <string name="dive">Dive Jewel 1</string>
+    <string name="fortitude">Fortitude Jewel 2</string>
+    <string name="geology">Geology Jewel 1</string>
+    <string name="botany">Botany Jewel 1</string>
+    <string name="antiblast">Antiblast Jewel 1</string>
+    <string name="pep">Pep Jewel 1</string>
+    <string name="antipara">Antipara Jewel 1</string>
+    <string name="antitode">Antidote Jewel 1</string>
+    <string name="fire_res">Fire Res Jewel 1</string>
+    <string name="water_res">Water Res Jewel 1</string>
+    <string name="thunder_res">Thunder Res Jewel 1</string>
+    <string name="ice_res">Ice Res Jewel 1</string>
+    <string name="dragon_res">Dragon Res Jewel 1</string>
+    <!--endregion-->
+    <!--region Skill Names-->
+    <string name="handicraft_skill">Handicraft</string>
+    <string name="good_luck">Good Luck</string>
+    <string name="hellfire_cloak">Hellfire Cloak</string>
+    <string name="jump_master">Jump master</string>
+    <string name="rapid_fire_up">Rapid Fire Up</string>
+    <string name="spare_shot">Spare Shot</string>
+    <string name="razor_sharp">Razor Sharp</string>
+    <string name="spread_up">Spread Up</string>
+    <string name="pierce_up">Pierce Up</string>
+    <string name="normal_rapid_up">Normal/Rapid Up</string>
+    <string name="protective_polish">Protective Polish</string>
+    <string name="blast_attack">Blast Attack</string>
+    <string name="sleep_attack">Sleep Attack</string>
+    <string name="paralysis_attack">Paralysis Attack</string>
+    <string name="latent_power">Latent Power</string>
+    <string name="resuscitate">Resuscitate</string>
+    <string name="resentment">Resentment</string>
+    <string name="peak_performance">Peak Performance</string>
+    <string name="agitator">Agitator</string>
+    <string name="weakness_exploit">Weakness Exploit</string>
+    <string name="critical_boost">Critical Boost</string>
+    <string name="ammo_up">Ammo Up</string>
+    <string name="offensive_guard">Offensive Guard</string>
+    <string name="mushroomancer">Mushroomance</string>
+    <string name="critical_draw">Critical Draw</string>
+    <string name="ballistics">Ballistics</string>
+    <string name="critical_element">Critical Element</string>
+    <string name="artillery_skill">Artillery</string>
+    <string name="marathon_runner">Marathon Runner</string>
+    <string name="focus">Focus</string>
+    <string name="minds_eye_skill">Mind\s Eye</string>
+    <string name="heroics">Heroics</string>
+    <string name="special_ammo_boost">Special Ammo Boost</string>
+    <string name="load_shells">Load Shells</string>
+    <string name="guard_up">Guard Up</string>
+    <string name="guard">Guard</string>
+    <string name="stamina">Stamina</string>
+    <string name="power_prolonger">Power Prolonger</string>
+    <string name="maximum_might">Maximum Might</string>
+    <string name="attack_boost">Attack Boost</string>
+    <string name="critical_eye">Critical Eye</string>
+    <string name="rapid_morph">Rapid Morph</string>
+    <string name="recoil_down">Recoil Down</string>
+    <string name="bludgeoner">Bludgeoner</string>
+    <string name="reload_speed">Reload Speed</string>
+    <string name="stun_res">Stun Resistance</string>
+    <string name="tremor_res">Tremor Resistance</string>
+    <string name="earplugs_skill">Earplugs</string>
+    <string name="counterstrike">Counterstrike</string>
+    <string name="bubbly_dance">Bubbly Dance</string>
+    <string name="steadiness">Steadiness</string>
+    <string name="punishing_draw">Punishing Draw</string>
+    <string name="evade_extender">Evade Extender</string>
+    <string name="evade_window">Evade Window</string>
+    <string name="flinch_free">Flinch Free</string>
+    <string name="quick_sheathe">Quick Sheathe</string>
+    <string name="windproof">Windproof</string>
+    <string name="slugger">Slugger</string>
+    <string name="wide_range">Wide Range</string>
+    <string name="parbreaker">Partbreaker</string>
+    <string name="blight_res">Blight Resistance</string>
+    <string name="speed_eating">Speed Eating</string>
+    <string name="divine_blessing">Divine Blessing</string>
+    <string name="wall_runner">Wall Runner</string>
+    <string name="speed_sharpening">Speed Sharpening</string>
+    <string name="item_prolonger">Item Prolonger</string>
+    <string name="recovery_speed">Recovery Speed</string>
+    <string name="recovery_up">Recover Up</string>
+    <string name="horn_maestro">Horn Maestro</string>
+    <string name="stamina_thief">Stamina Thief</string>
+    <string name="constitution">Constitution</string>
+    <string name="poison_atk">Poison Attack</string>
+    <string name="affinity_sliding">Affinity Sliding</string>
+    <string name="bombardier">Bombardier</string>
+    <string name="fire_atk">Fire Attack</string>
+    <string name="water_atk">Water Attack</string>
+    <string name="thunder_atk">Thunder Attack</string>
+    <string name="ice_atk">Ice Attack</string>
+    <string name="dragon_atk">Dragon Attack</string>
+    <string name="def_boost">Defense Boost</string>
+    <string name="carving_pro">Carving Pro</string>
+    <string name="master_mounter">Master Mounter</string>
+    <string name="hunger_res">Hunger Resistance</string>
+    <string name="free_meal">Free Meal</string>
+    <string name="muck_res">Muck Resistance</string>
+    <string name="diversion_skill">Diverson</string>
+    <string name="leap_of_faith">Leap of Faith</string>
+    <string name="fortify">Fortify</string>
+    <string name="geologist">Geologist</string>
+    <string name="botanist">Botanist</string>
+    <string name="blast_res">Blast Resistance</string>
+    <string name="sleep_res">Sleep Resistance</string>
+    <string name="para_res">Paralysis Resistance</string>
+    <string name="poison_res">Poison Resistance</string>
+    <string name="fire_res_skill">Fire Resistance</string>
+    <string name="water_res_skill">Water Resistance</string>
+    <string name="thunder_res_skill">Thunder Reistance</string>
+    <string name="ice_res_skill">Ice Resistance</string>
+    <string name="dragon_res_skill">Dragon Resistance</string>
+    <!--endregion-->
 </resources>
