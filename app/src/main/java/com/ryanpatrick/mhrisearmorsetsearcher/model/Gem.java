@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "gem_tbl")
 public class Gem{
-	@PrimaryKey
+	@PrimaryKey(autoGenerate = true)
 	private long id;
 	@ColumnInfo(name = "gem_name")
 	private String name;

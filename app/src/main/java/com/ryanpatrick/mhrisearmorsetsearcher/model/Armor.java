@@ -9,7 +9,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
 import java.util.List;
 
-@Entity(tableName = "armor_db")
+@Entity(tableName = "armor_tbl")
 public class Armor{
 	@PrimaryKey(autoGenerate = true)
 	private int armorId;
