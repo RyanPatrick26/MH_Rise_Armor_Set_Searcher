@@ -79,7 +79,6 @@
     <string name="aelucanth_waist">Aelucanth Elytra S</string>
     <string name="aelucanth_legs">Aelucanth Crura S</string>
 
-
     <string name="rhopessa_head">Rhopessa Vertex S</string>
     <string name="rhopessa_chest">Rhopessa Thorax S</string>
     <string name="rhopessa_arms">Rhopessa Brachia S</string>
@@ -164,14 +163,11 @@
     <string name="brigade_waist">Brigade Coil S</string>
     <string name="brigade_legs">Brigade Greaves S</string>
 
-
     <string name="gargwa_mask">Gargwa Mask S</string>
     <string name="cunning_specs">Cunning Specs</string>
     <string name="might_bow_feather">Mighty Bow Feather</string>
     <string name="black_leather_legs">Black Leather Legs</string>
-
     <!-- endregion -->
-
     <!--region rarity 5-->
     <string name="dober_head">Dober Helm</string>
     <string name="dober_chest">Dober Mail</string>

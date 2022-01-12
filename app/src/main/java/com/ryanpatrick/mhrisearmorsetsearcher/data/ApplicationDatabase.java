@@ -12,13 +12,14 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.Skill;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Utils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Armor.class, ArmorSet.class, Gem.class}, version = 1)
+@Database(entities = {Armor.class, ArmorSet.class, Gem.class, Skill.class}, version = 1)
 @TypeConverters({Convertors.class})
 public abstract class ApplicationDatabase extends RoomDatabase {
     public static volatile ApplicationDatabase INSTANCE;

@@ -20,7 +20,6 @@ public class Convertors {
     public static String fromArmoryType(ArmorType armorType){
         return armorType == null ? null : armorType.name();
     }
-
     @TypeConverter
     public static ArmorType toArmorType(String armorType){
         return armorType == null ? null : ArmorType.valueOf(armorType);
@@ -30,7 +29,6 @@ public class Convertors {
     public static String fromGender(Gender gender){
         return gender == null ? null : gender.name();
     }
-
     @TypeConverter
     public static Gender toGender(String gender){
         return gender == null ? null : Gender.valueOf(gender);
@@ -46,7 +44,6 @@ public class Convertors {
 
         return gson.toJson(skills, type);
     }
-
     @TypeConverter
     public static ArrayList<Skill> toSkillList(String skills){
         if(skills == null){
@@ -68,7 +65,6 @@ public class Convertors {
 
         return gson.toJson(armor, type);
     }
-
     @TypeConverter
     public static Armor toArmor(String armor){
         if(armor == null){
@@ -90,7 +86,6 @@ public class Convertors {
 
         return gson.toJson(gem, type);
     }
-
     @TypeConverter
     public static Gem toGem(String gem){
         if(gem == null){
@@ -112,7 +107,6 @@ public class Convertors {
 
         return gson.toJson(slots, type);
     }
-
     @TypeConverter
     public static ArrayList<Slot> toSlotList(String slots){
         if(slots == null){

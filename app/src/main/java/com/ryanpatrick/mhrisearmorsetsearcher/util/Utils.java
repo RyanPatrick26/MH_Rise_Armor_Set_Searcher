@@ -6,12 +6,16 @@ import android.util.Log;
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.ArmorDao;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.GemDao;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
 import java.util.ArrayList;
 
 public class Utils {
     public static void initializeArmorDb(ArmorDao armorDao, Context dbContext){
+        //240 armor pieces
 
     }
     public static void initializeGemDb(GemDao gemDao, Context dbContext){

@@ -39,8 +39,9 @@ public class Armor{
 	@ColumnInfo(name = "slots")
 	private ArrayList<Slot> slots;
 
-	public Armor(Gender gender, int thunderRes, ArmorType type, ArrayList<Skill> skills, ArrayList<Slot> slots,
-				 int fireRes, int defense, int waterRes, String name, int iceRes, int dragonRes, int rarity) {
+	public Armor(String name, int rarity, Gender gender, ArmorType type,
+				 int defense, int fireRes, int waterRes, int iceRes, int thunderRes, int dragonRes,
+				 ArrayList<Skill> skills, ArrayList<Slot> slots) {
 		this.gender = gender;
 		this.thunderRes = thunderRes;
 		this.type = type;
