@@ -9,27 +9,47 @@ public class Gem{
 	@PrimaryKey(autoGenerate = true)
 	private long id;
 	@ColumnInfo(name = "gem_name")
-	private String name;
+	private String gemName;
+	@ColumnInfo(name = "skill_name")
+	private String skillName;
 	@ColumnInfo(name = "gem_level")
 	private int gemLevel;
-	@ColumnInfo(name = "skill_level")
-	private int skillLevel;
 
-	public Gem(String name, int gemLevel, int skillLevel) {
-		this.name = name;
+	public Gem(String gemName, String skillName, int gemLevel) {
+		this.gemName = gemName;
+		this.skillName = skillName;
 		this.gemLevel = gemLevel;
-		this.skillLevel = skillLevel;
 	}
 
-	public String getName(){
-		return name;
+	//region getters and setters
+	public long getId(){return id;}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public int getGemLevel(){
+	public String getGemName() {
+		return gemName;
+	}
+
+	public void setGemName(String gemName) {
+		this.gemName = gemName;
+	}
+
+	public String getSkillName() {
+		return skillName;
+	}
+
+	public void setSkillName(String skillName) {
+		this.skillName = skillName;
+	}
+
+	public int getGemLevel() {
 		return gemLevel;
 	}
 
-	public int getSkillLevel(){
-		return skillLevel;
+	public void setGemLevel(int gemLevel) {
+		this.gemLevel = gemLevel;
 	}
+	//endregion
 }

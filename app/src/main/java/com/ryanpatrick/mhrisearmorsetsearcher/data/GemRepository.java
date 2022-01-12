@@ -8,10 +8,11 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GemRepository {
     private GemDao gemDao;
-    private LiveData<ArrayList<Gem>> gemList;
+    private LiveData<List<Gem>> gemList;
 
     public GemRepository(Application application) {
         ApplicationDatabase db = ApplicationDatabase.getInstance(application);
@@ -20,7 +21,7 @@ public class GemRepository {
         gemList = gemDao.getAllGems();
     }
 
-    public LiveData<ArrayList<Gem>> getGemList() {
+    public LiveData<List<Gem>> getGemList() {
         return gemList;
     }
     public void insert(Gem gem){

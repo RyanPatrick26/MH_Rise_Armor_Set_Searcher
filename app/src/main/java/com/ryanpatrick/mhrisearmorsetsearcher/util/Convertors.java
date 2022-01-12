@@ -8,6 +8,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Skill;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.Slot;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
@@ -99,5 +100,27 @@ public class Convertors {
         Type type = new TypeToken<Gem>(){}.getType();
 
         return gson.fromJson(gem, type);
+    }
+
+    @TypeConverter
+    public static String fromSlotList(ArrayList<Slot> slots){
+        if(slots == null){
+            return "";
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<Slot>>(){}.getType();
+
+        return gson.toJson(slots, type);
+    }
+
+    @TypeConverter
+    public static ArrayList<Slot> toSlotList(String slots){
+        if(slots == null){
+            return null;
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<Slot>>(){}.getType();
+
+        return gson.fromJson(slots, type);
     }
 }

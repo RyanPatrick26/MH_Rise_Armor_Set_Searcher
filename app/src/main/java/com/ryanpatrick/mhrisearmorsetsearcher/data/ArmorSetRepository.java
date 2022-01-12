@@ -10,10 +10,11 @@ import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArmorSetRepository {
     private ArmorSetDao armorSetDao;
-    private LiveData<ArrayList<ArmorSet>> armorSetList;
+    private LiveData<List<ArmorSet>> armorSetList;
 
     public ArmorSetRepository(Application application) {
         ApplicationDatabase db = ApplicationDatabase.getInstance(application);
@@ -22,7 +23,7 @@ public class ArmorSetRepository {
         armorSetList = armorSetDao.selectAllArmorSets();
     }
 
-    public LiveData<ArrayList<ArmorSet>> getAllArmorSets() {
+    public LiveData<List<ArmorSet>> getAllArmorSets() {
         return armorSetList;
     }
     public void insert(ArmorSet armorSet){

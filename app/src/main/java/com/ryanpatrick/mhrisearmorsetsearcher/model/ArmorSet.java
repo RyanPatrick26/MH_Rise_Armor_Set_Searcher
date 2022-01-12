@@ -53,6 +53,15 @@ public class ArmorSet{
 	}
 
 	//region getters and setters
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Armor getHead() {
 		return head;
 	}

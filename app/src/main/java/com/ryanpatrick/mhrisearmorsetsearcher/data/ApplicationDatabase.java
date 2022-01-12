@@ -26,29 +26,27 @@ public abstract class ApplicationDatabase extends RoomDatabase {
     public static final String DATABASE_NAME = "set_searcher_db";
     public static final ExecutorService databaseWriter = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    public static final RoomDatabase.Callback sRoomCallback = new RoomDatabase.Callback(){
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-            databaseWriter.execute(() ->{
-                ArmorDao armorDao = INSTANCE.armorDao();
-                ArmorSetDao setDao = INSTANCE.setDao();
-                GemDao gemDao = INSTANCE.gemDao();
-
-                armorDao.deleteAll();
-                gemDao.deleteAll();
-                setDao.deleteAll();
-
-                Utils.initializeArmorDb();
-                Utils.initializeGemDb();
-            });
-        }
-    };
-
     public static synchronized ApplicationDatabase getInstance(Context context){
         if(INSTANCE == null){
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ApplicationDatabase.class, DATABASE_NAME)
-                    .addCallback(sRoomCallback)
+                    .addCallback( new RoomDatabase.Callback(){
+                        @Override
+                        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                            super.onCreate(db);
+                            databaseWriter.execute(() ->{
+                                ArmorDao armorDao = INSTANCE.armorDao();
+                                ArmorSetDao setDao = INSTANCE.setDao();
+                                GemDao gemDao = INSTANCE.gemDao();
+
+                                armorDao.deleteAll();
+                                gemDao.deleteAll();
+                                setDao.deleteAll();
+
+                                Utils.initializeArmorDb(armorDao, context);
+                                Utils.initializeGemDb(gemDao, context);
+                            });
+                        }
+                    })
                     .build();
         }
         return INSTANCE;

@@ -300,6 +300,7 @@
     <string name="skull_head">Skull Visage S</string>
     <!--endregion-->
     <!-- endregion -->
+
     <!--region Gem Names -->
     <string name="mastery">Master Jewel 2</string>
     <string name="handicraft">Handicraft Jewel 3</string>
@@ -402,7 +403,9 @@
     <string name="ice_res">Ice Res Jewel 1</string>
     <string name="dragon_res">Dragon Res Jewel 1</string>
     <!--endregion-->
+
     <!--region Skill Names-->
+    <string name="masters_touch">Master\'s Touch</string>
     <string name="handicraft_skill">Handicraft</string>
     <string name="good_luck">Good Luck</string>
     <string name="hellfire_cloak">Hellfire Cloak</string>
@@ -426,20 +429,20 @@
     <string name="critical_boost">Critical Boost</string>
     <string name="ammo_up">Ammo Up</string>
     <string name="offensive_guard">Offensive Guard</string>
-    <string name="mushroomancer">Mushroomance</string>
+    <string name="mushroomancer">Mushroomancer</string>
     <string name="critical_draw">Critical Draw</string>
     <string name="ballistics">Ballistics</string>
     <string name="critical_element">Critical Element</string>
     <string name="artillery_skill">Artillery</string>
     <string name="marathon_runner">Marathon Runner</string>
     <string name="focus">Focus</string>
-    <string name="minds_eye_skill">Mind\s Eye</string>
+    <string name="minds_eye_skill">Mind\'s Eye</string>
     <string name="heroics">Heroics</string>
     <string name="special_ammo_boost">Special Ammo Boost</string>
     <string name="load_shells">Load Shells</string>
     <string name="guard_up">Guard Up</string>
     <string name="guard">Guard</string>
-    <string name="stamina">Stamina</string>
+    <string name="stamina_surge">Stamina Surge</string>
     <string name="power_prolonger">Power Prolonger</string>
     <string name="maximum_might">Maximum Might</string>
     <string name="attack_boost">Attack Boost</string>
@@ -462,9 +465,10 @@
     <string name="windproof">Windproof</string>
     <string name="slugger">Slugger</string>
     <string name="wide_range">Wide Range</string>
-    <string name="parbreaker">Partbreaker</string>
+    <string name="partbreaker">Partbreaker</string>
     <string name="blight_res">Blight Resistance</string>
     <string name="speed_eating">Speed Eating</string>
+    <string name="wirebug_whisperer">Wirebug Whisperer</string>
     <string name="divine_blessing">Divine Blessing</string>
     <string name="wall_runner">Wall Runner</string>
     <string name="speed_sharpening">Speed Sharpening</string>

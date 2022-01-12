@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(tableName = "armor_tbl")
@@ -34,11 +35,11 @@ public class Armor{
 	@ColumnInfo(name = "dragon_res")
 	private int dragonRes;
 	@ColumnInfo(name = "skills")
-	private List<Skill> skills;
+	private ArrayList<Skill> skills;
 	@ColumnInfo(name = "slots")
-	private List<Slot> slots;
+	private ArrayList<Slot> slots;
 
-	public Armor(Gender gender, int thunderRes, ArmorType type, List<Skill> skills, List<Slot> slots,
+	public Armor(Gender gender, int thunderRes, ArmorType type, ArrayList<Skill> skills, ArrayList<Slot> slots,
 				 int fireRes, int defense, int waterRes, String name, int iceRes, int dragonRes, int rarity) {
 		this.gender = gender;
 		this.thunderRes = thunderRes;
@@ -55,6 +56,15 @@ public class Armor{
 	}
 
 	//region getters and setters
+
+	public int getArmorId() {
+		return armorId;
+	}
+
+	public void setArmorId(int armorId) {
+		this.armorId = armorId;
+	}
+
 	public Gender getGender(){
 		return gender;
 	}
@@ -67,11 +77,11 @@ public class Armor{
 		return type;
 	}
 
-	public List<Skill> getSkills(){
+	public ArrayList<Skill> getSkills(){
 		return skills;
 	}
 
-	public List<Slot> getSlots(){
+	public ArrayList<Slot> getSlots(){
 		return slots;
 	}
 
@@ -106,5 +116,7 @@ public class Armor{
 	public int getRarity(){
 		return rarity;
 	}
+
+
 	//endregion
 }

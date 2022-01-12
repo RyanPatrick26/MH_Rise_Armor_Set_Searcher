@@ -9,6 +9,7 @@ import androidx.room.Update;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.ArmorSet;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Dao
 public interface ArmorSetDao {
@@ -25,7 +26,7 @@ public interface ArmorSetDao {
     void delete(long id);
 
     @Query("SELECT * FROM armor_set_tbl")
-    LiveData<ArrayList<ArmorSet>> selectAllArmorSets();
+    LiveData<List<ArmorSet>> selectAllArmorSets();
 
     @Query("SELECT * FROM armor_set_tbl WHERE id = :id")
     LiveData<ArmorSet> selectArmorSet(long id);
