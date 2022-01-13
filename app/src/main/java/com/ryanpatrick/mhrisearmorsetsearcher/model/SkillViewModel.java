@@ -11,7 +11,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.data.SkillRepository;
 import java.util.List;
 
 public class SkillViewModel extends AndroidViewModel {
-    private SkillRepository skillRepository;
+    private final SkillRepository skillRepository;
     private final LiveData<List<Skill>> ALL_SKILLS;
 
     public SkillViewModel(@NonNull Application application) {
@@ -24,4 +24,7 @@ public class SkillViewModel extends AndroidViewModel {
         return ALL_SKILLS;
     }
     public LiveData<Skill> getSkill(long id){return skillRepository.getSkill(id);}
+    public void initializeSkillDb(){
+        skillRepository.initializeSkillDb();
+    }
 }

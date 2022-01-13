@@ -144,7 +144,7 @@ public class SkillRepository {
         skills.add(new Skill(dbContext.getResources().getString(R.string.thunder_alignment), 5));
         skills.add(new Skill(dbContext.getResources().getString(R.string.stormsoul), 5));
 
-        skillDao.batchInsert(skills);
+        ApplicationDatabase.databaseWriter.execute(() -> skillDao.batchInsert(skills));
 
     }
 }

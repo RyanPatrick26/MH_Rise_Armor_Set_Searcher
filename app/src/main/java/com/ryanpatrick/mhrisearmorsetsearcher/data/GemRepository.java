@@ -236,8 +236,6 @@ public class GemRepository {
         gems.add(new Gem(dbContext.getResources().getString(R.string.dragon_res),
                 dbContext.getResources().getString(R.string.dragon_res_skill), 1));
 
-        Log.d("here", "initializeGemDb: ");
-
-        gemDao.batchInsert(gems);
+        ApplicationDatabase.databaseWriter.execute(() -> gemDao.batchInsert(gems));
     }
 }

@@ -27,4 +27,7 @@ public class GemViewModel extends AndroidViewModel {
         return ALL_GEMS;
     }
     public LiveData<Gem> getGem(long id){return gemRepository.getGem(id);}
+    public void initializeGemDb(){
+        gemRepository.initializeGemDb();
+    }
 }
