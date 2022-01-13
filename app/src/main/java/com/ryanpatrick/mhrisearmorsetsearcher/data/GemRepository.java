@@ -27,7 +27,7 @@ public class GemRepository {
     public void insert(Gem gem){
         ApplicationDatabase.databaseWriter.execute(() -> gemDao.insert(gem));
     }
-    public LiveData<Gem> getArmorSet(long id){
+    public LiveData<Gem> getGem(long id){
         return gemDao.getGem(id);
     }
 }

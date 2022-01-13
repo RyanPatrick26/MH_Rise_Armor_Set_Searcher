@@ -11,7 +11,6 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Skill;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Utils {
     public static void initializeArmorDb(ArmorDao armorDao, Context dbContext){
