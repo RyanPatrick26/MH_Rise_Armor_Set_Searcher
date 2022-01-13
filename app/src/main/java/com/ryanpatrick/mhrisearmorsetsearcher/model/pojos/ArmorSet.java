@@ -1,10 +1,8 @@
-package com.ryanpatrick.mhrisearmorsetsearcher.model;
+package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import java.util.ArrayList;
 
 @Entity(tableName = "armor_set_tbl")
 public class ArmorSet{

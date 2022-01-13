@@ -1,4 +1,4 @@
-package com.ryanpatrick.mhrisearmorsetsearcher.model;
+package com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels;
 
 import android.app.Application;
 
@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
-import com.ryanpatrick.mhrisearmorsetsearcher.data.GemRepository;
+import com.ryanpatrick.mhrisearmorsetsearcher.repositories.GemRepository;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Gem;
 
 import java.util.ArrayList;
 import java.util.List;

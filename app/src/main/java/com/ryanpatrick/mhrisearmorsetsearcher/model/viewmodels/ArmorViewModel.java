@@ -1,4 +1,4 @@
-package com.ryanpatrick.mhrisearmorsetsearcher.model;
+package com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels;
 
 import android.app.Application;
 
@@ -6,7 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.ryanpatrick.mhrisearmorsetsearcher.data.ArmorRepository;
+import com.ryanpatrick.mhrisearmorsetsearcher.repositories.ArmorRepository;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 

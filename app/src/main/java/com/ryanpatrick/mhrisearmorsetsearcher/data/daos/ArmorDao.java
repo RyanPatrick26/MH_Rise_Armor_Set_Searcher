@@ -1,12 +1,11 @@
-package com.ryanpatrick.mhrisearmorsetsearcher.data;
+package com.ryanpatrick.mhrisearmorsetsearcher.data.daos;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
 
-import com.ryanpatrick.mhrisearmorsetsearcher.model.Armor;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 

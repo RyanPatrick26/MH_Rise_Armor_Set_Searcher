@@ -4,16 +4,14 @@ import androidx.room.TypeConverter;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.Armor;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.ArmorSet;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.Skill;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.Slot;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Gem;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Slot;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 public class Convertors {
     @TypeConverter

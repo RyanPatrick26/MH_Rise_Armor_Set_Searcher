@@ -1,15 +1,13 @@
-package com.ryanpatrick.mhrisearmorsetsearcher.data;
+package com.ryanpatrick.mhrisearmorsetsearcher.repositories;
 
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.ryanpatrick.mhrisearmorsetsearcher.model.Armor;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.ArmorSet;
-import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
-import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
+import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
+import com.ryanpatrick.mhrisearmorsetsearcher.data.daos.ArmorSetDao;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArmorSetRepository {

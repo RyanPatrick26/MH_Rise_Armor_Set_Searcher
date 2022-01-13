@@ -1,4 +1,4 @@
-package com.ryanpatrick.mhrisearmorsetsearcher.model;
+package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity(tableName = "armor_tbl")
 public class Armor{

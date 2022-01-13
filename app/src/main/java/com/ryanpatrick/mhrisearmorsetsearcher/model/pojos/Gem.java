@@ -1,4 +1,4 @@
-package com.ryanpatrick.mhrisearmorsetsearcher.model;
+package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

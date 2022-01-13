@@ -1,22 +1,13 @@
 package com.ryanpatrick.mhrisearmorsetsearcher;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
-import android.util.Log;
 
-import com.ryanpatrick.mhrisearmorsetsearcher.data.ArmorRepository;
-import com.ryanpatrick.mhrisearmorsetsearcher.data.GemRepository;
-import com.ryanpatrick.mhrisearmorsetsearcher.data.SkillRepository;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.ArmorViewModel;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.GemViewModel;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.SkillViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.ArmorViewModel;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.GemViewModel;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.SkillViewModel;
 
 public class MainActivity extends AppCompatActivity {
     private GemViewModel gemViewModel;

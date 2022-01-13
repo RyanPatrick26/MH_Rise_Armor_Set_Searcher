@@ -1,4 +1,6 @@
-package com.ryanpatrick.mhrisearmorsetsearcher.model;
+package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
+
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Gem;
 
 public class Slot {
 	private int level;

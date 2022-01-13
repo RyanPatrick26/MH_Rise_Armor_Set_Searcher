@@ -1,4 +1,4 @@
-package com.ryanpatrick.mhrisearmorsetsearcher.data;
+package com.ryanpatrick.mhrisearmorsetsearcher.data.daos;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Gem;
 
 import java.util.ArrayList;
 import java.util.List;
