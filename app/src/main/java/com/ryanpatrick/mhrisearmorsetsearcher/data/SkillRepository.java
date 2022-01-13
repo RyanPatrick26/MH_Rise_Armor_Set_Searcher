@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Skill;
@@ -18,9 +19,16 @@ public class SkillRepository {
 
     public SkillRepository(Application application){
         ApplicationDatabase db = ApplicationDatabase.getInstance(application.getApplicationContext());
+        dbContext = application.getApplicationContext();
         skillDao = db.skillDao();
         skillsList = skillDao.getAllSkills();
-        dbContext = application.getApplicationContext();
+        skillsList.observeForever(new Observer<List<Skill>>() {
+            @Override
+            public void onChanged(List<Skill> skills) {
+                initializeSkillDb(skills);
+                skillsList.removeObserver(this);
+            }
+        });
     }
 
     public LiveData<List<Skill>> getAllSkills(){return skillsList;}
@@ -30,9 +38,10 @@ public class SkillRepository {
     public void insert(Skill skill){
         ApplicationDatabase.databaseWriter.execute(() -> skillDao.insert(skill));
     }
-    public void initializeSkillDb(){
+    public void initializeSkillDb(List<Skill> oldSkills){
         ArrayList<Skill> skills = new ArrayList<>();
 
+        //region create list of skills to add to the database
         skills.add(new Skill(dbContext.getResources().getString(R.string.masters_touch), 3));
         skills.add(new Skill(dbContext.getResources().getString(R.string.handicraft_skill), 5));
         skills.add(new Skill(dbContext.getResources().getString(R.string.good_luck), 3));
@@ -143,8 +152,17 @@ public class SkillRepository {
         skills.add(new Skill(dbContext.getResources().getString(R.string.wind_alignment), 5));
         skills.add(new Skill(dbContext.getResources().getString(R.string.thunder_alignment), 5));
         skills.add(new Skill(dbContext.getResources().getString(R.string.stormsoul), 5));
+        //endregion
 
-        ApplicationDatabase.databaseWriter.execute(() -> skillDao.batchInsert(skills));
+        if(oldSkills.size() > 0 && oldSkills.size() <= skills.size()){
+            for(int i = oldSkills.size(); i > 0; i--){
+                if(oldSkills.get(i-1).getSkillName().equals(skills.get(i-1).getSkillName())){
+                    skills.remove(i-1);
+                }
+            }
+        }
+        if(skills.size() > 0)
+            ApplicationDatabase.databaseWriter.execute(() -> skillDao.batchInsert(skills));
 
     }
 }

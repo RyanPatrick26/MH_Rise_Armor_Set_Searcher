@@ -24,7 +24,4 @@ public class SkillViewModel extends AndroidViewModel {
         return ALL_SKILLS;
     }
     public LiveData<Skill> getSkill(long id){return skillRepository.getSkill(id);}
-    public void initializeSkillDb(){
-        skillRepository.initializeSkillDb();
-    }
 }

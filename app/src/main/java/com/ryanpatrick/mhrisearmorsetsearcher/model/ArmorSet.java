@@ -33,11 +33,11 @@ public class ArmorSet{
 	@ColumnInfo(name = "total_dragon_res")
 	private int totalDragonRes;
 	@ColumnInfo(name = "total_skills")
-	private ArrayList<Skill> totalSkills;
+	private Skill[] totalSkills;
 
 	public ArmorSet(Armor head, Armor chest, Armor arms, Armor waist, Armor legs,
 					int totalDefense, int totalFireRes, int totalWaterRes, int totalIceRes,
-					int totalThunderRes, int totalDragonRes, ArrayList<Skill> totalSkills) {
+					int totalThunderRes, int totalDragonRes, Skill[] totalSkills) {
 		this.head = head;
 		this.chest = chest;
 		this.arms = arms;
@@ -150,11 +150,11 @@ public class ArmorSet{
 		this.totalDragonRes = totalDragonRes;
 	}
 
-	public ArrayList<Skill> getTotalSkills() {
+	public Skill[] getTotalSkills() {
 		return totalSkills;
 	}
 
-	public void setTotalSkills(ArrayList<Skill> totalSkills) {
+	public void setTotalSkills(Skill[] totalSkills) {
 		this.totalSkills = totalSkills;
 	}
 	//endregion

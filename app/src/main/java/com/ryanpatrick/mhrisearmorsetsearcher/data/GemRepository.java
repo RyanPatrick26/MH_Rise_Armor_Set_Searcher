@@ -2,9 +2,9 @@ package com.ryanpatrick.mhrisearmorsetsearcher.data;
 
 import android.app.Application;
 import android.content.Context;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
@@ -14,14 +14,21 @@ import java.util.List;
 
 public class GemRepository {
     private GemDao gemDao;
-    private LiveData<List<Gem>> gemList;
     private Context dbContext;
+    private LiveData<List<Gem>> gemList;
 
     public GemRepository(Application application) {
         ApplicationDatabase db = ApplicationDatabase.getInstance(application);
+        dbContext = application.getApplicationContext();
         gemDao = db.gemDao();
         gemList = gemDao.getAllGems();
-        dbContext = application.getApplicationContext();
+        gemList.observeForever(new Observer<List<Gem>>() {
+            @Override
+            public void onChanged(List<Gem> gems) {
+                initializeGemDb(gems);
+                gemList.removeObserver(this);
+            }
+        });
     }
     public LiveData<List<Gem>> getGemList() {
         return gemList;
@@ -32,9 +39,10 @@ public class GemRepository {
     public LiveData<Gem> getGem(long id){
         return gemDao.getGem(id);
     }
-    public void initializeGemDb(){
+    public void initializeGemDb(List<Gem> oldGems) {
         ArrayList<Gem> gems = new ArrayList<>();
 
+        //region create list of gems to add to the database
         gems.add(new Gem(dbContext.getResources().getString(R.string.mastery),
                 dbContext.getResources().getString(R.string.masters_touch), 2));
         gems.add(new Gem(dbContext.getResources().getString(R.string.handicraft),
@@ -235,7 +243,17 @@ public class GemRepository {
                 dbContext.getResources().getString(R.string.ice_res_skill), 1));
         gems.add(new Gem(dbContext.getResources().getString(R.string.dragon_res),
                 dbContext.getResources().getString(R.string.dragon_res_skill), 1));
+        //endregion
 
-        ApplicationDatabase.databaseWriter.execute(() -> gemDao.batchInsert(gems));
+        if(oldGems.size() > 0 && gems.size() >= oldGems.size()){
+            for (int i = oldGems.size(); i > 0; i--) {
+                if(oldGems.get(i-1).getGemName().equals(gems.get(i-1).getGemName())){
+                    gems.remove(i-1);
+                }
+            }
+        }
+
+        if (gems.size() > 0)
+            ApplicationDatabase.databaseWriter.execute(() -> gemDao.batchInsert(gems));
     }
 }

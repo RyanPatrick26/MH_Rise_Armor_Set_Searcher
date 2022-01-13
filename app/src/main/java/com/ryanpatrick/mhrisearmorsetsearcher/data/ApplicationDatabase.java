@@ -1,8 +1,10 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.data;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -15,6 +17,8 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Skill;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -29,7 +33,7 @@ public abstract class ApplicationDatabase extends RoomDatabase {
     public static synchronized ApplicationDatabase getInstance(Context context){
         if(INSTANCE == null){
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ApplicationDatabase.class, DATABASE_NAME)
-                    .addCallback(new RoomDatabase.Callback(){
+                    .addCallback(new Callback(){
                         @Override
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
                             super.onCreate(db);

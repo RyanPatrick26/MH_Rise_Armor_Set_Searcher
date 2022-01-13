@@ -35,13 +35,13 @@ public class Armor{
 	@ColumnInfo(name = "dragon_res")
 	private int dragonRes;
 	@ColumnInfo(name = "skills")
-	private ArrayList<Skill> skills;
+	private Skill[] skills;
 	@ColumnInfo(name = "slots")
-	private ArrayList<Slot> slots;
+	private Slot[] slots;
 
 	public Armor(String name, int rarity, Gender gender, ArmorType type,
 				 int defense, int fireRes, int waterRes, int iceRes, int thunderRes, int dragonRes,
-				 ArrayList<Skill> skills, ArrayList<Slot> slots) {
+				 Skill[] skills, Slot[] slots) {
 		this.gender = gender;
 		this.thunderRes = thunderRes;
 		this.type = type;
@@ -78,11 +78,11 @@ public class Armor{
 		return type;
 	}
 
-	public ArrayList<Skill> getSkills(){
+	public Skill[] getSkills(){
 		return skills;
 	}
 
-	public ArrayList<Slot> getSlots(){
+	public Slot[] getSlots(){
 		return slots;
 	}
 

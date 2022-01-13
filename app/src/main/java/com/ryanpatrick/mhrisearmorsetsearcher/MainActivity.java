@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.data.ArmorRepository;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.GemRepository;
@@ -14,6 +15,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.GemViewModel;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.SkillViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,23 +34,5 @@ public class MainActivity extends AppCompatActivity {
                 .create(ArmorViewModel.class);
         skillViewModel = new ViewModelProvider.AndroidViewModelFactory(MainActivity.this.getApplication())
                 .create(SkillViewModel.class);
-
-        gemViewModel.getAllGems().observe(this, gems -> {
-            if(gems.size() == 0){
-                gemViewModel.initializeGemDb();
-            }
-        });
-        armorViewModel.getAllArmor().observe(this, armors -> {
-            if(armors.size() == 0){
-                armorViewModel.initializeArmorDb();
-            }
-        });
-        skillViewModel.getAllSkills().observe(this, skills -> {
-            if(skills.size() == 0){
-                skillViewModel.initializeSkillDb();
-            }
-        });
-
-
     }
 }

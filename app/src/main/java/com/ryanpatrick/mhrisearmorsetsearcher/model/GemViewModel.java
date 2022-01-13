@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.GemRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GemViewModel extends AndroidViewModel {
@@ -27,7 +28,7 @@ public class GemViewModel extends AndroidViewModel {
         return ALL_GEMS;
     }
     public LiveData<Gem> getGem(long id){return gemRepository.getGem(id);}
-    public void initializeGemDb(){
-        gemRepository.initializeGemDb();
+    public void initializeGemDb(ArrayList<Gem> gems){
+        gemRepository.initializeGemDb(gems);
     }
 }

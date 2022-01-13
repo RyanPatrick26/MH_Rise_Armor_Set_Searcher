@@ -35,22 +35,22 @@ public class Convertors {
     }
 
     @TypeConverter
-    public static String fromSkillList(ArrayList<Skill> skills){
+    public static String fromSkillList(Skill[] skills){
         if(skills == null){
             return "";
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<Skill>>(){}.getType();
+        Type type = new TypeToken<Skill[]>(){}.getType();
 
         return gson.toJson(skills, type);
     }
     @TypeConverter
-    public static ArrayList<Skill> toSkillList(String skills){
+    public static Skill[]toSkillList(String skills){
         if(skills == null){
             return null;
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<Skill>>(){}.getType();
+        Type type = new TypeToken<Skill[]>(){}.getType();
 
         return gson.fromJson(skills, type);
     }
@@ -98,22 +98,22 @@ public class Convertors {
     }
 
     @TypeConverter
-    public static String fromSlotList(ArrayList<Slot> slots){
+    public static String fromSlotList(Slot[] slots){
         if(slots == null){
             return "";
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<Slot>>(){}.getType();
+        Type type = new TypeToken<Slot[]>(){}.getType();
 
         return gson.toJson(slots, type);
     }
     @TypeConverter
-    public static ArrayList<Slot> toSlotList(String slots){
+    public static Slot[] toSlotList(String slots){
         if(slots == null){
             return null;
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<Slot>>(){}.getType();
+        Type type = new TypeToken<Slot[]>(){}.getType();
 
         return gson.fromJson(slots, type);
     }

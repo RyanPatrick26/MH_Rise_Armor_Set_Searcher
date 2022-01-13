@@ -2,6 +2,7 @@ package com.ryanpatrick.mhrisearmorsetsearcher.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "skills_tbl")
@@ -12,10 +13,18 @@ public class Skill {
 	private String skillName;
 	@ColumnInfo(name = "max_level")
 	private int skillMaxLevel;
+	@Ignore
+	private int skillLevel;
 
 	public Skill(String skillName, int skillMaxLevel) {
 		this.skillName = skillName;
 		this.skillMaxLevel = skillMaxLevel;
+	}
+
+	public Skill(String skillName, int skillMaxLevel, int skillLevel) {
+		this.skillName = skillName;
+		this.skillMaxLevel = skillMaxLevel;
+		this.skillLevel = skillLevel;
 	}
 
 	//region getters and setters
@@ -41,6 +50,14 @@ public class Skill {
 
 	public void setSkillMaxLevel(int skillMaxLevel) {
 		this.skillMaxLevel = skillMaxLevel;
+	}
+
+	public int getSkillLevel() {
+		return skillLevel;
+	}
+
+	public void setSkillLevel(int skillLevel) {
+		this.skillLevel = skillLevel;
 	}
 	//endregion
 }
