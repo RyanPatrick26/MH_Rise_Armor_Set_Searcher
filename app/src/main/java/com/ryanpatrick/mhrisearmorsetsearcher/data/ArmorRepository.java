@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Armor;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.Utils;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
@@ -20,7 +21,6 @@ public class ArmorRepository {
         Log.d("here", "ArmorRepository: " + application);
         ApplicationDatabase db = ApplicationDatabase.getInstance(application.getApplicationContext());
         armorDao = db.armorDao();
-
         armorList = armorDao.getAllArmor();
     }
 

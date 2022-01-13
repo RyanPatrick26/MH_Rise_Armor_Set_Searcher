@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.model.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,6 @@ public class GemRepository {
     public GemRepository(Application application) {
         ApplicationDatabase db = ApplicationDatabase.getInstance(application);
         gemDao = db.gemDao();
-
         gemList = gemDao.getAllGems();
     }
 

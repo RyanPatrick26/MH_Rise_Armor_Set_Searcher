@@ -488,7 +488,7 @@
     <string name="hunger_res">Hunger Resistance</string>
     <string name="free_meal">Free Meal</string>
     <string name="muck_res">Muck Resistance</string>
-    <string name="diversion_skill">Diverson</string>
+    <string name="diversion_skill">Diversion</string>
     <string name="leap_of_faith">Leap of Faith</string>
     <string name="fortify">Fortify</string>
     <string name="geologist">Geologist</string>
@@ -502,5 +502,14 @@
     <string name="thunder_res_skill">Thunder Reistance</string>
     <string name="ice_res_skill">Ice Resistance</string>
     <string name="dragon_res_skill">Dragon Resistance</string>
+    <string name="bow_charge_plus">Bow Charge Plus</string>
+    <string name="capture_master">Capture Master</string>
+    <string name="chameleos_blessing">Chameleos Blessing</string>
+    <string name="kushala_blessing">Kushala Blessing</string>
+    <string name="teostra_blessing">Teostra Blessing</string>
+    <string name="dragonheart">Dragon Heart</string>
+    <string name="wind_alignment">Wind Alignment</string>
+    <string name="thunder_alignment">Thunder Alignment</string>
+    <string name="stormsoul">Stormsoul</string>
     <!--endregion-->
 </resources>
