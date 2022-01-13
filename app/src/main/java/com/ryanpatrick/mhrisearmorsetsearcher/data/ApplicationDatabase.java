@@ -1,14 +1,12 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.data;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
-import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Armor;
@@ -16,9 +14,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Gem;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Skill;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
-import com.ryanpatrick.mhrisearmorsetsearcher.util.Utils;
 
-import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -47,8 +43,6 @@ public abstract class ApplicationDatabase extends RoomDatabase {
                                 gemDao.deleteAll();
                                 setDao.deleteAll();
                                 skillDao.deleteAll();
-
-                                Utils.initializeGemDb(gemDao, context);
                             });
                         }
                     })

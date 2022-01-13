@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.GemRepository;
 
 import java.util.List;
@@ -13,9 +14,11 @@ import java.util.List;
 public class GemViewModel extends AndroidViewModel {
     private GemRepository gemRepository;
     private final LiveData<List<Gem>> ALL_GEMS;
+    Application application;
 
     public GemViewModel(@NonNull Application application) {
         super(application);
+        this.application = application;
         gemRepository = new GemRepository(application);
         ALL_GEMS = gemRepository.getGemList();
     }

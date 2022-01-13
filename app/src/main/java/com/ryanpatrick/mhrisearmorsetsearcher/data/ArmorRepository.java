@@ -6,11 +6,9 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.model.Armor;
-import com.ryanpatrick.mhrisearmorsetsearcher.util.Utils;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArmorRepository {
@@ -36,5 +34,9 @@ public class ArmorRepository {
     }
     public LiveData<List<Armor>> getAllArmorOfRarity(int rarity, Gender gender){
         return armorDao.getAllArmorOfRarity(rarity, gender);
+    }
+    public void initializeArmorDb(){
+        //240 armor pieces
+
     }
 }
