@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.ryanpatrick.mhrisearmorsetsearcher.model.SkillRepository;
+import com.ryanpatrick.mhrisearmorsetsearcher.repositories.SkillRepository;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
 
 import java.util.List;
