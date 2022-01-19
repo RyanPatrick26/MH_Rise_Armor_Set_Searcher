@@ -33,8 +33,9 @@ public class DecorationRepository {
         return decorationsDao.getDecoration(id);
     }
     public void updateDb(){
-        if(!decorationsDao.getDecorationList().equals(Arrays.asList(DbConstants.PREPOPULATE_DECORATIONS)))
-            ApplicationDatabase.databaseWriter.execute(() ->
-                    decorationsDao.updateDb(DbConstants.PREPOPULATE_DECORATIONS));
+        ApplicationDatabase.databaseWriter.execute(() ->{
+        if(decorationsDao.getDecorationList().size() < DbConstants.PREPOPULATE_DECORATIONS.length)
+                    decorationsDao.updateDb(DbConstants.PREPOPULATE_DECORATIONS);
+        });
     }
 }

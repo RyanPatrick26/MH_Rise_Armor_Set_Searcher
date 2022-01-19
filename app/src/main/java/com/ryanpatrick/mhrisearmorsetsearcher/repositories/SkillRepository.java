@@ -35,9 +35,10 @@ public class SkillRepository {
         ApplicationDatabase.databaseWriter.execute(() -> skillDao.insert(skill));
     }
     public void updateDb(){
-        if(!skillDao.getSkillsList().equals(Arrays.asList(DbConstants.PREPOPULATE_SKILLS)))
-            ApplicationDatabase.databaseWriter.execute(() ->
-                    skillDao.updateDb(DbConstants.PREPOPULATE_SKILLS));
+        ApplicationDatabase.databaseWriter.execute(() -> {
+            if (skillDao.getSkillsList().size() < DbConstants.PREPOPULATE_SKILLS.length)
+                skillDao.updateDb(DbConstants.PREPOPULATE_SKILLS);
+        });
 
     }
 }

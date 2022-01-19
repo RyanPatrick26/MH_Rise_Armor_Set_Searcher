@@ -1,5 +1,6 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

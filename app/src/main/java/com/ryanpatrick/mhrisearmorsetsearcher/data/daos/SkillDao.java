@@ -26,7 +26,7 @@ public abstract class SkillDao {
     @Query("SELECT * FROM skills_tbl")
     public abstract LiveData<List<Skill>> getAllSkills();
 
-    @Query("SELECT skill_name, max_level FROM skills_tbl")
+    @Query("SELECT * FROM skills_tbl")
     public abstract List<Skill> getSkillsList();
 
     @Query("SELECT * FROM skills_tbl WHERE skillId == :id")

@@ -23,9 +23,7 @@ public abstract class ArmorDao {
     @Query("DELETE FROM armor_tbl")
     public abstract void deleteAll();
 
-    @Query("SELECT armor_name, rarity, gender,armor_type, base_defense, " +
-            " max_defense, fire_res, water_res, thunder_res, ice_res, dragon_res, " +
-            "skills, slots FROM armor_tbl")
+    @Query("SELECT * FROM armor_tbl")
     public abstract List<Armor> getArmorList();
 
     @Query("SELECT * FROM armor_tbl")

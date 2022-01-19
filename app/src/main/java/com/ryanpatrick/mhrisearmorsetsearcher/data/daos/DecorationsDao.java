@@ -25,7 +25,7 @@ public abstract class DecorationsDao {
     @Query("DELETE FROM decoration_tbl")
     public abstract void deleteAll();
 
-    @Query("SELECT decoration_name, skill_name, decoration_level FROM decoration_tbl")
+    @Query("SELECT * FROM decoration_tbl")
     public abstract List<Decoration> getDecorationList();
 
     @Query("SELECT * FROM decoration_tbl")

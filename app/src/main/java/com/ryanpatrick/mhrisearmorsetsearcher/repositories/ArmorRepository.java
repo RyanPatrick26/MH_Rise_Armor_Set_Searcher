@@ -42,9 +42,10 @@ public class ArmorRepository {
         return armorDao.getAllArmorOfRarity(rarity, gender);
     }
     public void updateDb(){
-        if(!armorDao.getArmorList().equals(Arrays.asList(DbConstants.PREPOPULATE_ARMORS)))
-            ApplicationDatabase.databaseWriter.execute(() ->
-                    armorDao.updateDb(DbConstants.PREPOPULATE_ARMORS));
+        ApplicationDatabase.databaseWriter.execute(() -> {
+        if(armorDao.getArmorList().size() < DbConstants.PREPOPULATE_ARMORS.length)
+                    armorDao.updateDb(DbConstants.PREPOPULATE_ARMORS);
+        });
 
     }
 }
