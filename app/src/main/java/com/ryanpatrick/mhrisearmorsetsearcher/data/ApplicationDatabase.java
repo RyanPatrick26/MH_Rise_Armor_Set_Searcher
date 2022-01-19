@@ -11,18 +11,19 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.data.daos.ArmorDao;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.daos.ArmorSetDao;
-import com.ryanpatrick.mhrisearmorsetsearcher.data.daos.GemDao;
+import com.ryanpatrick.mhrisearmorsetsearcher.data.daos.DecorationsDao;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.daos.SkillDao;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Gem;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Decoration;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.DbConstants;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Armor.class, ArmorSet.class, Gem.class, Skill.class}, version = 1)
+@Database(entities = {Armor.class, ArmorSet.class, Decoration.class, Skill.class}, version = 1)
 @TypeConverters({Convertors.class})
 public abstract class ApplicationDatabase extends RoomDatabase {
     public static volatile ApplicationDatabase INSTANCE;
@@ -40,13 +41,17 @@ public abstract class ApplicationDatabase extends RoomDatabase {
                             databaseWriter.execute(() ->{
                                 ArmorDao armorDao = INSTANCE.armorDao();
                                 ArmorSetDao setDao = INSTANCE.setDao();
-                                GemDao gemDao = INSTANCE.gemDao();
+                                DecorationsDao decorationsDao = INSTANCE.gemDao();
                                 SkillDao skillDao = INSTANCE.skillDao();
 
                                 armorDao.deleteAll();
-                                gemDao.deleteAll();
+                                decorationsDao.deleteAll();
                                 setDao.deleteAll();
                                 skillDao.deleteAll();
+
+                                decorationsDao.insertAll(DbConstants.PREPOPULATE_DECORATIONS);
+                                skillDao.insertAll(DbConstants.PREPOPULATE_SKILLS);
+                                armorDao.insertAll(DbConstants.PREPOPULATE_ARMORS);
                             });
                         }
                     })
@@ -57,7 +62,7 @@ public abstract class ApplicationDatabase extends RoomDatabase {
 
     public abstract ArmorDao armorDao();
     public abstract ArmorSetDao setDao();
-    public abstract GemDao gemDao();
+    public abstract DecorationsDao gemDao();
     public abstract SkillDao skillDao();
 
 }

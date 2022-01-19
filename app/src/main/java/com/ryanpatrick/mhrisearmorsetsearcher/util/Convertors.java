@@ -5,7 +5,7 @@ import androidx.room.TypeConverter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Gem;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Decoration;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Slot;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
@@ -75,22 +75,22 @@ public class Convertors {
     }
 
     @TypeConverter
-    public static String fromGem(Gem gem){
-        if(gem == null){
+    public static String fromGem(Decoration decoration){
+        if(decoration == null){
             return null;
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<Gem>(){}.getType();
+        Type type = new TypeToken<Decoration>(){}.getType();
 
-        return gson.toJson(gem, type);
+        return gson.toJson(decoration, type);
     }
     @TypeConverter
-    public static Gem toGem(String gem){
+    public static Decoration toGem(String gem){
         if(gem == null){
             return null;
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<Gem>(){}.getType();
+        Type type = new TypeToken<Decoration>(){}.getType();
 
         return gson.fromJson(gem, type);
     }

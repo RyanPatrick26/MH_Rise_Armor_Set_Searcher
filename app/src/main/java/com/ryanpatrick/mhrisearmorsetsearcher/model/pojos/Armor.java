@@ -19,8 +19,10 @@ public class Armor{
 	private Gender gender;
 	@ColumnInfo(name = "armor_type")
 	private ArmorType type;
-	@ColumnInfo(name = "defense")
-	private int defense;
+	@ColumnInfo(name = "base_defense")
+	private int baseDefense;
+	@ColumnInfo(name = "max_defense")
+	private int maxDefense;
 	@ColumnInfo(name = "fire_res")
 	private int fireRes;
 	@ColumnInfo(name = "water_res")
@@ -37,24 +39,24 @@ public class Armor{
 	private Slot[] slots;
 
 	public Armor(String name, int rarity, Gender gender, ArmorType type,
-				 int defense, int fireRes, int waterRes, int iceRes, int thunderRes, int dragonRes,
-				 Skill[] skills, Slot[] slots) {
+				 int baseDefense, int maxDefense, int fireRes, int waterRes, int thunderRes, int iceRes,
+				 int dragonRes, Skill[] skills, Slot[] slots) {
+		this.name = name;
+		this.rarity = rarity;
 		this.gender = gender;
-		this.thunderRes = thunderRes;
 		this.type = type;
+		this.baseDefense = baseDefense;
+		this.maxDefense = maxDefense;
+		this.fireRes = fireRes;
+		this.waterRes = waterRes;
+		this.iceRes = iceRes;
+		this.thunderRes = thunderRes;
+		this.dragonRes = dragonRes;
 		this.skills = skills;
 		this.slots = slots;
-		this.fireRes = fireRes;
-		this.defense = defense;
-		this.waterRes = waterRes;
-		this.name = name;
-		this.iceRes = iceRes;
-		this.dragonRes = dragonRes;
-		this.rarity = rarity;
 	}
 
 	//region getters and setters
-
 	public int getArmorId() {
 		return armorId;
 	}
@@ -63,58 +65,109 @@ public class Armor{
 		this.armorId = armorId;
 	}
 
-	public Gender getGender(){
-		return gender;
-	}
-
-	public int getThunderRes(){
-		return thunderRes;
-	}
-
-	public ArmorType getType(){
-		return type;
-	}
-
-	public Skill[] getSkills(){
-		return skills;
-	}
-
-	public Slot[] getSlots(){
-		return slots;
-	}
-
-	public int getFireRes(){
-		return fireRes;
-	}
-
-	public int getDefense(){
-		return defense;
-	}
-
-	public int getWaterRes(){
-		return waterRes;
-	}
-
-	public String getName(){
+	public String getName() {
 		return name;
 	}
 
-	public int getIceRes(){
-		return iceRes;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public int getId(){
-		return armorId;
-	}
-
-	public int getDragonRes(){
-		return dragonRes;
-	}
-
-	public int getRarity(){
+	public int getRarity() {
 		return rarity;
 	}
 
+	public void setRarity(int rarity) {
+		this.rarity = rarity;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public ArmorType getType() {
+		return type;
+	}
+
+	public void setType(ArmorType type) {
+		this.type = type;
+	}
+
+	public int getBaseDefense() {
+		return baseDefense;
+	}
+
+	public void setBaseDefense(int baseDefense) {
+		this.baseDefense = baseDefense;
+	}
+
+	public int getMaxDefense() {
+		return maxDefense;
+	}
+
+	public void setMaxDefense(int maxDefense) {
+		this.maxDefense = maxDefense;
+	}
+
+	public int getFireRes() {
+		return fireRes;
+	}
+
+	public void setFireRes(int fireRes) {
+		this.fireRes = fireRes;
+	}
+
+	public int getWaterRes() {
+		return waterRes;
+	}
+
+	public void setWaterRes(int waterRes) {
+		this.waterRes = waterRes;
+	}
+
+	public int getIceRes() {
+		return iceRes;
+	}
+
+	public void setIceRes(int iceRes) {
+		this.iceRes = iceRes;
+	}
+
+	public int getThunderRes() {
+		return thunderRes;
+	}
+
+	public void setThunderRes(int thunderRes) {
+		this.thunderRes = thunderRes;
+	}
+
+	public int getDragonRes() {
+		return dragonRes;
+	}
+
+	public void setDragonRes(int dragonRes) {
+		this.dragonRes = dragonRes;
+	}
+
+	public Skill[] getSkills() {
+		return skills;
+	}
+
+	public void setSkills(Skill[] skills) {
+		this.skills = skills;
+	}
+
+	public Slot[] getSlots() {
+		return slots;
+	}
+
+	public void setSlots(Slot[] slots) {
+		this.slots = slots;
+	}
 
 	//endregion
 }

@@ -70,8 +70,7 @@
 
     <string name="flame_seal">Flame Seal</string>
     <string name="canynce_tail">Canyne Tail</string>
-    <!-- endregion -->
-
+    <!--endregion -->
     <!--region rarity 6-->
     <string name="aelucanth_head">Aelucanth Vertex S</string>
     <string name="aelucanth_chest">Aelucanth Thorax S</string>
@@ -167,7 +166,7 @@
     <string name="cunning_specs">Cunning Specs</string>
     <string name="might_bow_feather">Mighty Bow Feather</string>
     <string name="black_leather_legs">Black Leather Legs</string>
-    <!-- endregion -->
+    <!--endregion-->
     <!--region rarity 5-->
     <string name="dober_head">Dober Helm</string>
     <string name="dober_chest">Dober Mail</string>
@@ -295,9 +294,167 @@
     <string name="chrome_legs">Chrome Metal Boots</string>
     <string name="skull_head">Skull Visage S</string>
     <!--endregion-->
+    <!--region rarity 4-->
+    <string name="kamura_head">Kamura Head Scarf S</string>
+    <string name="kamura_chest">Kamura Garb S</string>
+    <string name="kamura_arms">Kamura Braces S</string>
+    <string name="kamura_waist">Kamura Obi S</string>
+    <string name="kamura_legs">Kamura Leggings S</string>
+
+    <string name="leather_head">Leather Headgear S</string>
+    <string name="leather_chest">Leather Vest S</string>
+    <string name="leather_arms">Leather Gloves S</string>
+    <string name="leather_waist">Leather Belt S</string>
+    <string name="leather_legs">Leather Pants S</string>
+
+    <string name="chainmail_head">Chainmail Headgear S</string>
+    <string name="chainmail_chest">Chainmail Vest S</string>
+    <string name="chainmail_arms">Chainmail Gloves S</string>
+    <string name="chainmail_waist">Chainmail Belt S</string>
+    <string name="chainmail_legs">Chainmail Pants S</string>
+
+    <string name="hunters_head">Hunter\'s Helm S</string>
+    <string name="hunters_chest">Hunter\'s Mail S</string>
+    <string name="hunters_arms">Hunter\'s Vambraces S</string>
+    <string name="hunters_waist">Hunter\'s Coil S</string>
+    <string name="hunters_legs">Hunter\'s Greaves S</string>
+
+    <string name="alloy_head">Alloy Helm S</string>
+    <string name="alloy_chest">Alloy Mail S</string>
+    <string name="alloy_arms">Alloy Vambraces S</string>
+    <string name="alloy_waist">Alloy Coil S</string>
+    <string name="alloy_legs">Alloy Greaves S</string>
+
+    <string name="ingot_head">Ingot Helm S</string>
+    <string name="ingot_chest">Ingot Mail S</string>
+    <string name="ingot_arms">Ingot arms Vambraces S</string>
+    <string name="ingot_waist">Ingot Coil S</string>
+    <string name="ingot_legs">Ingot Greaves S</string>
+
+    <string name="edel_head">Edel Vizor S</string>
+    <string name="edel_chest">Edel Ribplate S</string>
+    <string name="edel_arms">Edel Creeper S</string>
+    <string name="edel_waist">Edel Folia S</string>
+    <string name="edel_legs">Edel Roots</string>
+
+    <string name="skalda_head">Skalda Vertex S</string>
+    <string name="skalda_chest">Skalda Thorax S</string>
+    <string name="skalda_arms">Skalda Brachia S</string>
+    <string name="skalda_waist">Skalda Elytra S</string>
+    <string name="skalda_legs">Skalda Crura</string>
+
+    <string name="spio_head">Spio Vertex S</string>
+    <string name="spio_chest">Spio Thorax S</string>
+    <string name="spio_arms">Spio Brachia S</string>
+    <string name="spio_waist">Spio Elytra S</string>
+    <string name="spio_legs">Spio Crura</string>
+
+    <string name="aknosom_head">Aknosom Helm S</string>
+    <string name="aknosom_chest">Aknosom Mail S</string>
+    <string name="aknosom_arms">Aknosom Vambraces S</string>
+    <string name="aknosom_waist">Aknosom Coil S</string>
+    <string name="aknosom_legs">Aknosom Greaves S</string>
+
+    <string name="tetranadon_head">Tetranadon Helm S</string>
+    <string name="tetranadon_chest">Tetranadon Mail S</string>
+    <string name="tetranadon_arms">Tetranadon Vambraces S</string>
+    <string name="tetranadon_waist">Tetranadon Coil S</string>
+    <string name="tetranadon_legs">Tetranadon Greaves S</string>
+
+    <string name="izuchi_head">Izuchi Helm S</string>
+    <string name="izuchi_chest">Izuchi Mail S</string>
+    <string name="izuchi_arms">Izuchi Vambraces S</string>
+    <string name="izuchi_waist">Izuchi Coil S</string>
+    <string name="izuchi_legs">Izuchi Greaves S</string>
+
+    <string name="rhenoplos_head">Rhenoplos Helm S</string>
+    <string name="rhenoplos_chest">Rhenoplos Mail S</string>
+    <string name="rhenoplos_arms">Rhenoplos Vambraces S</string>
+    <string name="rhenoplos_waist">Rhenoplos Coil S</string>
+    <string name="rhenoplos_legs">Rhenoplos Greaves S</string>\
+
+    <string name="bnahabra_head">Bnahabra Hat S</string>
+    <string name="bnahabra_chest">Bnahabra Suit S</string>
+    <string name="bnahabra_arms">Bnahabra Gloves S</string>
+    <string name="bnahabra_waist">Bnahabra Coil S</string>
+    <string name="bnahabra_legs">Bnahabra Boots S</string>
+
+    <string name="wroggi_head">Wroggi Helm S</string>
+    <string name="wroggi_chest">Wroggi Mail S</string>
+    <string name="wroggi_arms">Wroggi Vambraces S</string>
+    <string name="wroggi_waist">Wroggi Coil S</string>
+    <string name="wroggi_legs">Wroggi Greaves S</string>
+
+    <string name="baggi_head">Baggi Helm S</string>
+    <string name="baggi_chest">Baggi Mail S</string>
+    <string name="baggi_arms">Baggi Vambraces S</string>
+    <string name="baggi_waist">Baggi Coil S</string>
+    <string name="baggi_legs">Baggi Greaves S</string>
+
+    <string name="arzuros_head">Arzuros Helm S</string>
+    <string name="arzuros_chest">Arzuros Mail S</string>
+    <string name="arzuros_arms">Arzuros Vambraces S</string>
+    <string name="arzuros_waist">Arzuros Coil S</string>
+    <string name="arzuros_legs">Arzuros Greaves S</string>
+
+    <string name="volvidon_head">Volvidon Helm S</string>
+    <string name="volvidon_chest">Volvidon Mail S</string>
+    <string name="volvidon_arms">Volvidon Vambraces S</string>
+    <string name="volvidon_waist">Volvidon Coil S</string>
+    <string name="volvidon_legs">Volvidon Greaves S</string>
+
+    <string name="ludroth_head">Ludroth Helm S</string>
+    <string name="ludroth_chest">Ludroth Mail S</string>
+    <string name="ludroth_arms">Ludroth Braces S</string>
+    <string name="ludroth_waist">Ludroth Coil S</string>
+    <string name="ludroth_legs">Ludroth Greaves S</string>
+
+    <string name="barroth_head">Barroth Helm S</string>
+    <string name="barroth_chest">Barroth Mail S</string>
+    <string name="barroth_arms">Barroth Vambraces S</string>
+    <string name="barroth_waist">Barroth Coil S</string>
+    <string name="barroth_legs">Barroth Greaves S</string>
+
+    <string name="khezu_head">Khezu Helm S</string>
+    <string name="khezu_chest">Khezu Mail S</string>
+    <string name="khezu_arms">Khezu Vambraces S</string>
+    <string name="khezu_waist">Khezu Coil S</string>
+    <string name="khezu_legs">Khezu Greaves S</string>
+
+    <string name="kulu_head">Kulu-Ya-Ku Helm S</string>
+    <string name="kulu_chest">Kulu-Ya-Ku Mail S</string>
+    <string name="kulu_arms">Kulu-Ya-Ku Braces S</string>
+    <string name="kulu_waist">Kulu-Ya-Ku Coil S</string>
+    <string name="kulu_legs">Kulu-Ya-Ku Greaves S</string>
+
+    <string name="lagombi_head">Lagombi Helm S</string>
+    <string name="lagombi_chest">Lagombi Mail S</string>
+    <string name="lagombi_arms">Lagombi Vambraces S</string>
+    <string name="lagombi_waist">Lagombi Coil S</string>
+    <string name="lagombi_legs">Lagombi Greaves S</string>
+
+    <string name="bone_head">Bone Helm S</string>
+    <string name="bone_chest">Bone Mail S</string>
+    <string name="bone_arms">Bone Vambraces S</string>
+    <string name="bone_waist">Bone Coil S</string>
+    <string name="bone_legs">Bone Greaves S</string>
+
+    <string name="chaos_head">Chaos Archbun</string>
+    <string name="chaos_chest">Chaos Archplate</string>
+    <string name="bullfango_mask">Bullfango Mask S</string>
+    <string name="jaggi_mask">Jaggi Mask S</string>
+    <string name="droth_mail">Droth Mail S</string>
+    <string name="droth_coil">Droth Coil S</string>
+    <string name="droth_greaves">Droth Greaves S</string>
+    <string name="jaggi_gauntlets">Jaggi Gauntlets S</string>
+    <string name="jagg_shinguards">Jaggi Shinguards S</string>
+    <string name="slagtoth_hood">Slagtoth Hood S</string>
+    <string name="slagtoth_cloak">Slagtoth Cloak S</string>
+
+    <!--endregion-->
     <!-- endregion -->
 
-    <!--region Gem Names -->
+    <!--region Decoration Names -->
     <string name="mastery">Master Jewel 2</string>
     <string name="handicraft">Handicraft Jewel 3</string>
     <string name="fate">Fate Jewel 3</string>

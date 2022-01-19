@@ -20,9 +20,11 @@ public class SkillViewModel extends AndroidViewModel {
         skillRepository = new SkillRepository(application);
         ALL_SKILLS = skillRepository.getAllSkills();
     }
-
     public LiveData<List<Skill>> getAllSkills() {
         return ALL_SKILLS;
     }
     public LiveData<Skill> getSkill(long id){return skillRepository.getSkill(id);}
+    public void updateDb(){
+        skillRepository.updateDb();
+    }
 }
