@@ -1,6 +1,5 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
-import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -13,7 +12,7 @@ public class Armor{
 	@PrimaryKey(autoGenerate = true)
 	private int armorId;
 	@ColumnInfo(name = "armor_name")
-	private String name;
+	private int nameResourceId;
 	@ColumnInfo(name = "rarity")
 	private int rarity;
 	@ColumnInfo(name = "gender")
@@ -37,12 +36,12 @@ public class Armor{
 	@ColumnInfo(name = "skills")
 	private Skill[] skills;
 	@ColumnInfo(name = "slots")
-	private Slot[] slots;
+	private int[] slots;
 
-	public Armor(String name, int rarity, Gender gender, ArmorType type,
+	public Armor(int nameResourceId, int rarity, Gender gender, ArmorType type,
 				 int baseDefense, int maxDefense, int fireRes, int waterRes, int thunderRes, int iceRes,
-				 int dragonRes, Skill[] skills, Slot[] slots) {
-		this.name = name;
+				 int dragonRes, Skill[] skills, int[] slots) {
+		this.nameResourceId = nameResourceId;
 		this.rarity = rarity;
 		this.gender = gender;
 		this.type = type;
@@ -66,12 +65,12 @@ public class Armor{
 		this.armorId = armorId;
 	}
 
-	public String getName() {
-		return name;
+	public int getNameResourceId() {
+		return nameResourceId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameResourceId(int nameResourceId) {
+		this.nameResourceId = nameResourceId;
 	}
 
 	public int getRarity() {
@@ -162,11 +161,11 @@ public class Armor{
 		this.skills = skills;
 	}
 
-	public Slot[] getSlots() {
+	public int[] getSlots() {
 		return slots;
 	}
 
-	public void setSlots(Slot[] slots) {
+	public void setSlots(int[] slots) {
 		this.slots = slots;
 	}
 

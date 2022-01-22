@@ -7,7 +7,6 @@ import com.google.gson.reflect.TypeToken;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Decoration;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Slot;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
@@ -75,7 +74,7 @@ public class Convertors {
     }
 
     @TypeConverter
-    public static String fromGem(Decoration decoration){
+    public static String fromDecoration(Decoration decoration){
         if(decoration == null){
             return null;
         }
@@ -85,33 +84,33 @@ public class Convertors {
         return gson.toJson(decoration, type);
     }
     @TypeConverter
-    public static Decoration toGem(String gem){
-        if(gem == null){
+    public static Decoration toDecoration(String decoration){
+        if(decoration == null){
             return null;
         }
         Gson gson = new Gson();
         Type type = new TypeToken<Decoration>(){}.getType();
 
-        return gson.fromJson(gem, type);
+        return gson.fromJson(decoration, type);
     }
 
     @TypeConverter
-    public static String fromSlotList(Slot[] slots){
+    public static String fromSlotList(int[] slots){
         if(slots == null){
             return "";
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<Slot[]>(){}.getType();
+        Type type = new TypeToken<int[]>(){}.getType();
 
         return gson.toJson(slots, type);
     }
     @TypeConverter
-    public static Slot[] toSlotList(String slots){
+    public static int[] toSlotList(String slots){
         if(slots == null){
             return null;
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<Slot[]>(){}.getType();
+        Type type = new TypeToken<int[]>(){}.getType();
 
         return gson.fromJson(slots, type);
     }

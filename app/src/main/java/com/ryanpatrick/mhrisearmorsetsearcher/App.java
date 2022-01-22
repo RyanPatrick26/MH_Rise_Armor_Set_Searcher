@@ -34,7 +34,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ApplicationSingleton.getInstance().setContext(this);
         DecorationViewModel decorationViewModel = new ViewModelProvider.AndroidViewModelFactory(this)
                 .create(DecorationViewModel.class);
         ArmorViewModel armorViewModel = new ViewModelProvider.AndroidViewModelFactory(this)

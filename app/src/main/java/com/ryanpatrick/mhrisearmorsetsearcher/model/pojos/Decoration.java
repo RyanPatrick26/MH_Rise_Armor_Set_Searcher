@@ -1,6 +1,5 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
-import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -10,14 +9,14 @@ public class Decoration {
 	@PrimaryKey(autoGenerate = true)
 	private long id;
 	@ColumnInfo(name = "decoration_name")
-	private String decorationName;
+	private int decorationResourceId;
 	@ColumnInfo(name = "skill_name")
-	private String skillName;
+	private int skillName;
 	@ColumnInfo(name = "decoration_level")
 	private int decorationLevel;
 
-	public Decoration(String decorationName, String skillName, int decorationLevel) {
-		this.decorationName = decorationName;
+	public Decoration(int decorationResourceId, int skillName, int decorationLevel) {
+		this.decorationResourceId = decorationResourceId;
 		this.skillName = skillName;
 		this.decorationLevel = decorationLevel;
 	}
@@ -29,19 +28,19 @@ public class Decoration {
 		this.id = id;
 	}
 
-	public String getDecorationName() {
-		return decorationName;
+	public int getDecorationResourceId() {
+		return decorationResourceId;
 	}
 
-	public void setDecorationName(String decorationName) {
-		this.decorationName = decorationName;
+	public void setDecorationResourceId(int decorationResourceId) {
+		this.decorationResourceId = decorationResourceId;
 	}
 
-	public String getSkillName() {
+	public int getSkillName() {
 		return skillName;
 	}
 
-	public void setSkillName(String skillName) {
+	public void setSkillName(int skillName) {
 		this.skillName = skillName;
 	}
 

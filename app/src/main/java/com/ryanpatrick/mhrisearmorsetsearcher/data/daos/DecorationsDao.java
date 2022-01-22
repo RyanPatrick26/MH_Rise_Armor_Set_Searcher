@@ -12,31 +12,25 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Decoration;
 import java.util.List;
 
 @Dao
-public abstract class DecorationsDao {
+public interface DecorationsDao {
     @Insert
-    public abstract void insert(Decoration decoration);
+    void insert(Decoration decoration);
 
     @Insert
-    public abstract void insertAll(Decoration[] decorations);
+    void insertAll(Decoration[] decorations);
 
     @Update
-    public abstract void update(Decoration decoration);
+    void update(Decoration decoration);
 
     @Query("DELETE FROM decoration_tbl")
-    public abstract void deleteAll();
+    void deleteAll();
 
     @Query("SELECT * FROM decoration_tbl")
-    public abstract List<Decoration> getDecorationList();
+    List<Decoration> getDecorationList();
 
     @Query("SELECT * FROM decoration_tbl")
-    public abstract LiveData<List<Decoration>> getAllDecorations();
+    LiveData<List<Decoration>> getAllDecorations();
 
     @Query("SELECT * FROM decoration_tbl WHERE id = :id")
-    public abstract LiveData<Decoration> getDecoration(long id);
-
-    @Transaction
-    public void updateDb(Decoration[] decorations){
-        deleteAll();
-        insertAll(decorations);
-    }
+    LiveData<Decoration> getDecoration(long id);
 }

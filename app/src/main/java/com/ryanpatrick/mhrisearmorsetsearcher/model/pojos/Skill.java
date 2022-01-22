@@ -1,6 +1,5 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
-import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -11,21 +10,23 @@ public class Skill {
 	@PrimaryKey(autoGenerate = true)
 	private long skillId;
 	@ColumnInfo(name = "skill_name")
-	private String skillName;
+	private int skillResourceId;
 	@ColumnInfo(name = "max_level")
 	private int skillMaxLevel;
+	@ColumnInfo(name="description")
+	private int descriptionResourceId;
 	@Ignore
 	private int skillLevel;
 
-	public Skill(String skillName, int skillMaxLevel) {
-		this.skillName = skillName;
-		this.skillMaxLevel = skillMaxLevel;
+	public Skill(int skillResourceId, int skillLevel) {
+		this.skillResourceId = skillResourceId;
+		this.skillLevel = skillLevel;
 	}
 
-	public Skill(String skillName, int skillMaxLevel, int skillLevel) {
-		this.skillName = skillName;
+	public Skill(int skillResourceId, int skillMaxLevel, int descriptionResourceId) {
+		this.skillResourceId = skillResourceId;
 		this.skillMaxLevel = skillMaxLevel;
-		this.skillLevel = skillLevel;
+		this.descriptionResourceId = descriptionResourceId;
 	}
 
 	//region getters and setters
@@ -37,12 +38,12 @@ public class Skill {
 		this.skillId = skillId;
 	}
 
-	public String getSkillName() {
-		return skillName;
+	public int getSkillResourceId() {
+		return skillResourceId;
 	}
 
-	public void setSkillName(String skillName) {
-		this.skillName = skillName;
+	public void setSkillResourceId(int skillResourceId) {
+		this.skillResourceId = skillResourceId;
 	}
 
 	public int getSkillMaxLevel() {
@@ -60,5 +61,14 @@ public class Skill {
 	public void setSkillLevel(int skillLevel) {
 		this.skillLevel = skillLevel;
 	}
+
+	public int getDescriptionResourceId() {
+		return descriptionResourceId;
+	}
+
+	public void setDescriptionResourceId(int descriptionResourceId) {
+		this.descriptionResourceId = descriptionResourceId;
+	}
+
 	//endregion
 }

@@ -8,29 +8,17 @@
     <string name="damascus_waist">Damascus Coil</string>
     <string name="damascus_legs">Damascus Greaves</string>
 
-    <string name="ibushi_head_1">Ibushi\'s Helm</string>
-    <string name="ibushi_breastplate_1">Ibushi\'s Breastplate</string>
-    <string name="ibushi_pauldrons_1">Ibushi\'s Pauldrons</string>
-    <string name="ibushi_fauld_1">Ibushi\'s Fauld</string>
-    <string name="ibushi_foot_1">Ibushi\'s Foot</string>
+    <string name="ibushi_head">Ibushi\'s Helm</string>
+    <string name="ibushi_breastplate">Ibushi\'s Breastplate</string>
+    <string name="ibushi_pauldrons">Ibushi\'s Pauldrons</string>
+    <string name="ibushi_fauld">Ibushi\'s Fauld</string>
+    <string name="ibushi_foot">Ibushi\'s Foot</string>
 
-    <string name="ibushi_head_2">Ibushi\'s Helm+</string>
-    <string name="ibushi_breastplate_2">Ibushi\'s Breastplate+</string>
-    <string name="ibushi_pauldrons_2">Ibushi\'s Pauldrons+</string>
-    <string name="ibushi_fauld_2">Ibushi\'s Fauld+</string>
-    <string name="ibushi_foot_2">Ibushi\'s Foot+</string>
-
-    <string name="narwa_head_1">Narwa\'s Helm</string>
-    <string name="narwa_breastplate_1">Narwa\'s Breastplate</string>
-    <string name="narwa_pauldrons_1">Narwa\'s Pauldrons</string>
-    <string name="narwa_fauld_1">Narwa\'s Fauld</string>
-    <string name="narwa_foot_1">Narwa\'s Foot</string>
-
-    <string name="narwa_head_2">Narwa\'s Helm+</string>
-    <string name="narwa_breastplate_2">Narwa\'s Breastplate+</string>
-    <string name="narwa_pauldrons_2">Narwa\'s Pauldrons+</string>
-    <string name="narwa_fauld_2">Narwa\'s Fauld+</string>
-    <string name="narwa_foot_2">Narwa\'s Foot+</string>
+    <string name="narwa_head">Narwa\'s Helm</string>
+    <string name="narwa_breastplate">Narwa\'s Breastplate</string>
+    <string name="narwa_pauldrons">Narwa\'s Pauldrons</string>
+    <string name="narwa_fauld">Narwa\'s Fauld</string>
+    <string name="narwa_foot">Narwa\'s Foot</string>
 
     <string name="kushala_head">Kushala Glare</string>
     <string name="kushala_chest">Kushala Cista</string>
@@ -204,11 +192,11 @@
     <string name="vaik_waist">Vaik Coil S</string>
     <string name="vaik_legs">Vaik Greaves S</string>
 
-    <string name="utsuhi_v_head">Utushi Mask (V) S</string>
-    <string name="utsuhi_v_chest">Utushi Chest (V) S</string>
-    <string name="utsuhi_v_arms">Utushi Braces (V) S</string>
-    <string name="utsuhi_v_waist">Utushi Tassets (V) S</string>
-    <string name="utsuhi_v_legs">Utushi Greaves (V) S</string>
+    <string name="utsushi_v_head">Utushi Mask (V) S</string>
+    <string name="utsushi_v_chest">Utushi Chest (V) S</string>
+    <string name="utsushi_v_arms">Utushi Braces (V) S</string>
+    <string name="utsushi_v_waist">Utushi Tassets (V) S</string>
+    <string name="utsushi_v_legs">Utushi Greaves (V) S</string>
 
     <string name="channeler_head">Channeler\'s Hair-tie S</string>
     <string name="channeler_chest">Channeler\'s Robe S</string>
@@ -216,11 +204,11 @@
     <string name="channeler_waist">Channeler\'s Obi S</string>
     <string name="channeler_legs">Channeler\'s Hakma S</string>
 
-    <string name="utsuhi_h_head">Utushi Mask (H) S</string>
-    <string name="utsuhi_h_chest">Utushi Chest (H) S</string>
-    <string name="utsuhi_h_arms">Utushi Braces (H) S</string>
-    <string name="utsuhi_h_waist">Utushi Tassets (H) S</string>
-    <string name="utsuhi_h_legs">Utushi Greaves (H) S</string>
+    <string name="utsushi_h_head">Utushi Mask (H) S</string>
+    <string name="utsushi_h_chest">Utushi Chest (H) S</string>
+    <string name="utsushi_h_arms">Utushi Braces (H) S</string>
+    <string name="utsushi_h_waist">Utushi Tassets (H) S</string>
+    <string name="utsushi_h_legs">Utushi Greaves (H) S</string>
 
     <string name="medium_head">Medium\'s Hair-tie S</string>
     <string name="medium_chest">Medium\'s Robe S</string>
@@ -282,11 +270,11 @@
     <string name="jyura_waist">Jyuratodas Coil</string>
     <string name="jyura_legs">Jyuratodas Greaves</string>
 
-    <string name="tobi_head">Tobi-Kadachi Helm S</string>
+    <string name="tobi_head">Kadachi Helm S</string>
     <string name="tobi_chest">Tobi-Kadachi Mail S</string>
     <string name="tobi_arms">Tobi-Kadachi Braces S</string>
     <string name="tobi_waist">Tobi-Kadachi Coil S</string>
-    <string name="tobi_legs">Tobi-Kadachi Greaves S</string>
+    <string name="tobi_legs">Kadachi Greaves S</string>
 
     <string name="uroktor_chest">Uroktor Torso S</string>
     <string name="uroktor_waist">Uroktor Coil S</string>
@@ -447,10 +435,9 @@
     <string name="droth_coil">Droth Coil S</string>
     <string name="droth_greaves">Droth Greaves S</string>
     <string name="jaggi_gauntlets">Jaggi Gauntlets S</string>
-    <string name="jagg_shinguards">Jaggi Shinguards S</string>
+    <string name="jaggi_shinguards">Jaggi Shinguards S</string>
     <string name="slagtoth_hood">Slagtoth Hood S</string>
     <string name="slagtoth_cloak">Slagtoth Cloak S</string>
-
     <!--endregion-->
     <!-- endregion -->
 
@@ -667,6 +654,6 @@
     <string name="dragonheart">Dragon Heart</string>
     <string name="wind_alignment">Wind Alignment</string>
     <string name="thunder_alignment">Thunder Alignment</string>
-    <string name="stormsoul">Stormsoul</string>
+    <string name="stormsoul">Stormsoul \(if upgraded\)</string>
     <!--endregion-->
 </resources>

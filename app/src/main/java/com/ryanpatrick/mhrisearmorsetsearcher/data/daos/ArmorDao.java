@@ -13,35 +13,29 @@ import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 import java.util.List;
 
 @Dao
-public abstract class ArmorDao {
+public interface ArmorDao {
     @Insert
-    public abstract void insert(Armor armor);
+    void insert(Armor armor);
 
     @Insert
-    public abstract void insertAll(Armor[] armors);
+    void insertAll(Armor[] armors);
 
     @Query("DELETE FROM armor_tbl")
-    public abstract void deleteAll();
+    void deleteAll();
 
     @Query("SELECT * FROM armor_tbl")
-    public abstract List<Armor> getArmorList();
+    List<Armor> getArmorList();
 
     @Query("SELECT * FROM armor_tbl")
-    public abstract LiveData<List<Armor>> getAllArmor();
+    LiveData<List<Armor>> getAllArmor();
 
-    @Query("SELECT * FROM armor_tbl WHERE armorId == :id")
-    public abstract LiveData<Armor> getArmor(long id);
+    @Query("SELECT * FROM armor_tbl WHERE armorId == :id ORDER BY rarity DESC, armorId ASC")
+    LiveData<Armor> getArmor(long id);
 
-    @Query("SELECT * FROM armor_tbl WHERE armor_type == :armorType & gender == :gender OR 'Both'")
-    public abstract LiveData<List<Armor>> getAllArmorOfType(ArmorType armorType, Gender gender);
+    @Query("SELECT * FROM armor_tbl WHERE armor_type == :armorType & gender IN (:gender, 'Both')" +
+            "ORDER BY rarity DESC, armorId ASC")
+    LiveData<List<Armor>> getAllArmorOfType(ArmorType armorType, Gender gender);
 
-    @Query("SELECT * FROM armor_tbl WHERE rarity == :rarity & gender == :gender OR 'Both'")
-    public abstract LiveData<List<Armor>> getAllArmorOfRarity(int rarity, Gender gender);
-
-    @Transaction
-    public void updateDb(Armor[] armors){
-        deleteAll();
-        insertAll(armors);
-    }
-
+    @Query("SELECT * FROM armor_tbl WHERE rarity == :rarity & gender IN (:gender, 'Both')")
+    LiveData<List<Armor>> getAllArmorOfRarity(int rarity, Gender gender);
 }

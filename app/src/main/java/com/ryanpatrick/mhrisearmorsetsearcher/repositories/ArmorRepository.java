@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.daos.ArmorDao;
@@ -13,7 +12,6 @@ import com.ryanpatrick.mhrisearmorsetsearcher.util.DbConstants;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,8 +41,12 @@ public class ArmorRepository {
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() -> {
-        if(armorDao.getArmorList().size() < DbConstants.PREPOPULATE_ARMORS.length)
-                    armorDao.updateDb(DbConstants.PREPOPULATE_ARMORS);
+            if(armorDao.getArmorList().size() < DbConstants.prepopulateArmors.length){
+                List<Armor> updateList = Arrays.asList(DbConstants.prepopulateArmors);
+                updateList.removeAll(updateList.subList(0, armorDao.getArmorList().size()));
+
+                armorDao.insertAll((Armor[]) updateList.toArray());
+            }
         });
 
     }

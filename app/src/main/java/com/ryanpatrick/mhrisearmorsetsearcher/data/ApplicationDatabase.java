@@ -49,9 +49,9 @@ public abstract class ApplicationDatabase extends RoomDatabase {
                                 setDao.deleteAll();
                                 skillDao.deleteAll();
 
-                                decorationsDao.insertAll(DbConstants.PREPOPULATE_DECORATIONS);
-                                skillDao.insertAll(DbConstants.PREPOPULATE_SKILLS);
-                                armorDao.insertAll(DbConstants.PREPOPULATE_ARMORS);
+                                decorationsDao.insertAll(DbConstants.prepopulateDecorations);
+                                skillDao.insertAll(DbConstants.prepopulateSkills);
+                                armorDao.insertAll(DbConstants.prepopulateArmors);
                             });
                         }
                     })

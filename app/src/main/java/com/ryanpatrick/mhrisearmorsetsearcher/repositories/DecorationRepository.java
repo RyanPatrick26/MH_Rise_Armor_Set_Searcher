@@ -16,15 +16,16 @@ import java.util.List;
 public class DecorationRepository {
     private DecorationsDao decorationsDao;
     private Context dbContext;
-    private LiveData<List<Decoration>> decorationList;
+    private LiveData<List<Decoration>> decorationsList;
+    private DbConstants dbConstants;
 
     public DecorationRepository(Application application) {
         ApplicationDatabase db = ApplicationDatabase.getInstance(application);
         decorationsDao = db.gemDao();
-        decorationList = decorationsDao.getAllDecorations();
+        decorationsList = decorationsDao.getAllDecorations();
     }
     public LiveData<List<Decoration>> getDecorationList() {
-        return decorationList;
+        return decorationsList;
     }
     public void insert(Decoration decoration){
         ApplicationDatabase.databaseWriter.execute(() -> decorationsDao.insert(decoration));
@@ -34,8 +35,11 @@ public class DecorationRepository {
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() ->{
-        if(decorationsDao.getDecorationList().size() < DbConstants.PREPOPULATE_DECORATIONS.length)
-                    decorationsDao.updateDb(DbConstants.PREPOPULATE_DECORATIONS);
+            if(decorationsDao.getDecorationList().size() < DbConstants.prepopulateDecorations.length) {
+                List<Decoration> updateList = Arrays.asList(DbConstants.prepopulateDecorations);
+                updateList.removeAll(updateList.subList(0, decorationsDao.getDecorationList().size()));
+                decorationsDao.insertAll((Decoration[]) updateList.toArray());
+            }
         });
     }
 }
