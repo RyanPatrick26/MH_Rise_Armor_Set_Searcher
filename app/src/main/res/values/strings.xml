@@ -656,4 +656,20 @@
     <string name="thunder_alignment">Thunder Alignment</string>
     <string name="stormsoul">Stormsoul \(if upgraded\)</string>
     <!--endregion-->
+
+    <!--region misc strings-->
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="both">Both</string>
+    <string name="helmet">Helmet</string>
+    <string name="chest">Chest</string>
+    <string name="arms">Arms</string>
+    <string name="waist">Waist</string>
+    <string name="legs">Legs</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="defense_text">Defense</string>
+    <string name="placeholder_number">2</string>
+    <string name="gender">Gender:</string>
+    <string name="armor_type">Armor Type:</string>
+    <!--endregion-->
 </resources>
