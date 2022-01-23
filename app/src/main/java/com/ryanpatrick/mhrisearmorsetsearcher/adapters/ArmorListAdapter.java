@@ -36,11 +36,14 @@ public class ArmorListAdapter extends RecyclerView.Adapter<ArmorListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ArmorListAdapter.ViewHolder holder, int position) {
+        //region variables for the view holer
         ArmorListItemBinding armorListBinding = holder.binding;
         ImageView[] slotImageViews = new ImageView[]{armorListBinding.slot1, armorListBinding.slot2, armorListBinding.slot3};
         Armor armor = armorList.get(position);
         SkillsListAdapter adapter = new SkillsListAdapter(armor.getSkills(), context);
+        //endregion
 
+        //region set the textviews in the viewholder
         armorListBinding.armorNameText.setText(armor.getNameResourceId());
         switch (armor.getGender()){
             case Male:
@@ -102,10 +105,10 @@ public class ArmorListAdapter extends RecyclerView.Adapter<ArmorListAdapter.View
         armorListBinding.dragonResText.setText(String.format("%d", armor.getDragonRes()));
 
         armorListBinding.skillList.setLayoutManager(new LinearLayoutManager(context));
-        armorListBinding.skillList.setAdapter(adapter);/*
-        armorListBinding.defensesLayout.setVisibility(View.GONE);
-        armorListBinding.slotsLayout.setVisibility(View.GONE);
-        armorListBinding.skillList.setVisibility(View.GONE);*/
+        armorListBinding.skillList.setAdapter(adapter);
+        //endregion
+
+
     }
 
 
