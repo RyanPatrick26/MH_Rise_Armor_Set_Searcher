@@ -671,5 +671,8 @@
     <string name="placeholder_number">2</string>
     <string name="gender">Gender:</string>
     <string name="armor_type">Armor Type:</string>
+    <string name="armor">Armor List</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
     <!--endregion-->
 </resources>
