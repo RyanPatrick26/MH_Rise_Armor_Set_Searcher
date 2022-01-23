@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 @Entity(tableName = "armor_set_tbl")
 public class ArmorSet{
 	@PrimaryKey(autoGenerate = true)
@@ -31,11 +33,13 @@ public class ArmorSet{
 	@ColumnInfo(name = "total_dragon_res")
 	private int totalDragonRes;
 	@ColumnInfo(name = "total_skills")
-	private Skill[] totalSkills;
+	private List<Skill> totalSkills;
+	@ColumnInfo(name="total_slots")
+	private List<Integer> totalSlots;
 
 	public ArmorSet(Armor head, Armor chest, Armor arms, Armor waist, Armor legs,
 					int totalDefense, int totalFireRes, int totalWaterRes, int totalIceRes,
-					int totalThunderRes, int totalDragonRes, Skill[] totalSkills) {
+					int totalThunderRes, int totalDragonRes, List<Skill> totalSkills, List<Integer> totalSlots) {
 		this.head = head;
 		this.chest = chest;
 		this.arms = arms;
@@ -48,6 +52,7 @@ public class ArmorSet{
 		this.totalThunderRes = totalThunderRes;
 		this.totalDragonRes = totalDragonRes;
 		this.totalSkills = totalSkills;
+		this.totalSlots = totalSlots;
 	}
 
 	//region getters and setters
@@ -148,12 +153,21 @@ public class ArmorSet{
 		this.totalDragonRes = totalDragonRes;
 	}
 
-	public Skill[] getTotalSkills() {
+	public List<Skill> getTotalSkills() {
 		return totalSkills;
 	}
 
-	public void setTotalSkills(Skill[] totalSkills) {
+	public void setTotalSkills(List<Skill> totalSkills) {
 		this.totalSkills = totalSkills;
 	}
+
+	public List<Integer> getTotalSlots() {
+		return totalSlots;
+	}
+
+	public void setTotalSlots(List<Integer> totalSlots) {
+		this.totalSlots = totalSlots;
+	}
+
 	//endregion
 }
