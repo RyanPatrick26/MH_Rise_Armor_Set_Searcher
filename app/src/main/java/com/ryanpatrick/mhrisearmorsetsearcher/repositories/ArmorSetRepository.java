@@ -27,6 +27,9 @@ public class ArmorSetRepository {
     public void insert(ArmorSet armorSet){
         ApplicationDatabase.databaseWriter.execute(() -> armorSetDao.insert(armorSet));
     }
+    public void update(ArmorSet armorSet){
+        ApplicationDatabase.databaseWriter.execute(() -> armorSetDao.update(armorSet));
+    }
     public LiveData<ArmorSet> getArmorSet(long id){
         return armorSetDao.selectArmorSet(id);
     }
