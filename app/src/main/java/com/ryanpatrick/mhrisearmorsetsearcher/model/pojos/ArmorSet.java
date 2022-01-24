@@ -20,8 +20,10 @@ public class ArmorSet{
 	private Armor waist;
 	@ColumnInfo(name = "legs")
 	private Armor legs;
-	@ColumnInfo(name = "total_defense")
-	private int totalDefense;
+	@ColumnInfo(name = "total_base_defense")
+	private int totalBaseDefense;
+	@ColumnInfo(name = "total_max_defense")
+	private int totalMaxDefense;
 	@ColumnInfo(name = "total_fire_res")
 	private int totalFireRes;
 	@ColumnInfo(name = "total_water_res")
@@ -38,14 +40,16 @@ public class ArmorSet{
 	private List<Integer> totalSlots;
 
 	public ArmorSet(Armor head, Armor chest, Armor arms, Armor waist, Armor legs,
-					int totalDefense, int totalFireRes, int totalWaterRes, int totalIceRes,
-					int totalThunderRes, int totalDragonRes, List<Skill> totalSkills, List<Integer> totalSlots) {
+					int totalBaseDefense, int totalMaxDefense, int totalFireRes,
+					int totalWaterRes, int totalIceRes, int totalThunderRes, int totalDragonRes,
+					List<Skill> totalSkills, List<Integer> totalSlots) {
 		this.head = head;
 		this.chest = chest;
 		this.arms = arms;
 		this.waist = waist;
 		this.legs = legs;
-		this.totalDefense = totalDefense;
+		this.totalBaseDefense = totalBaseDefense;
+		this.totalMaxDefense = totalMaxDefense;
 		this.totalFireRes = totalFireRes;
 		this.totalWaterRes = totalWaterRes;
 		this.totalIceRes = totalIceRes;
@@ -105,12 +109,20 @@ public class ArmorSet{
 		this.legs = legs;
 	}
 
-	public int getTotalDefense() {
-		return totalDefense;
+	public int getTotalBaseDefense() {
+		return totalBaseDefense;
 	}
 
-	public void setTotalDefense(int totalDefense) {
-		this.totalDefense = totalDefense;
+	public void setTotalBaseDefense(int totalBaseDefense) {
+		this.totalBaseDefense = totalBaseDefense;
+	}
+
+	public int getTotalMaxDefense() {
+		return totalMaxDefense;
+	}
+
+	public void setTotalMaxDefense(int totalMaxDefense) {
+		this.totalMaxDefense = totalMaxDefense;
 	}
 
 	public int getTotalFireRes() {
