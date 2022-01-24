@@ -137,25 +137,4 @@ public class Convertors {
 
         return gson.fromJson(slots, type);
     }
-
-    @TypeConverter
-    public static String fromTotalSlotList(List<Integer> slots){
-        if(slots == null){
-            return "";
-        }
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<Integer>>(){}.getType();
-
-        return gson.toJson(slots, type);
-    }
-    @TypeConverter
-    public static List<Integer> toTotalSlotList(String slots){
-        if(slots == null){
-            return null;
-        }
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<Integer>>(){}.getType();
-
-        return gson.fromJson(slots, type);
-    }
 }
