@@ -37,12 +37,12 @@ public class ArmorSet{
 	@ColumnInfo(name = "total_skills")
 	private List<Skill> totalSkills;
 	@ColumnInfo(name="total_slots")
-	private List<Integer> totalSlots;
+	private int[] totalSlots;
 
 	public ArmorSet(Armor head, Armor chest, Armor arms, Armor waist, Armor legs,
 					int totalBaseDefense, int totalMaxDefense, int totalFireRes,
 					int totalWaterRes, int totalIceRes, int totalThunderRes, int totalDragonRes,
-					List<Skill> totalSkills, List<Integer> totalSlots) {
+					List<Skill> totalSkills, int[] totalSlots) {
 		this.head = head;
 		this.chest = chest;
 		this.arms = arms;
@@ -173,11 +173,11 @@ public class ArmorSet{
 		this.totalSkills = totalSkills;
 	}
 
-	public List<Integer> getTotalSlots() {
+	public int[] getTotalSlots() {
 		return totalSlots;
 	}
 
-	public void setTotalSlots(List<Integer> totalSlots) {
+	public void setTotalSlots(int[] totalSlots) {
 		this.totalSlots = totalSlots;
 	}
 
