@@ -10,7 +10,7 @@ public class Skill {
 	@PrimaryKey(autoGenerate = true)
 	private long skillId;
 	@ColumnInfo(name = "skill_name")
-	private int skillResourceId;
+	private String skillName;
 	@ColumnInfo(name = "max_level")
 	private int skillMaxLevel;
 	@ColumnInfo(name="description")
@@ -18,13 +18,13 @@ public class Skill {
 	@Ignore
 	private int skillLevel;
 
-	public Skill(int skillResourceId, int skillLevel) {
-		this.skillResourceId = skillResourceId;
+	public Skill(String skillName, int skillLevel) {
+		this.skillName = skillName;
 		this.skillLevel = skillLevel;
 	}
 
-	public Skill(int skillResourceId, int skillMaxLevel, int descriptionResourceId) {
-		this.skillResourceId = skillResourceId;
+	public Skill(String skillName, int skillMaxLevel, int descriptionResourceId) {
+		this.skillName = skillName;
 		this.skillMaxLevel = skillMaxLevel;
 		this.descriptionResourceId = descriptionResourceId;
 	}
@@ -38,12 +38,12 @@ public class Skill {
 		this.skillId = skillId;
 	}
 
-	public int getSkillResourceId() {
-		return skillResourceId;
+	public String getSkillName() {
+		return skillName;
 	}
 
-	public void setSkillResourceId(int skillResourceId) {
-		this.skillResourceId = skillResourceId;
+	public void setSkillName(String skillName) {
+		this.skillName = skillName;
 	}
 
 	public int getSkillMaxLevel() {
