@@ -116,7 +116,6 @@ public class Convertors {
         return gson.fromJson(decoration, type);
     }
 
-
     @TypeConverter
     public static String fromSlotArray(int[] slots){
         if(slots == null){
@@ -136,5 +135,26 @@ public class Convertors {
         Type type = new TypeToken<int[]>(){}.getType();
 
         return gson.fromJson(slots, type);
+    }
+
+    @TypeConverter
+    public static String fromSkill(Skill skill){
+        if(skill == null){
+            return null;
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<Skill>(){}.getType();
+
+        return gson.toJson(skill, type);
+    }
+    @TypeConverter
+    public static Skill toSkill(String skill){
+        if(skill == null){
+            return null;
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<Skill>(){}.getType();
+
+        return gson.fromJson(skill, type);
     }
 }
