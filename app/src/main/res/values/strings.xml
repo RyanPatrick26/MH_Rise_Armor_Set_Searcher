@@ -695,5 +695,6 @@
     <string name="no_sets">No Sets Found</string>
     <string name="defenses">Defenses</string>
     <string name="building_sets">Building Sets, please wait</string>
+    <string name="exclude_rarity">Exclude Rarity</string>
     <!--endregion-->
 </resources>
