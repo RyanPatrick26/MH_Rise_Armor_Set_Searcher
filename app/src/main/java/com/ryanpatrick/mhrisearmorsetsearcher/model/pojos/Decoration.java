@@ -9,14 +9,14 @@ public class Decoration {
 	@PrimaryKey(autoGenerate = true)
 	private long id;
 	@ColumnInfo(name = "decoration_name")
-	private int decorationResourceId;
+	private String decorationName;
 	@ColumnInfo(name = "skill_name")
-	private int skillName;
+	private String skillName;
 	@ColumnInfo(name = "decoration_level")
 	private int decorationLevel;
 
-	public Decoration(int decorationResourceId, int skillName, int decorationLevel) {
-		this.decorationResourceId = decorationResourceId;
+	public Decoration(String decorationName, String skillName, int decorationLevel) {
+		this.decorationName = decorationName;
 		this.skillName = skillName;
 		this.decorationLevel = decorationLevel;
 	}
@@ -28,19 +28,19 @@ public class Decoration {
 		this.id = id;
 	}
 
-	public int getDecorationResourceId() {
-		return decorationResourceId;
+	public String getDecorationName() {
+		return decorationName;
 	}
 
-	public void setDecorationResourceId(int decorationResourceId) {
-		this.decorationResourceId = decorationResourceId;
+	public void setDecorationName(String decorationName) {
+		this.decorationName = decorationName;
 	}
 
-	public int getSkillName() {
+	public String getSkillName() {
 		return skillName;
 	}
 
-	public void setSkillName(int skillName) {
+	public void setSkillName(String skillName) {
 		this.skillName = skillName;
 	}
 

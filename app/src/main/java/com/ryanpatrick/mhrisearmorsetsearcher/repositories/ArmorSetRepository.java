@@ -33,4 +33,7 @@ public class ArmorSetRepository {
     public LiveData<ArmorSet> getArmorSet(long id){
         return armorSetDao.selectArmorSet(id);
     }
+    public void deleteArmorSet(ArmorSet set){
+        ApplicationDatabase.databaseWriter.execute(() -> armorSetDao.delete(set));
+    }
 }

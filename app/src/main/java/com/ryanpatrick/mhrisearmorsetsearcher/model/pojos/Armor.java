@@ -12,7 +12,7 @@ public class Armor{
 	@PrimaryKey(autoGenerate = true)
 	private int armorId;
 	@ColumnInfo(name = "armor_name")
-	private int nameResourceId;
+	private String armorName;
 	@ColumnInfo(name = "rarity")
 	private int rarity;
 	@ColumnInfo(name = "gender")
@@ -38,10 +38,10 @@ public class Armor{
 	@ColumnInfo(name = "slots")
 	private int[] slots;
 
-	public Armor(int nameResourceId, int rarity, Gender gender, ArmorType type,
+	public Armor(String armorName, int rarity, Gender gender, ArmorType type,
 				 int baseDefense, int maxDefense, int fireRes, int waterRes, int thunderRes, int iceRes,
 				 int dragonRes, Skill[] skills, int[] slots) {
-		this.nameResourceId = nameResourceId;
+		this.armorName = armorName;
 		this.rarity = rarity;
 		this.gender = gender;
 		this.type = type;
@@ -65,12 +65,12 @@ public class Armor{
 		this.armorId = armorId;
 	}
 
-	public int getNameResourceId() {
-		return nameResourceId;
+	public String getArmorName() {
+		return armorName;
 	}
 
-	public void setNameResourceId(int nameResourceId) {
-		this.nameResourceId = nameResourceId;
+	public void setArmorName(String armorName) {
+		this.armorName = armorName;
 	}
 
 	public int getRarity() {

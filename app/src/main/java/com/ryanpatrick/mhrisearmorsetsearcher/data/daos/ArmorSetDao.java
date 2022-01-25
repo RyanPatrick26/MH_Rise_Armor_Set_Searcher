@@ -2,6 +2,7 @@ package com.ryanpatrick.mhrisearmorsetsearcher.data.daos;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -21,8 +22,8 @@ public interface ArmorSetDao {
     @Query("DELETE FROM armor_set_tbl")
     void deleteAll();
 
-    @Query("DELETE FROM armor_set_tbl WHERE id = :id")
-    void delete(long id);
+    @Delete
+    void delete(ArmorSet set);
 
     @Query("SELECT * FROM armor_set_tbl")
     LiveData<List<ArmorSet>> selectAllArmorSets();
