@@ -3,6 +3,7 @@ package com.ryanpatrick.mhrisearmorsetsearcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.ActivityMainBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.fragments.ArmorListFragment;
+import com.ryanpatrick.mhrisearmorsetsearcher.fragments.BuilderHostFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     public static final String TAG = "here";
@@ -47,6 +49,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.menu_armor_list:
+                fm.beginTransaction().replace(R.id.fragment_container, new ArmorListFragment())
+                        .addToBackStack(null)
+                        .commit();
+                break;
+            case R.id.menu_set_builder:
+                fm.beginTransaction().replace(R.id.fragment_container, new BuilderHostFragment())
+                        .addToBackStack(null)
+                        .commit();
+                break;
+        }
+
+        binding.drawerView.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }

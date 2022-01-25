@@ -1,6 +1,8 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.data;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -27,9 +29,10 @@ import java.util.concurrent.Executors;
 @TypeConverters({Convertors.class})
 public abstract class ApplicationDatabase extends RoomDatabase {
     public static volatile ApplicationDatabase INSTANCE;
-    public static final int NUMBER_OF_THREADS = 4;
+    public static final int NUMBER_OF_THREADS = 8;
     public static final String DATABASE_NAME = "set_searcher_db";
     public static final ExecutorService databaseWriter = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final Handler dbHandler = new Handler(Looper.getMainLooper());
 
     public static synchronized ApplicationDatabase getInstance(Context context){
         if(INSTANCE == null){

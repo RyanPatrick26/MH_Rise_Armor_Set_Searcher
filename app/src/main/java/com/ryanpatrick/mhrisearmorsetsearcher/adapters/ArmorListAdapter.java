@@ -36,7 +36,7 @@ public class ArmorListAdapter extends RecyclerView.Adapter<ArmorListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ArmorListAdapter.ViewHolder holder, int position) {
-        //region variables for the view holer
+        //region variables for the view holder
         ArmorListItemBinding armorListBinding = holder.binding;
         ImageView[] slotImageViews = new ImageView[]{armorListBinding.slot1, armorListBinding.slot2, armorListBinding.slot3};
         Armor armor = armorList.get(position);
@@ -97,14 +97,13 @@ public class ArmorListAdapter extends RecyclerView.Adapter<ArmorListAdapter.View
             }
         }
 
-        armorListBinding.defenseText.setText(String.format("%d/%d", armor.getBaseDefense(), armor.getMaxDefense()));
-        armorListBinding.fireResText.setText(String.format("%d", armor.getFireRes()));
-        armorListBinding.waterResText.setText(String.format("%d", armor.getWaterRes()));
-        armorListBinding.thunderResText.setText(String.format("%d", armor.getThunderRes()));
-        armorListBinding.iceResText.setText(String.format("%d", armor.getIceRes()));
-        armorListBinding.dragonResText.setText(String.format("%d", armor.getDragonRes()));
+        armorListBinding.defenseLayout.defenseText.setText(String.format("%d/%d", armor.getBaseDefense(), armor.getMaxDefense()));
+        armorListBinding.defenseLayout.fireResText.setText(String.format("%d", armor.getFireRes()));
+        armorListBinding.defenseLayout.waterResText.setText(String.format("%d", armor.getWaterRes()));
+        armorListBinding.defenseLayout.thunderResText.setText(String.format("%d", armor.getThunderRes()));
+        armorListBinding.defenseLayout.iceResText.setText(String.format("%d", armor.getIceRes()));
+        armorListBinding.defenseLayout.dragonResText.setText(String.format("%d", armor.getDragonRes()));
 
-        armorListBinding.skillList.setLayoutManager(new LinearLayoutManager(context));
         armorListBinding.skillList.setAdapter(adapter);
         //endregion
 

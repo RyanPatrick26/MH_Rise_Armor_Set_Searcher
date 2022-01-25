@@ -18,6 +18,10 @@ public class Skill {
 	@Ignore
 	private int skillLevel;
 
+	@Ignore
+	public Skill(){}
+
+	@Ignore
 	public Skill(int skillResourceId, int skillLevel) {
 		this.skillResourceId = skillResourceId;
 		this.skillLevel = skillLevel;
