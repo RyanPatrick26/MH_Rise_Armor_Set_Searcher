@@ -18,6 +18,9 @@ public class Skill {
 	@Ignore
 	private int skillLevel;
 
+	@Ignore
+	public Skill(){}
+
 	public Skill(String skillName, int skillLevel) {
 		this.skillName = skillName;
 		this.skillLevel = skillLevel;

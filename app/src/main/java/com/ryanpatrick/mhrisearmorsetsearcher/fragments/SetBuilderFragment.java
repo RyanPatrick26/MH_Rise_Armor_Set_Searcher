@@ -80,7 +80,8 @@ public class SetBuilderFragment extends Fragment {
             ArrayList<String> skill3Level = new ArrayList<>();
 
             for (Skill skill : skills) {
-                String skillName = getString(skill.getSkillResourceId());
+                String skillName = getString(getResources().getIdentifier(skill.getSkillName(), "string",
+                        requireActivity().getPackageName()));
                 if(skillName.contains("("))
                     skillName = skillName.substring(0, skillName.indexOf("("));
                 skillNames.add(skillName);
@@ -99,7 +100,7 @@ public class SetBuilderFragment extends Fragment {
                     skill1Level.clear();
 
                     tempSkill1.setSkillId(skill.getSkillId());
-                    tempSkill1.setSkillResourceId(skill.getSkillResourceId());
+                    tempSkill1.setSkillName(skill.getSkillName());
                     tempSkill1.setSkillMaxLevel(skill.getSkillMaxLevel());
 
                     for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
@@ -121,7 +122,7 @@ public class SetBuilderFragment extends Fragment {
                     skill2Level.clear();
 
                     tempSkill2.setSkillId(skill.getSkillId());
-                    tempSkill2.setSkillResourceId(skill.getSkillResourceId());
+                    tempSkill2.setSkillName(skill.getSkillName());
                     tempSkill2.setSkillMaxLevel(skill.getSkillMaxLevel());
 
                     for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
@@ -144,7 +145,7 @@ public class SetBuilderFragment extends Fragment {
                     skill3Level.clear();
 
                     tempSkill3.setSkillId(skill.getSkillId());
-                    tempSkill3.setSkillResourceId(skill.getSkillResourceId());
+                    tempSkill3.setSkillName(skill.getSkillName());
                     tempSkill3.setSkillMaxLevel(skill.getSkillMaxLevel());
 
                     for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
@@ -377,7 +378,7 @@ public class SetBuilderFragment extends Fragment {
             for (int i = 0; i < allSkills1.size(); i++) {
                 if(!toRemove1.contains(allSkills1.get(i))){
                     for (int j = i+1; j < allSkills1.size(); j++) {
-                        if(allSkills1.get(i).getSkillResourceId() == allSkills1.get(j).getSkillResourceId()){
+                        if(allSkills1.get(i).getSkillName().equals(allSkills1.get(j).getSkillName())){
                             toRemove1.add(allSkills1.get(j));
                         }
                     }
@@ -387,7 +388,7 @@ public class SetBuilderFragment extends Fragment {
 
             for (Skill skill1 : allSkills1) {
                 for (Skill skill2 : toRemove1) {
-                    if (skill1.getSkillResourceId() == skill2.getSkillResourceId())
+                    if (skill1.getSkillName().equals(skill2.getSkillName()))
                         skill1.setSkillLevel(skill1.getSkillLevel() + skill2.getSkillLevel());
                 }
             }
@@ -397,8 +398,8 @@ public class SetBuilderFragment extends Fragment {
                 if(result != 0){
                     return result;
                 }
-                result = getString(o1.getSkillResourceId())
-                        .compareTo(getString(o2.getSkillResourceId()));
+                result = o1.getSkillName()
+                        .compareTo(o2.getSkillName());
                 return result;
             });
             //endregion
@@ -518,7 +519,7 @@ public class SetBuilderFragment extends Fragment {
             for (int i = 0; i < allSkills2.size(); i++) {
                 if(!toRemove2.contains(allSkills2.get(i))){
                     for (int j = i+1; j < allSkills2.size(); j++) {
-                        if(allSkills2.get(i).getSkillResourceId() == allSkills2.get(j).getSkillResourceId()){
+                        if(allSkills2.get(i).getSkillName().equals(allSkills2.get(j).getSkillName())){
                             toRemove2.add(allSkills2.get(j));
                         }
                     }
@@ -528,7 +529,7 @@ public class SetBuilderFragment extends Fragment {
 
             for (Skill skill1 : allSkills2) {
                 for (Skill skill2 : toRemove2) {
-                    if (skill1.getSkillResourceId() == skill2.getSkillResourceId())
+                    if (skill1.getSkillName().equals(skill2.getSkillName()))
                         skill1.setSkillLevel(skill1.getSkillLevel() + skill2.getSkillLevel());
                 }
             }
@@ -538,8 +539,8 @@ public class SetBuilderFragment extends Fragment {
                 if(result != 0){
                     return result;
                 }
-                result = getString(o1.getSkillResourceId())
-                        .compareTo(getString(o2.getSkillResourceId()));
+                result = o1.getSkillName()
+                        .compareTo(o2.getSkillName());
                 return result;
             });
             //endregion
@@ -659,7 +660,7 @@ public class SetBuilderFragment extends Fragment {
             for (int i = 0; i < allSkills3.size(); i++) {
                 if(!toRemove.contains(allSkills3.get(i))){
                     for (int j = i+1; j < allSkills3.size(); j++) {
-                        if(allSkills3.get(i).getSkillResourceId() == allSkills3.get(j).getSkillResourceId()){
+                        if(allSkills3.get(i).getSkillName().equals(allSkills3.get(j).getSkillName())){
                             toRemove.add(allSkills3.get(j));
                         }
                     }
@@ -669,7 +670,7 @@ public class SetBuilderFragment extends Fragment {
 
             for (Skill skill3 : allSkills3) {
                 for (Skill skill2 : toRemove) {
-                    if (skill3.getSkillResourceId() == skill2.getSkillResourceId())
+                    if (skill3.getSkillName().equals(skill2.getSkillName()))
                         skill3.setSkillLevel(skill3.getSkillLevel() + skill2.getSkillLevel());
                 }
             }
@@ -679,8 +680,8 @@ public class SetBuilderFragment extends Fragment {
                 if(result != 0){
                     return result;
                 }
-                result = getString(o3.getSkillResourceId())
-                        .compareTo(getString(o2.getSkillResourceId()));
+                result = o3.getSkillName()
+                        .compareTo(o2.getSkillName());
                 return result;
             });
             //endregion

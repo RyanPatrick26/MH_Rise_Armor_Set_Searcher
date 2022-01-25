@@ -44,7 +44,8 @@ public class ArmorListAdapter extends RecyclerView.Adapter<ArmorListAdapter.View
         //endregion
 
         //region set the textviews in the viewholder
-        armorListBinding.armorNameText.setText(armor.getNameResourceId());
+        armorListBinding.armorNameText.setText(context.getResources().getIdentifier(armor.getArmorName(),
+                "string", context.getPackageName()));
         switch (armor.getGender()){
             case Male:
                 armorListBinding.genderTextView.setText(R.string.male);

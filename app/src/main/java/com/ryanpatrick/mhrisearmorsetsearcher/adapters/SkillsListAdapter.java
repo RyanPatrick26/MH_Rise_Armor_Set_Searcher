@@ -41,7 +41,7 @@ public class SkillsListAdapter extends RecyclerView.Adapter<SkillsListAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull SkillsListAdapter.ViewHolder holder, int position) {
         Skill skill = skills.get(position);
-        holder.skillNameText.setText(skill.getSkillResourceId());
+        holder.skillNameText.setText(context.getResources().getIdentifier(skill.getSkillName(), "string", context.getPackageName()));
         holder.skillLevelText.setText(Integer.toString(skill.getSkillLevel()));
     }
 

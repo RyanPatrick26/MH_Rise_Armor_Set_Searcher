@@ -35,11 +35,16 @@ public class SetBuilderListAdapter extends RecyclerView.Adapter<SetBuilderListAd
         SkillsListAdapter adapter = new SkillsListAdapter(set.getTotalSkills(), context);
         //endregion
 
-        binding.helmetText.setText(set.getHead().getNameResourceId());
-        binding.chestText.setText(set.getChest().getNameResourceId());
-        binding.armsText.setText(set.getArms().getNameResourceId());
-        binding.waistText.setText(set.getWaist().getNameResourceId());
-        binding.legsText.setText(set.getLegs().getNameResourceId());
+        binding.helmetText.setText(context.getResources().getIdentifier(set.getHead().getArmorName(), 
+                "string", context.getPackageName()));
+        binding.chestText.setText(context.getResources().getIdentifier(set.getChest().getArmorName(),
+                "string", context.getPackageName()));
+        binding.armsText.setText(context.getResources().getIdentifier(set.getArms().getArmorName(),
+                "string", context.getPackageName()));
+        binding.waistText.setText(context.getResources().getIdentifier(set.getWaist().getArmorName(),
+                "string", context.getPackageName()));
+        binding.legsText.setText(context.getResources().getIdentifier(set.getLegs().getArmorName(),
+                "string", context.getPackageName()));
 
         binding.level1Slots.setText(Integer.toString(set.getTotalSlots()[0]));
         binding.level2Slots.setText(Integer.toString(set.getTotalSlots()[1]));
