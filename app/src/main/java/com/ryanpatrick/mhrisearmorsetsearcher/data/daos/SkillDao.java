@@ -29,8 +29,8 @@ public interface SkillDao {
     @Query("SELECT * FROM skills_tbl")
     List<Skill> getSkillsList();
 
-    @Query("SELECT * FROM skills_tbl WHERE skillId == :id")
-    LiveData<Skill> getSkillById(long id);
+    @Query("SELECT * FROM skills_tbl WHERE skill_name == :name")
+    LiveData<Skill> getSkill(String name);
 
     @Query("DELETE FROM skills_tbl")
     void deleteAll();
