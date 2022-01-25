@@ -11,6 +11,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 public class Convertors {
     @TypeConverter
@@ -32,7 +33,7 @@ public class Convertors {
     }
 
     @TypeConverter
-    public static String fromSkillList(Skill[] skills){
+    public static String fromSkillArray(Skill[] skills){
         if(skills == null){
             return "";
         }
@@ -42,12 +43,33 @@ public class Convertors {
         return gson.toJson(skills, type);
     }
     @TypeConverter
-    public static Skill[]toSkillList(String skills){
+    public static Skill[]toSkillArray(String skills){
         if(skills == null){
             return null;
         }
         Gson gson = new Gson();
         Type type = new TypeToken<Skill[]>(){}.getType();
+
+        return gson.fromJson(skills, type);
+    }
+
+    @TypeConverter
+    public static String fromTotalSkillList(List<Skill> skills){
+        if(skills == null){
+            return "";
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Skill>>(){}.getType();
+
+        return gson.toJson(skills, type);
+    }
+    @TypeConverter
+    public static List<Skill> toTotalSkillList(String skills){
+        if(skills == null){
+            return null;
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Skill>>(){}.getType();
 
         return gson.fromJson(skills, type);
     }
@@ -94,8 +116,9 @@ public class Convertors {
         return gson.fromJson(decoration, type);
     }
 
+
     @TypeConverter
-    public static String fromSlotList(int[] slots){
+    public static String fromSlotArray(int[] slots){
         if(slots == null){
             return "";
         }
@@ -105,7 +128,7 @@ public class Convertors {
         return gson.toJson(slots, type);
     }
     @TypeConverter
-    public static int[] toSlotList(String slots){
+    public static int[] toSlotArray(String slots){
         if(slots == null){
             return null;
         }

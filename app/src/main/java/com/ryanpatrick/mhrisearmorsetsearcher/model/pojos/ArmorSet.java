@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 @Entity(tableName = "armor_set_tbl")
 public class ArmorSet{
 	@PrimaryKey(autoGenerate = true)
@@ -18,8 +20,10 @@ public class ArmorSet{
 	private Armor waist;
 	@ColumnInfo(name = "legs")
 	private Armor legs;
-	@ColumnInfo(name = "total_defense")
-	private int totalDefense;
+	@ColumnInfo(name = "total_base_defense")
+	private int totalBaseDefense;
+	@ColumnInfo(name = "total_max_defense")
+	private int totalMaxDefense;
 	@ColumnInfo(name = "total_fire_res")
 	private int totalFireRes;
 	@ColumnInfo(name = "total_water_res")
@@ -31,23 +35,28 @@ public class ArmorSet{
 	@ColumnInfo(name = "total_dragon_res")
 	private int totalDragonRes;
 	@ColumnInfo(name = "total_skills")
-	private Skill[] totalSkills;
+	private List<Skill> totalSkills;
+	@ColumnInfo(name="total_slots")
+	private int[] totalSlots;
 
 	public ArmorSet(Armor head, Armor chest, Armor arms, Armor waist, Armor legs,
-					int totalDefense, int totalFireRes, int totalWaterRes, int totalIceRes,
-					int totalThunderRes, int totalDragonRes, Skill[] totalSkills) {
+					int totalBaseDefense, int totalMaxDefense, int totalFireRes,
+					int totalWaterRes, int totalIceRes, int totalThunderRes, int totalDragonRes,
+					List<Skill> totalSkills, int[] totalSlots) {
 		this.head = head;
 		this.chest = chest;
 		this.arms = arms;
 		this.waist = waist;
 		this.legs = legs;
-		this.totalDefense = totalDefense;
+		this.totalBaseDefense = totalBaseDefense;
+		this.totalMaxDefense = totalMaxDefense;
 		this.totalFireRes = totalFireRes;
 		this.totalWaterRes = totalWaterRes;
 		this.totalIceRes = totalIceRes;
 		this.totalThunderRes = totalThunderRes;
 		this.totalDragonRes = totalDragonRes;
 		this.totalSkills = totalSkills;
+		this.totalSlots = totalSlots;
 	}
 
 	//region getters and setters
@@ -100,12 +109,20 @@ public class ArmorSet{
 		this.legs = legs;
 	}
 
-	public int getTotalDefense() {
-		return totalDefense;
+	public int getTotalBaseDefense() {
+		return totalBaseDefense;
 	}
 
-	public void setTotalDefense(int totalDefense) {
-		this.totalDefense = totalDefense;
+	public void setTotalBaseDefense(int totalBaseDefense) {
+		this.totalBaseDefense = totalBaseDefense;
+	}
+
+	public int getTotalMaxDefense() {
+		return totalMaxDefense;
+	}
+
+	public void setTotalMaxDefense(int totalMaxDefense) {
+		this.totalMaxDefense = totalMaxDefense;
 	}
 
 	public int getTotalFireRes() {
@@ -148,12 +165,21 @@ public class ArmorSet{
 		this.totalDragonRes = totalDragonRes;
 	}
 
-	public Skill[] getTotalSkills() {
+	public List<Skill> getTotalSkills() {
 		return totalSkills;
 	}
 
-	public void setTotalSkills(Skill[] totalSkills) {
+	public void setTotalSkills(List<Skill> totalSkills) {
 		this.totalSkills = totalSkills;
 	}
+
+	public int[] getTotalSlots() {
+		return totalSlots;
+	}
+
+	public void setTotalSlots(int[] totalSlots) {
+		this.totalSlots = totalSlots;
+	}
+
 	//endregion
 }
