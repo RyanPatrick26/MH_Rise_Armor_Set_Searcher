@@ -13,12 +13,12 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
 
 import java.util.List;
 
-public class SetBuilderListAdapter extends RecyclerView.Adapter<SetBuilderListAdapter.ViewHolder> {
+public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.ViewHolder> {
     private final Context context;
     private final List<ArmorSet> setList;
     private OnSetClickListener onSetClickListener;
 
-    public SetBuilderListAdapter(List<ArmorSet> setList, Context context, OnSetClickListener onSetClickListener){
+    public SetListAdapter(List<ArmorSet> setList, Context context, OnSetClickListener onSetClickListener){
         this.context = context;
         this.setList = setList;
         this.onSetClickListener = onSetClickListener;

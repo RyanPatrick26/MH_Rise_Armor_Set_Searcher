@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.ActivityMainBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.fragments.ArmorListFragment;
+import com.ryanpatrick.mhrisearmorsetsearcher.fragments.ArmorSetListFragment;
 import com.ryanpatrick.mhrisearmorsetsearcher.fragments.BuilderHostFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -57,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.menu_set_builder:
                 fm.beginTransaction().replace(R.id.fragment_container, new BuilderHostFragment())
+                        .addToBackStack(null)
+                        .commit();
+                break;
+            case R.id.menu_set_list:
+                fm.beginTransaction().replace(R.id.fragment_container, new ArmorSetListFragment())
                         .addToBackStack(null)
                         .commit();
                 break;

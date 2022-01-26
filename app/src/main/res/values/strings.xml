@@ -714,201 +714,201 @@
         <item>3: Greatly increases the power of spread ammo, shrapnel ammo and spread type arrows (20%)</item>
     </string-array>
     <string-array name="pierce_up_desc">
-		<item>Increases the attack power of piercing ammo and piercing type arrows</item>
+        <item>Increases the attack power of piercing ammo and piercing type arrows</item>
         <item>1: Slightly increases the power of piercing ammo and piercing type arrows (5%)</item>
         <item>2: Increases the power of piercing ammo and piercing type arrows (10%)</item>
         <item>3: Greatly increases the power of piercing ammo and piercing type arrows (20%)</item>
-	</string-array>
+    </string-array>
     <string-array name="normal_rapid_up_desc">
-		<item>Increases the attack power of normal ammo and rapid type arrows</item>
+        <item>Increases the attack power of normal ammo and rapid type arrows</item>
         <item>1: Slightly increases the power of normal ammo and rapid type arrows (5%)</item>
         <item>2: Increases the power of normal ammo and rapid type arrows (10%)</item>
         <item>3: Greatly increases the power of pnormal ammo and rapid type arrows (20%)</item>
-	</string-array>
+    </string-array>
     <string-array name="protective_polish_desc">
-		<item>Weapon sharpness does not decrease for a set time after sharpening</item>
+        <item>Weapon sharpness does not decrease for a set time after sharpening</item>
         <item>1: Effect lasts 30 seconds</item>
         <item>2: Effect lasts 60 seconds</item>
         <item>3: Effect lasts 90 seconds</item>
-	</string-array>
+    </string-array>
     <string-array name="blast_attack_desc">
-		<item>Increases blast element attack power</item>
+        <item>Increases blast element attack power</item>
         <item>1: Blast buildup +5% Bonus +1</item>
         <item>2: Blast buildup +10% Bonus +2</item>
         <item>3: Blast buildup +20% Bonus +5</item>
-	</string-array>
+    </string-array>
     <string-array name="sleep_attack_desc">
         <item>Increases sleep element attack power (Elemental attack power has a maximum limit)</item>
         <item>1: Sleep buildup +5% and Bonus +1</item>
         <item>2: Sleep buildup +10% and Bonus +2</item>
         <item>3: Sleep buildup +20% and Bonus +5</item>
-	</string-array>
+    </string-array>
     <string-array name="paralysis_attack_desc">
         <item>Increases paralysis element attack power (Elemental attack power has a maximum limit)</item>
         <item>1: Paralysis buildup +5% and Bonus +1</item>
         <item>2: Paralysis buildup +10% and Bonus +2</item>
         <item>3: Paralysis buildup +20% and Bonus +5</item>
-	</string-array>
+    </string-array>
     <string-array name="latent_power_desc">
-		<item>Temporarily increases affinity and reduces stamina depletion when certain conditions are met</item>
+        <item>Temporarily increases affinity and reduces stamina depletion when certain conditions are met</item>
         <item>1: While active, increases affinity by 10% and reduces stamina depletion by 30%</item>
         <item>2: While active, increases affinity by 20% and reduces stamina depletion by 30%</item>
         <item>3: While active, increases affinity by 30% and reduces stamina depletion by 50%</item>
         <item>4: While active, increases affinity by 40% and reduces stamina depletion by 50%</item>
         <item>5: While active, increases affinity by 50% and reduces stamina depletion by 50%</item>
-	</string-array>
+    </string-array>
     <string-array name="resuscitate_desc">
-		<item>Increases attack while you are suffering from an abnormal status</item>
+        <item>Increases attack while you are suffering from an abnormal status</item>
         <item>1: Attack +5 while active</item>
         <item>2: Attack +10 while active</item>
         <item>3: Attack +20 while active</item>
-	</string-array>
+    </string-array>
     <string-array name="resentment_desc">
-		<item>Increases attack when you have recoverable damage</item>
+        <item>Increases attack when you have recoverable damage</item>
         <item>1: Attack +5 while active</item>
         <item>2: Attack +10 while active</item>
         <item>3: Attack +15 while active</item>
         <item>4: Attack +20 while active</item>
         <item>5: Attack +25 while active</item>
-	</string-array>
+    </string-array>
     <string-array name="peak_performance_desc">
         <item>Increases attack when your health is full</item>
         <item>1: Attack +5 while active</item>
         <item>2: Attack +10 while active</item>
         <item>3: Attack +20 while active</item>
-	</string-array>
+    </string-array>
     <string-array name="agitator_desc">
-		<item>Increases attack power and affinity when large monsters become enraged</item>
-	    <item>1: Attack +4 and affinity +3% while active</item>
+        <item>Increases attack power and affinity when large monsters become enraged</item>
+        <item>1: Attack +4 and affinity +3% while active</item>
         <item>2: Attack +8 and affinity +5% while active</item>
         <item>3: Attack +12 and affinity +7% while active</item>
         <item>4: Attack +16 and affinity +10% while active</item>
         <item>5: Attack +20 and affinity +15% while active</item>
     </string-array>
     <string-array name="weakness_exploit_desc">
-		<item>Increases affinity of attacks that exploit a monster weak spot</item>
+        <item>Increases affinity of attacks that exploit a monster weak spot</item>
         <item>1: Attacks that hit weak spots have 15% increased affinity</item>
         <item>2: Attacks that hit weak spots have 30% increased affinity</item>
         <item>3: Attacks that hit weak spots have 50% increased affinity</item>
-	</string-array>
+    </string-array>
     <string-array name="critical_boost_desc">
-		<item>Increases damage of critical hits</item>
+        <item>Increases damage of critical hits</item>
         <item>1: Increases damage dealt by critical hits to 30%</item>
         <item>2: Increases damage dealt by critical hits to 35%</item>
         <item>3: Increases damage dealt by critical hits to 40%</item>
-	</string-array>
+    </string-array>
     <string-array name="ammo_up_desc">
-		<item>Increases bowgun loading capacity (There is a cap to loading capacity)</item>
+        <item>Increases bowgun loading capacity (There is a cap to loading capacity)</item>
         <item>1: Expands clip size for some ammo types</item>
         <item>2: Expands clip size for many ammo types</item>
         <item>3: Expands clip size for most ammo types</item>
-	</string-array>
+    </string-array>
     <string-array name="offensive_guard_desc">
-		<item>Temporarily increases attack power after executing a perfectly-timed guard</item>
+        <item>Temporarily increases attack power after executing a perfectly-timed guard</item>
         <item>1: +5% while active</item>
         <item>2: +10% while active</item>
         <item>3: +15% while active</item>
-	</string-array>
+    </string-array>
     <string-array name="mushroomancer_desc">
-		<item>Lets you digest mushrooms that would otherwise be inedible and gain their advantageous effects</item>
+        <item>Lets you digest mushrooms that would otherwise be inedible and gain their advantageous effects</item>
         <item>1: Lets you digest blue mushrooms and toadstools</item>
         <item>2: Additionally lets you digest nitroshrooms and parashrooms</item>
         <item>3: Additionally lets you digest mandragoras and exciteshrooms</item>
-	</string-array>
+    </string-array>
     <string-array name="critical_draw_desc">
-		<item>Increases affinity for a short time after performing a draw attack (Does not include silkbind attacks)</item>
+        <item>Increases affinity for a short time after performing a draw attack (Does not include silkbind attacks)</item>
         <item>1: Affinity +10%</item>
         <item>2: Affinity +20%</item>
         <item>3: Affinity +40%</item>
-	</string-array>
+    </string-array>
     <string-array name="aim_booster_desc">
-		<item>shortens the distance before ammo and arrows reach maximum power</item>
+        <item>shortens the distance before ammo and arrows reach maximum power</item>
         <item>1: Slightly extends range</item>
         <item>2: Extends range</item>
         <item>3: Greatly extends range</item>
-	</string-array>
+    </string-array>
     <string-array name="critical_element_desc">
         <item>Increases elemental damage(fire, water, thunder, ice, dragon) when landing critical hits</item>
         <item>1: Grants elemental damage +5% while active</item>
         <item>2: Grants elemental damage +10% while active</item>
         <item>3: Grants elemental damage +15% while active</item>
-	</string-array>
+    </string-array>
     <string-array name="artillery_skill_desc">
-		<item>Strengthens explosive attacks like shells, wyvern\'s fire, charge blade phial attacks and sticky ammo</item>
+        <item>Strengthens explosive attacks like shells, wyvern\'s fire, charge blade phial attacks and sticky ammo</item>
         <item>1: Increases power of attack by 10% and reduces wyvern\'s fire cooldown by 15%</item>
         <item>2: Increases power of attack by 20% and reduces wyvern\'s fire cooldown by 30%</item>
         <item>3: Increases power of attack by 30% and reduces wyvern\'s fire cooldown by 50%</item>
-	</string-array>
+    </string-array>
     <string-array name="marathon_runner_desc">
         <item>Slows down stamina depletion of actions which continuously drain stamina (such as dashing)</item>
         <item>1: Reduces continuous stamina depletion by 15%</item>
         <item>2: Reduces continuous stamina depletion by 30%</item>
         <item>3: Reduces continuous stamina depletion by 50%</item>
-	</string-array>
+    </string-array>
     <string-array name="focus_desc">
-		<item>Increases the fill rate for weapon gauges and the charge rate for weapons with charge attacks</item>
+        <item>Increases the fill rate for weapon gauges and the charge rate for weapons with charge attacks</item>
         <item>1: 5% faster gauge fill and 5% faster charge times</item>
         <item>2: 10% faster gauge fill and 10% faster charge times</item>
         <item>3: 20% faster gauge fill and 15% faster charge times</item>
-	</string-array>
+    </string-array>
     <string-array name="minds_eye_skill_desc">
-		<item>Your attacks are deflected less and deal more damage to hard targets</item>
+        <item>Your attacks are deflected less and deal more damage to hard targets</item>
         <item>1: +10% damage to hard targets and 50% reduction to you attacks being deflected</item>
         <item>2: +15% damage to hard targets and 100% reduction to you attacks being deflected</item>
         <item>3: +30% damage to hard targets and 100% reduction to you attacks being deflected</item>
-	</string-array>
+    </string-array>
     <string-array name="heroics_desc">
-		<item>Increases attack power and defense when health drops to 35% or lower</item>
+        <item>Increases attack power and defense when health drops to 35% or lower</item>
         <item>1: While active, increases defense by 50 points</item>
         <item>2: Attack +5% and defense +50 while active</item>
         <item>3: Attack +5% and defense +100 while active</item>
         <item>4: Attack +10 and defense +100 while active</item>
         <item>5: Attack +30% and defense increasing effects are negated</item>
-	</string-array>
+    </string-array>
     <string-array name="special_ammo_boost_desc">
-		<item>Increases the power of bowgun special ammo and dragon piercer</item>
+        <item>Increases the power of bowgun special ammo and dragon piercer</item>
         <item>1: Increases power of bowgun special ammo and dragon piercer by 10%</item>
         <item>2: Increases power of bowgun special ammo and dragon piercer by 20%</item>
-	</string-array>
+    </string-array>
     <string-array name="load_shells_desc">
-		<item>Improves reloading and increases the gunlance\'s shell capacity and charge blade\'s phial capacity</item>
+        <item>Improves reloading and increases the gunlance\'s shell capacity and charge blade\'s phial capacity</item>
         <item>1: Increases ammo and coating reload speed</item>
         <item>2: Gunlance loading capacity +1, increases charge blade phials</item>
-	</string-array>
+    </string-array>
     <string-array name="guard_up_desc">
-		<item>Allows you to guard against ordinarily unblockable attacks</item>
+        <item>Allows you to guard against ordinarily unblockable attacks</item>
         <item>1: Reduces damage taken by 30%</item>
         <item>2: Reduces damage taken by 50%</item>
         <item>3: Reduces damage taken by 80%</item>
-	</string-array>
+    </string-array>
     <string-array name="guard_desc">
-		<item>Reduces knockbacks and stamina depletion when guarding</item>
+        <item>Reduces knockbacks and stamina depletion when guarding</item>
         <item>1: Very slightly decreases the impact of attacks</item>
         <item>2: Slightly decreases the impact of attacks and reduces stamina depletion by 15%</item>
         <item>3: Decreases the impact of attacks and reduces stamina depletion by 15%</item>
         <item>4: Decreases the impact of attacks and reduces stamina depletion by 30%</item>
         <item>5: Greatly decreases the impact of attacks and reduces stamina depletion by 30%</item>
-	</string-array>
+    </string-array>
     <string-array name="stamina_surge_desc">
-		<item>Speeds up stamina recover</item>
+        <item>Speeds up stamina recover</item>
         <item>1: Stamina recover speed +10%</item>
         <item>2: Stamina recover speed +20%</item>
         <item>3: Stamina recover speed +40%</item>
-	</string-array>
+    </string-array>
     <string-array name="power_prolonger_desc">
-		<item>Long swords, dual blades, insect glaives, switch axes and charge blades stay powered up longer</item>
+        <item>Long swords, dual blades, insect glaives, switch axes and charge blades stay powered up longer</item>
         <item>1: Slightly boosts the duration weapons are powere up</item>
         <item>2: Boosts the duration weapons are powered up</item>
         <item>3: Greatly boosts the duration weapons are powered up</item>
-	</string-array>
+    </string-array>
     <string-array name="maximum_might_desc">
-		<item>Increases affinity if stamina is kept full for a period of time</item>
+        <item>Increases affinity if stamina is kept full for a period of time</item>
         <item>1: While active, increases affinity by 10%</item>
         <item>2: While active, increases affinity by 20%</item>
         <item>3: While active, increases affinity by 30%</item>
-	</string-array>
+    </string-array>
     <string-array name="attack_boost_desc">
-		<item>Increases attack power</item>
+        <item>Increases attack power</item>
         <item>1: Attack +3</item>
         <item>2: Attack +6</item>
         <item>3: Attack +9</item>
@@ -916,9 +916,9 @@
         <item>5: Attack +6% Bonus +8</item>
         <item>6: Attack +8% Bonus +9</item>
         <item>7: Attack +10% + 10</item>
-	</string-array>
+    </string-array>
     <string-array name="critical_eye_desc">
-		<item>Increases affinity</item>
+        <item>Increases affinity</item>
         <item>1: Affinity +5%</item>
         <item>2: Affinity +10%</item>
         <item>3: Affinity +15%</item>
@@ -926,183 +926,183 @@
         <item>5: Affinity +25%</item>
         <item>6: Affinity +30%</item>
         <item>7: Affinity +40%</item>
-	</string-array>
+    </string-array>
     <string-array name="rapid_morph_desc">
-		<item>Increases switch speed and power for switch axes and charge blades</item>
+        <item>Increases switch speed and power for switch axes and charge blades</item>
         <item>1: Speed +10%</item>
         <item>2: Speed +20% Morph attack damage +10%</item>
         <item>3: Speed +30% Morph attack damage +20%</item>
-	</string-array>
+    </string-array>
     <string-array name="recoil_down_desc">
-		<item>Reduces recoil while firing bowgun ammo</item>
+        <item>Reduces recoil while firing bowgun ammo</item>
         <item>1: Recoil -1</item>
         <item>2: Recoil -2</item>
         <item>3: Recoil -3</item>
-	</string-array>
+    </string-array>
     <string-array name="bludgeoner_desc">
-		<item>Increases attack power when your weapon sharpness is low</item>
+        <item>Increases attack power when your weapon sharpness is low</item>
         <item>1: +5% attack power when your weapon sharpness gauge is yellow or lower</item>
         <item>2: +10% attack power when your weapon sharpness gauge is yellow or lower</item>
         <item>3: +10% attack power when your weapon sharpness gauge is green or lower</item>
-	</string-array>
+    </string-array>
     <string-array name="reload_speed_desc">
-		<item>Increases bowgun reloading and bow coating loading speed</item>
+        <item>Increases bowgun reloading and bow coating loading speed</item>
         <item>1: Bowgun speed +1, improves bow handling</item>
         <item>1: Bowgun speed +2, loads bow coating automatically</item>
         <item>1: Bowgun speed +3</item>
-	</string-array>
+    </string-array>
     <string-array name="stun_res_desc">
-		<item>Reduces stun duration</item>
+        <item>Reduces stun duration</item>
         <item>1: Reduces the duration of stun by 60%</item>
         <item>2: Reduces the duration of stun by 90%</item>
         <item>3: Prevents stun</item>
-	</string-array>
+    </string-array>
     <string-array name="tremor_res_desc">
-		<item>Grants protection against ground tremors</item>
+        <item>Grants protection against ground tremors</item>
         <item>1: Nullifies minor ground tremors</item>
         <item>2: Nullifies minor ground tremors and reduces the effects of major ground tremors</item>
         <item>3: Nullifies minor and major ground tremors</item>
-	</string-array>
+    </string-array>
     <string-array name="earplugs_skill_desc">
-		<item>Grants protection from large monsters roars</item>
+        <item>Grants protection from large monsters roars</item>
         <item>1: Reduces the effects of weak monster roars</item>
         <item>2: Nullifies weak monsters roars</item>
         <item>3: Nullifies weak monsters roars and reduces the effects of strong monsters roars</item>
         <item>4: Nullifies weak and strong monster roars</item>
         <item>5: Nullifies weak and strong monster roars. Reduces the effects of powerful monster roars</item>
-	</string-array>
+    </string-array>
     <string-array name="counterstrike_desc">
-		<item>Temporarily increases attack power after being thrown off</item>
+        <item>Temporarily increases attack power after being thrown off</item>
         <item>1: Attack +10 after activation</item>
         <item>2: Attack +15 after activation</item>
         <item>3: Attack +25 after activation</item>
-	</string-array>
+    </string-array>
     <string-array name="bubbly_dance_desc">
-		<item>Reduces bubbleblight and grants increases evasion when afflicted</item>
+        <item>Reduces bubbleblight and grants increases evasion when afflicted</item>
         <item>1: Reduce the effects of weak bubbleblight</item>
         <item>2: Nullifies major and minor bubbleblight</item>
-	</string-array>
+    </string-array>
     <string-array name="steadiness_desc">
-		<item>Suppresses the deviation of bowgun shots</item>
+        <item>Suppresses the deviation of bowgun shots</item>
         <item>1: Deviation -1</item>
         <item>2: Deviation -2</item>
-	</string-array>
+    </string-array>
     <string-array name="punishing_draw_desc">
-		<item>Adds a stun effect to draw attacks and slightly increases attack power (Does not include Silkbind attacks)</item>
+        <item>Adds a stun effect to draw attacks and slightly increases attack power (Does not include Silkbind attacks)</item>
         <item>1: Applies a minor chance to stun, attack power of draw attacks +3</item>
         <item>2: Applies a chance to stun, attack power of draw attacks +5</item>
         <item>3: Applies a great chance to stun, attack power of draw attacks +7</item>
-	</string-array>
+    </string-array>
     <string-array name="evade_extender_desc">
-		<item>Increases evade distance</item>
+        <item>Increases evade distance</item>
         <item>1: Slightly extends evasion distance</item>
         <item>2: Extends evasion distance</item>
         <item>3: Greatly extends evasion distance</item>
-	</string-array>
+    </string-array>
     <string-array name="evade_window_desc">
-		<item>Extends the invulnerability period when evading</item>
+        <item>Extends the invulnerability period when evading</item>
         <item>1: Very slightly increases invulnerability window</item>
         <item>2: Slightly increases invulnerability window</item>
         <item>3: Increases invulnerability window</item>
         <item>4: Greatly increases invulnerability window</item>
         <item>5: Massively increases invulnerability window</item>
-	</string-array>
+    </string-array>
     <string-array name="flinch_free_desc">
-		<item>Prevents knockbacks and other reactions to small damage</item>
+        <item>Prevents knockbacks and other reactions to small damage</item>
         <item>1: Prevents knockbacks</item>
         <item>2: Prevents knockbacks, tripping is reduced to a knockback instead</item>
         <item>3: Prevents knockbacks and tripping</item>
-	</string-array>
+    </string-array>
     <string-array name="quick_sheath_desc">
-		<item>Speeds up weapon sheathing</item>
+        <item>Speeds up weapon sheathing</item>
         <item>1: Slightly increases sheathing speed</item>
         <item>2: Moderately increases sheating speed</item>
         <item>3: Greatly increaess sheathing speed</item>
-	</string-array>
+    </string-array>
     <string-array name="windproof_desc">
-		<item>Grants protection against wind pressure</item>
+        <item>Grants protection against wind pressure</item>
         <item>1: Negates minor wind pressure</item>
         <item>2: Negates minor and major wind pressure</item>
         <item>3: Negates minor and major wind pressure and reduces the effects of dragon wind pressure</item>
-	</string-array>
+    </string-array>
     <string-array name="slugger_desc">
-		<item>Makes it easier to stun monsters</item>
+        <item>Makes it easier to stun monsters</item>
         <item>1: Stun power +20%</item>
         <item>2: Stun power +30%</item>
         <item>3: Stun power +40%</item>
-	</string-array>
+    </string-array>
     <string-array name="wide_range_desc">
-		<item>Allows the effects of certain items to also affect nearby allies</item>
+        <item>Allows the effects of certain items to also affect nearby allies</item>
         <item>1: Items affect nearby allies with 33% of their efficacy</item>
         <item>2: Items affect nearby allies in a wider radius with 33% of their efficacy</item>
         <item>3: Items affect nearby allies in a wider radius with 66% of their efficacy</item>
         <item>4: Items affect nearby allies in a much wider radius with 66% of their efficacy</item>
         <item>5: Items affect nearby allies in a much wider radius with their full efficacy</item>
-	</string-array>
+    </string-array>
     <string-array name="partbreaker_desc">
-		<item>Makes it easier to break or sever parts of large monsters</item>
+        <item>Makes it easier to break or sever parts of large monsters</item>
         <item>1: Part damage +10%</item>
         <item>2: Part damage +20%</item>
         <item>3: Part damage +30%</item>
-	</string-array>
+    </string-array>
     <string-array name="blight_res_desc">
-		<item>Grants protection against all elemental blights</item>
+        <item>Grants protection against all elemental blights</item>
         <item>1: Reduces the duration of all elemental blights by 50%</item>
         <item>2: Reduces the duration of all elemental blights by 75%</item>
         <item>3: Nullifies all elemental blights</item>
-	</string-array>
+    </string-array>
     <string-array name="speed_eating_desc">
-		<item>Increases meat-eating and item-consumption speed</item>
+        <item>Increases meat-eating and item-consumption speed</item>
         <item>1: Slightly increases eating speed</item>
         <item>2: Increases eating speed</item>
         <item>3: Greatly increases eating speed</item>
-	</string-array>
+    </string-array>
     <string-array name="wirebug_whisperer_desc">
-		<item>Improves your handling of wirebugs</item>
+        <item>Improves your handling of wirebugs</item>
         <item>1: Extends the duration you can keep a wirebug by 30%</item>
         <item>2: Further increases passive wirebug recovery rate</item>
         <item>3: Further increases passive recovery rate while on the ground</item>
-	</string-array>
+    </string-array>
     <string-array name="divine_blessing_desc">
-		<item>Has a predetermined chance of reducing the damage you take</item>
+        <item>Has a predetermined chance of reducing the damage you take</item>
         <item>1: While active, reduces damage taken by 15%</item>
         <item>2: While active, reduces damage taken by 30%</item>
         <item>3: While active, reduces damage taken by 50%</item>
-	</string-array>
+    </string-array>
     <string-array name="wall_runner_desc">
         <item>Reduces stamina consumption when running on walls</item>
         <item>1: Reduces stamina consumption by 25% while wall running</item>
         <item>2: Reduces stamina consumption by 50% while wall running</item>
         <item>3: Wall running temporarily increases attack power</item>
-	</string-array>
+    </string-array>
     <string-array name="speed_sharpening_desc">
-		<item>Speeds up weapon sharpening when using a whetstone</item>
+        <item>Speeds up weapon sharpening when using a whetstone</item>
         <item>1: Removes one cycle from the sharpening process</item>
         <item>2: Removes two cycle from the sharpening process</item>
         <item>3: Removes three cycle from the sharpening process</item>
-	</string-array>
+    </string-array>
     <string-array name="item_prolonger_desc">
-		<item>Extends the duration of some item effects</item>
+        <item>Extends the duration of some item effects</item>
         <item>1: Item effect duration +10%</item>
         <item>2: Item effect duration +25%</item>
         <item>3: Item effect duration +50%</item>
-	</string-array>
+    </string-array>
     <string-array name="recovery_speed_desc">
-		<item>Speeds healing of recoverable damage(red portion of the health gauge)</item>
+        <item>Speeds healing of recoverable damage(red portion of the health gauge)</item>
         <item>1: Doubles the speed at which you heal recoverable damage</item>
         <item>2: Triples the speed at which you heal recoverable damage</item>
         <item>3: Quadruples the speed at which you heal recoverable damage</item>
-	</string-array>
+    </string-array>
     <string-array name="recovery_up_desc">
-		<item>Increases the amount recovered when restoring health</item>
+        <item>Increases the amount recovered when restoring health</item>
         <item>1: Slightly increases recovery</item>
         <item>2: Increases recovery</item>
         <item>3: Greatly increases recovery</item>
-	</string-array>
+    </string-array>
     <string-array name="horn_maestro_desc">
-		<item>Increases overall performance speed and shockwave damage</item>
+        <item>Increases overall performance speed and shockwave damage</item>
         <item>@string/activate</item>
-	</string-array>
+    </string-array>
     <string-array name="stamina_thief_desc">
         <item>Increases certain attacks\' ability to exhaust monsters</item>
         <item>1: Exhaust power +20%</item>
@@ -1110,37 +1110,37 @@
         <item>3: Exhaust power +40%</item>
     </string-array>
     <string-array name="constitution_desc">
-		<item>Reduces stamina depletion when evading, blocking or doing certain other activities</item>
+        <item>Reduces stamina depletion when evading, blocking or doing certain other activities</item>
         <item>1: Reduces fixed stamina depletion by 10%</item>
         <item>2: Reduces fixed stamina depletion by 20%</item>
         <item>3: Reduces fixed stamina depletion by 30%</item>
         <item>4: Reduces fixed stamina depletion by 40%</item>
         <item>5: Reduces fixed stamina depletion by 50%</item>
-	</string-array>
+    </string-array>
     <string-array name="poison_atk_desc">
-		<item>Increases poison element attack power (Elemental attack power has a maximum limit)</item>
+        <item>Increases poison element attack power (Elemental attack power has a maximum limit)</item>
         <item>Poison buildup +5% and Bonus +1</item>
         <item>Poison buildup +10% and Bonus +2</item>
         <item>Poison buildup +20% and Bonus +5</item>
-	</string-array>
+    </string-array>
     <string-array name="affinity_sliding_desc">
-		<item>Sliding increases your affinity for a short time</item>
+        <item>Sliding increases your affinity for a short time</item>
         <item>Enables skill use</item>
-	</string-array>
+    </string-array>
     <string-array name="bombardier_desc">
-		<item>Increases the damge of explosive items</item>
+        <item>Increases the damge of explosive items</item>
         <item>1: Explosive power +10%</item>
         <item>2: Explosive power +20%</item>
         <item>3: Explosive power +30%</item>
-	</string-array>
+    </string-array>
     <string-array name="fire_atk_desc">
-		<item>Increases fire element attack power (Elemental attack power has a maximum limit)</item>
+        <item>Increases fire element attack power (Elemental attack power has a maximum limit)</item>
         <item>1: Fire attack +2</item>
         <item>2: Fire attack +3</item>
         <item>3: Fire attack +5%, Bonus: +4</item>
         <item>4: Fire attack +10%, Bonus: +4</item>
         <item>5: Fire attack +20%, Bonus: +4</item>
-	</string-array>
+    </string-array>
     <string-array name="water_atk_desc">
         <item>Increases water element attack power (Elemental attack power has a maximum limit)</item>
         <item>1: Water attack +2</item>
@@ -1148,7 +1148,7 @@
         <item>3: Water attack +5%, Bonus: +4</item>
         <item>4: Water attack +10%, Bonus: +4</item>
         <item>5: Water attack +20%, Bonus: +4</item>
-	</string-array>
+    </string-array>
     <string-array name="thunder_atk_desc">
         <item>Increases thunder element attack power (Elemental attack power has a maximum limit)</item>
         <item>1: Thunder attack +2</item>
@@ -1156,7 +1156,7 @@
         <item>3: Thunder attack +5%, Bonus: +4</item>
         <item>4: Thunder attack +10%, Bonus: +4</item>
         <item>5: Thunder attack +20%, Bonus: +4</item>
-	</string-array>
+    </string-array>
     <string-array name="ice_atk_desc">
         <item>Increases ice element attack power (Elemental attack power has a maximum limit)</item>
         <item>1: Ice attack +2</item>
@@ -1164,7 +1164,7 @@
         <item>3: Ice attack +5%, Bonus: +4</item>
         <item>4: Ice attack +10%, Bonus: +4</item>
         <item>5: Ice attack +20%, Bonus: +4</item>
-	</string-array>
+    </string-array>
     <string-array name="dragon_atk_desc">
         <item>Increases dragon element attack power (Elemental attack power has a maximum limit)</item>
         <item>1: Dragon attack +2</item>
@@ -1172,9 +1172,9 @@
         <item>3: Dragon attack +5%, Bonus: +4</item>
         <item>4: Dragon attack +10%, Bonus: +4</item>
         <item>5: Dragon attack +20%, Bonus: +4</item>
-	</string-array>
+    </string-array>
     <string-array name="def_boost_desc">
-		<item>Increases defense. Resistances will also improve as the level increases</item>
+        <item>Increases defense. Resistances will also improve as the level increases</item>
         <item>1: Defense +5</item>
         <item>2: Defense +10</item>
         <item>3: Defense +5% and Bonus +10</item>
@@ -1182,174 +1182,176 @@
         <item>5: Defense +8% and Bonus +20, all elemental resistances +3</item>
         <item>6: Defense +8% and Bonus +35, all elemental resistances +5</item>
         <item>7: Defense +10% and Bonus +35, all elemental resistances +5</item>
-	</string-array>
+    </string-array>
     <string-array name="carving_pro_desc">
-		<item>Prevents knockback from attacks while carving</item>
+        <item>Prevents knockback from attacks while carving</item>
         <item>@string/activate</item>
-	</string-array>
+    </string-array>
     <string-array name="master_mounter_desc">
-		<item>Improves your Wyvern Riding skills</item>
+        <item>Improves your Wyvern Riding skills</item>
         <item>Makes filling the riding gauge easier and increases ease of parrying</item>
-	</string-array>
+    </string-array>
     <string-array name="hunger_res_desc">
-		<item>Reduces maximum stamina depletion over time</item>
+        <item>Reduces maximum stamina depletion over time</item>
         <item>1: Extends the time until your stamina cap reduces by 50%</item>
         <item>2: Extends the time until your stamina cap reduces by 100%</item>
         <item>3: Prevents your stamina cap from decreasing</item>
-	</string-array>
+    </string-array>
     <string-array name="free_meal_desc">
-		<item>Gives you a predetermined chance of consuming food or drink item for free</item>
+        <item>Gives you a predetermined chance of consuming food or drink item for free</item>
         <item>1: Activates 10% of the time</item>
         <item>2: Activates 25% of the time</item>
         <item>3: Activates 45% of the time</item>
-	</string-array>
+    </string-array>
     <string-array name="muck_res_desc">
-		<item>Reduces impairments to mobility while stuck in monster muck or deep snow</item>
+        <item>Reduces impairments to mobility while stuck in monster muck or deep snow</item>
         <item>1: Reduces limits on movement speed</item>
         <item>2: Negates limits to movement speed</item>
-	</string-array>
+    </string-array>
     <string-array name="diversion_skill_desc">
-		<item>Increases the attention drawn when attacking a monster</item>
+        <item>Increases the attention drawn when attacking a monster</item>
         <item>@string/activate</item>
-	</string-array>
+    </string-array>
     <string-array name="leap_of_faith_desc">
-		<item>Allows you to dive-evade when facing towards large monsters, and extends the dive-evade distance</item>
+        <item>Allows you to dive-evade when facing towards large monsters, and extends the dive-evade distance</item>
         <item>Enables skill use</item>
-	</string-array>
+    </string-array>
     <string-array name="fortify_desc">
-		<item>Increases you attack and defense when you fall in battle (Disabled for some quests, can stack twice)</item>
+        <item>Increases you attack and defense when you fall in battle (Disabled for some quests, can stack twice)</item>
         <item>Increases attack by 10% and defense by 15% with each use</item>
-	</string-array>
+    </string-array>
     <string-array name="geologist_desc">
-		<item>Increases the number of times ou can use a gathering point</item>
+        <item>Increases the number of times ou can use a gathering point</item>
         <item>1: Allows you to gather one extra time from bonepiles</item>
         <item>2: Allows you to gather one extra time from gathering points</item>
         <item>3: Allows you to gather one extra time from mining outcrops</item>
-	</string-array>
+    </string-array>
     <string-array name="botanist_desc">
-		<item>Increases the quantity of herbs and other consumable items you gather</item>
+        <item>Increases the quantity of herbs and other consumable items you gather</item>
         <item>1: One extra consumable herb item per gather</item>
         <item>2: One extra consumable herb, fruit, nut or seed item per gather</item>
         <item>3: One extra consumable herb, fruit, nut, seed or insect item per gather</item>
         <item>4: One extra consumable herb, fruit, nut, seed, insect or mushroom item per gather</item>
-	</string-array>
+    </string-array>
     <string-array name="blast_res_desc">
-		<item>Grants protection against blastblight</item>
+        <item>Grants protection against blastblight</item>
         <item>1: Delays blastblight and reduces blast damage</item>
         <item>2: Greatly delays blastblight and greatly reduces blast damage</item>
         <item>3: Prevents blastblight</item>
-	</string-array>
+    </string-array>
     <string-array name="sleep_res_desc">
-		<item>Reduces duration of sleep</item>
+        <item>Reduces duration of sleep</item>
         <item>1: Reduces the duration of sleep by 30%</item>
         <item>2: Reduces the duration of sleep by 60%</item>
         <item>3: Prevents sleep</item>
-	</string-array>
+    </string-array>
     <string-array name="para_res_desc">
-		<item>Reduces duration of paralysis</item>
+        <item>Reduces duration of paralysis</item>
         <item>1: Reduces duration of paralysis by 30%</item>
         <item>2: Reduces duration of paralysis by 60%</item>
         <item>3: Prevents paralysis</item>
-	</string-array>
+    </string-array>
     <string-array name="poison_res_desc">
-		<item>Reduces damage while poisoned</item>
+        <item>Reduces damage while poisoned</item>
         <item>1: Reduces the number of times you take poison damage</item>
         <item>2: Greatly educes the number of times you take poison damage</item>
         <item>3: Prevents poison and reduces venom</item>
-	</string-array>
+    </string-array>
     <string-array name="fire_res_skill_desc">
-		<item>Increases fire resistance, also improves defense at higher levels</item>
+        <item>Increases fire resistance, also improves defense at higher levels</item>
         <item>1: Fire resistance +6</item>
         <item>2: Fire resistance +12</item>
         <item>3: Fire resistance +20 and Defense +10</item>
-	</string-array>
+    </string-array>
     <string-array name="water_res_skill_desc">
         <item>Increases water resistance, also improves defense at higher levels</item>
         <item>1: Water resistance +6</item>
         <item>2: Water resistance +12</item>
         <item>3: Water resistance +20 and Defense +10</item>
-	</string-array>
+    </string-array>
     <string-array name="thunder_res_skill_desc">
         <item>Increases thuder resistance, also improves defense at higher levels</item>
         <item>1: Thunder resistance +6</item>
         <item>2: Thunder resistance +12</item>
         <item>3: Thunder resistance +20 and Defense +10</item>
-	</string-array>
+    </string-array>
     <string-array name="ice_res_skill_desc">
         <item>Increases ice resistance, also improves defense at higher levels</item>
         <item>1: Ice resistance +6</item>
         <item>2: Ice resistance +12</item>
         <item>3: Ice resistance +20 and Defense +10</item>
-	</string-array>
+    </string-array>
     <string-array name="dragon_res_skill_desc">
         <item>Increases dragon resistance, also improves defense at higher levels</item>
         <item>1: Dragon resistance +6</item>
         <item>2: Dragon resistance +12</item>
         <item>3: Dragon resistance +20 and Defense +10</item>
-	</string-array>
+    </string-array>
     <string-array name="bow_charge_plus_desc">
-		<item>Increases max bow charge level by one</item>
+        <item>Increases max bow charge level by one</item>
         <item>@string/activate</item>
-	</string-array>
+    </string-array>
     <string-array name="capture_master_desc">
-		<item>High chance of increased capture rewards (no effect when joining mid-quest)</item>
+        <item>High chance of increased capture rewards (no effect when joining mid-quest)</item>
         <item>@string/activate</item>
-	</string-array>
+    </string-array>
     <string-array name="chameleos_blessing_desc">
-		<item>Gain the power of the elder dragon Chameleos</item>
+        <item>Gain the power of the elder dragon Chameleos</item>
         <item>1: Sometimes increases the effects of Spiribirds</item>
         <item>2: Also negates minor and major wind pressure</item>
         <item>3: Also extends the duration of your poison\'s effect on monsters</item>
         <item>4: Also negates all wind pressure</item>
-	</string-array>
+    </string-array>
     <string-array name="kushala_blessing_desc">
-		<item>Gain the power of the elder dragon Kushala Daora</item>
+        <item>Gain the power of the elder dragon Kushala Daora</item>
         <item>1: Water and Ice attack +5%</item>
         <item>2: Water and Ice attack +10%</item>
         <item>3: Also allows recovery toe exceed the red portion of the health gauge</item>
         <item>4: Also nullifies heat damage</item>
-	</string-array>
+    </string-array>
     <string-array name="teostra_blessing_desc">
-		<item>Gain the power of he elder dragon Teostra</item>
+        <item>Gain the power of he elder dragon Teostra</item>
         <item>1: Fire attack and blast buildup +5%</item>
         <item>2: Fire attack and blast buildup +10%</item>
         <item>3: Also prevents poison and venom</item>
         <item>4: Alo Negates theft</item>
-	</string-array>
+    </string-array>
     <string-array name="dragonheart_desc">
-		<item>Draconic energy fills you after losing a certain amount of health, weapons lose all non-dragon effects</item>
+        <item>Draconic energy fills you after losing a certain amount of health, weapons lose all non-dragon effects</item>
         <item>1: When your health is at 50% or less, you contract dragonblight, and all elemental resistances are set to 30</item>
         <item>1: When your health is at 50% or less, you contract dragonblight, and all elemental resistances are set to 50</item>
         <item>1: When your health is at 70% or less, you contract dragonblight, and all elemental resistances are set to 50</item>
         <item>1: When your health is at 70% or less, you contract dragonblight, and all elemental resistances are set to 50 and gain 5% attack power</item>
         <item>1: When your health is at 80% or less, you contract dragonblight, and all elemental resistances are set to 50 and gain 10% attack power</item>
-	</string-array>
+    </string-array>
     <string-array name="wind_alignment_desc">
-		<item>Grants the power of the elder dragon Wind Serpent Ibushi</item>
+        <item>Grants the power of the elder dragon Wind Serpent Ibushi</item>
         <item>1: Dragon resistance +1</item>
         <item>2: Dragon resistance +2</item>
         <item>3: Dragon resistance +3</item>
         <item>4: Dragon resistance +4</item>
         <item>5: Also grants the effects of Great Luck (Fortunate)</item>
-	</string-array>
+    </string-array>
     <string-array name="thunder_alignment_desc">
-		<item>Gain the power of the elder dragon Thunder Serpent Narwa</item>
+        <item>Gain the power of the elder dragon Thunder Serpent Narwa</item>
         <item>1: Thunder resistance +1</item>
         <item>2: Thunder resistance +2</item>
         <item>3: Thunder resistance +3</item>
         <item>4: Thunder resistance +4</item>
         <item>5: Also grants the effect Great Luck (Fortunate)</item>
-	</string-array>
+    </string-array>
     <string-array name="stormsoul_desc">
-		<item>Strengthens thunder and dragon power and improves skills of the same element</item>
+        <item>Strengthens thunder and dragon power and improves skills of the same element</item>
         <item>1: Thunder and dragon attack +5%</item>
         <item>2: Thunder and dragon attack +10%</item>
         <item>3: Thunder and dragon attack +15%</item>
         <item>4: Also increases the level of other skill by +1</item>
         <item>5: Also increases the level of other skills by +1 (stacks with previous bonus)</item>
-	</string-array>
+    </string-array>
     <!--endregion-->
+
     <!--region misc strings-->
+    <string name="set_saved">Set saved</string>
     <string name="activate">Activates skill effect</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
@@ -1392,5 +1394,7 @@
     <string name="skill_description">Skill Description</string>
     <string name="save_set">Save Set</string>
     <string name="delete_set">Delete Set</string>
+    <string name="set_deleted">Set Deleted</string>
+    <string name="set_list">Set List</string>
     <!--endregion-->
 </resources>

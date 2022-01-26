@@ -4,21 +4,17 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
-import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SetBuilderListAdapter;
+import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SetListAdapter;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.FragmentSetBuilderBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
@@ -41,8 +37,8 @@ public class SetBuilderFragment extends Fragment{
     SkillViewModel skillViewModel;
     ArmorViewModel armorViewModel;
     ArmorSetViewModel armorSetViewModel;
-    private SetBuilderListAdapter adapter;
-    SetBuilderListAdapter.OnSetClickListener onSetClickListener;
+    private SetListAdapter adapter;
+    SetListAdapter.OnSetClickListener onSetClickListener;
 
     Skill tempSkill1;
     Skill tempSkill2;
@@ -51,7 +47,7 @@ public class SetBuilderFragment extends Fragment{
     public SetBuilderFragment() {
         // Required empty public constructor
     }
-    public SetBuilderFragment(SetBuilderListAdapter.OnSetClickListener onSetClickListener){
+    public SetBuilderFragment(SetListAdapter.OnSetClickListener onSetClickListener){
         this.onSetClickListener = onSetClickListener;
     }
     public static SetBuilderFragment newInstance() {
@@ -68,7 +64,7 @@ public class SetBuilderFragment extends Fragment{
                              Bundle savedInstanceState) {
         binding = FragmentSetBuilderBinding.inflate(inflater, container, false);
         setList = new ArrayList<>();
-        adapter = new SetBuilderListAdapter(setList, getContext(), onSetClickListener);
+        adapter = new SetListAdapter(setList, getContext(), onSetClickListener);
         
         tempSkill1 = new Skill();
         tempSkill2 = new Skill();

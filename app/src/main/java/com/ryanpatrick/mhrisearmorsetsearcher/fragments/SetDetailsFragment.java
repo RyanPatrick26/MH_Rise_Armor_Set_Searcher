@@ -15,10 +15,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.ryanpatrick.mhrisearmorsetsearcher.App;
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SkillDetailsAdapter;
 import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SkillsListAdapter;
+import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.FragmentSetDetailsBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
@@ -30,7 +33,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SetDetailsFragment extends Fragment {
-    public static final String TAG = "here";
     FragmentSetDetailsBinding binding;
     ArmorSet armorSet;
     ArmorSetViewModel armorSetViewModel;
@@ -128,6 +130,8 @@ public class SetDetailsFragment extends Fragment {
         binding.skillDescriptionList.setAdapter(detailsAdapter);
         //endregion
 
+        binding.saveSetButton.setOnClickListener(v -> saveSet());
+        binding.deleteSetButton.setOnClickListener(v -> deleteSet());
         return binding.getRoot();
     }
 
@@ -141,5 +145,23 @@ public class SetDetailsFragment extends Fragment {
         detailsAdapter.setSkillLevel(skillLevel);
         //notify the adapter that the descriptions have changed
         detailsAdapter.notifyDataSetChanged();
+    }
+
+    private void saveSet(){
+        ApplicationDatabase.databaseWriter.execute(() -> {
+            armorSetViewModel.insertArmorSet(armorSet);
+
+            ApplicationDatabase.dbHandler.post(() ->
+                    Toast.makeText(getContext(), R.string.set_saved, Toast.LENGTH_LONG).show());
+
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new ArmorSetListFragment()).commit();
+        });
+    }
+    private void deleteSet(){
+        armorSetViewModel.deleteArmorSet(armorSet);
+        Toast.makeText(getContext(), R.string.set_deleted, Toast.LENGTH_LONG).show();
+        requireActivity().getSupportFragmentManager().beginTransaction().
+                replace(R.id.fragment_container, new ArmorSetListFragment()).commit();
     }
 }

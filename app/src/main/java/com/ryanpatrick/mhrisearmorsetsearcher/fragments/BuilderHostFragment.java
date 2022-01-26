@@ -11,13 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
-import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SetBuilderListAdapter;
+import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SetListAdapter;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.ArmorSetViewModel;
 
 import java.util.List;
 
-public class BuilderHostFragment extends Fragment implements SetBuilderListAdapter.OnSetClickListener{
+public class BuilderHostFragment extends Fragment implements SetListAdapter.OnSetClickListener{
     ArmorSetViewModel setViewModel;
     FragmentManager builderFragmentManager;
     public BuilderHostFragment() {

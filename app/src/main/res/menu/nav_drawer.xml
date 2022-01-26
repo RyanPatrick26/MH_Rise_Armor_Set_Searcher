@@ -8,5 +8,8 @@
         <item
             android:id="@+id/menu_set_builder"
             android:title="@string/set_builder" />
+        <item
+            android:id="@+id/menu_set_list"
+            android:title="@string/set_list" />
     </group>
 </menu>
