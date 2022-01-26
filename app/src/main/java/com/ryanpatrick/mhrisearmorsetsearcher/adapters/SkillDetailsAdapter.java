@@ -39,7 +39,6 @@ public class SkillDetailsAdapter extends RecyclerView.Adapter<SkillDetailsAdapte
     public void onBindViewHolder(@NonNull SkillDetailsAdapter.ViewHolder holder, int position) {
         String description = descriptionList.get(position);
         holder.descriptionTextView.setText(description);
-        Log.i("here", "onBindViewHolder: " + position);
         if(position > skillLevel){
             holder.descriptionTextView.setTextColor(Color.GRAY);
         }

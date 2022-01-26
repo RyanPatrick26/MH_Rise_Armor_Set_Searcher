@@ -62,6 +62,10 @@ public class SetDetailsFragment extends Fragment {
         skillsListAdapter = new SkillsListAdapter(skillsList, getContext());
         detailsAdapter = new SkillDetailsAdapter(skillDescriptionList, getContext());
         //endregion
+        if(armorSet.getId() != null){
+            binding.saveSetButton.setVisibility(View.GONE);
+            binding.deleteSetButton.setVisibility(View.VISIBLE);
+        }
 
         //set the skill list adapters on click listener to update description
         //list with the descriptions of the skill selected
@@ -128,13 +132,14 @@ public class SetDetailsFragment extends Fragment {
     }
 
     private void updateDescriptionList(Skill skill, int skillLevel){
-        //set the description list to the description of the skill the user selected
+        //clear the description list
         skillDescriptionList.clear();
+        //add all of the descriptions for the selected skill
         skillDescriptionList.addAll(Arrays.asList(getResources().getStringArray(getResources()
                 .getIdentifier(skill.getDescription(), "array", requireActivity().getPackageName()))));
-        //finally, pass the skill into the description adapter
-        Log.i(TAG, "updateDescriptionList: " + skill.getSkillName() + " " +skillLevel);
+        //set the skill level in the adapter to be the level of the selected skill
         detailsAdapter.setSkillLevel(skillLevel);
+        //notify the adapter that the descriptions have changed
         detailsAdapter.notifyDataSetChanged();
     }
 }

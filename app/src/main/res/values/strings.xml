@@ -1391,5 +1391,6 @@
     <string name="exclude_rarity">Exclude Rarity</string>
     <string name="skill_description">Skill Description</string>
     <string name="save_set">Save Set</string>
+    <string name="delete_set">Delete Set</string>
     <!--endregion-->
 </resources>
