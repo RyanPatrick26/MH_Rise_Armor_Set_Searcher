@@ -654,6 +654,47 @@
     <string name="dragonheart">Dragon Heart</string>
     <string name="wind_alignment">Wind Alignment</string>
     <string name="thunder_alignment">Thunder Alignment</string>
-    <string name="stormsoul">Stormsoul \(if upgraded\)</string>
+    <string name="stormsoul">Stormsoul \(if\u00A0upgraded\)</string>
+    <!--endregion-->
+
+    <!--region misc strings-->
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="both">Both</string>
+    <string name="helmet">Helmet</string>
+    <string name="chest">Chest</string>
+    <string name="arms">Arms</string>
+    <string name="waist">Waist</string>
+    <string name="legs">Legs</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="defense_text">Defense</string>
+    <string name="placeholder_number">2</string>
+    <string name="gender">Gender:</string>
+    <string name="armor_type">Armor Type:</string>
+    <string name="armor">Armor List</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
+    <string name="set_builder">Set Builder</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skill_1">Skill 1:</string>
+    <string name="skill_level">Level: </string>
+    <string name="skill_2">Skill 2:</string>
+    <string name="skill_3">Skill 3:</string>
+    <string name="level_1_slots">Level 1 Slots:</string>
+    <string name="level_2_slots">Level 2 Slots:</string>
+    <string name="level_3_slots">Level 3 Slots:</string>
+    <string name="skills">Skills:</string>
+    <string name="skill_name">Skill Name</string>
+    <string name="rarity_4">Rarity 4</string>
+    <string name="rarity_5">Rarity 5</string>
+    <string name="rarity_6">Rarity 6</string>
+    <string name="rarity_7">Rarity 7</string>
+    <string name="search_for_sets">Search for Sets</string>
+    <string name="use_charms">Use Charms?</string>
+    <string name="select_skill">Select Skill</string>
+    <string name="no_sets">No Sets Found</string>
+    <string name="defenses">Defenses</string>
+    <string name="building_sets">Building Sets, please wait</string>
+    <string name="exclude_rarity">Exclude Rarity</string>
     <!--endregion-->
 </resources>

@@ -30,7 +30,7 @@ public interface ArmorDao {
     LiveData<List<Armor>> getAllArmor();
 
     @Query("SELECT * FROM armor_tbl WHERE armorId == :id")
-    LiveData<Armor> getArmor(long id);
+    Armor getArmor(long id);
 
     @Query("SELECT * FROM armor_tbl WHERE armor_type == :armorType & gender IN (:gender, 'Both')" +
             "ORDER BY rarity DESC, armorId ASC")

@@ -14,6 +14,7 @@ import java.util.List;
 public class ArmorSetViewModel extends AndroidViewModel{
     private ArmorSetRepository armorSetRepository;
     private final LiveData<List<ArmorSet>> ALL_ARMOR_SETS;
+    private ArmorSet tempSet;
 
     public ArmorSetViewModel(@NonNull Application application) {
         super(application);
@@ -35,5 +36,13 @@ public class ArmorSetViewModel extends AndroidViewModel{
 
     public void updateArmorSet(ArmorSet set){
         armorSetRepository.update(set);
+    }
+
+    public ArmorSet getTempSet() {
+        return tempSet;
+    }
+
+    public void setTempSet(ArmorSet tempSet) {
+        this.tempSet = tempSet;
     }
 }

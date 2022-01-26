@@ -23,7 +23,7 @@ public interface SkillDao {
     @Update
     void update(Skill skill);
 
-    @Query("SELECT * FROM skills_tbl ORDER BY skill_name DESC")
+    @Query("SELECT * FROM skills_tbl ORDER BY skill_name ASC")
     LiveData<List<Skill>> getAllSkills();
 
     @Query("SELECT * FROM skills_tbl")

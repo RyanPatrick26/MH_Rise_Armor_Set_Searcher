@@ -30,7 +30,7 @@ public class ArmorRepository {
     public void insert(Armor armor){
         ApplicationDatabase.databaseWriter.execute(() -> armorDao.insert(armor));
     }
-    public LiveData<Armor> getArmor(long id){
+    public Armor getArmor(long id){
         return armorDao.getArmor(id);
     }
     public LiveData<List<Armor>> getAllArmorOfType(ArmorType type, Gender gender){
