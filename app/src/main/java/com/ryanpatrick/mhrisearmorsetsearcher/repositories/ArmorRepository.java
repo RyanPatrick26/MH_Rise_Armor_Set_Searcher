@@ -44,7 +44,6 @@ public class ArmorRepository {
         ApplicationDatabase.databaseWriter.execute(() -> {
             if(armorDao.getArmorList().size() < DbConstants.prepopulateArmors.length &&
                     armorDao.getArmorList().size() > 0){
-                Log.i("here", "updateDb: ");
                 List<Armor> updateList = Arrays.asList(DbConstants.prepopulateArmors);
                 updateList.removeAll(updateList.subList(0, armorDao.getArmorList().size()));
 

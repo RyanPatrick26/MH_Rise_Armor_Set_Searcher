@@ -73,6 +73,6 @@ public class SkillsListAdapter extends RecyclerView.Adapter<SkillsListAdapter.Vi
     }
 
     public interface OnSkillClickListener{
-        public void onSkillClick(int position);
+        void onSkillClick(int position);
     }
 }

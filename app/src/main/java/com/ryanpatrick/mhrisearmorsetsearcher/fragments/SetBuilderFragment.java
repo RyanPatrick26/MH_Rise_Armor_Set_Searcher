@@ -85,7 +85,7 @@ public class SetBuilderFragment extends Fragment{
             ArrayList<String> skill3Level = new ArrayList<>();
 
             for (Skill skill : skills) {
-                String skillName =  getString(getResources().getIdentifier(skill.getSkillName(), "string", getContext().getPackageName()));
+                String skillName =  getString(getResources().getIdentifier(skill.getSkillName(), "string", requireActivity().getPackageName()));
                 if(skillName.contains("("))
                     skillName = skillName.substring(0, skillName.indexOf("("));
                 skillNames.add(skillName);
@@ -236,7 +236,6 @@ public class SetBuilderFragment extends Fragment{
     //will be replaced when search algorithm is built
     private void generateArmorSets(){
         setList.clear();
-
 
         ApplicationDatabase.databaseWriter.execute(() -> {
             int totalBaseDefense, totalMaxDefense, totalFireRes, totalWaterRes, totalThunderRes,

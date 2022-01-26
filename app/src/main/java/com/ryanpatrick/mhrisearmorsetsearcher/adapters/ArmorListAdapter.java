@@ -107,10 +107,7 @@ public class ArmorListAdapter extends RecyclerView.Adapter<ArmorListAdapter.View
 
         armorListBinding.skillList.setAdapter(adapter);
         //endregion
-
-
     }
-
 
     @Override
     public int getItemCount() {
