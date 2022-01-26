@@ -64,38 +64,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:id="@+id/slots_layout"
+        <include
+            android:id="@+id/slot_layout"
+            layout="@layout/slot_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/item_spacing"
-            android:orientation="horizontal"
-            android:visibility="visible">
-
-            <ImageView
-                android:id="@+id/slot1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="slot 1"
-                app:srcCompat="@drawable/slot_lvl_1" />
-
-            <ImageView
-                android:id="@+id/slot2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="slot 2"
-                app:srcCompat="@drawable/slot_lvl_2" />
-
-            <ImageView
-                android:id="@+id/slot3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="slot 3"
-                tools:srcCompat="@drawable/slot_lvl_3" />
-        </LinearLayout>
+            android:layout_marginTop="@dimen/item_spacing" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/skill_list"

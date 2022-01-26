@@ -9,6 +9,5 @@
         <item name="cardElevation">8dp</item>
         <item name="cardBackgroundColor">@color/card_background_color</item>
         <item name="android:padding">8dp</item>
-
     </style>
 </resources>

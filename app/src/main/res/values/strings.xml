@@ -1396,5 +1396,8 @@
     <string name="delete_set">Delete Set</string>
     <string name="set_deleted">Set Deleted</string>
     <string name="set_list">Set List</string>
+    <string name="charm_list">Charm List</string>
+    <string name="add_charm">Add Charm</string>
+    <string name="no_charms">No Charms Found</string>
     <!--endregion-->
 </resources>

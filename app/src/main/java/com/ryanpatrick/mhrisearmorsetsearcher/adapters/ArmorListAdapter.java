@@ -38,7 +38,8 @@ public class ArmorListAdapter extends RecyclerView.Adapter<ArmorListAdapter.View
     public void onBindViewHolder(@NonNull ArmorListAdapter.ViewHolder holder, int position) {
         //region variables for the view holder
         ArmorListItemBinding armorListBinding = holder.binding;
-        ImageView[] slotImageViews = new ImageView[]{armorListBinding.slot1, armorListBinding.slot2, armorListBinding.slot3};
+        ImageView[] slotImageViews = new ImageView[]{armorListBinding.slotLayout.slot1,
+                armorListBinding.slotLayout.slot2, armorListBinding.slotLayout.slot3};
         Armor armor = armorList.get(position);
         SkillsListAdapter adapter = new SkillsListAdapter(armor.getSkills(), context);
         //endregion
