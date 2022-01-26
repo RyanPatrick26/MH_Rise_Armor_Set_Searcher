@@ -25,15 +25,12 @@ public class ArmorSetViewModel extends AndroidViewModel{
     public LiveData<List<ArmorSet>> getAllArmorSets() {
         return ALL_ARMOR_SETS;
     }
-
     public LiveData<ArmorSet> getArmorSet(long id){
         return armorSetRepository.getArmorSet(id);
     }
-
     public void insertArmorSet(ArmorSet set){
         armorSetRepository.insert(set);
     }
-
     public void updateArmorSet(ArmorSet set){
         armorSetRepository.update(set);
     }
@@ -44,5 +41,8 @@ public class ArmorSetViewModel extends AndroidViewModel{
 
     public void setTempSet(ArmorSet tempSet) {
         this.tempSet = tempSet;
+    }
+    public boolean exists(long id){
+        return armorSetRepository.exists(id);
     }
 }

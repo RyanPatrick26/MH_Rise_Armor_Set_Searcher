@@ -28,16 +28,16 @@ public class CharmRepository {
     public LiveData<Charm> getCharm(long id){
         return charmDao.getCharm(id);
     }
-
     public void insertCharm(Charm charm){
         ApplicationDatabase.databaseWriter.execute(() -> charmDao.insert(charm));
     }
-
     public void updateCharm(Charm charm){
         ApplicationDatabase.databaseWriter.execute(() -> charmDao.update(charm));
     }
-
     public void deleteCharm(Charm charm){
         ApplicationDatabase.databaseWriter.execute(() -> charmDao.deleteCharm(charm));
+    }
+    public boolean exists(long id){
+        return charmDao.exists(id);
     }
 }
