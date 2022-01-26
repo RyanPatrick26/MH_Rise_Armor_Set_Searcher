@@ -36,4 +36,7 @@ public class ArmorSetRepository {
     public void deleteArmorSet(ArmorSet set){
         ApplicationDatabase.databaseWriter.execute(() -> armorSetDao.delete(set));
     }
+    public boolean exists(long id){
+        return armorSetDao.exists(id);
+    }
 }
