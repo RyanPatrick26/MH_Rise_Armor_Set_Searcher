@@ -14,21 +14,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SkillRepository {
-    private SkillDao skillDao;
-    private LiveData<List<Skill>> skillsList;
-    Context dbContext;
-    DbConstants values;
+    private final SkillDao skillDao;
+    private final LiveData<List<Skill>> skillsList;
 
     public SkillRepository(Application application){
         ApplicationDatabase db = ApplicationDatabase.getInstance(application.getApplicationContext());
         skillDao = db.skillDao();
         skillsList = skillDao.getAllSkills();
-        values = new DbConstants();
     }
 
     public LiveData<List<Skill>> getAllSkills(){return skillsList;}
-    public LiveData<Skill> getSkill(long id){
-        return skillDao.getSkillById(id);
+    public LiveData<Skill> getSkill(String name){
+        return skillDao.getSkill(name);
     }
     public void insert(Skill skill){
         ApplicationDatabase.databaseWriter.execute(() -> skillDao.insert(skill));

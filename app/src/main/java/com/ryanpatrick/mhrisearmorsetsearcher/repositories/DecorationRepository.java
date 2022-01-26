@@ -14,10 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DecorationRepository {
-    private DecorationsDao decorationsDao;
-    private Context dbContext;
-    private LiveData<List<Decoration>> decorationsList;
-    private DbConstants dbConstants;
+    private final DecorationsDao decorationsDao;
+    private final LiveData<List<Decoration>> decorationsList;
 
     public DecorationRepository(Application application) {
         ApplicationDatabase db = ApplicationDatabase.getInstance(application);
