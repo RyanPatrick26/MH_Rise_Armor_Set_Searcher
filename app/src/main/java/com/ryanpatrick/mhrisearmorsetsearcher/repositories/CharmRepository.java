@@ -12,11 +12,12 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
 import java.util.List;
 
 public class CharmRepository {
-    private CharmDao charmDao;
-    private LiveData<List<Charm>> charms;
+    private final CharmDao charmDao;
+    private final LiveData<List<Charm>> charms;
 
     public CharmRepository(Application application){
         ApplicationDatabase db = ApplicationDatabase.getInstance(application.getApplicationContext());
+        charmDao = db.charmDao();
         charms = charmDao.getAllCharms();
     }
 

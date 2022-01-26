@@ -16,8 +16,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ArmorRepository {
-    private ArmorDao armorDao;
-    private LiveData<List<Armor>> armorList;
+    private final ArmorDao armorDao;
+    private final LiveData<List<Armor>> armorList;
     private Context dbContext;
 
     public ArmorRepository(Application application){
