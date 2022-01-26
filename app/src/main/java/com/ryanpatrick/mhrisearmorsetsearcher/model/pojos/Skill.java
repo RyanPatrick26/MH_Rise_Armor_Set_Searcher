@@ -8,8 +8,8 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "skills_tbl")
 public class Skill {
-	@PrimaryKey
-	@NonNull
+	@PrimaryKey(autoGenerate = true)
+	private long id;
 	@ColumnInfo(name = "skill_name")
 	private String skillName;
 	@ColumnInfo(name = "max_level")
@@ -20,28 +20,33 @@ public class Skill {
 	private int skillLevel;
 
 	@Ignore
-	public Skill(){
-		skillName = "";
-	}
+	public Skill(){	}
 
 	public Skill(@NonNull String skillName, int skillLevel) {
 		this.skillName = skillName;
 		this.skillLevel = skillLevel;
 	}
 
-	public Skill(@NonNull String skillName, int skillMaxLevel, String description) {
+	public Skill(String skillName, int skillMaxLevel, String description) {
 		this.skillName = skillName;
 		this.skillMaxLevel = skillMaxLevel;
 		this.description = description;
 	}
 
 	//region getters and setters
-	@NonNull
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getSkillName() {
 		return skillName;
 	}
 
-	public void setSkillName(@NonNull String skillName) {
+	public void setSkillName( String skillName) {
 		this.skillName = skillName;
 	}
 

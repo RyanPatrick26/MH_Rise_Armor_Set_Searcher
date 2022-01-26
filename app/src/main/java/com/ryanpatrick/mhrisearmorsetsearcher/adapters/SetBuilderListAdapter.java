@@ -2,6 +2,7 @@ package com.ryanpatrick.mhrisearmorsetsearcher.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -15,16 +16,19 @@ import java.util.List;
 public class SetBuilderListAdapter extends RecyclerView.Adapter<SetBuilderListAdapter.ViewHolder> {
     private final Context context;
     private final List<ArmorSet> setList;
+    private OnSetClickListener onSetClickListener;
 
-    public SetBuilderListAdapter(List<ArmorSet> setList, Context  context){
+    public SetBuilderListAdapter(List<ArmorSet> setList, Context context, OnSetClickListener onSetClickListener){
         this.context = context;
         this.setList = setList;
+        this.onSetClickListener = onSetClickListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(SetBuilderListItemBinding.inflate(LayoutInflater.from(context), parent, false));
+        return new ViewHolder(SetBuilderListItemBinding.
+                inflate(LayoutInflater.from(context), parent, false), onSetClickListener);
     }
 
     @Override
@@ -35,15 +39,15 @@ public class SetBuilderListAdapter extends RecyclerView.Adapter<SetBuilderListAd
         SkillsListAdapter adapter = new SkillsListAdapter(set.getTotalSkills(), context);
         //endregion
 
-        binding.helmetText.setText(context.getResources().getIdentifier(set.getHead().getArmorName(), 
+        binding.piecesLayout.helmetText.setText(context.getResources().getIdentifier(set.getHead().getArmorName(),
                 "string", context.getPackageName()));
-        binding.chestText.setText(context.getResources().getIdentifier(set.getChest().getArmorName(),
+        binding.piecesLayout.chestText.setText(context.getResources().getIdentifier(set.getChest().getArmorName(),
                 "string", context.getPackageName()));
-        binding.armsText.setText(context.getResources().getIdentifier(set.getArms().getArmorName(),
+        binding.piecesLayout.armsText.setText(context.getResources().getIdentifier(set.getArms().getArmorName(),
                 "string", context.getPackageName()));
-        binding.waistText.setText(context.getResources().getIdentifier(set.getWaist().getArmorName(),
+        binding.piecesLayout.waistText.setText(context.getResources().getIdentifier(set.getWaist().getArmorName(),
                 "string", context.getPackageName()));
-        binding.legsText.setText(context.getResources().getIdentifier(set.getLegs().getArmorName(),
+        binding.piecesLayout.legsText.setText(context.getResources().getIdentifier(set.getLegs().getArmorName(),
                 "string", context.getPackageName()));
 
         binding.level1Slots.setText(Integer.toString(set.getTotalSlots()[0]));
@@ -59,14 +63,30 @@ public class SetBuilderListAdapter extends RecyclerView.Adapter<SetBuilderListAd
         return setList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public SetBuilderListItemBinding binding;
-        public ViewHolder(SetBuilderListItemBinding binding) {
+        OnSetClickListener onSetClickListener;
+        public ViewHolder(SetBuilderListItemBinding binding, OnSetClickListener onSetClickListener) {
             super(binding.getRoot());
             this.binding = binding;
+            this.onSetClickListener = onSetClickListener;
 
+            binding.getRoot().setOnClickListener(this);
+        }
+
+        /**
+         * Called when a view has been clicked.
+         *
+         * @param v The view that was clicked.
+         */
+        @Override
+        public void onClick(View v) {
+            onSetClickListener.onSetClick(getAbsoluteAdapterPosition(), setList);
         }
     }
 
+    public interface OnSetClickListener{
+        void onSetClick(int position, List<ArmorSet> setList);
+    }
 
 }

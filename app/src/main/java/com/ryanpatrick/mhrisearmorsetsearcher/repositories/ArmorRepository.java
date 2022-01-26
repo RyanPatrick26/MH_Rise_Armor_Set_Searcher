@@ -2,6 +2,7 @@ package com.ryanpatrick.mhrisearmorsetsearcher.repositories;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -41,7 +42,9 @@ public class ArmorRepository {
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() -> {
-            if(armorDao.getArmorList().size() < DbConstants.prepopulateArmors.length){
+            if(armorDao.getArmorList().size() < DbConstants.prepopulateArmors.length &&
+                    armorDao.getArmorList().size() > 0){
+                Log.i("here", "updateDb: ");
                 List<Armor> updateList = Arrays.asList(DbConstants.prepopulateArmors);
                 updateList.removeAll(updateList.subList(0, armorDao.getArmorList().size()));
 

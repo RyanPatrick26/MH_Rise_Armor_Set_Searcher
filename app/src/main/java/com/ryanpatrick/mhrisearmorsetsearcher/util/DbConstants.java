@@ -2116,7 +2116,7 @@ public class DbConstants {
             new Skill("evade_extender", 3, "evade_extender_desc"),
             new Skill("evade_window", 5, "evade_window_desc"),
             new Skill("flinch_free", 3, "flinch_free_desc"),
-            new Skill("quick_sheathe", 3, "quick_sheathe_desc"),
+            new Skill("quick_sheath", 3, "quick_sheath_desc"),
             new Skill("windproof", 3, "windproof_desc"),
             new Skill("slugger", 3, "slugger_desc"),
             new Skill("wide_range", 5, "wide_range_desc"),

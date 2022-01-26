@@ -1389,5 +1389,7 @@
     <string name="defenses">Defenses</string>
     <string name="building_sets">Building Sets, please wait</string>
     <string name="exclude_rarity">Exclude Rarity</string>
+    <string name="skill_description">Skill Description</string>
+    <string name="save_set">Save Set</string>
     <!--endregion-->
 </resources>

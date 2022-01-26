@@ -33,7 +33,8 @@ public class DecorationRepository {
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() ->{
-            if(decorationsDao.getDecorationList().size() < DbConstants.prepopulateDecorations.length) {
+            if(decorationsDao.getDecorationList().size() < DbConstants.prepopulateDecorations.length &&
+                    decorationsDao.getDecorationList().size() > 0) {
                 List<Decoration> updateList = Arrays.asList(DbConstants.prepopulateDecorations);
                 updateList.removeAll(updateList.subList(0, decorationsDao.getDecorationList().size()));
                 decorationsDao.insertAll((Decoration[]) updateList.toArray());

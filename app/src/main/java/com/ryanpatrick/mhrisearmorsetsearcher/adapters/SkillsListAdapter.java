@@ -20,6 +20,7 @@ import java.util.List;
 public class SkillsListAdapter extends RecyclerView.Adapter<SkillsListAdapter.ViewHolder> {
     List<Skill> skills;
     Context context;
+    private OnSkillClickListener onSkillClickListener;
 
     public SkillsListAdapter(Skill[] skills, Context context) {
         this.context = context;
@@ -50,6 +51,10 @@ public class SkillsListAdapter extends RecyclerView.Adapter<SkillsListAdapter.Vi
         return skills.size();
     }
 
+    public void setOnSkillClickListener(OnSkillClickListener onSkillClickListener) {
+        this.onSkillClickListener = onSkillClickListener;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView skillNameText;
         public TextView skillLevelText;
@@ -58,6 +63,16 @@ public class SkillsListAdapter extends RecyclerView.Adapter<SkillsListAdapter.Vi
             super(itemView);
             skillNameText = itemView.findViewById(R.id.skill_name);
             skillLevelText = itemView.findViewById(R.id.skill_level);
+
+            itemView.setOnClickListener(v ->{
+                if(onSkillClickListener != null){
+                    onSkillClickListener.onSkillClick(getAbsoluteAdapterPosition());
+                }
+            });
         }
+    }
+
+    public interface OnSkillClickListener{
+        public void onSkillClick(int position);
     }
 }

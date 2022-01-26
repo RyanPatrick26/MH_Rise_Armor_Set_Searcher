@@ -7,7 +7,6 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/builder_fragment_container"
-        android:name="com.ryanpatrick.mhrisearmorsetsearcher.fragments.SetBuilderFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </FrameLayout>

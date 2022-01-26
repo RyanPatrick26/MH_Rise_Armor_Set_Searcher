@@ -7,8 +7,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -31,15 +34,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SetBuilderFragment extends Fragment {
+public class SetBuilderFragment extends Fragment{
     public static final String TAG = "here";
     FragmentSetBuilderBinding binding;
     List<ArmorSet> setList;
     SkillViewModel skillViewModel;
     ArmorViewModel armorViewModel;
     ArmorSetViewModel armorSetViewModel;
-    FragmentManager setBuilderFragmentManager;
     private SetBuilderListAdapter adapter;
+    SetBuilderListAdapter.OnSetClickListener onSetClickListener;
 
     Skill tempSkill1;
     Skill tempSkill2;
@@ -47,6 +50,9 @@ public class SetBuilderFragment extends Fragment {
 
     public SetBuilderFragment() {
         // Required empty public constructor
+    }
+    public SetBuilderFragment(SetBuilderListAdapter.OnSetClickListener onSetClickListener){
+        this.onSetClickListener = onSetClickListener;
     }
     public static SetBuilderFragment newInstance() {
         return new SetBuilderFragment();
@@ -60,10 +66,9 @@ public class SetBuilderFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setBuilderFragmentManager = requireActivity().getSupportFragmentManager();
         binding = FragmentSetBuilderBinding.inflate(inflater, container, false);
         setList = new ArrayList<>();
-        adapter = new SetBuilderListAdapter(setList, getContext());
+        adapter = new SetBuilderListAdapter(setList, getContext(), onSetClickListener);
         
         tempSkill1 = new Skill();
         tempSkill2 = new Skill();
@@ -80,13 +85,11 @@ public class SetBuilderFragment extends Fragment {
             ArrayList<String> skill3Level = new ArrayList<>();
 
             for (Skill skill : skills) {
-                String skillName = getString(getResources().getIdentifier(skill.getSkillName(), "string",
-                        requireActivity().getPackageName()));
+                String skillName =  getString(getResources().getIdentifier(skill.getSkillName(), "string", getContext().getPackageName()));
                 if(skillName.contains("("))
                     skillName = skillName.substring(0, skillName.indexOf("("));
                 skillNames.add(skillName);
             }
-
             ArrayAdapter<String> skillAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skillNames);
             ArrayAdapter<String> skill1LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill1Level);
             ArrayAdapter<String> skill2LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill2Level);
@@ -227,7 +230,6 @@ public class SetBuilderFragment extends Fragment {
         skillViewModel = null;
         armorViewModel = null;
         armorSetViewModel = null;
-        setBuilderFragmentManager = null;
     }
 
     //Temp function for generating the armor sets
