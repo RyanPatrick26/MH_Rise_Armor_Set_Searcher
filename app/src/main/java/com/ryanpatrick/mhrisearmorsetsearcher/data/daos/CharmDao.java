@@ -19,6 +19,9 @@ public interface CharmDao {
     @Update
     void update(Charm charm);
 
+    @Query("SELECT EXISTS (SELECT 1 FROM charm_tbl WHERE charmId == :id)")
+    boolean exists(long id);
+
     @Query("SELECT * FROM charm_tbl")
     LiveData<List<Charm>> getAllCharms();
 

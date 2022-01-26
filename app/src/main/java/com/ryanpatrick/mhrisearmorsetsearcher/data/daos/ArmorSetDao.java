@@ -22,6 +22,9 @@ public interface ArmorSetDao {
     @Query("DELETE FROM armor_set_tbl")
     void deleteAll();
 
+    @Query("SELECT EXISTS (SELECT 1 FROM armor_set_tbl WHERE id == :id)")
+    boolean exists(long id);
+
     @Delete
     void delete(ArmorSet set);
 

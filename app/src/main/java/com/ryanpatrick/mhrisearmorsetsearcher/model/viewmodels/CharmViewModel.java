@@ -24,16 +24,16 @@ public class CharmViewModel extends AndroidViewModel {
     public LiveData<List<Charm>> getAllCharms(){
         return charms;
     }
-
     public LiveData<Charm> getCharm(long id){
         return repository.getCharm(id);
     }
-
     public void deleteCharm(Charm charm){
         repository.deleteCharm(charm);
     }
-
     public void updateCharm(Charm charm){
         repository.updateCharm(charm);
+    }
+    public boolean exists(long id){
+        return repository.exists(id);
     }
 }
