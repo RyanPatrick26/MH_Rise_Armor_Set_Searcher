@@ -7,37 +7,31 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "skills_tbl")
 public class Skill {
-	@PrimaryKey(autoGenerate = true)
-	private long skillId;
+	@PrimaryKey
 	@ColumnInfo(name = "skill_name")
 	private String skillName;
 	@ColumnInfo(name = "max_level")
 	private int skillMaxLevel;
 	@ColumnInfo(name="description")
-	private int descriptionResourceId;
+	private String description;
 	@Ignore
 	private int skillLevel;
+
+	@Ignore
+	public Skill(){}
 
 	public Skill(String skillName, int skillLevel) {
 		this.skillName = skillName;
 		this.skillLevel = skillLevel;
 	}
 
-	public Skill(String skillName, int skillMaxLevel, int descriptionResourceId) {
+	public Skill(String skillName, int skillMaxLevel, String description) {
 		this.skillName = skillName;
 		this.skillMaxLevel = skillMaxLevel;
-		this.descriptionResourceId = descriptionResourceId;
+		this.description = description;
 	}
 
 	//region getters and setters
-	public long getSkillId() {
-		return skillId;
-	}
-
-	public void setSkillId(long skillId) {
-		this.skillId = skillId;
-	}
-
 	public String getSkillName() {
 		return skillName;
 	}
@@ -62,12 +56,12 @@ public class Skill {
 		this.skillLevel = skillLevel;
 	}
 
-	public int getDescriptionResourceId() {
-		return descriptionResourceId;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescriptionResourceId(int descriptionResourceId) {
-		this.descriptionResourceId = descriptionResourceId;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	//endregion
