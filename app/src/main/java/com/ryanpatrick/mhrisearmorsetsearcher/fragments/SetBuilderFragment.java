@@ -99,7 +99,6 @@ public class SetBuilderFragment extends Fragment {
                     Skill skill = skills.get(position);
                     skill1Level.clear();
 
-                    tempSkill1.setSkillId(skill.getSkillId());
                     tempSkill1.setSkillName(skill.getSkillName());
                     tempSkill1.setSkillMaxLevel(skill.getSkillMaxLevel());
 
@@ -121,7 +120,6 @@ public class SetBuilderFragment extends Fragment {
                     Skill skill = skills.get(position);
                     skill2Level.clear();
 
-                    tempSkill2.setSkillId(skill.getSkillId());
                     tempSkill2.setSkillName(skill.getSkillName());
                     tempSkill2.setSkillMaxLevel(skill.getSkillMaxLevel());
 
@@ -144,7 +142,6 @@ public class SetBuilderFragment extends Fragment {
                     Skill skill = skills.get(position);
                     skill3Level.clear();
 
-                    tempSkill3.setSkillId(skill.getSkillId());
                     tempSkill3.setSkillName(skill.getSkillName());
                     tempSkill3.setSkillMaxLevel(skill.getSkillMaxLevel());
 
@@ -695,10 +692,7 @@ public class SetBuilderFragment extends Fragment {
             setList.add(set2);
             setList.add(set3);
 
-            ApplicationDatabase.dbHandler.post(() -> {
-                adapter.notifyDataSetChanged();
-                //binding.noSetsTextView.setVisibility(View.GONE);
-            });
+            ApplicationDatabase.dbHandler.post(() -> adapter.notifyDataSetChanged());
 
         });
 
