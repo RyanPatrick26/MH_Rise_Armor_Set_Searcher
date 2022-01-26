@@ -1399,5 +1399,11 @@
     <string name="charm_list">Charm List</string>
     <string name="add_charm">Add Charm</string>
     <string name="no_charms">No Charms Found</string>
+    <string name="save_charm">Save Charm</string>
+    <string name="build_charm">Create a Charm</string>
+    <string name="slot_1">Slot 1:</string>
+    <string name="slot_2">Slot 2:</string>
+    <string name="slot_3">Slot 3:</string>
+    <string name="your_charms">Your Charms</string>
     <!--endregion-->
 </resources>

@@ -21,7 +21,6 @@ import java.util.List;
 
 public class ArmorListFragment extends Fragment {
     FragmentArmorListBinding binding;
-    private List<Armor> armorList;
     private ArmorListAdapter adapter;
     ArmorViewModel viewModel;
 
@@ -42,10 +41,6 @@ public class ArmorListFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(ArmorViewModel.class);
 
         viewModel.getAllArmor().observe(getViewLifecycleOwner(), armorList -> {
-            List<Armor> toRemove = new ArrayList<>();
-
-            armorList.removeAll(toRemove);
-
             adapter = new ArmorListAdapter(armorList, getContext());
             binding.armorListView.setAdapter(adapter);
         });

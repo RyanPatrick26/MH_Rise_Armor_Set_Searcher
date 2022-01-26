@@ -27,6 +27,9 @@ public class CharmViewModel extends AndroidViewModel {
     public LiveData<Charm> getCharm(long id){
         return repository.getCharm(id);
     }
+    public void addCharm(Charm charm){
+        repository.insertCharm(charm);
+    }
     public void deleteCharm(Charm charm){
         repository.deleteCharm(charm);
     }

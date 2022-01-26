@@ -12,10 +12,7 @@
             android:id="@+id/menu_set_list"
             android:title="@string/set_list" />
         <item
-            android:id="@+id/menu_charm_list"
-            android:title="@string/charm_list" />
-        <item
-            android:id="@+id/menu_add_charm"
-            android:title="@string/add_charm" />
+            android:id="@+id/menu_your_charms"
+            android:title="@string/your_charms" />
     </group>
 </menu>

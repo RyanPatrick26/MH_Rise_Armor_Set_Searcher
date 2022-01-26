@@ -1,8 +1,8 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -20,6 +20,7 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
     Context context;
 
     public CharmListAdapter(List<Charm> charmList, Context context) {
+        Log.i("here", "CharmListAdapter: ");
         this.charmList = charmList;
         this.context = context;
     }
@@ -32,16 +33,29 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull CharmListAdapter.ViewHolder holder, int position) {
+        Log.i("here", "onBindViewHolder: ");
         CharmListItemBinding binding = holder.binding;
         Charm charm = charmList.get(position);
         ImageView[] slotImageViews = new ImageView[]{binding.slotLayout.slot1, binding.slotLayout.slot2, binding.slotLayout.slot3};
 
-        binding.skill1Layout.skillName.setText(context.getResources()
-                .getIdentifier(charm.getSkill1().getSkillName(), "string", context.getPackageName()));
-        binding.skill1Layout.skillLevel.setText(Integer.toString(charm.getSkill1().getSkillLevel()));
-        binding.skill2Layout.skillName.setText(context.getResources()
-                .getIdentifier(charm.getSkill2().getSkillName(), "string", context.getPackageName()));
-        binding.skill2Layout.skillLevel.setText(Integer.toString(charm.getSkill2().getSkillLevel()));
+        if(charm.getSkill1().getSkillName().equals("----")){
+            binding.skill1Layout.skillName.setText("----");
+        }
+        else{
+            binding.skill1Layout.skillName.setText(context.getResources()
+                    .getIdentifier(charm.getSkill1().getSkillName(), "string", context.getPackageName()));
+        }
+        if(charm.getSkill1().getSkillLevel() > 0)
+            binding.skill1Layout.skillLevel.setText(Integer.toString(charm.getSkill1().getSkillLevel()));
+        if (charm.getSkill2().getSkillName().equals("----")) {
+            binding.skill2Layout.skillName.setText("----");
+        }
+        else{
+            binding.skill2Layout.skillName.setText(context.getResources()
+                    .getIdentifier(charm.getSkill2().getSkillName(), "string", context.getPackageName()));
+        }
+        if(charm.getSkill2().getSkillLevel() > 0)
+            binding.skill2Layout.skillLevel.setText(Integer.toString(charm.getSkill2().getSkillLevel()));
 
         for (int i = 0; i < slotImageViews.length; i++) {
                 switch (charm.getSlots()[i]){
@@ -67,7 +81,7 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
 
     @Override
     public int getItemCount() {
-        return 0;
+        return charmList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

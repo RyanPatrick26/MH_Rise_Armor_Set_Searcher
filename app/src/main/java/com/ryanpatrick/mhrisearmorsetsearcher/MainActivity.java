@@ -14,6 +14,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.databinding.ActivityMainBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.fragments.ArmorListFragment;
 import com.ryanpatrick.mhrisearmorsetsearcher.fragments.ArmorSetListFragment;
 import com.ryanpatrick.mhrisearmorsetsearcher.fragments.BuilderHostFragment;
+import com.ryanpatrick.mhrisearmorsetsearcher.fragments.CharmsFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     public static final String TAG = "here";
@@ -66,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .addToBackStack(null)
                         .commit();
                 break;
+            case R.id.menu_your_charms:
+                fm.beginTransaction().replace(R.id.fragment_container, new CharmsFragment())
+                        .addToBackStack(null)
+                        .commit();
         }
 
         binding.drawerView.closeDrawer(GravityCompat.START);

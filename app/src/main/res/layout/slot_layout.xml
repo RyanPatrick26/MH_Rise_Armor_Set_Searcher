@@ -23,7 +23,6 @@
 
     <ImageView
         android:id="@+id/slot3"
-        tools:srcCompat="@drawable/slot_lvl_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
