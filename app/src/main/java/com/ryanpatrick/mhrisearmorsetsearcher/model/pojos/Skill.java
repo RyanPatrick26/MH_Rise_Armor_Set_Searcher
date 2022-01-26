@@ -1,5 +1,6 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -8,6 +9,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "skills_tbl")
 public class Skill {
 	@PrimaryKey
+	@NonNull
 	@ColumnInfo(name = "skill_name")
 	private String skillName;
 	@ColumnInfo(name = "max_level")
@@ -18,25 +20,28 @@ public class Skill {
 	private int skillLevel;
 
 	@Ignore
-	public Skill(){}
+	public Skill(){
+		skillName = "";
+	}
 
-	public Skill(String skillName, int skillLevel) {
+	public Skill(@NonNull String skillName, int skillLevel) {
 		this.skillName = skillName;
 		this.skillLevel = skillLevel;
 	}
 
-	public Skill(String skillName, int skillMaxLevel, String description) {
+	public Skill(@NonNull String skillName, int skillMaxLevel, String description) {
 		this.skillName = skillName;
 		this.skillMaxLevel = skillMaxLevel;
 		this.description = description;
 	}
 
 	//region getters and setters
+	@NonNull
 	public String getSkillName() {
 		return skillName;
 	}
 
-	public void setSkillName(String skillName) {
+	public void setSkillName(@NonNull String skillName) {
 		this.skillName = skillName;
 	}
 

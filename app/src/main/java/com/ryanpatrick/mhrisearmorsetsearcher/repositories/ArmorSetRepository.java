@@ -11,8 +11,8 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
 import java.util.List;
 
 public class ArmorSetRepository {
-    private ArmorSetDao armorSetDao;
-    private LiveData<List<ArmorSet>> armorSetList;
+    private final ArmorSetDao armorSetDao;
+    private final LiveData<List<ArmorSet>> armorSetList;
 
     public ArmorSetRepository(Application application) {
         ApplicationDatabase db = ApplicationDatabase.getInstance(application);

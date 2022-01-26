@@ -683,7 +683,7 @@
         <item>1. Reduces damge from hellfire</item>
         <item>2. Increases damage from hellfire blasts</item>
         <item>3. Inflicts hellfire blight when monsters are enraged</item>
-        <item>Effects persists for one minute after a monster's rage has subsided</item>
+        <item>Effects persists for one minute after a monster\'s rage has subsided</item>
     </string-array>
     <string-array name="jump_master_desc">
         <item>Prevents attacks from knocking you back during a jump</item>
@@ -834,10 +834,10 @@
         <item>3. Grants elemental damage +15% while active</item>
 	</string-array>
     <string-array name="artillery_skill_desc">
-		<item>Strengthens explosive attacks like shells, wyvern's fire, charge blade phial attacks and sticky ammo</item>
-        <item>1. Increases power of attack by 10% and reduces wyvern's fire cooldown by 15%</item>
-        <item>2. Increases power of attack by 20% and reduces wyvern's fire cooldown by 30%</item>
-        <item>3. Increases power of attack by 30% and reduces wyvern's fire cooldown by 50%</item>
+		<item>Strengthens explosive attacks like shells, wyvern\'s fire, charge blade phial attacks and sticky ammo</item>
+        <item>1. Increases power of attack by 10% and reduces wyvern\'s fire cooldown by 15%</item>
+        <item>2. Increases power of attack by 20% and reduces wyvern\'s fire cooldown by 30%</item>
+        <item>3. Increases power of attack by 30% and reduces wyvern\'s fire cooldown by 50%</item>
 	</string-array>
     <string-array name="marathon_runner_desc">
         <item>Slows down stamina depletion of actions which continuously drain stamina (such as dashing)</item>
@@ -871,7 +871,7 @@
         <item>2. Increases power of bowgun special ammo and dragon piercer by 20%</item>
 	</string-array>
     <string-array name="load_shells_desc">
-		<item>Improves reloading and increases the gunlance's shell capacity and charge blade's phial capacity</item>
+		<item>Improves reloading and increases the gunlance\'s shell capacity and charge blade\'s phial capacity</item>
         <item>1. Increases ammo and coating reload speed</item>
         <item>2. Gunlance loading capacity +1, increases charge blade phials</item>
 	</string-array>
@@ -1104,7 +1104,7 @@
         <item>@string/activate</item>
 	</string-array>
     <string-array name="stamina_thief_desc">
-        <item>Increases certain attacks' ability to exhaust monsters</item>
+        <item>Increases certain attacks\' ability to exhaust monsters</item>
         <item>1. Exhaust power +20%</item>
         <item>2. Exhaust power +30%</item>
         <item>3. Exhaust power +40%</item>
@@ -1299,7 +1299,7 @@
 		<item>Gain the power of the elder dragon Chameleos</item>
         <item>1. Sometimes increases the effects of Spiribirds</item>
         <item>2. Also negates minor and major wind pressure</item>
-        <item>3. Also extends the duration of your poison's effect on monsters</item>
+        <item>3. Also extends the duration of your poison\'s effect on monsters</item>
         <item>4. Also negates all wind pressure</item>
 	</string-array>
     <string-array name="kushala_blessing_desc">
