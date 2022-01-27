@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch(item.getItemId()){
             case R.id.menu_armor_list:
                 fm.beginTransaction().replace(R.id.fragment_container, new ArmorListFragment())
-                        .addToBackStack(null)
                         .commit();
                 break;
             case R.id.menu_set_builder:
@@ -64,12 +63,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.menu_set_list:
                 fm.beginTransaction().replace(R.id.fragment_container, new ArmorSetListFragment())
-                        .addToBackStack(null)
                         .commit();
                 break;
             case R.id.menu_your_charms:
                 fm.beginTransaction().replace(R.id.fragment_container, new CharmsFragment())
-                        .addToBackStack(null)
                         .commit();
         }
 

@@ -1221,7 +1221,7 @@
         <item>Increases attack by 10% and defense by 15% with each use</item>
     </string-array>
     <string-array name="geologist_desc">
-        <item>Increases the number of times ou can use a gathering point</item>
+        <item>Increases the number of times you can use a gathering point</item>
         <item>1: Allows you to gather one extra time from bonepiles</item>
         <item>2: Allows you to gather one extra time from gathering points</item>
         <item>3: Allows you to gather one extra time from mining outcrops</item>

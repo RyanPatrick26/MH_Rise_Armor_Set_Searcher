@@ -31,14 +31,24 @@ public class SkillDetailsAdapter extends RecyclerView.Adapter<SkillDetailsAdapte
     @NonNull
     @Override
     public SkillDetailsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.spinner_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.skill_description_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SkillDetailsAdapter.ViewHolder holder, int position) {
         String description = descriptionList.get(position);
+
+        if(position == 0){
+            holder.levelTextView.setVisibility(View.GONE);
+        }
+        else{
+            String levelString = description.substring(0,3);
+            description = description.substring(3);
+            holder.levelTextView.setText(levelString);
+        }
         holder.descriptionTextView.setText(description);
+
         if(position > skillLevel){
             holder.descriptionTextView.setTextColor(Color.GRAY);
         }
@@ -61,10 +71,11 @@ public class SkillDetailsAdapter extends RecyclerView.Adapter<SkillDetailsAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView descriptionTextView;
-
+        public TextView levelTextView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            descriptionTextView = itemView.findViewById(R.id.spinner_text);
+            levelTextView = itemView.findViewById(R.id.skill_level_text_view);
+            descriptionTextView = itemView.findViewById(R.id.skill_description_text_view);
         }
     }
 }

@@ -48,6 +48,7 @@ public class BuilderHostFragment extends Fragment implements SetListAdapter.OnSe
     public void onSetClick(int position, List<ArmorSet> setList) {
         setViewModel.setTempSet(setList.get(position));
         builderFragmentManager.beginTransaction()
-                .replace(R.id.builder_fragment_container, new SetDetailsFragment()).commit();
+                .replace(R.id.builder_fragment_container, new SetDetailsFragment())
+                .commit();
     }
 }
