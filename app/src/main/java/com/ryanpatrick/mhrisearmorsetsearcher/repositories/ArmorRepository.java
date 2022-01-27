@@ -35,10 +35,8 @@ public class ArmorRepository {
     public LiveData<List<Armor>> getAllArmorOfType(ArmorType type, Gender gender){
         return armorDao.getAllArmorOfType(type, gender);
     }
-    public LiveData<List<Armor>> getAllArmorOfRarity(int[] rarity, Gender gender){
+    public LiveData<List<Armor>> getAllArmorOfRarity(int[] rarity, Gender gender) {
         return armorDao.getAllArmorOfRarity(rarity, gender);
-    public LiveData<List<Armor>> getAllArmorOfRarity(int[] rarities, Gender gender){
-        return armorDao.getAllArmorOfRarity(rarities, gender);
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() -> {
