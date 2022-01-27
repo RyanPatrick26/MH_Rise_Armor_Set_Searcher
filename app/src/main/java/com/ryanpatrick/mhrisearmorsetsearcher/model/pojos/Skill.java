@@ -8,45 +8,44 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "skills_tbl")
 public class Skill {
-	@PrimaryKey(autoGenerate = true)
-	private long id;
+	@PrimaryKey
+	@NonNull
 	@ColumnInfo(name = "skill_name")
 	private String skillName;
 	@ColumnInfo(name = "max_level")
 	private int skillMaxLevel;
 	@ColumnInfo(name="description")
 	private String description;
+	@ColumnInfo(name = "on_charm")
+	boolean onCharm;
 	@Ignore
 	private int skillLevel;
 
 	@Ignore
-	public Skill(){	}
+	public Skill(){
+		skillName = "";
+	}
 
+	@Ignore
 	public Skill(@NonNull String skillName, int skillLevel) {
 		this.skillName = skillName;
 		this.skillLevel = skillLevel;
 	}
 
-	public Skill(String skillName, int skillMaxLevel, String description) {
+	public Skill(@NonNull String skillName, int skillMaxLevel, String description, boolean onCharm) {
 		this.skillName = skillName;
 		this.skillMaxLevel = skillMaxLevel;
 		this.description = description;
+		this.onCharm = onCharm;
 	}
 
 	//region getters and setters
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
+	@NonNull
 	public String getSkillName() {
 		return skillName;
 	}
 
-	public void setSkillName( String skillName) {
+	public void setSkillName(@NonNull String skillName) {
 		this.skillName = skillName;
 	}
 
@@ -74,5 +73,12 @@ public class Skill {
 		this.description = description;
 	}
 
+	public boolean isOnCharm() {
+		return onCharm;
+	}
+
+	public void setOnCharm(boolean onCharm) {
+		this.onCharm = onCharm;
+	}
 	//endregion
 }
