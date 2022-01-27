@@ -34,6 +34,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SetBuilderFragment extends Fragment{
+    //region class variables
     public static final String TAG = "here";
     FragmentSetBuilderBinding binding;
     List<ArmorSet> setList;
@@ -50,6 +51,7 @@ public class SetBuilderFragment extends Fragment{
     String gender = "";
 
     boolean rarity4, rarity5, rarity6, rarity7;
+    //endregion
 
     public SetBuilderFragment() {
         // Required empty public constructor
