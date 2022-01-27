@@ -38,6 +38,19 @@
             android:id="@+id/slot_layout"
             layout="@layout/slot_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp" />
+
+        <ImageButton
+            android:id="@+id/delete_charm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_baseline_delete_30" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

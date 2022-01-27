@@ -22,6 +22,7 @@ public class ArmorViewModel extends AndroidViewModel {
         armorRepository = new ArmorRepository(application);
         ALL_ARMOR = armorRepository.getAllArmor();
     }
+
     public LiveData<List<Armor>> getAllArmor(){
         return ALL_ARMOR;
     }

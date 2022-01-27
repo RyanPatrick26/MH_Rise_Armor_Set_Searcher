@@ -3,6 +3,7 @@ package com.ryanpatrick.mhrisearmorsetsearcher.adapters;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -12,17 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.CharmListItemBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
+import com.ryanpatrick.mhrisearmorsetsearcher.repositories.CharmRepository;
 
 import java.util.List;
 
 public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.ViewHolder>{
     List<Charm> charmList;
     Context context;
+    CharmRepository repository;
 
     public CharmListAdapter(List<Charm> charmList, Context context) {
         Log.i("here", "CharmListAdapter: ");
         this.charmList = charmList;
         this.context = context;
+        repository = new CharmRepository(context);
     }
 
     @NonNull
@@ -40,6 +44,7 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
 
         if(charm.getSkill1().getSkillName().equals("----")){
             binding.skill1Layout.skillName.setText("----");
+            binding.skill1Layout.skillName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         }
         else{
             binding.skill1Layout.skillName.setText(context.getResources()
@@ -49,6 +54,7 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
             binding.skill1Layout.skillLevel.setText(Integer.toString(charm.getSkill1().getSkillLevel()));
         if (charm.getSkill2().getSkillName().equals("----")) {
             binding.skill2Layout.skillName.setText("----");
+            binding.skill2Layout.skillName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         }
         else{
             binding.skill2Layout.skillName.setText(context.getResources()
@@ -75,6 +81,8 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
                         break;
                 }
             }
+
+        binding.deleteCharmButton.setOnClickListener(v -> repository.deleteCharm(charm));
 
     }
 

@@ -48,7 +48,7 @@ public class CharmsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //region instantiate variables for the fragment
         skillLevels = new String[]{"0", "1", "2", "3", "4"};
@@ -56,6 +56,8 @@ public class CharmsFragment extends Fragment {
         charmViewModel = new ViewModelProvider(requireActivity()).get(CharmViewModel.class);
         skillViewModel = new ViewModelProvider(requireActivity()).get(SkillViewModel.class);
         binding = FragmentCharmsBinding.inflate(inflater, container, false);
+        skill1Name = "----";
+        skill2Name = "----";
         //endregion
 
         //region create the array adapters for the spinners

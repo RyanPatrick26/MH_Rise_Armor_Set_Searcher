@@ -17,7 +17,7 @@ public class CharmViewModel extends AndroidViewModel {
 
     public CharmViewModel(@NonNull Application application) {
         super(application);
-        repository = new CharmRepository(application);
+        repository = new CharmRepository(application.getApplicationContext());
         charms = repository.getAllCharms();
     }
 

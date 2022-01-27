@@ -1,6 +1,7 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.repositories;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
@@ -15,8 +16,8 @@ public class CharmRepository {
     private final CharmDao charmDao;
     private final LiveData<List<Charm>> charms;
 
-    public CharmRepository(Application application){
-        ApplicationDatabase db = ApplicationDatabase.getInstance(application.getApplicationContext());
+    public CharmRepository(Context context){
+        ApplicationDatabase db = ApplicationDatabase.getInstance(context);
         charmDao = db.charmDao();
         charms = charmDao.getAllCharms();
     }
