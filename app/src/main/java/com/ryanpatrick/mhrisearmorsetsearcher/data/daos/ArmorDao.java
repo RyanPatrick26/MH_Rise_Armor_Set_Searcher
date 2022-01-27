@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Transaction;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
@@ -36,6 +35,6 @@ public interface ArmorDao {
             "ORDER BY rarity DESC, armorId ASC")
     LiveData<List<Armor>> getAllArmorOfType(ArmorType armorType, Gender gender);
 
-    @Query("SELECT * FROM armor_tbl WHERE rarity == :rarity & gender IN (:gender, 'Both')")
-    LiveData<List<Armor>> getAllArmorOfRarity(int rarity, Gender gender);
+    @Query("SELECT * FROM armor_tbl WHERE rarity IN (:rarity) & gender IN (:gender, 'Both')")
+    LiveData<List<Armor>> getAllArmorOfRarity(int[] rarity, Gender gender);
 }
