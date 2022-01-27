@@ -22,13 +22,14 @@ public class ArmorViewModel extends AndroidViewModel {
         armorRepository = new ArmorRepository(application);
         ALL_ARMOR = armorRepository.getAllArmor();
     }
-
     public LiveData<List<Armor>> getAllArmor(){
         return ALL_ARMOR;
     }
     public LiveData<List<Armor>> getAllArmorOfType(ArmorType armorType, Gender gender){return armorRepository.getAllArmorOfType(armorType, gender);}
     public LiveData<List<Armor>> getAllArmorOfRarity(int[] rarities, Gender gender){return armorRepository.getAllArmorOfRarity(rarities, gender);}
     public Armor getArmor(long id){return armorRepository.getArmor(id);}
+    public LiveData<List<Armor>> getAllArmorOfRarity(int[] rarities, Gender gender){return armorRepository.getAllArmorOfRarity(rarities, gender);}
+    public LiveData<Armor> getArmor(long id){return armorRepository.getArmor(id);}
     public void updateDb(){
         armorRepository.updateDb();
     }
