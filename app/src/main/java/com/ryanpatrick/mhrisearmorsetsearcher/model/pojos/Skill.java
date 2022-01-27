@@ -17,7 +17,7 @@ public class Skill {
 	@ColumnInfo(name="description")
 	private String description;
 	@ColumnInfo(name = "on_charm")
-	boolean onCharm;
+	private boolean onCharm;
 	@Ignore
 	private int skillLevel;
 
@@ -26,7 +26,6 @@ public class Skill {
 		skillName = "";
 	}
 
-	@Ignore
 	public Skill(@NonNull String skillName, int skillLevel) {
 		this.skillName = skillName;
 		this.skillLevel = skillLevel;
