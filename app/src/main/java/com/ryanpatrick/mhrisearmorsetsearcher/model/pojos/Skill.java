@@ -16,8 +16,6 @@ public class Skill {
 	private int skillMaxLevel;
 	@ColumnInfo(name="description")
 	private String description;
-	@ColumnInfo(name = "on_charm")
-	boolean onCharm;
 	@Ignore
 	private int skillLevel;
 
@@ -26,17 +24,15 @@ public class Skill {
 		skillName = "";
 	}
 
-	@Ignore
 	public Skill(@NonNull String skillName, int skillLevel) {
 		this.skillName = skillName;
 		this.skillLevel = skillLevel;
 	}
 
-	public Skill(@NonNull String skillName, int skillMaxLevel, String description, boolean onCharm) {
+	public Skill(@NonNull String skillName, int skillMaxLevel, String description) {
 		this.skillName = skillName;
 		this.skillMaxLevel = skillMaxLevel;
 		this.description = description;
-		this.onCharm = onCharm;
 	}
 
 	//region getters and setters
@@ -73,12 +69,5 @@ public class Skill {
 		this.description = description;
 	}
 
-	public boolean isOnCharm() {
-		return onCharm;
-	}
-
-	public void setOnCharm(boolean onCharm) {
-		this.onCharm = onCharm;
-	}
 	//endregion
 }
