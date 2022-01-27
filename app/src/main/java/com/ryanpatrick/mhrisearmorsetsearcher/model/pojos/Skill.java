@@ -43,39 +43,30 @@ public class Skill {
 	public String getSkillName() {
 		return skillName;
 	}
-
 	public void setSkillName(@NonNull String skillName) {
 		this.skillName = skillName;
 	}
-
 	public int getSkillMaxLevel() {
 		return skillMaxLevel;
 	}
-
 	public void setSkillMaxLevel(int skillMaxLevel) {
 		this.skillMaxLevel = skillMaxLevel;
 	}
-
 	public int getSkillLevel() {
 		return skillLevel;
 	}
-
 	public void setSkillLevel(int skillLevel) {
 		this.skillLevel = skillLevel;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 	public boolean isOnCharm() {
 		return onCharm;
 	}
-
 	public void setOnCharm(boolean onCharm) {
 		this.onCharm = onCharm;
 	}

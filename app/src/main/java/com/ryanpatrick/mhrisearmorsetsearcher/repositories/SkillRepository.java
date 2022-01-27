@@ -27,6 +27,9 @@ public class SkillRepository {
     public LiveData<Skill> getSkill(String name){
         return skillDao.getSkill(name);
     }
+    public LiveData<List<Skill>> getSkillsOnCharms(){
+        return skillDao.getSkillsOnCharms();
+    }
     public void insert(Skill skill){
         ApplicationDatabase.databaseWriter.execute(() -> skillDao.insert(skill));
     }
