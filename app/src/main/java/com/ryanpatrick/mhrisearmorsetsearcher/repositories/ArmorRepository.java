@@ -2,7 +2,6 @@ package com.ryanpatrick.mhrisearmorsetsearcher.repositories;
 
 import android.app.Application;
 import android.content.Context;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -36,7 +35,7 @@ public class ArmorRepository {
     public LiveData<List<Armor>> getAllArmorOfType(ArmorType type, Gender gender){
         return armorDao.getAllArmorOfType(type, gender);
     }
-    public LiveData<List<Armor>> getAllArmorOfRarity(int rarity, Gender gender){
+    public LiveData<List<Armor>> getAllArmorOfRarity(int[] rarity, Gender gender) {
         return armorDao.getAllArmorOfRarity(rarity, gender);
     }
     public void updateDb(){
