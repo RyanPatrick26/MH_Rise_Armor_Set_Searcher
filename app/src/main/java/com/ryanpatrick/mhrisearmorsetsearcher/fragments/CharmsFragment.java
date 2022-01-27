@@ -199,6 +199,8 @@ public class CharmsFragment extends Fragment {
         charmViewModel.getAllCharms().observe(getViewLifecycleOwner(), charms -> {
             if(charms.size() > 0)
                 binding.noCharmsText.setVisibility(View.GONE);
+            else
+                binding.noCharmsText.setVisibility(View.VISIBLE);
             adapter = new CharmListAdapter(charms, getContext());
             binding.charmListView.setAdapter(adapter);
         });
