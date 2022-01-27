@@ -29,18 +29,19 @@ public class ArmorRepository {
     public void insert(Armor armor){
         ApplicationDatabase.databaseWriter.execute(() -> armorDao.insert(armor));
     }
-    public LiveData<Armor> getArmor(long id){
+    public Armor getArmor(long id){
         return armorDao.getArmor(id);
     }
     public LiveData<List<Armor>> getAllArmorOfType(ArmorType type, Gender gender){
         return armorDao.getAllArmorOfType(type, gender);
     }
-    public LiveData<List<Armor>> getAllArmorOfRarity(int[] rarities, Gender gender){
-        return armorDao.getAllArmorOfRarity(rarities, gender);
+    public LiveData<List<Armor>> getAllArmorOfRarity(int[] rarity, Gender gender) {
+        return armorDao.getAllArmorOfRarity(rarity, gender);
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() -> {
-            if(armorDao.getArmorList().size() < DbConstants.prepopulateArmors.length){
+            if(armorDao.getArmorList().size() < DbConstants.prepopulateArmors.length &&
+                    armorDao.getArmorList().size() > 0){
                 List<Armor> updateList = Arrays.asList(DbConstants.prepopulateArmors);
                 updateList.removeAll(updateList.subList(0, armorDao.getArmorList().size()));
 

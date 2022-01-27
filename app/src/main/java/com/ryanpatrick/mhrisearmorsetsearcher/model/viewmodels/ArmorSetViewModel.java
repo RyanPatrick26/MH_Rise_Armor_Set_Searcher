@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.repositories.ArmorSetRepository;
 
@@ -14,6 +15,7 @@ import java.util.List;
 public class ArmorSetViewModel extends AndroidViewModel{
     private ArmorSetRepository armorSetRepository;
     private final LiveData<List<ArmorSet>> ALL_ARMOR_SETS;
+    private ArmorSet tempSet;
 
     public ArmorSetViewModel(@NonNull Application application) {
         super(application);
@@ -35,5 +37,16 @@ public class ArmorSetViewModel extends AndroidViewModel{
     }
     public boolean exists(long id){
         return armorSetRepository.exists(id);
+    }
+    public void deleteArmorSet(ArmorSet set){
+        armorSetRepository.deleteArmorSet(set);
+    }
+
+    public ArmorSet getTempSet() {
+        return tempSet;
+    }
+
+    public void setTempSet(ArmorSet tempSet) {
+        this.tempSet = tempSet;
     }
 }

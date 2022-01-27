@@ -27,7 +27,7 @@ public class ArmorViewModel extends AndroidViewModel {
     }
     public LiveData<List<Armor>> getAllArmorOfType(ArmorType armorType, Gender gender){return armorRepository.getAllArmorOfType(armorType, gender);}
     public LiveData<List<Armor>> getAllArmorOfRarity(int[] rarities, Gender gender){return armorRepository.getAllArmorOfRarity(rarities, gender);}
-    public LiveData<Armor> getArmor(long id){return armorRepository.getArmor(id);}
+    public Armor getArmor(long id){return armorRepository.getArmor(id);}
     public void updateDb(){
         armorRepository.updateDb();
     }

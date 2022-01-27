@@ -35,7 +35,8 @@ public class SkillRepository {
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() -> {
-            if (skillDao.getSkillsList().size() < DbConstants.prepopulateSkills.length) {
+            if (skillDao.getSkillsList().size() < DbConstants.prepopulateSkills.length &&
+                    skillDao.getSkillsList().size() > 0) {
                 List<Skill> updateList = Arrays.asList(DbConstants.prepopulateSkills);
                 updateList.removeAll(updateList.subList(0, skillDao.getSkillsList().size()));
                 skillDao.insertAll((Skill[]) updateList.toArray());
