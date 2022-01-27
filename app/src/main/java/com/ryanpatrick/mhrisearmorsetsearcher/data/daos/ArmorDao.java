@@ -36,6 +36,6 @@ public interface ArmorDao {
             "ORDER BY rarity DESC, armorId ASC")
     LiveData<List<Armor>> getAllArmorOfType(ArmorType armorType, Gender gender);
 
-    @Query("SELECT * FROM armor_tbl WHERE rarity == :rarity & gender IN (:gender, 'Both')")
-    LiveData<List<Armor>> getAllArmorOfRarity(int rarity, Gender gender);
+    @Query("SELECT * FROM armor_tbl WHERE rarity IN (:rarity) & gender IN (:gender, 'Both')")
+    LiveData<List<Armor>> getAllArmorOfRarity(int[] rarity, Gender gender);
 }
