@@ -2,6 +2,8 @@ package com.ryanpatrick.mhrisearmorsetsearcher.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.adapters.ArmorListAdapter;
@@ -56,8 +59,24 @@ public class CharmsFragment extends Fragment {
         //endregion
 
         //region create the array adapters for the spinners
-        ArrayAdapter<String> skillLevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skillLevels);
-        ArrayAdapter<String> slotLevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, slotLevels);
+        ArrayAdapter<String> skillLevelAdapter =
+                new ArrayAdapter<String>(getContext(), R.layout.spinner_item, skillLevels){
+                    @Override
+                    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                        TextView textView = (TextView) super.getDropDownView(position, convertView, parent);
+                        textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                        return textView;
+                    }
+                };
+        ArrayAdapter<String> slotLevelAdapter = new ArrayAdapter<String>(getContext(),
+                R.layout.spinner_item, slotLevels){
+                    @Override
+                    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                        TextView textView = (TextView) super.getDropDownView(position, convertView, parent);
+                        textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                        return textView;
+                    }
+                };
         //endregion
 
         //region set the adapters and select listeners for the skill level and slot spinners

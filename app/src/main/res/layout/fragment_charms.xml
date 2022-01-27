@@ -37,10 +37,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
+        android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/textView16"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
         app:layout_constraintWidth_percent="0.55"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:listitem="@layout/spinner_item" />
 
     <TextView
         android:id="@+id/textView11"
@@ -59,6 +61,7 @@
         android:id="@+id/skill1_level_spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:dropDownWidth="25dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView11"
@@ -105,6 +108,7 @@
         android:id="@+id/skill2_level_spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:dropDownWidth="25dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView17"
@@ -135,18 +139,19 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/slot1_spinner"
-        app:layout_constraintWidth_percent="0.15" />
+        app:layout_constraintWidth_percent="0.14" />
 
     <Spinner
         android:id="@+id/slot1_spinner"
         android:layout_width="0dp"
         android:layout_height="24dp"
         android:layout_marginTop="4dp"
+        android:dropDownWidth="25dp"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toStartOf="@+id/textView19"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/divider3"
-        app:layout_constraintWidth_percent="0.15"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
@@ -162,18 +167,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/slot1_spinner"
         app:layout_constraintTop_toTopOf="@+id/slot2_spinner"
-        app:layout_constraintWidth_percent="0.15" />
+        app:layout_constraintWidth_percent="0.14" />
 
     <Spinner
         android:id="@+id/slot2_spinner"
         android:layout_width="0dp"
         android:layout_height="24dp"
         android:layout_marginTop="4dp"
+        android:dropDownWidth="25dp"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toStartOf="@+id/textView20"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/divider3"
-        app:layout_constraintWidth_percent="0.15"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
@@ -189,18 +195,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/slot2_spinner"
         app:layout_constraintTop_toTopOf="@+id/slot3_spinner"
-        app:layout_constraintWidth_percent="0.15" />
+        app:layout_constraintWidth_percent="0.14" />
 
     <Spinner
         android:id="@+id/slot3_spinner"
         android:layout_width="0dp"
         android:layout_height="24dp"
         android:layout_marginTop="4dp"
+        android:dropDownWidth="25dp"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/textView20"
         app:layout_constraintTop_toBottomOf="@+id/divider3"
-        app:layout_constraintWidth_percent="0.15"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <View
