@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,11 +82,13 @@ public class SetBuilderFragment extends Fragment{
             ArrayList<String> skill3Level = new ArrayList<>();
 
             for (Skill skill : skills) {
+                Log.i(TAG, "onCreateView: " + skill.getSkillName());
                 String skillName =  getString(getResources().getIdentifier(skill.getSkillName(), "string", requireActivity().getPackageName()));
                 if(skillName.contains("("))
                     skillName = skillName.substring(0, skillName.indexOf("("));
                 skillNames.add(skillName);
             }
+            skillNames.add(0, "----");
             ArrayAdapter<String> skillAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skillNames);
             ArrayAdapter<String> skill1LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill1Level);
             ArrayAdapter<String> skill2LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill2Level);
@@ -95,14 +98,20 @@ public class SetBuilderFragment extends Fragment{
             binding.skill1Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    Skill skill = skills.get(position);
                     skill1Level.clear();
+                    if(position == 0){
+                        binding.skill1LevelSpinner.setEnabled(false);
+                    }
+                    else{
+                        binding.skill1LevelSpinner.setEnabled(true);
+                        Skill skill = skills.get(position-1);
 
-                    tempSkill1.setSkillName(skill.getSkillName());
-                    tempSkill1.setSkillMaxLevel(skill.getSkillMaxLevel());
+                        tempSkill1.setSkillName(skill.getSkillName());
+                        tempSkill1.setSkillMaxLevel(skill.getSkillMaxLevel());
 
-                    for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
-                        skill1Level.add(Integer.toString(i));
+                        for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
+                            skill1Level.add(Integer.toString(i));
+                        }
                     }
                     skill1LevelAdapter.notifyDataSetChanged();
                 }
@@ -116,16 +125,21 @@ public class SetBuilderFragment extends Fragment{
             binding.skill2Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    Skill skill = skills.get(position);
                     skill2Level.clear();
-
-                    tempSkill2.setSkillName(skill.getSkillName());
-                    tempSkill2.setSkillMaxLevel(skill.getSkillMaxLevel());
-
-                    for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
-                        skill2Level.add(Integer.toString(i));
+                    if(position == 0){
+                        binding.skill2LevelSpinner.setEnabled(false);
                     }
+                    else{
+                        binding.skill2LevelSpinner.setEnabled(true);
+                        Skill skill = skills.get(position-1);
 
+                        tempSkill2.setSkillName(skill.getSkillName());
+                        tempSkill2.setSkillMaxLevel(skill.getSkillMaxLevel());
+
+                        for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
+                            skill2Level.add(Integer.toString(i));
+                        }
+                    }
                     skill2LevelAdapter.notifyDataSetChanged();
                 }
 
@@ -138,16 +152,21 @@ public class SetBuilderFragment extends Fragment{
             binding.skill3Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    Skill skill = skills.get(position);
-                    skill3Level.clear();
-
-                    tempSkill3.setSkillName(skill.getSkillName());
-                    tempSkill3.setSkillMaxLevel(skill.getSkillMaxLevel());
-
-                    for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
-                        skill3Level.add(Integer.toString(i));
+                    skill1Level.clear();
+                    if(position == 0){
+                        binding.skill3LevelSpinner.setEnabled(false);
                     }
+                    else{
+                        binding.skill3LevelSpinner.setEnabled(true);
+                        Skill skill = skills.get(position-1);
 
+                        tempSkill3.setSkillName(skill.getSkillName());
+                        tempSkill3.setSkillMaxLevel(skill.getSkillMaxLevel());
+
+                        for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
+                            skill3Level.add(Integer.toString(i));
+                        }
+                    }
                     skill3LevelAdapter.notifyDataSetChanged();
                 }
 
@@ -161,10 +180,10 @@ public class SetBuilderFragment extends Fragment{
             binding.skill1LevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if (skill1Level.size() > 0) {
-                        if (NumberUtils.isParsable(skill1Level.get(position)))
-                            tempSkill1.setSkillLevel(Integer.parseInt(skill1Level.get(position)));
-                    }
+                    if (NumberUtils.isParsable(skill1Level.get(position)))
+                        tempSkill1.setSkillLevel(Integer.parseInt(skill1Level.get(position)));
+                    else
+                        tempSkill1.setSkillLevel(0);
                 }
 
                 @Override
@@ -176,10 +195,11 @@ public class SetBuilderFragment extends Fragment{
             binding.skill2LevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if(skill2Level.size() > 0) {
-                        if (NumberUtils.isParsable(skill2Level.get(position)))
-                            tempSkill2.setSkillLevel(Integer.parseInt(skill2Level.get(position)));
-                    }
+                    if (NumberUtils.isParsable(skill2Level.get(position)))
+                        tempSkill2.setSkillLevel(Integer.parseInt(skill2Level.get(position)));
+                    else
+                        tempSkill2.setSkillLevel(0);
+
                 }
 
                 @Override
@@ -191,10 +211,11 @@ public class SetBuilderFragment extends Fragment{
             binding.skill3LevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if(skill3Level.size() > 0) {
-                        if (NumberUtils.isParsable(skill3Level.get(position)))
-                            tempSkill3.setSkillLevel(Integer.parseInt(skill3Level.get(position)));
-                    }
+                    if (NumberUtils.isParsable(skill3Level.get(position)))
+                        tempSkill3.setSkillLevel(Integer.parseInt(skill3Level.get(position)));
+                    else
+                        tempSkill3.setSkillLevel(0);
+
                 }
 
                 @Override
