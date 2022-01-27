@@ -41,8 +41,6 @@ public class ArmorSetListFragment extends Fragment implements SetListAdapter.OnS
         armorSetViewModel = new ViewModelProvider(requireActivity()).get(ArmorSetViewModel.class);
         binding.armorSetList.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
-
         armorSetViewModel.getAllArmorSets().observe(getViewLifecycleOwner(), armorSets -> {
             if(armorSets.size() == 0)
                 binding.noSetsTextView.setVisibility(View.VISIBLE);

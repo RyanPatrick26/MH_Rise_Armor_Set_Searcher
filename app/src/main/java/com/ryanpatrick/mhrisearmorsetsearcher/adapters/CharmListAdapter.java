@@ -37,11 +37,15 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull CharmListAdapter.ViewHolder holder, int position) {
-        Log.i("here", "onBindViewHolder: ");
+        //region set variables for the view holder
         CharmListItemBinding binding = holder.binding;
         Charm charm = charmList.get(position);
         ImageView[] slotImageViews = new ImageView[]{binding.slotLayout.slot1, binding.slotLayout.slot2, binding.slotLayout.slot3};
+        //endregion
 
+        //region setup the text for the charm's skill names
+        //set to default ---- if no skill is listed, otherwise get the
+        // string resource corresponding to the skill's name
         if(charm.getSkill1().getSkillName().equals("----")){
             binding.skill1Layout.skillName.setText("----");
             binding.skill1Layout.skillName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -50,8 +54,6 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
             binding.skill1Layout.skillName.setText(context.getResources()
                     .getIdentifier(charm.getSkill1().getSkillName(), "string", context.getPackageName()));
         }
-        if(charm.getSkill1().getSkillLevel() > 0)
-            binding.skill1Layout.skillLevel.setText(Integer.toString(charm.getSkill1().getSkillLevel()));
         if (charm.getSkill2().getSkillName().equals("----")) {
             binding.skill2Layout.skillName.setText("----");
             binding.skill2Layout.skillName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -60,9 +62,15 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
             binding.skill2Layout.skillName.setText(context.getResources()
                     .getIdentifier(charm.getSkill2().getSkillName(), "string", context.getPackageName()));
         }
+        //endregion
+
+        //set the text for the charm's skill levels, leaving these fields blank if the skill's level is 0
+        if(charm.getSkill1().getSkillLevel() > 0)
+            binding.skill1Layout.skillLevel.setText(Integer.toString(charm.getSkill1().getSkillLevel()));
         if(charm.getSkill2().getSkillLevel() > 0)
             binding.skill2Layout.skillLevel.setText(Integer.toString(charm.getSkill2().getSkillLevel()));
 
+        //set the images for each of the skills slots
         for (int i = 0; i < slotImageViews.length; i++) {
                 switch (charm.getSlots()[i]){
                     case 0:
@@ -82,6 +90,7 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
                 }
             }
 
+        //delete the charm from the table when the user clicks the delete button
         binding.deleteCharmButton.setOnClickListener(v -> repository.deleteCharm(charm));
 
     }

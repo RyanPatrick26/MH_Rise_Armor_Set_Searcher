@@ -41,7 +41,10 @@ public class SkillsListAdapter extends RecyclerView.Adapter<SkillsListAdapter.Vi
     }
     @Override
     public void onBindViewHolder(@NonNull SkillsListAdapter.ViewHolder holder, int position) {
+        //get the skill from the skill list corresponding to the current viewholder's position
         Skill skill = skills.get(position);
+
+        //set the text views based on the current skill
         holder.skillNameText.setText(context.getResources().getIdentifier(skill.getSkillName(), "string", context.getPackageName()));
         holder.skillLevelText.setText(Integer.toString(skill.getSkillLevel()));
     }

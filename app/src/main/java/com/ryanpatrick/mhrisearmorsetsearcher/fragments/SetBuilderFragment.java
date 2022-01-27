@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SetListAdapter;
@@ -32,6 +34,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SetBuilderFragment extends Fragment{
+    //region class variables
     public static final String TAG = "here";
     FragmentSetBuilderBinding binding;
     List<ArmorSet> setList;
@@ -44,6 +47,11 @@ public class SetBuilderFragment extends Fragment{
     Skill tempSkill1;
     Skill tempSkill2;
     Skill tempSkill3;
+
+    String gender = "";
+
+    boolean rarity4, rarity5, rarity6, rarity7;
+    //endregion
 
     public SetBuilderFragment() {
         // Required empty public constructor
@@ -63,6 +71,7 @@ public class SetBuilderFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //region set variables for the fragment
         binding = FragmentSetBuilderBinding.inflate(inflater, container, false);
         setList = new ArrayList<>();
         adapter = new SetListAdapter(setList, getContext(), onSetClickListener);
@@ -75,45 +84,75 @@ public class SetBuilderFragment extends Fragment{
         armorViewModel = new ViewModelProvider(requireActivity()).get(ArmorViewModel.class);
         armorSetViewModel = new ViewModelProvider(requireActivity()).get(ArmorSetViewModel.class);
 
+        rarity4 = true;
+        rarity5 = true;
+        rarity6 = true;
+        rarity7 = true;
+        //endregion
+
+        //setup the all the skill spinners within an observer
         skillViewModel.getAllSkills().observe(getViewLifecycleOwner(), skills -> {
+            //create array lists to hold the lists for skill names and levels
             ArrayList<String> skillNames = new ArrayList<>();
             ArrayList<String> skill1Level = new ArrayList<>();
             ArrayList<String> skill2Level = new ArrayList<>();
             ArrayList<String> skill3Level = new ArrayList<>();
 
+            //remove the (if upgrade) text from stormsoul
             for (Skill skill : skills) {
-                Log.i(TAG, "onCreateView: " + skill.getSkillName());
                 String skillName =  getString(getResources().getIdentifier(skill.getSkillName(), "string", requireActivity().getPackageName()));
                 if(skillName.contains("("))
                     skillName = skillName.substring(0, skillName.indexOf("("));
                 skillNames.add(skillName);
             }
+
+            //set the first element of the skill names list to a default no text value
             skillNames.add(0, "----");
+
+            //region create the array adapters for the spinners
             ArrayAdapter<String> skillAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skillNames);
             ArrayAdapter<String> skill1LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill1Level);
             ArrayAdapter<String> skill2LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill2Level);
             ArrayAdapter<String> skill3LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill3Level);
+            //endregion
 
+            //region set the adapters and selection listeners for the skill spinners
             binding.skill1Spinner.setAdapter(skillAdapter);
             binding.skill1Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //region programmatically update the arrays for the skill level spinners based on the selected skill
+                    //and set the name for the temp skill
+
+                    //first empty the skill level list
                     skill1Level.clear();
+
+                    //setup the spinner and temp skill values based on which item is selected
                     if(position == 0){
+                        //if the first item in the spinner is selected, disable the corresponding skill level spinner
+                        //and set the name of the temp skill to a blank string
                         binding.skill1LevelSpinner.setEnabled(false);
+                        tempSkill1.setSkillName("");
                     }
                     else{
+                        //otherwise, first re-enable the corresponding skill level spinner
                         binding.skill1LevelSpinner.setEnabled(true);
+                        //then, create a new skill object based on which item has been selected
                         Skill skill = skills.get(position-1);
 
+                        //set the name and max level of the temp skill to match that of the skill the user selected
                         tempSkill1.setSkillName(skill.getSkillName());
                         tempSkill1.setSkillMaxLevel(skill.getSkillMaxLevel());
 
+                        //repopulate skill level list with all possible levels of the selected skill
                         for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
                             skill1Level.add(Integer.toString(i));
                         }
                     }
+
+                    //notify the corresponding skill level adapter that values have changed
                     skill1LevelAdapter.notifyDataSetChanged();
+                    //endregion
                 }
 
                 @Override
@@ -125,22 +164,37 @@ public class SetBuilderFragment extends Fragment{
             binding.skill2Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //region programmatically update the arrays for the skill level spinners based on the selected skill
+                    //and set the name for the temp skill
+
+                    //first empty the skill level list
                     skill2Level.clear();
+
+                    //setup the spinner and temp skill values based on which item is selected
                     if(position == 0){
+                        //if the first item in the spinner is selected, disable the corresponding skill level spinner
+                        //and set the name of the temp skill to a blank string
                         binding.skill2LevelSpinner.setEnabled(false);
+                        tempSkill2.setSkillName("");
                     }
                     else{
+                        //otherwise, first re-enable the corresponding skill level spinner
                         binding.skill2LevelSpinner.setEnabled(true);
+                        //then, create a new skill object based on which item has been selected
                         Skill skill = skills.get(position-1);
 
+                        //set the name and max level of the temp skill to match that of the skill the user selected
                         tempSkill2.setSkillName(skill.getSkillName());
                         tempSkill2.setSkillMaxLevel(skill.getSkillMaxLevel());
 
+                        //repopulate skill level list with all possible levels of the selected skill
                         for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
                             skill2Level.add(Integer.toString(i));
                         }
                     }
+                    //notify the corresponding skill level adapter that values have changed
                     skill2LevelAdapter.notifyDataSetChanged();
+                    //endregion
                 }
 
                 @Override
@@ -152,22 +206,37 @@ public class SetBuilderFragment extends Fragment{
             binding.skill3Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    skill1Level.clear();
+                    //region programmatically update the arrays for the skill level spinners based on the selected skill
+                    //and set the name for the temp skill
+
+                    //first empty the skill level list
+                    skill3Level.clear();
+
+                    //setup the spinner and temp skill values based on which item is selected
                     if(position == 0){
+                        //if the first item in the spinner is selected, disable the corresponding skill level spinner
+                        //and set the name of the temp skill to a blank string
                         binding.skill3LevelSpinner.setEnabled(false);
+                        tempSkill3.setSkillName("");
                     }
                     else{
+                        //otherwise, first re-enable the corresponding skill level spinner
                         binding.skill3LevelSpinner.setEnabled(true);
+                        //then, create a new skill object based on which item has been selected
                         Skill skill = skills.get(position-1);
 
+                        //set the name and max level of the temp skill to match that of the skill the user selected
                         tempSkill3.setSkillName(skill.getSkillName());
                         tempSkill3.setSkillMaxLevel(skill.getSkillMaxLevel());
 
+                        //repopulate skill level list with all possible levels of the selected skill
                         for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
                             skill3Level.add(Integer.toString(i));
                         }
                     }
+                    //notify the corresponding skill level adapter that values have changed
                     skill3LevelAdapter.notifyDataSetChanged();
+                    //endregion
                 }
 
                 @Override
@@ -175,11 +244,15 @@ public class SetBuilderFragment extends Fragment{
 
                 }
             });
+            //endregion
 
+            //region setup the skill level spinners
             binding.skill1LevelSpinner.setAdapter(skill1LevelAdapter);
             binding.skill1LevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //check to see if the selected string is able to be converted into an int
+                    //if yes, set the temp skill level to be the selected item, otherwise set it to 0
                     if (NumberUtils.isParsable(skill1Level.get(position)))
                         tempSkill1.setSkillLevel(Integer.parseInt(skill1Level.get(position)));
                     else
@@ -195,6 +268,8 @@ public class SetBuilderFragment extends Fragment{
             binding.skill2LevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //check to see if the selected string is able to be converted into an int
+                    //if yes, set the temp skill level to be the selected item, otherwise set it to 0
                     if (NumberUtils.isParsable(skill2Level.get(position)))
                         tempSkill2.setSkillLevel(Integer.parseInt(skill2Level.get(position)));
                     else
@@ -211,6 +286,8 @@ public class SetBuilderFragment extends Fragment{
             binding.skill3LevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //check to see if the selected string is able to be converted into an int
+                    //if yes, set the temp skill level to be the selected item, otherwise set it to 0
                     if (NumberUtils.isParsable(skill3Level.get(position)))
                         tempSkill3.setSkillLevel(Integer.parseInt(skill3Level.get(position)));
                     else
@@ -223,10 +300,31 @@ public class SetBuilderFragment extends Fragment{
 
                 }
             });
+            //endregion
         });
 
+        //setup the recycler view
         binding.setBuilderList.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.setBuilderList.setAdapter(adapter);
+
+        //region setup the rarity checkboxes
+        binding.rarity4Checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> rarity4 = isChecked);
+        binding.rarity5Checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> rarity5 = isChecked);
+        binding.rarity6Checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> rarity6 = isChecked);
+        binding.rarity7Checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> rarity7 = isChecked);
+        //endregion
+
+        //setup the radio group
+        binding.genderRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch(checkedId){
+                case R.id.male_radio_button:
+                    gender = "Male";
+                case R.id.female_radio_button:
+                    gender = "Female";
+            }
+        });
+
+        //set the on click listener for the save button to generate armor sets based on the users specifications
         binding.searchSetButton.setOnClickListener(v -> generateArmorSets());
 
         return binding.getRoot();

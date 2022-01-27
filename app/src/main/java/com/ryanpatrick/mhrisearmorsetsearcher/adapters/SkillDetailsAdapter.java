@@ -37,18 +37,26 @@ public class SkillDetailsAdapter extends RecyclerView.Adapter<SkillDetailsAdapte
 
     @Override
     public void onBindViewHolder(@NonNull SkillDetailsAdapter.ViewHolder holder, int position) {
+        //create a string to hold the description from the list at the given position
         String description = descriptionList.get(position);
 
+        //if this is the first item, hide the skill level text view
         if(position == 0){
             holder.levelTextView.setVisibility(View.GONE);
         }
+        //otherwise, create a level string and update the description
+        //string as substrings of the original description string
+        //then set the text for the level text view to the level string
         else{
             String levelString = description.substring(0,3);
             description = description.substring(3);
             holder.levelTextView.setText(levelString);
         }
+        //set the description text view to be the description
         holder.descriptionTextView.setText(description);
 
+        //set the color of the text view to be a dull gray if that skill level
+        //is inactive or white if it is active
         if(position > skillLevel){
             holder.descriptionTextView.setTextColor(Color.GRAY);
         }
