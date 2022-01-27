@@ -145,7 +145,7 @@ public class CharmsFragment extends Fragment {
         //endregion
 
         //set the skill name spinners inside an observer
-        skillViewModel.getAllSkills().observe(getViewLifecycleOwner(), skills -> {
+        skillViewModel.getSkillsOnCharms().observe(getViewLifecycleOwner(), skills -> {
             ArrayList<String> skillNames = new ArrayList<>();
             for (Skill skill : skills) {
                 String skillName =  getString(getResources().getIdentifier(skill.getSkillName(), "string", requireActivity().getPackageName()));

@@ -29,7 +29,7 @@ public interface SkillDao {
     @Query("SELECT * FROM skills_tbl")
     List<Skill> getSkillsList();
 
-    @Query("SELECT * FROM skills_tbl WHERE on_charm == 1")
+    @Query("SELECT * FROM skills_tbl WHERE on_charm == 1 ORDER BY skill_name ASC")
     LiveData<List<Skill>> getSkillsOnCharms();
 
     @Query("SELECT * FROM skills_tbl WHERE skill_name == :name")
