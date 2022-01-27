@@ -18,10 +18,9 @@ import java.util.List;
 public class ArmorRepository {
     private final ArmorDao armorDao;
     private final LiveData<List<Armor>> armorList;
-    private Context dbContext;
 
-    public ArmorRepository(Application application){
-        ApplicationDatabase db = ApplicationDatabase.getInstance(application.getApplicationContext());
+    public ArmorRepository(Context context){
+        ApplicationDatabase db = ApplicationDatabase.getInstance(context);
         armorDao = db.armorDao();
         armorList = armorDao.getAllArmor();
     }
