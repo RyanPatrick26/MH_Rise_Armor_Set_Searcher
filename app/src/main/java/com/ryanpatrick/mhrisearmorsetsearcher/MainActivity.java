@@ -28,7 +28,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(binding.getRoot());
 
         fm = getSupportFragmentManager();
-        fm.beginTransaction().add(R.id.fragment_container, new ArmorListFragment()).commit();
+
+        if(savedInstanceState == null){
+            fm.beginTransaction().add(R.id.fragment_container, new ArmorListFragment()).commit();
+        }
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
@@ -54,19 +57,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch(item.getItemId()){
             case R.id.menu_armor_list:
                 fm.beginTransaction().replace(R.id.fragment_container, new ArmorListFragment())
+                        .addToBackStack("BACK")
                         .commit();
                 break;
             case R.id.menu_set_builder:
                 fm.beginTransaction().replace(R.id.fragment_container, new BuilderHostFragment())
-                        .addToBackStack(null)
+                        .addToBackStack("BACK")
                         .commit();
                 break;
             case R.id.menu_set_list:
                 fm.beginTransaction().replace(R.id.fragment_container, new ArmorSetListFragment())
+                        .addToBackStack("BACK")
                         .commit();
                 break;
             case R.id.menu_your_charms:
                 fm.beginTransaction().replace(R.id.fragment_container, new CharmsFragment())
+                        .addToBackStack("BACK")
                         .commit();
         }
 

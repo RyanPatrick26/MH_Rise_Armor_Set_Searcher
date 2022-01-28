@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginStart="8dp"
@@ -11,9 +10,14 @@
     android:layout_marginBottom="8dp"
     android:orientation="vertical"
     android:visibility="visible"
-    tools:context=".fragments.SetBuilderFragment" >
+    tools:context=".fragments.SetBuilderFragment">
 
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -262,41 +266,41 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
-    <RadioGroup
-        android:id="@+id/gender_radio_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/male_radio_button"
+        <RadioGroup
+            android:id="@+id/gender_radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/male" />
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/female_radio_button"
+            <RadioButton
+                android:id="@+id/male_radio_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/male" />
+
+            <RadioButton
+                android:id="@+id/female_radio_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/female" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/search_set_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="6dp"
+            android:text="@string/search_for_sets" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/set_builder_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/female" />
+            android:visibility="visible" />
+    </LinearLayout>
 
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/search_set_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="6dp"
-        android:text="@string/search_for_sets" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/set_builder_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible">
-
-    </androidx.recyclerview.widget.RecyclerView>
-</LinearLayout>
+</ScrollView>

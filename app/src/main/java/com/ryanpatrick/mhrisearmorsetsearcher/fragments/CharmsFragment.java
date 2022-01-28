@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -18,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
-import com.ryanpatrick.mhrisearmorsetsearcher.adapters.ArmorListAdapter;
 import com.ryanpatrick.mhrisearmorsetsearcher.adapters.CharmListAdapter;
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.FragmentCharmsBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
@@ -27,7 +25,6 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.CharmViewModel;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.SkillViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CharmsFragment extends Fragment {
     FragmentCharmsBinding binding;
