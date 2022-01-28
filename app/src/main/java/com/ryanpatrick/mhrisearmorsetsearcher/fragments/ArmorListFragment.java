@@ -1,10 +1,12 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.adapters.ArmorListAdapter;
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.FragmentArmorListBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.ArmorViewModel;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +40,15 @@ public class ArmorListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentArmorListBinding.inflate(inflater, container, false);
+
+        //set the layout manager for the recycler view to be a grid layout if he user is on a wide screen,
+        //or a linear layout if not
+        if(Utilities.isTablet(requireContext()) || getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_LANDSCAPE)
+            binding.armorListView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        else
+            binding.armorListView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         binding.armorListView.setLayoutManager(new LinearLayoutManager(getContext()));
         viewModel = new ViewModelProvider(requireActivity()).get(ArmorViewModel.class);
 
