@@ -1405,5 +1405,6 @@
     <string name="slot_2">Slot 2:</string>
     <string name="slot_3">Slot 3:</string>
     <string name="your_charms">Your Charms</string>
+    <string name="weapon_slots">Weapon Slots</string>
     <!--endregion-->
 </resources>

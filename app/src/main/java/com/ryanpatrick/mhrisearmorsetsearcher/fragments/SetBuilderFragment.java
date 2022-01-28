@@ -50,6 +50,8 @@ public class SetBuilderFragment extends Fragment{
 
     String gender = "";
 
+    int slot1, slot2, slot3;
+
     boolean rarity4, rarity5, rarity6, rarity7;
     //endregion
 
@@ -303,6 +305,48 @@ public class SetBuilderFragment extends Fragment{
             //endregion
         });
 
+        //region setup the weapon slot spinners
+        String[] slotLevels = new String[]{"0", "1", "2", "3"};
+        ArrayAdapter<String> weaponSlotsAdapter = new ArrayAdapter<>(requireContext(), R.layout.spinner_item, slotLevels);
+
+        binding.weaponSlot1Spinner.setAdapter(weaponSlotsAdapter);
+        binding.weaponSlot1Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                slot1 = Integer.parseInt(slotLevels[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        binding.weaponSlot2Spinner.setAdapter(weaponSlotsAdapter);
+        binding.weaponSlot2Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                slot2 = Integer.parseInt(slotLevels[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        binding.weaponSlot3Spinner.setAdapter(weaponSlotsAdapter);
+        binding.weaponSlot3Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                slot3 = Integer.parseInt(slotLevels[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        //endregion
+
         //setup the recycler view
         binding.setBuilderList.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.setBuilderList.setAdapter(adapter);
@@ -328,23 +372,6 @@ public class SetBuilderFragment extends Fragment{
         binding.searchSetButton.setOnClickListener(v -> generateArmorSets());
 
         return binding.getRoot();
-    }
-
-    /**
-     * Called when the view previously created by {@link #onCreateView} has
-     * been detached from the fragment.  The next time the fragment needs
-     * to be displayed, a new view will be created.  This is called
-     * after {@link #onStop()} and before {@link #onDestroy()}.  It is called
-     * <em>regardless</em> of whether {@link #onCreateView} returned a
-     * non-null view.  Internally it is called after the view's state has
-     * been saved but before it has been removed from its parent.
-     */
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        skillViewModel = null;
-        armorViewModel = null;
-        armorSetViewModel = null;
     }
 
     //Temp function for generating the armor sets
