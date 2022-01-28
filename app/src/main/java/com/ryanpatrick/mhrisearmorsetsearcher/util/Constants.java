@@ -7,7 +7,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
-public class DbConstants {
+public class Constants {
     public static final  Armor[] prepopulateArmors = new Armor[]{
             //region rarity 7
             //region bazel
@@ -2171,4 +2171,10 @@ public class DbConstants {
             new Skill("thunder_alignment", 5, "thunder_alignment_desc", false),
             new Skill("stormsoul", 5, "stormsoul_desc", false)};
 
+    public static final String SET_BUILDER_WORK_NAME = "set_builder_work";
+    public static final String GENDER = "gender";
+    public static final String RARITIES = "rarities";
+    public static final String SEARCH_SKILLS = "search_skills";
+    public static final String WEAPON_SLOTS = "weapon_slots";
+    public static final String SET_SEARCH_TAG = "set_search";
 }

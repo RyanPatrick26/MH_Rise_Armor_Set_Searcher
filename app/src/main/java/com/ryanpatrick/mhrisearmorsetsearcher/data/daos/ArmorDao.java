@@ -31,10 +31,10 @@ public interface ArmorDao {
     @Query("SELECT * FROM armor_tbl WHERE armorId == :id")
     Armor getArmor(long id);
 
-    @Query("SELECT * FROM armor_tbl WHERE armor_type == :armorType & gender IN (:gender, 'Both')" +
+    @Query("SELECT * FROM armor_tbl WHERE armor_type == :armorType AND gender IN (:gender, 'Both')" +
             "ORDER BY rarity DESC, armorId ASC")
     LiveData<List<Armor>> getAllArmorOfType(ArmorType armorType, Gender gender);
 
-    @Query("SELECT * FROM armor_tbl WHERE rarity IN (:rarity) & gender IN (:gender, 'Both')")
-    LiveData<List<Armor>> getAllArmorOfRarity(int[] rarity, Gender gender);
+    @Query("SELECT * FROM armor_tbl WHERE rarity IN (:rarity) AND gender IN (:gender, 'Both')")
+    List<Armor> getAllArmorOfRarity(int[] rarity, Gender gender);
 }

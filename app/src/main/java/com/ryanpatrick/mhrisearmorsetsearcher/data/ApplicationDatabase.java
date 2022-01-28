@@ -22,7 +22,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Decoration;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
-import com.ryanpatrick.mhrisearmorsetsearcher.util.DbConstants;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -56,9 +56,9 @@ public abstract class ApplicationDatabase extends RoomDatabase {
                                 skillDao.deleteAll();
                                 charmDao.deleteAll();
 
-                                decorationsDao.insertAll(DbConstants.prepopulateDecorations);
-                                skillDao.insertAll(DbConstants.prepopulateSkills);
-                                armorDao.insertAll(DbConstants.prepopulateArmors);
+                                decorationsDao.insertAll(Constants.prepopulateDecorations);
+                                skillDao.insertAll(Constants.prepopulateSkills);
+                                armorDao.insertAll(Constants.prepopulateArmors);
                             });
                         }
                     })

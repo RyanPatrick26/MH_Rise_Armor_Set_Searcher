@@ -1,14 +1,13 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.repositories;
 
 import android.app.Application;
-import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.daos.DecorationsDao;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Decoration;
-import com.ryanpatrick.mhrisearmorsetsearcher.util.DbConstants;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,9 +32,9 @@ public class DecorationRepository {
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() ->{
-            if(decorationsDao.getDecorationList().size() < DbConstants.prepopulateDecorations.length &&
+            if(decorationsDao.getDecorationList().size() < Constants.prepopulateDecorations.length &&
                     decorationsDao.getDecorationList().size() > 0) {
-                List<Decoration> updateList = Arrays.asList(DbConstants.prepopulateDecorations);
+                List<Decoration> updateList = Arrays.asList(Constants.prepopulateDecorations);
                 updateList.removeAll(updateList.subList(0, decorationsDao.getDecorationList().size()));
                 decorationsDao.insertAll((Decoration[]) updateList.toArray());
             }

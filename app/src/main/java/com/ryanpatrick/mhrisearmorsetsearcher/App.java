@@ -44,6 +44,8 @@ public class App extends Application {
         decorationViewModel.updateDb();
         armorViewModel.updateDb();
         skillViewModel.updateDb();
+
+
     }
 
 }

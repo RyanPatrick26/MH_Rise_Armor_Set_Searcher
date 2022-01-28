@@ -6,6 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.work.Data;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkContinuation;
+import androidx.work.WorkManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,24 +18,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
-import android.widget.RadioGroup;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SetListAdapter;
-import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.FragmentSetBuilderBinding;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.ArmorSetViewModel;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.ArmorViewModel;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.SkillViewModel;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
+import com.ryanpatrick.mhrisearmorsetsearcher.workers.DatabaseWorker;
+import com.ryanpatrick.mhrisearmorsetsearcher.workers.SetBuilderWorker;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SetBuilderFragment extends Fragment{
@@ -86,10 +90,10 @@ public class SetBuilderFragment extends Fragment{
         armorViewModel = new ViewModelProvider(requireActivity()).get(ArmorViewModel.class);
         armorSetViewModel = new ViewModelProvider(requireActivity()).get(ArmorSetViewModel.class);
 
-        rarity4 = true;
-        rarity5 = true;
-        rarity6 = true;
-        rarity7 = true;
+        rarity4 = false;
+        rarity5 = false;
+        rarity6 = false;
+        rarity7 = false;
         //endregion
 
         //setup the all the skill spinners within an observer
@@ -371,14 +375,79 @@ public class SetBuilderFragment extends Fragment{
         //set the on click listener for the save button to generate armor sets based on the users specifications
         binding.searchSetButton.setOnClickListener(v -> generateArmorSets());
 
+        WorkManager.getInstance(requireContext()).getWorkInfosByTagLiveData(Constants.SET_SEARCH_TAG)
+                .observe(getViewLifecycleOwner(), workInfos -> {
+                    if(workInfos == null || workInfos.isEmpty())
+                        return;
+                    Log.i(TAG, "onCreateView: " + workInfos.get(0).getState());
+
+                });
+
+
         return binding.getRoot();
     }
+
 
     //Temp function for generating the armor sets
     //will be replaced when search algorithm is built
     private void generateArmorSets(){
-        setList.clear();
+        //check to make sure the user selected a gender and set at least 1 skill
+        if(!gender.equals("") || (tempSkill1.getSkillName().equals("")
+                && tempSkill2.getSkillName().equals("") && tempSkill3.getSkillName().equals(""))){
+            //create list of integers to hold each of the rarities
+            List<Integer> rarities = new ArrayList<>();
+            //region add the rarities to search based on which checkboxes the user selected
+            //(a checked rarity is excluded)
+            if(!rarity4)
+                rarities.add(4);
+            if(!rarity5)
+                rarities.add(5);
+            if(!rarity6)
+                rarities.add(6);
+            if(!rarity7)
+                rarities.add(7);
+            //endregion
 
+            //create the input data for database worker
+            Data dbInputData = new Data.Builder()
+                    .putString(Constants.GENDER, gender)
+                    .putIntArray(Constants.RARITIES, rarities.stream().mapToInt(i->i).toArray())
+                    .build();
+            //create a work request for the database worker
+            OneTimeWorkRequest databaseRequest = new OneTimeWorkRequest.Builder(DatabaseWorker.class)
+                    .setInputData(dbInputData)
+                    .build();
+
+            //create the input data for the set builder worker
+            List<Skill> searchSkillList = new ArrayList<>();
+            if(!tempSkill1.getSkillName().equals(""))
+                searchSkillList.add(tempSkill1);
+            if(!tempSkill3.getSkillName().equals(""))
+                searchSkillList.add(tempSkill2);
+            if(!tempSkill3.getSkillName().equals(""))
+                searchSkillList.add(tempSkill3);
+
+            Data setSearchInputData = new Data.Builder()
+                    .putString(Constants.SEARCH_SKILLS, Convertors.fromTotalSkillList(searchSkillList))
+                    .putIntArray(Constants.WEAPON_SLOTS, new int[]{slot1, slot2, slot3})
+                    .build();
+
+            //create a work request for the set builder worker
+            OneTimeWorkRequest setBuilderWorkRequest = new OneTimeWorkRequest.Builder(SetBuilderWorker.class)
+                    .setInputData(setSearchInputData)
+                    .addTag(Constants.SET_SEARCH_TAG)
+                    .build();
+
+            //create a work continuation using the database and set builder workers
+            WorkContinuation continuation = WorkManager.getInstance(requireContext())
+                    .beginUniqueWork(Constants.SET_BUILDER_WORK_NAME, ExistingWorkPolicy.REPLACE, databaseRequest)
+                    .then(setBuilderWorkRequest);
+            //run the work
+            continuation.enqueue();
+        }
+
+
+        /*setList.clear();
         ApplicationDatabase.databaseWriter.execute(() -> {
             int totalBaseDefense, totalMaxDefense, totalFireRes, totalWaterRes, totalThunderRes,
                     totalIceRes, totalDragonRes;
@@ -837,8 +906,7 @@ public class SetBuilderFragment extends Fragment{
 
             ApplicationDatabase.dbHandler.post(() -> adapter.notifyDataSetChanged());
 
-        });
-
+        });*/
     }
 
 }

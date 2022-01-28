@@ -13,4 +13,5 @@ public class Utilities {
                 == Configuration.SCREENLAYOUT_SIZE_LARGE);
         return (xLarge || large);
     }
+
 }
