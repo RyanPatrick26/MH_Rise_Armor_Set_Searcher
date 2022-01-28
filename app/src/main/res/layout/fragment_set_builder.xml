@@ -266,35 +266,97 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
-        <RadioGroup
-            android:id="@+id/gender_radio_group"
+        <TextView
+            android:id="@+id/textView23"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/weapon_slots"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/male_radio_button"
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/slot_1" />
+
+            <Spinner
+                android:id="@+id/weapon_slot1_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/male" />
+                android:layout_weight="1" />
 
-            <RadioButton
-                android:id="@+id/female_radio_button"
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/slot_2" />
+
+            <Spinner
+                android:id="@+id/weapon_slot2_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/level_2_slots" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/slot_3" />
+
+            <Spinner
+                android:id="@+id/weapon_slot3_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/gender_radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="@string/female" />
+                android:orientation="horizontal">
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/male_radio_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/male" />
 
-        <Button
-            android:id="@+id/search_set_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="6dp"
-            android:text="@string/search_for_sets" />
+                <RadioButton
+                    android:id="@+id/female_radio_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/female" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/search_set_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="6dp"
+                android:layout_weight="2"
+                android:text="@string/search_for_sets" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/set_builder_list"
