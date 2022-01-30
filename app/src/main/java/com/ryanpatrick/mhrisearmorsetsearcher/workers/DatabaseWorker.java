@@ -61,7 +61,6 @@ public class DatabaseWorker extends Worker {
         WorkerDataHolder.getInstance().setWaists(waists);
         WorkerDataHolder.getInstance().setLegs(legs);
 
-        Log.i("here", "doWork: " + armorList.size());
 
         return Result.success();
     }

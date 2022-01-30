@@ -23,7 +23,6 @@ public class CharmListAdapter extends RecyclerView.Adapter<CharmListAdapter.View
     CharmRepository repository;
 
     public CharmListAdapter(List<Charm> charmList, Context context) {
-        Log.i("here", "CharmListAdapter: ");
         this.charmList = charmList;
         this.context = context;
         repository = new CharmRepository(context);
