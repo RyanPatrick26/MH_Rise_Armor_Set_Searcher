@@ -15,21 +15,20 @@ import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class SkillsListAdapter extends RecyclerView.Adapter<SkillsListAdapter.ViewHolder> {
-    List<Skill> skills;
+    HashMap<String, Integer> skills;
     Context context;
     private OnSkillClickListener onSkillClickListener;
+    private String[] skillNames;
 
-    public SkillsListAdapter(Skill[] skills, Context context) {
-        this.context = context;
-        this.skills = Arrays.asList(skills);
-    }
-
-    public SkillsListAdapter(List<Skill> skills, Context context) {
+    public SkillsListAdapter(HashMap<String, Integer> skills, Context context) {
         this.context = context;
         this.skills = skills;
+
+        skillNames = skills.keySet().toArray(new String[0]);
     }
 
     @NonNull
@@ -41,12 +40,9 @@ public class SkillsListAdapter extends RecyclerView.Adapter<SkillsListAdapter.Vi
     }
     @Override
     public void onBindViewHolder(@NonNull SkillsListAdapter.ViewHolder holder, int position) {
-        //get the skill from the skill list corresponding to the current viewholder's position
-        Skill skill = skills.get(position);
-
-        //set the text views based on the current skill
-        holder.skillNameText.setText(context.getResources().getIdentifier(skill.getSkillName(), "string", context.getPackageName()));
-        holder.skillLevelText.setText(Integer.toString(skill.getSkillLevel()));
+        String skillName = skillNames[position];
+        holder.skillNameText.setText(context.getResources().getIdentifier(skillName, "string", context.getPackageName()));
+        holder.skillLevelText.setText(Integer.toString(skills.get(skillName)));
     }
 
     @Override
@@ -69,13 +65,13 @@ public class SkillsListAdapter extends RecyclerView.Adapter<SkillsListAdapter.Vi
 
             itemView.setOnClickListener(v ->{
                 if(onSkillClickListener != null){
-                    onSkillClickListener.onSkillClick(getAbsoluteAdapterPosition());
+                    onSkillClickListener.onSkillClick(skillNameText.getText().toString(), getAbsoluteAdapterPosition());
                 }
             });
         }
     }
 
     public interface OnSkillClickListener{
-        void onSkillClick(int position);
+        void onSkillClick(String skillName, int position);
     }
 }

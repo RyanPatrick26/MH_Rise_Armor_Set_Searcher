@@ -377,7 +377,7 @@ public class SetBuilderFragment extends Fragment{
     //Temp function for generating the armor sets
     //will be replaced when search algorithm is built
     private void generateArmorSets(){
-        setList.clear();
+        /*setList.clear();
 
         ApplicationDatabase.databaseWriter.execute(() -> {
             int totalBaseDefense, totalMaxDefense, totalFireRes, totalWaterRes, totalThunderRes,
@@ -837,7 +837,7 @@ public class SetBuilderFragment extends Fragment{
 
             ApplicationDatabase.dbHandler.post(() -> adapter.notifyDataSetChanged());
 
-        });
+        });*/
 
     }
 
