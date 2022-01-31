@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.List;
+import java.util.HashMap;
 
 @Entity(tableName = "armor_set_tbl")
 public class ArmorSet{
@@ -35,14 +35,14 @@ public class ArmorSet{
 	@ColumnInfo(name = "total_dragon_res")
 	private int totalDragonRes;
 	@ColumnInfo(name = "total_skills")
-	private List<Skill> totalSkills;
+	private HashMap<String, Integer> allSkills;
 	@ColumnInfo(name="total_slots")
 	private int[] totalSlots;
 
 	public ArmorSet(Armor head, Armor chest, Armor arms, Armor waist, Armor legs,
 					int totalBaseDefense, int totalMaxDefense, int totalFireRes,
 					int totalWaterRes, int totalIceRes, int totalThunderRes, int totalDragonRes,
-					List<Skill> totalSkills, int[] totalSlots) {
+					HashMap<String, Integer> allSkills, int[] totalSlots) {
 		this.head = head;
 		this.chest = chest;
 		this.arms = arms;
@@ -55,7 +55,7 @@ public class ArmorSet{
 		this.totalIceRes = totalIceRes;
 		this.totalThunderRes = totalThunderRes;
 		this.totalDragonRes = totalDragonRes;
-		this.totalSkills = totalSkills;
+		this.allSkills = allSkills;
 		this.totalSlots = totalSlots;
 	}
 
@@ -165,12 +165,12 @@ public class ArmorSet{
 		this.totalDragonRes = totalDragonRes;
 	}
 
-	public List<Skill> getTotalSkills() {
-		return totalSkills;
+	public HashMap<String, Integer> getAllSkills() {
+		return allSkills;
 	}
 
-	public void setTotalSkills(List<Skill> totalSkills) {
-		this.totalSkills = totalSkills;
+	public void setAllSkills(HashMap<String, Integer> allSkills) {
+		this.allSkills = allSkills;
 	}
 
 	public int[] getTotalSlots() {

@@ -907,6 +907,7 @@ public class SetBuilderFragment extends Fragment{
             ApplicationDatabase.dbHandler.post(() -> adapter.notifyDataSetChanged());
 
         });*/
+
     }
 
 }

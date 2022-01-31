@@ -11,6 +11,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.List;
 
 public class Convertors {
@@ -33,22 +34,22 @@ public class Convertors {
     }
 
     @TypeConverter
-    public static String fromSkillArray(Skill[] skills){
+    public static String fromSkillMap(HashMap<String, Integer> skills){
         if(skills == null){
             return "";
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<Skill[]>(){}.getType();
+        Type type = new TypeToken<HashMap<String, Integer>>(){}.getType();
 
         return gson.toJson(skills, type);
     }
     @TypeConverter
-    public static Skill[]toSkillArray(String skills){
+    public static HashMap<String, Integer> toSkillMap(String skills){
         if(skills == null){
             return null;
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<Skill[]>(){}.getType();
+        Type type = new TypeToken<HashMap<String, Integer>>(){}.getType();
 
         return gson.fromJson(skills, type);
     }

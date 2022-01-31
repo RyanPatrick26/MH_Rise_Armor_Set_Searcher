@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
+import java.util.HashMap;
+
 @Entity(tableName = "armor_tbl")
 public class Armor{
 	@PrimaryKey(autoGenerate = true)
@@ -34,13 +36,13 @@ public class Armor{
 	@ColumnInfo(name = "dragon_res")
 	private int dragonRes;
 	@ColumnInfo(name = "skills")
-	private Skill[] skills;
+	private HashMap<String, Integer> skills;
 	@ColumnInfo(name = "slots")
 	private int[] slots;
 
 	public Armor(String armorName, int rarity, Gender gender, ArmorType type,
 				 int baseDefense, int maxDefense, int fireRes, int waterRes, int thunderRes, int iceRes,
-				 int dragonRes, Skill[] skills, int[] slots) {
+				 int dragonRes, HashMap<String, Integer> skills, int[] slots) {
 		this.armorName = armorName;
 		this.rarity = rarity;
 		this.gender = gender;
@@ -153,11 +155,11 @@ public class Armor{
 		this.dragonRes = dragonRes;
 	}
 
-	public Skill[] getSkills() {
+	public HashMap<String, Integer> getSkills() {
 		return skills;
 	}
 
-	public void setSkills(Skill[] skills) {
+	public void setSkills(HashMap<String, Integer> skills) {
 		this.skills = skills;
 	}
 
