@@ -7,21 +7,14 @@ import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
-import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.RunnableFuture;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class SetBuilderWorker extends Worker {
     public static final String TAG = "here";
@@ -42,7 +35,7 @@ public class SetBuilderWorker extends Worker {
         List<Armor> arms = WorkerDataHolder.getInstance().getArms();
         List<Armor> waists = WorkerDataHolder.getInstance().getWaists();
         List<Armor> legs = WorkerDataHolder.getInstance().getLegs();
-        List<Skill> searchSkills = Convertors.toTotalSkillList(getInputData().getString(Constants.SEARCH_SKILLS));
+        HashMap<String, Integer> searchSkills = Convertors.toSkillMap(getInputData().getString(Constants.SEARCH_SKILLS));
 
         //loop through each possible armor set, check to see if it meets the conditions set by the user, and add it to the list if it does
         //TEMPORARY
@@ -170,19 +163,8 @@ public class SetBuilderWorker extends Worker {
         int[] totalSlots = new int[]{lvl1Slots, lvl2Slots, lvl3Slots};
         //endregion
 
-        //region determine all of the skills and skill levels of the set
-        List<Skill> allSkills = filterSkills(head, chest, arms, waist, legs);
-
-        allSkills.sort((o1, o2) -> {
-            int result = o2.getSkillLevel() - o1.getSkillLevel();
-            if(result != 0){
-                return result;
-            }
-            result = o1.getSkillName()
-                    .compareTo(o2.getSkillName());
-            return result;
-        });
-        //endregion
+        //determine all of the skills and skill levels of the set
+        HashMap<String, Integer> allSkills = filterSkills(head, chest, arms, waist, legs);
 
         return new ArmorSet(head, chest, arms, waist, legs, totalBaseDefense, totalMaxDefense, totalFireRes,
                 totalWaterRes, totalIceRes, totalThunderRes, totalDragonRes, allSkills, totalSlots);
@@ -190,25 +172,28 @@ public class SetBuilderWorker extends Worker {
     }
 
     //helper function to determine if a provided combination of armor pieces meets the user's requirements
-    private boolean meetsConditions(Armor head, Armor chest, Armor arms, Armor waist, Armor legs, List<Skill> searchSkills) {
-        //create a list of all the skills on the proposed armor set
-        List<Skill> skillsOnSet = filterSkills(head, chest, arms, waist, legs);
+    private boolean meetsConditions(Armor head, Armor chest, Armor arms, Armor waist, Armor legs,  HashMap<String, Integer> searchSkills) {
+        //create a map of all the skills on the proposed armor set
+        HashMap<String, Integer> skillsOnSet = filterSkills(head, chest, arms, waist, legs);
 
-        //create an array of ints that will be used to see if the set has enough points into each skill
-        int[] skillLevels = new int[searchSkills.size()];
+        //create a map that will be used to see if the set has enough points into each skill
+        HashMap<String, Integer> skillLevels = new HashMap<>();
 
         //add up the levels of all the skills on the proposed set that the user requested
-        for (int i = 0; i < searchSkills.size(); i++) {
-            for (int j = 0; j < skillsOnSet.size(); j++) {
-                if(searchSkills.get(i).getSkillName().equals(skillsOnSet.get(i).getSkillName())){
-                    skillLevels[i] += skillsOnSet.get(j).getSkillLevel();
+        for(String key : skillsOnSet.keySet()){
+            if(searchSkills.containsKey(key)){
+                if(skillLevels.containsKey(key)){
+                    skillLevels.replace(key, skillLevels.get(key) + skillsOnSet.get(key));
+                }
+                else{
+                    skillLevels.put(key, 0);
                 }
             }
         }
 
         //returns false if any of the skills on the set do not have enough points into them
-        for (int i = 0; i < searchSkills.size(); i++) {
-            if(!(skillLevels[i] < searchSkills.get(i).getSkillLevel())){
+        for (String key : skillLevels.keySet()) {
+            if (skillLevels.get(key) < searchSkills.get(key)) {
                 return false;
             }
         }
@@ -217,34 +202,17 @@ public class SetBuilderWorker extends Worker {
     }
 
     //helper function to filter down to the unique skills in an armor set
-    private List<Skill> filterSkills(Armor head, Armor chest, Armor arms, Armor waist, Armor legs){
-        List<Skill> allSkills = new ArrayList<>();
-        List<Skill> toRemove = new ArrayList<>();
-        allSkills.addAll(Arrays.asList(head.getSkills()));
-        allSkills.addAll(Arrays.asList(chest.getSkills()));
-        allSkills.addAll(Arrays.asList(arms.getSkills()));
-        allSkills.addAll(Arrays.asList(waist.getSkills()));
-        allSkills.addAll(Arrays.asList(legs.getSkills()));
+    private HashMap<String, Integer> filterSkills(Armor head, Armor chest, Armor arms, Armor waist, Armor legs){
+        HashMap<String, Integer> allSkills = new HashMap<>(head.getSkills());
 
-
-        for (int i = 0; i < allSkills.size(); i++) {
-            if(!toRemove.contains(allSkills.get(i))){
-                for (int j = i+1; j < allSkills.size(); j++) {
-                    if(allSkills.get(i).getSkillName().equals(allSkills.get(j).getSkillName())){
-                        toRemove.add(allSkills.get(j));
-                    }
-                }
-            }
-        }
-
-        allSkills.removeAll(toRemove);
-
-        for (Skill skill1 : allSkills) {
-            for (Skill skill2 : toRemove) {
-                if (skill1.getSkillName().equals(skill2.getSkillName()))
-                    skill1.setSkillLevel(skill1.getSkillLevel() + skill2.getSkillLevel());
-            }
-        }
+        chest.getSkills().forEach((name, level) ->
+                allSkills.merge(name, level, Integer::sum));
+        arms.getSkills().forEach((name, level) ->
+                allSkills.merge(name, level, Integer::sum));
+        waist.getSkills().forEach((name, level) ->
+                allSkills.merge(name, level, Integer::sum));
+        legs.getSkills().forEach((name, level) ->
+                allSkills.merge(name, level, Integer::sum));
 
         return allSkills;
     }

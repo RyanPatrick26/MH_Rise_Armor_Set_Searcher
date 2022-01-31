@@ -35,6 +35,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.workers.SetBuilderWorker;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class SetBuilderFragment extends Fragment{
@@ -419,16 +420,16 @@ public class SetBuilderFragment extends Fragment{
                     .build();
 
             //create the input data for the set builder worker
-            List<Skill> searchSkillList = new ArrayList<>();
+            HashMap<String, Integer> searchSkills = new HashMap<>();
             if(!tempSkill1.getSkillName().equals(""))
-                searchSkillList.add(tempSkill1);
+                searchSkills.put(tempSkill1.getSkillName(), tempSkill2.getSkillLevel());
             if(!tempSkill3.getSkillName().equals(""))
-                searchSkillList.add(tempSkill2);
+                searchSkills.put(tempSkill2.getSkillName(), tempSkill2.getSkillLevel());
             if(!tempSkill3.getSkillName().equals(""))
-                searchSkillList.add(tempSkill3);
+                searchSkills.put(tempSkill3.getSkillName(), tempSkill3.getSkillLevel());
 
             Data setSearchInputData = new Data.Builder()
-                    .putString(Constants.SEARCH_SKILLS, Convertors.fromTotalSkillList(searchSkillList))
+                    .putString(Constants.SEARCH_SKILLS, Convertors.fromSkillMap(searchSkills))
                     .putIntArray(Constants.WEAPON_SLOTS, new int[]{slot1, slot2, slot3})
                     .build();
 
