@@ -36,7 +36,7 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.ViewHold
         //region define variables for use in the viewholder
         SetBuilderListItemBinding binding = holder.binding;
         ArmorSet set = setList.get(position);
-        SkillsListAdapter adapter = new SkillsListAdapter(set.getTotalSkills(), context);
+        SkillsListAdapter adapter = new SkillsListAdapter(set.getAllSkills(), context);
         //endregion
 
         binding.piecesLayout.helmetText.setText(context.getResources().getIdentifier(set.getHead().getArmorName(),

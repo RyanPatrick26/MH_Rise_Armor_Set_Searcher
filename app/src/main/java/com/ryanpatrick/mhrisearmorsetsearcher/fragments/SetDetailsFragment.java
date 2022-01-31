@@ -30,6 +30,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.SkillViewModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class SetDetailsFragment extends Fragment {
@@ -40,7 +41,7 @@ public class SetDetailsFragment extends Fragment {
     List<String> skillDescriptionList;
     SkillsListAdapter skillsListAdapter;
     SkillDetailsAdapter detailsAdapter;
-    List<Skill> skillsList;
+    HashMap<String, Integer> skills;
 
     public SetDetailsFragment() {
         // Required empty public constructor
@@ -60,8 +61,8 @@ public class SetDetailsFragment extends Fragment {
         armorSetViewModel = new ViewModelProvider(requireActivity()).get(ArmorSetViewModel.class);
         skillViewModel = new ViewModelProvider(requireActivity()).get(SkillViewModel.class);
         armorSet = armorSetViewModel.getTempSet();
-        skillsList = armorSet.getTotalSkills();
-        skillsListAdapter = new SkillsListAdapter(skillsList, getContext());
+        skills = armorSet.getAllSkills();
+        skillsListAdapter = new SkillsListAdapter(skills, getContext());
         detailsAdapter = new SkillDetailsAdapter(skillDescriptionList, getContext());
         //endregion
         if(armorSet.getId() != null){
@@ -71,10 +72,9 @@ public class SetDetailsFragment extends Fragment {
 
         //set the skill list adapters on click listener to update description
         //list with the descriptions of the skill selected
-        skillsListAdapter.setOnSkillClickListener(position ->
+        skillsListAdapter.setOnSkillClickListener((skillName, position) ->
                 //get the skill from the database that corresponds with the skill the user selected
-                skillViewModel.getSkill(armorSet.getTotalSkills().get(position)
-                        .getSkillName()).observe(getViewLifecycleOwner(), skill -> {
+                skillViewModel.getSkill(skillName).observe(getViewLifecycleOwner(), skill -> {
                     for (int i = 0; i < skillsListAdapter.getItemCount(); i++) {
                         if(binding.setSkillList.getChildAt(i) != null) {
                             if (i == position) {
@@ -86,7 +86,7 @@ public class SetDetailsFragment extends Fragment {
                             }
                         }
                     }
-                    updateDescriptionList(skill, skillsList.get(position).getSkillLevel());
+                    updateDescriptionList(skill, skills.get(skillName));
                         }));
 
         //region set the text views for the armor pieces
