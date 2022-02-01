@@ -15,21 +15,24 @@ import java.util.List;
 
 public class DecorationRepository {
     private final DecorationsDao decorationsDao;
-    private final LiveData<List<Decoration>> decorationsList;
+    private final List<Decoration> decorationsList;
 
     public DecorationRepository(Application application) {
         ApplicationDatabase db = ApplicationDatabase.getInstance(application);
         decorationsDao = db.gemDao();
-        decorationsList = decorationsDao.getAllDecorations();
+        decorationsList = decorationsDao.getDecorationList();
     }
-    public LiveData<List<Decoration>> getDecorationList() {
+    public List<Decoration> getDecorationList() {
         return decorationsList;
     }
     public void insert(Decoration decoration){
         ApplicationDatabase.databaseWriter.execute(() -> decorationsDao.insert(decoration));
     }
-    public LiveData<Decoration> getGem(long id){
+    public Decoration getDecoration(long id){
         return decorationsDao.getDecoration(id);
+    }
+    public Decoration getDecoBySkillName(String skillName){
+        return decorationsDao.getDecoBySkillName(skillName);
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() ->{
