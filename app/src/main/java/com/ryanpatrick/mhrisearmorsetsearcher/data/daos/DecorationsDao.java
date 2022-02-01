@@ -28,9 +28,9 @@ public interface DecorationsDao {
     @Query("SELECT * FROM decoration_tbl")
     List<Decoration> getDecorationList();
 
-    @Query("SELECT * FROM decoration_tbl")
-    LiveData<List<Decoration>> getAllDecorations();
-
     @Query("SELECT * FROM decoration_tbl WHERE id = :id")
-    LiveData<Decoration> getDecoration(long id);
+    Decoration getDecoration(long id);
+
+    @Query("SELECT * FROM decoration_tbl WHERE skill_name == :skillName")
+    Decoration getDecoBySkillName(String skillName);
 }
