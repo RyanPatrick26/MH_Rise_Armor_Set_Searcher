@@ -1,6 +1,5 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.util;
 
-import com.ryanpatrick.mhrisearmorsetsearcher.R;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Decoration;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
@@ -1561,7 +1560,6 @@ public class Constants {
             //region new armors
             //endregion
     };
-
     public static final  Decoration[] prepopulateDecorations = new Decoration[]{
             new Decoration("mastery",
                     "masters_touch", 2),

@@ -31,6 +31,6 @@ public interface ArmorSetDao {
     @Query("SELECT * FROM armor_set_tbl")
     LiveData<List<ArmorSet>> selectAllArmorSets();
 
-    @Query("SELECT * FROM armor_set_tbl WHERE id = :id")
+    @Query("SELECT * FROM armor_set_tbl WHERE id == :id")
     LiveData<ArmorSet> selectArmorSet(long id);
 }
