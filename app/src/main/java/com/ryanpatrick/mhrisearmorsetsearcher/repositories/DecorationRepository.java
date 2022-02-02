@@ -1,6 +1,6 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.repositories;
 
-import android.app.Application;
+import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
@@ -14,15 +14,18 @@ import java.util.List;
 
 public class DecorationRepository {
     private final DecorationsDao decorationsDao;
-    private final List<Decoration> decorationsList;
+    private final LiveData<List<Decoration>> decorationsList;
 
-    public DecorationRepository(Application application) {
-        ApplicationDatabase db = ApplicationDatabase.getInstance(application);
+    public DecorationRepository(Context context) {
+        ApplicationDatabase db = ApplicationDatabase.getInstance(context);
         decorationsDao = db.gemDao();
-        decorationsList = decorationsDao.getDecorationList();
+        decorationsList = decorationsDao.getAllDecorations();
+    }
+    public LiveData<List<Decoration>> getAllDecorations(){
+        return decorationsList;
     }
     public List<Decoration> getDecorationList() {
-        return decorationsList;
+        return decorationsDao.getDecorationList();
     }
     public void insert(Decoration decoration){
         ApplicationDatabase.databaseWriter.execute(() -> decorationsDao.insert(decoration));
