@@ -7,12 +7,14 @@ import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import com.google.common.collect.Lists;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,28 +32,28 @@ public class SetBuilderWorker extends Worker {
         List<ArmorSet> armorSetList = new ArrayList<>();
 
         //get all of the armor pieces queried by the previous worker, along with the skills the user inputted
-        List<Armor> heads = WorkerDataHolder.getInstance().getHeads();
-        List<Armor> chests = WorkerDataHolder.getInstance().getChests();
-        List<Armor> arms = WorkerDataHolder.getInstance().getArms();
-        List<Armor> waists = WorkerDataHolder.getInstance().getWaists();
-        List<Armor> legs = WorkerDataHolder.getInstance().getLegs();
+        List<List<Armor>> allArmorsByType = Arrays.asList(WorkerDataHolder.getInstance().getHeads(),
+                WorkerDataHolder.getInstance().getChests(), WorkerDataHolder.getInstance().getArms(),
+                WorkerDataHolder.getInstance().getWaists(), WorkerDataHolder.getInstance().getLegs());
         HashMap<String, Integer> searchSkills = Convertors.toSkillMap(getInputData().getString(Constants.SEARCH_SKILLS));
 
+
+        
         //loop through each possible armor set, check to see if it meets the conditions set by the user, and add it to the list if it does
         //TEMPORARY
-        for (int i = 0; i < heads.size(); i++) {
-            for (int j = 0; j < chests.size(); j++) {
-                for (int k = 0; k < arms.size(); k++) {
-                    for (int l = 0; l < waists.size(); l++) {
-                        for (int m = 0; m < legs.size(); m++) {
-                            if(meetsConditions(heads.get(i), chests.get(j), arms.get(k), waists.get(l), legs.get(m), searchSkills)){
-                                armorSetList.add(createArmorSet(heads.get(i), chests.get(j), arms.get(k), waists.get(l), legs.get(m)));
-                            }
-                        }
-                    }
-                }
-            }
-        }
+//        for (int i = 0; i < heads.size(); i++) {
+//            for (int j = 0; j < chests.size(); j++) {
+//                for (int k = 0; k < arms.size(); k++) {
+//                    for (int l = 0; l < waists.size(); l++) {
+//                        for (int m = 0; m < legs.size(); m++) {
+//                            if(meetsConditions(heads.get(i), chests.get(j), arms.get(k), waists.get(l), legs.get(m), searchSkills)){
+//                                armorSetList.add(createArmorSet(heads.get(i), chests.get(j), arms.get(k), waists.get(l), legs.get(m)));
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
 
         //returns a failed result if no possible sets were found or success if there were
         if(armorSetList.isEmpty())
@@ -61,22 +63,22 @@ public class SetBuilderWorker extends Worker {
     }
 
     //helper function to build an armor set
-    private ArmorSet createArmorSet(Armor head, Armor chest, Armor arms, Armor waist, Armor legs) {
+    private ArmorSet createArmorSet(List<Armor> potentialSet) {
         //region calculate total defenses
-        int totalBaseDefense = head.getBaseDefense() + chest.getBaseDefense() + arms.getBaseDefense()
-                + waist.getBaseDefense() + legs.getBaseDefense();
-        int totalMaxDefense = head.getMaxDefense() + chest.getMaxDefense() + arms.getMaxDefense()
-                + waist.getMaxDefense() + legs.getMaxDefense();
-        int totalFireRes = head.getFireRes() + chest.getFireRes() + arms.getFireRes()
-                + waist.getFireRes() + legs.getFireRes();
-        int totalWaterRes = head.getWaterRes() + chest.getWaterRes() + arms.getWaterRes()
-                + waist.getWaterRes() + legs.getWaterRes();
-        int totalThunderRes = head.getThunderRes() + chest.getThunderRes() + arms.getThunderRes()
-                + waist.getThunderRes() + legs.getThunderRes();
-        int totalIceRes = head.getIceRes() + chest.getIceRes() + arms.getIceRes()
-                + waist.getIceRes() + legs.getIceRes();
-        int totalDragonRes = head.getDragonRes() + chest.getDragonRes() + arms.getDragonRes()
-                + waist.getDragonRes() + legs.getDragonRes();
+        int totalBaseDefense = potentialSet.get(0).getBaseDefense() + potentialSet.get(1).getBaseDefense() + potentialSet.get(2).getBaseDefense()
+                + potentialSet.get(3).getBaseDefense() + potentialSet.get(4).getBaseDefense();
+        int totalMaxDefense = potentialSet.get(0).getMaxDefense() + potentialSet.get(1).getMaxDefense() + potentialSet.get(2).getMaxDefense()
+                + potentialSet.get(3).getMaxDefense() + potentialSet.get(4).getMaxDefense();
+        int totalFireRes = potentialSet.get(0).getFireRes() + potentialSet.get(1).getFireRes() + potentialSet.get(2).getFireRes()
+                + potentialSet.get(3).getFireRes() + potentialSet.get(4).getFireRes();
+        int totalWaterRes = potentialSet.get(0).getWaterRes() + potentialSet.get(1).getWaterRes() + potentialSet.get(2).getWaterRes()
+                + potentialSet.get(3).getWaterRes() + potentialSet.get(4).getWaterRes();
+        int totalThunderRes = potentialSet.get(0).getThunderRes() + potentialSet.get(1).getThunderRes() + potentialSet.get(2).getThunderRes()
+                + potentialSet.get(3).getThunderRes() + potentialSet.get(4).getThunderRes();
+        int totalIceRes = potentialSet.get(0).getIceRes() + potentialSet.get(1).getIceRes() + potentialSet.get(2).getIceRes()
+                + potentialSet.get(3).getIceRes() + potentialSet.get(4).getIceRes();
+        int totalDragonRes = potentialSet.get(0).getDragonRes() + potentialSet.get(1).getDragonRes() + potentialSet.get(2).getDragonRes()
+                + potentialSet.get(3).getDragonRes() + potentialSet.get(4).getDragonRes();
         //endregion
 
         //region calculate total number of each slot
@@ -84,7 +86,7 @@ public class SetBuilderWorker extends Worker {
         int lvl2Slots = 0;
         int lvl3Slots = 0;
 
-        for (int slot : head.getSlots()) {
+        for (int slot : potentialSet.get(0).getSlots()) {
             switch (slot) {
                 case 1:
                     lvl1Slots++;
@@ -99,7 +101,7 @@ public class SetBuilderWorker extends Worker {
                     break;
             }
         }
-        for (int slot : arms.getSlots()) {
+        for (int slot : potentialSet.get(2).getSlots()) {
             switch (slot) {
                 case 1:
                     lvl1Slots++;
@@ -114,7 +116,7 @@ public class SetBuilderWorker extends Worker {
                     break;
             }
         }
-        for (int slot : chest.getSlots()) {
+        for (int slot : potentialSet.get(1).getSlots()) {
             switch (slot) {
                 case 1:
                     lvl1Slots++;
@@ -129,7 +131,7 @@ public class SetBuilderWorker extends Worker {
                     break;
             }
         }
-        for (int slot : waist.getSlots()) {
+        for (int slot : potentialSet.get(3).getSlots()) {
             switch (slot) {
                 case 1:
                     lvl1Slots++;
@@ -144,7 +146,7 @@ public class SetBuilderWorker extends Worker {
                     break;
             }
         }
-        for (int slot : legs.getSlots()) {
+        for (int slot : potentialSet.get(4).getSlots()) {
             switch (slot) {
                 case 1:
                     lvl1Slots++;
@@ -164,17 +166,17 @@ public class SetBuilderWorker extends Worker {
         //endregion
 
         //determine all of the skills and skill levels of the set
-        HashMap<String, Integer> allSkills = filterSkills(head, chest, arms, waist, legs);
+        HashMap<String, Integer> allSkills = filterSkills(potentialSet);
 
-        return new ArmorSet(head, chest, arms, waist, legs, totalBaseDefense, totalMaxDefense, totalFireRes,
+        return new ArmorSet(potentialSet.get(0), potentialSet.get(1), potentialSet.get(2), potentialSet.get(3), potentialSet.get(4), totalBaseDefense, totalMaxDefense, totalFireRes,
                 totalWaterRes, totalIceRes, totalThunderRes, totalDragonRes, allSkills, totalSlots);
 
     }
 
     //helper function to determine if a provided combination of armor pieces meets the user's requirements
-    private boolean meetsConditions(Armor head, Armor chest, Armor arms, Armor waist, Armor legs,  HashMap<String, Integer> searchSkills) {
+    private boolean meetsConditions(List<Armor> potentialSet,  HashMap<String, Integer> searchSkills) {
         //create a map of all the skills on the proposed armor set
-        HashMap<String, Integer> skillsOnSet = filterSkills(head, chest, arms, waist, legs);
+        HashMap<String, Integer> skillsOnSet = filterSkills(potentialSet);
 
         //create a map that will be used to see if the set has enough points into each skill
         HashMap<String, Integer> skillLevels = new HashMap<>();
@@ -202,17 +204,13 @@ public class SetBuilderWorker extends Worker {
     }
 
     //helper function to filter down to the unique skills in an armor set
-    private HashMap<String, Integer> filterSkills(Armor head, Armor chest, Armor arms, Armor waist, Armor legs){
-        HashMap<String, Integer> allSkills = new HashMap<>(head.getSkills());
+    private HashMap<String, Integer> filterSkills(List<Armor> potentialSet){
+        HashMap<String, Integer> allSkills = new HashMap<>(potentialSet.get(0).getSkills());
 
-        chest.getSkills().forEach((name, level) ->
-                allSkills.merge(name, level, Integer::sum));
-        arms.getSkills().forEach((name, level) ->
-                allSkills.merge(name, level, Integer::sum));
-        waist.getSkills().forEach((name, level) ->
-                allSkills.merge(name, level, Integer::sum));
-        legs.getSkills().forEach((name, level) ->
-                allSkills.merge(name, level, Integer::sum));
+        for (int i = 1; i < potentialSet.size(); i++) {
+            potentialSet.get(i).getSkills().forEach((name, level) -> 
+                    allSkills.merge(name, level, Integer::sum));
+        }
 
         return allSkills;
     }

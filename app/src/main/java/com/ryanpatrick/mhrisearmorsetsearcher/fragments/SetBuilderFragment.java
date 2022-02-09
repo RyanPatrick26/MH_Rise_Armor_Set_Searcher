@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.work.Data;
 import androidx.work.ExistingWorkPolicy;
 import androidx.work.OneTimeWorkRequest;
+import androidx.work.Operation;
 import androidx.work.WorkContinuation;
+import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import android.util.Log;
@@ -33,6 +35,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.workers.DatabaseWorker;
 import com.ryanpatrick.mhrisearmorsetsearcher.workers.SetBuilderWorker;
 
 import org.apache.commons.lang3.math.NumberUtils;
+import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,10 +51,8 @@ public class SetBuilderFragment extends Fragment{
     ArmorSetViewModel armorSetViewModel;
     private SetListAdapter adapter;
     SetListAdapter.OnSetClickListener onSetClickListener;
-
-    Skill tempSkill1;
-    Skill tempSkill2;
-    Skill tempSkill3;
+    
+    Skill[] tempSkills;
 
     String gender = "";
 
@@ -83,9 +84,10 @@ public class SetBuilderFragment extends Fragment{
         setList = new ArrayList<>();
         adapter = new SetListAdapter(setList, getContext(), onSetClickListener);
         
-        tempSkill1 = new Skill();
-        tempSkill2 = new Skill();
-        tempSkill3 = new Skill();
+        tempSkills = new Skill[3];
+        for (int i = 0; i < tempSkills.length; i++) {
+            tempSkills[i] = new Skill();
+        }
 
         skillViewModel = new ViewModelProvider(requireActivity()).get(SkillViewModel.class);
         armorViewModel = new ViewModelProvider(requireActivity()).get(ArmorViewModel.class);
@@ -139,7 +141,7 @@ public class SetBuilderFragment extends Fragment{
                         //if the first item in the spinner is selected, disable the corresponding skill level spinner
                         //and set the name of the temp skill to a blank string
                         binding.skill1LevelSpinner.setEnabled(false);
-                        tempSkill1.setSkillName("");
+                        tempSkills[0].setSkillName("");
                     }
                     else{
                         //otherwise, first re-enable the corresponding skill level spinner
@@ -148,8 +150,8 @@ public class SetBuilderFragment extends Fragment{
                         Skill skill = skills.get(position-1);
 
                         //set the name and max level of the temp skill to match that of the skill the user selected
-                        tempSkill1.setSkillName(skill.getSkillName());
-                        tempSkill1.setSkillMaxLevel(skill.getSkillMaxLevel());
+                        tempSkills[0].setSkillName(skill.getSkillName());
+                        tempSkills[0].setSkillMaxLevel(skill.getSkillMaxLevel());
 
                         //repopulate skill level list with all possible levels of the selected skill
                         for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
@@ -182,7 +184,7 @@ public class SetBuilderFragment extends Fragment{
                         //if the first item in the spinner is selected, disable the corresponding skill level spinner
                         //and set the name of the temp skill to a blank string
                         binding.skill2LevelSpinner.setEnabled(false);
-                        tempSkill2.setSkillName("");
+                        tempSkills[1].setSkillName("");
                     }
                     else{
                         //otherwise, first re-enable the corresponding skill level spinner
@@ -191,8 +193,8 @@ public class SetBuilderFragment extends Fragment{
                         Skill skill = skills.get(position-1);
 
                         //set the name and max level of the temp skill to match that of the skill the user selected
-                        tempSkill2.setSkillName(skill.getSkillName());
-                        tempSkill2.setSkillMaxLevel(skill.getSkillMaxLevel());
+                        tempSkills[1].setSkillName(skill.getSkillName());
+                        tempSkills[1].setSkillMaxLevel(skill.getSkillMaxLevel());
 
                         //repopulate skill level list with all possible levels of the selected skill
                         for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
@@ -224,7 +226,7 @@ public class SetBuilderFragment extends Fragment{
                         //if the first item in the spinner is selected, disable the corresponding skill level spinner
                         //and set the name of the temp skill to a blank string
                         binding.skill3LevelSpinner.setEnabled(false);
-                        tempSkill3.setSkillName("");
+                        tempSkills[2].setSkillName("");
                     }
                     else{
                         //otherwise, first re-enable the corresponding skill level spinner
@@ -233,8 +235,8 @@ public class SetBuilderFragment extends Fragment{
                         Skill skill = skills.get(position-1);
 
                         //set the name and max level of the temp skill to match that of the skill the user selected
-                        tempSkill3.setSkillName(skill.getSkillName());
-                        tempSkill3.setSkillMaxLevel(skill.getSkillMaxLevel());
+                        tempSkills[2].setSkillName(skill.getSkillName());
+                        tempSkills[2].setSkillMaxLevel(skill.getSkillMaxLevel());
 
                         //repopulate skill level list with all possible levels of the selected skill
                         for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
@@ -261,9 +263,9 @@ public class SetBuilderFragment extends Fragment{
                     //check to see if the selected string is able to be converted into an int
                     //if yes, set the temp skill level to be the selected item, otherwise set it to 0
                     if (NumberUtils.isParsable(skill1Level.get(position)))
-                        tempSkill1.setSkillLevel(Integer.parseInt(skill1Level.get(position)));
+                        tempSkills[0].setSkillLevel(Integer.parseInt(skill1Level.get(position)));
                     else
-                        tempSkill1.setSkillLevel(0);
+                        tempSkills[0].setSkillLevel(0);
                 }
 
                 @Override
@@ -278,9 +280,9 @@ public class SetBuilderFragment extends Fragment{
                     //check to see if the selected string is able to be converted into an int
                     //if yes, set the temp skill level to be the selected item, otherwise set it to 0
                     if (NumberUtils.isParsable(skill2Level.get(position)))
-                        tempSkill2.setSkillLevel(Integer.parseInt(skill2Level.get(position)));
+                        tempSkills[1].setSkillLevel(Integer.parseInt(skill2Level.get(position)));
                     else
-                        tempSkill2.setSkillLevel(0);
+                        tempSkills[1].setSkillLevel(0);
 
                 }
 
@@ -296,9 +298,9 @@ public class SetBuilderFragment extends Fragment{
                     //check to see if the selected string is able to be converted into an int
                     //if yes, set the temp skill level to be the selected item, otherwise set it to 0
                     if (NumberUtils.isParsable(skill3Level.get(position)))
-                        tempSkill3.setSkillLevel(Integer.parseInt(skill3Level.get(position)));
+                        tempSkills[2].setSkillLevel(Integer.parseInt(skill3Level.get(position)));
                     else
-                        tempSkill3.setSkillLevel(0);
+                        tempSkills[2].setSkillLevel(0);
 
                 }
 
@@ -382,6 +384,7 @@ public class SetBuilderFragment extends Fragment{
                         return;
                     Log.i(TAG, "onCreateView: " + workInfos.get(0).getState());
 
+
                 });
 
 
@@ -393,8 +396,8 @@ public class SetBuilderFragment extends Fragment{
     //will be replaced when search algorithm is built
     private void generateArmorSets(){
         //check to make sure the user selected a gender and set at least 1 skill
-        if(!gender.equals("") || (tempSkill1.getSkillName().equals("")
-                && tempSkill2.getSkillName().equals("") && tempSkill3.getSkillName().equals(""))){
+        if(!gender.equals("") || (tempSkills[0].getSkillName().equals("")
+                && tempSkills[1].getSkillName().equals("") && tempSkills[2].getSkillName().equals(""))){
             //create list of integers to hold each of the rarities
             List<Integer> rarities = new ArrayList<>();
             //region add the rarities to search based on which checkboxes the user selected
@@ -409,6 +412,7 @@ public class SetBuilderFragment extends Fragment{
                 rarities.add(7);
             //endregion
 
+
             //create the input data for database worker
             Data dbInputData = new Data.Builder()
                     .putString(Constants.GENDER, gender)
@@ -420,16 +424,19 @@ public class SetBuilderFragment extends Fragment{
                     .build();
 
             //create the input data for the set builder worker
+            //create a map for all of the search skills
             HashMap<String, Integer> searchSkills = new HashMap<>();
-            if(!tempSkill1.getSkillName().equals(""))
-                searchSkills.put(tempSkill1.getSkillName(), tempSkill2.getSkillLevel());
-            if(!tempSkill3.getSkillName().equals(""))
-                searchSkills.put(tempSkill2.getSkillName(), tempSkill2.getSkillLevel());
-            if(!tempSkill3.getSkillName().equals(""))
-                searchSkills.put(tempSkill3.getSkillName(), tempSkill3.getSkillLevel());
+            int totalRequiredSkillLevels = 0;
+            for (Skill skill : tempSkills) {
+                if(!skill.getSkillName().equals("") && !searchSkills.containsKey(skill.getSkillName())) {
+                    searchSkills.put(skill.getSkillName(), skill.getSkillLevel());
+                    totalRequiredSkillLevels += skill.getSkillLevel();
+                }
+            }
 
             Data setSearchInputData = new Data.Builder()
                     .putString(Constants.SEARCH_SKILLS, Convertors.fromSkillMap(searchSkills))
+                    .putInt(Constants.TOTAL_REQUIRED_LEVELS_TAG, totalRequiredSkillLevels)
                     .putIntArray(Constants.WEAPON_SLOTS, new int[]{slot1, slot2, slot3})
                     .build();
 
