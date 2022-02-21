@@ -120,7 +120,8 @@ public class SetBuilderWorker extends Worker {
 
             }
         }
-        return Arrays.asList(potentialSet);
+        //return null if no armor sets were found
+        return null;
     }
 
     //helper function to build an armor set
