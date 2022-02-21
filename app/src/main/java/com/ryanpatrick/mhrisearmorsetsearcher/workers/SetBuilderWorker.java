@@ -17,9 +17,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class SetBuilderWorker extends Worker {
     public static final String TAG = "here";
+    int count = 0;
 
     public SetBuilderWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -37,7 +39,19 @@ public class SetBuilderWorker extends Worker {
                 WorkerDataHolder.getInstance().getWaists(), WorkerDataHolder.getInstance().getLegs());
         HashMap<String, Integer> searchSkills = Convertors.toSkillMap(getInputData().getString(Constants.SEARCH_SKILLS));
 
+        long timerStart = System.currentTimeMillis();
+        List<Armor> potentialSet = armorSearch(allArmorsByType, new Armor[5], searchSkills, 0);
+        long timerEnd = System.currentTimeMillis() - timerStart;
+        Log.i(TAG, "doWork: it took " + timerEnd);
+        Log.i(TAG, "doWork: " + Objects.isNull(potentialSet));
 
+        for (Armor armor : potentialSet) {
+            Log.i(TAG, "doWork: " + armor.getArmorName());
+        }
+
+        Log.i(TAG, "doWork: " + filterSkills(potentialSet));
+
+        //Log.i(TAG, "doWork: " + meetsConditions(potentialSet, searchSkills));
         
         //loop through each possible armor set, check to see if it meets the conditions set by the user, and add it to the list if it does
         //TEMPORARY
@@ -60,6 +74,53 @@ public class SetBuilderWorker extends Worker {
             return Result.failure();
         else
             return Result.success();
+    }
+
+    //function to find the first armor set to meet the conditions
+    private List<Armor> armorSearch(List<List<Armor>> allArmors, Armor[] potentialSet, HashMap<String, Integer> searchSkills, int armorType){
+        //returns all one the search has reached the final list(legs
+        if(armorType >= allArmors.size())
+            return Arrays.asList(potentialSet);
+
+        /*
+        loop through all armors of the given type
+        0 - heads
+        1 - chests
+        2 - arms
+        3 - waists
+        4 - legs
+         */
+        for (Armor armor : allArmors.get(armorType)) {
+            //check to see if a given armor piece is relevant to the armor set
+            //(if it has any of the skills that are being searched for or slots for the set)
+            if(isRelevant(armor, searchSkills)){
+                //add the armor to the array of potential armors
+                potentialSet[armorType] = armor;
+                //checks to see if the current set meets the search conditions
+                if(meetsConditions(Arrays.asList(potentialSet), searchSkills)) {
+                    //loop through the array and set default armor pieces for armor slots
+                    //that haven't been filled yet
+                    for (int i = 0; i < 5; i++) {
+                        if (potentialSet[i] == null)
+                            potentialSet[i] = allArmors.get(i).get(0);
+                        //Log.i("done", "armorSearch: " + potentialSet[i].getArmorName());
+                    }
+                    //return the armor set
+                    return Arrays.asList(potentialSet);
+                }
+                //loop through the next type of armors
+                armorSearch(allArmors, potentialSet, searchSkills, armorType + 1);
+                //check again to see if the conditions are met
+                if(meetsConditions(Arrays.asList(potentialSet), searchSkills)){
+                    //return the armor set
+                    return Arrays.asList(potentialSet);
+                }
+                //remove the current piece from the potential set
+                potentialSet[armorType] = null;
+
+            }
+        }
+        return Arrays.asList(potentialSet);
     }
 
     //helper function to build an armor set
@@ -178,6 +239,8 @@ public class SetBuilderWorker extends Worker {
         //create a map of all the skills on the proposed armor set
         HashMap<String, Integer> skillsOnSet = filterSkills(potentialSet);
 
+        if(!skillsOnSet.keySet().containsAll(searchSkills.keySet()))
+            return false;
         //create a map that will be used to see if the set has enough points into each skill
         HashMap<String, Integer> skillLevels = new HashMap<>();
 
@@ -188,18 +251,16 @@ public class SetBuilderWorker extends Worker {
                     skillLevels.replace(key, skillLevels.get(key) + skillsOnSet.get(key));
                 }
                 else{
-                    skillLevels.put(key, 0);
+                    skillLevels.put(key, skillsOnSet.get(key));
                 }
             }
         }
 
         //returns false if any of the skills on the set do not have enough points into them
-        for (String key : skillLevels.keySet()) {
-            if (skillLevels.get(key) < searchSkills.get(key)) {
+        for (String key : searchSkills.keySet()) {
+            if (skillLevels.get(key) < searchSkills.get(key))
                 return false;
-            }
         }
-
         return true;
     }
 
@@ -208,10 +269,20 @@ public class SetBuilderWorker extends Worker {
         HashMap<String, Integer> allSkills = new HashMap<>(potentialSet.get(0).getSkills());
 
         for (int i = 1; i < potentialSet.size(); i++) {
-            potentialSet.get(i).getSkills().forEach((name, level) -> 
-                    allSkills.merge(name, level, Integer::sum));
+            if(potentialSet.get(i) != null)
+                potentialSet.get(i).getSkills().forEach((name, level) ->
+                        allSkills.merge(name, level, Integer::sum));
         }
 
         return allSkills;
+    }
+
+    //helper function to see if a given armor piece is relevant to the set
+    private boolean isRelevant(Armor armor, HashMap<String, Integer> searchSkills) {
+        for (String key : searchSkills.keySet()) {
+            if (armor.getSkills().containsKey(key))
+                return true;
+        }
+        return false;
     }
 }
