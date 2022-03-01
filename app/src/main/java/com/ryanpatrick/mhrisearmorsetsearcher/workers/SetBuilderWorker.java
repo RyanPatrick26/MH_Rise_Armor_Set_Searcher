@@ -39,37 +39,12 @@ public class SetBuilderWorker extends Worker {
                 WorkerDataHolder.getInstance().getWaists(), WorkerDataHolder.getInstance().getLegs());
         HashMap<String, Integer> searchSkills = Convertors.toSkillMap(getInputData().getString(Constants.SEARCH_SKILLS));
 
-        long timerStart = System.currentTimeMillis();
-        List<Armor> potentialSet = armorSearch(allArmorsByType, new Armor[5], searchSkills, 0);
-        long timerEnd = System.currentTimeMillis() - timerStart;
-        Log.i(TAG, "doWork: it took " + timerEnd);
-        Log.i(TAG, "doWork: " + Objects.isNull(potentialSet));
-
-        for (Armor armor : potentialSet) {
-            Log.i(TAG, "doWork: " + armor.getArmorName());
+        List<Armor> firstSet = armorSearch(allArmorsByType, new Armor[5], searchSkills, 0);
+        if(firstSet != null){
+            armorSetList.add(createArmorSet(firstSet));
         }
 
-        Log.i(TAG, "doWork: " + filterSkills(potentialSet));
 
-        //Log.i(TAG, "doWork: " + meetsConditions(potentialSet, searchSkills));
-        
-        //loop through each possible armor set, check to see if it meets the conditions set by the user, and add it to the list if it does
-        //TEMPORARY
-//        for (int i = 0; i < heads.size(); i++) {
-//            for (int j = 0; j < chests.size(); j++) {
-//                for (int k = 0; k < arms.size(); k++) {
-//                    for (int l = 0; l < waists.size(); l++) {
-//                        for (int m = 0; m < legs.size(); m++) {
-//                            if(meetsConditions(heads.get(i), chests.get(j), arms.get(k), waists.get(l), legs.get(m), searchSkills)){
-//                                armorSetList.add(createArmorSet(heads.get(i), chests.get(j), arms.get(k), waists.get(l), legs.get(m)));
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-
-        //returns a failed result if no possible sets were found or success if there were
         if(armorSetList.isEmpty())
             return Result.failure();
         else
