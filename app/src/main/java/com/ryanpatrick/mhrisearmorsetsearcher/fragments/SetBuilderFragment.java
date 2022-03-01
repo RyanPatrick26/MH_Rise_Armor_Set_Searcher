@@ -53,7 +53,8 @@ public class SetBuilderFragment extends Fragment{
     ArmorSetViewModel armorSetViewModel;
     private SetListAdapter adapter;
     SetListAdapter.OnSetClickListener onSetClickListener;
-    
+    String[] sortTypes;
+    String sortingType;
     Skill[] tempSkills;
 
     String gender = "";
@@ -87,6 +88,12 @@ public class SetBuilderFragment extends Fragment{
         for (int i = 0; i < tempSkills.length; i++) {
             tempSkills[i] = new Skill();
         }
+
+        sortTypes = new String[]{getString(R.string.base_defense), getString(R.string.max_defense),
+                                getString(R.string.fire_res_skill), getString(R.string.water_res_skill),
+                                getString(R.string.thunder_res_skill), getString(R.string.ice_res_skill),
+                                getString(R.string.dragon_res_skill), getString(R.string.spare_slots),
+                                getString(R.string.extra_skills)};
 
         skillViewModel = new ViewModelProvider(requireActivity()).get(SkillViewModel.class);
         armorViewModel = new ViewModelProvider(requireActivity()).get(ArmorViewModel.class);
@@ -547,6 +554,22 @@ public class SetBuilderFragment extends Fragment{
                     gender = "Female";
             }
         });
+
+        //setup the sort spinner
+        ArrayAdapter<String> sortAdapter = new ArrayAdapter<>(requireContext(), R.layout.spinner_item, sortTypes);
+        binding.sortSpinner.setAdapter(sortAdapter);
+        binding.sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                sortingType = sortTypes[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         //set the on click listener for the save button to generate armor sets based on the users specifications
         binding.searchSetButton.setOnClickListener(v -> generateArmorSets());

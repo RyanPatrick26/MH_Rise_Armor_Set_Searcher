@@ -464,6 +464,32 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="clip_vertical"
+                    android:text="@string/sort_by"
+                    app:layout_constraintBottom_toBottomOf="@+id/sort_spinner"
+                    app:layout_constraintEnd_toStartOf="@+id/sort_spinner"
+                    app:layout_constraintTop_toTopOf="@+id/sort_spinner"
+                    app:layout_constraintWidth_percent=".2" />
+
+                <Spinner
+                    android:id="@+id/sort_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent=".45"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <TextView
                 android:id="@+id/set_list_text"
                 android:layout_width="match_parent"
