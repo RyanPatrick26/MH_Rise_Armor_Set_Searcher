@@ -33,6 +33,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
 import com.ryanpatrick.mhrisearmorsetsearcher.workers.DatabaseWorker;
 import com.ryanpatrick.mhrisearmorsetsearcher.workers.SetBuilderWorker;
+import com.ryanpatrick.mhrisearmorsetsearcher.workers.SortWorker;
 import com.ryanpatrick.mhrisearmorsetsearcher.workers.WorkerDataHolder;
 
 import org.apache.commons.lang3.math.NumberUtils;
@@ -59,6 +60,8 @@ public class SetBuilderFragment extends Fragment{
 
     String gender = "";
     int slot1, slot2, slot3;
+
+    WorkManager workManager;
     //endregion
 
     public SetBuilderFragment() {
@@ -98,6 +101,9 @@ public class SetBuilderFragment extends Fragment{
         skillViewModel = new ViewModelProvider(requireActivity()).get(SkillViewModel.class);
         armorViewModel = new ViewModelProvider(requireActivity()).get(ArmorViewModel.class);
         armorSetViewModel = new ViewModelProvider(requireActivity()).get(ArmorSetViewModel.class);
+
+        workManager = WorkManager.getInstance(requireContext());
+        workManager.pruneWork();
         //endregion
 
         //setup the all the skill spinners within an observer
@@ -574,35 +580,39 @@ public class SetBuilderFragment extends Fragment{
         //set the on click listener for the save button to generate armor sets based on the users specifications
         binding.searchSetButton.setOnClickListener(v -> generateArmorSets());
 
-        WorkManager.getInstance(requireContext()).getWorkInfosByTagLiveData(Constants.SET_SEARCH_TAG)
+        workManager.getWorkInfosByTagLiveData(Constants.SORT_TAG)
                 .observe(getViewLifecycleOwner(), workInfos -> {
                     if(workInfos == null || workInfos.isEmpty())
                         return;
                     boolean finished = workInfos.get(0).getState().isFinished();
 
-                    if(!finished){
+                    Log.i(TAG, "onCreateView: " + workInfos.get(0).getState());
+
+                    if(!finished)
                         showWorkInProgress();
-                    }
-                    else{
-                        completeSearch();
-                    }
-
-
+                    else
+                        completeSearch(workInfos.get(0).getOutputData());
                 });
 
 
         return binding.getRoot();
     }
 
-    private void completeSearch() {
+    private void completeSearch(Data outputData) {
         setList.clear();
-//        setList.addAll(WorkerDataHolder.getInstance().getSetList());
-//        if(setList.size() > 0) {
-//            binding.setListText.setVisibility(View.GONE);
-//            binding.setBuilderList.setVisibility(View.VISIBLE);
-//        }
-//        binding.searchCardView.setVisibility(View.GONE);
-//        adapter.notifyDataSetChanged();
+        String setListString = outputData.getString(Constants.SET_LIST_TAG);
+        if(setListString != null)
+            setList.addAll(Objects.requireNonNull(Convertors.toSetList(setListString)));
+        if(setList.size() > 0) {
+            binding.setListText.setVisibility(View.GONE);
+            binding.setBuilderList.setVisibility(View.VISIBLE);
+        }
+        else{
+            binding.setListText.setVisibility(View.VISIBLE);
+            binding.setBuilderList.setVisibility(View.GONE);
+        }
+        binding.searchCardView.setVisibility(View.GONE);
+        adapter.notifyDataSetChanged();
 
         //region re-enable all the buttons and spinners after the search is complete
         binding.searchSetButton.setEnabled(true);
@@ -654,8 +664,7 @@ public class SetBuilderFragment extends Fragment{
         //endregion
     }
     
-    //Temp function for generating the armor sets
-    //will be replaced when search algorithm is built
+    //starts searching for armor sets
     private void generateArmorSets(){
         //check to make sure the user selected a gender and set at least 1 skill
         if(!gender.equals("") || (tempSkills[0].getSkillName().equals("")
@@ -674,7 +683,7 @@ public class SetBuilderFragment extends Fragment{
                     .setInputData(dbInputData)
                     .build();
 
-            //create the input data for the set builder worker
+            //region create the input data for the set builder worker
             //create a map for all of the search skills
             HashMap<String, Integer> searchSkills = new HashMap<>();
             for (Skill skill : tempSkills) {
@@ -687,6 +696,7 @@ public class SetBuilderFragment extends Fragment{
                     .putString(Constants.SEARCH_SKILLS, Convertors.fromSkillMap(searchSkills))
                     .putIntArray(Constants.WEAPON_SLOTS, new int[]{slot1, slot2, slot3})
                     .build();
+            //endregion
 
             //create a work request for the set builder worker
             OneTimeWorkRequest setBuilderWorkRequest = new OneTimeWorkRequest.Builder(SetBuilderWorker.class)
@@ -694,10 +704,21 @@ public class SetBuilderFragment extends Fragment{
                     .addTag(Constants.SET_SEARCH_TAG)
                     .build();
 
+            //create input data for the sort worker
+            Data sortInputData = new Data.Builder()
+                    .putString(Constants.SORT_TAG, sortingType)
+                    .build();
+
+            OneTimeWorkRequest sortWorkRequest = new OneTimeWorkRequest.Builder(SortWorker.class)
+                    .setInputData(sortInputData)
+                    .addTag(Constants.SORT_TAG)
+                    .build();
+
             //create a work continuation using the database and set builder workers
             WorkContinuation continuation = WorkManager.getInstance(requireContext())
                     .beginUniqueWork(Constants.SET_BUILDER_WORK_NAME, ExistingWorkPolicy.REPLACE, databaseRequest)
-                    .then(setBuilderWorkRequest);
+                    .then(setBuilderWorkRequest)
+                    .then(sortWorkRequest);
             //run the work
             continuation.enqueue();
         }
@@ -1166,4 +1187,9 @@ public class SetBuilderFragment extends Fragment{
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        setList.clear();
+    }
 }
