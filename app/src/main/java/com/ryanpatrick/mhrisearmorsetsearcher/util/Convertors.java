@@ -119,7 +119,7 @@ public class Convertors {
     }
 
     @TypeConverter
-    public static String fromSlotArray(int[] slots){
+    public static String fromSpareSlotArray(int[] slots){
         if(slots == null){
             return "";
         }
@@ -129,7 +129,7 @@ public class Convertors {
         return gson.toJson(slots, type);
     }
     @TypeConverter
-    public static int[] toSlotArray(String slots){
+    public static int[] toSpareSlotArray(String slots){
         if(slots == null){
             return null;
         }
@@ -181,5 +181,27 @@ public class Convertors {
 
         return gson.fromJson(charm, type);
     }
+
+    @TypeConverter
+    public static String fromDecorationList(List<Decoration> decorations){
+        if(decorations == null){
+            return null;
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Decoration>>(){}.getType();
+
+        return gson.toJson(decorations, type);
+    }
+    @TypeConverter
+    public static List<Decoration> toDecorationList(String decorations){
+        if(decorations == null){
+            return null;
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Decoration>>(){}.getType();
+
+        return gson.fromJson(decorations, type);
+    }
+
 
 }

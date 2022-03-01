@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Entity(tableName = "armor_set_tbl")
 public class ArmorSet{
@@ -36,15 +37,18 @@ public class ArmorSet{
 	private int totalDragonRes;
 	@ColumnInfo(name = "charm")
 	private Charm charm;
+	@ColumnInfo(name = "decorations")
+	private List<Decoration> decorations;
 	@ColumnInfo(name = "total_skills")
 	private HashMap<String, Integer> allSkills;
 	@ColumnInfo(name="total_slots")
-	private int[] totalSlots;
+	private int[] totalSpareSlots;
 
 	public ArmorSet(Armor head, Armor chest, Armor arms, Armor waist, Armor legs,
 					int totalBaseDefense, int totalMaxDefense, int totalFireRes,
 					int totalWaterRes, int totalIceRes, int totalThunderRes, int totalDragonRes,
-					Charm charm, HashMap<String, Integer> allSkills, int[] totalSlots) {
+					Charm charm, List<Decoration> decorations, HashMap<String, Integer> allSkills,
+					int[] totalSpareSlots) {
 		this.head = head;
 		this.chest = chest;
 		this.arms = arms;
@@ -58,12 +62,12 @@ public class ArmorSet{
 		this.totalThunderRes = totalThunderRes;
 		this.totalDragonRes = totalDragonRes;
 		this.charm = charm;
+		this.decorations = decorations;
 		this.allSkills = allSkills;
-		this.totalSlots = totalSlots;
+		this.totalSpareSlots = totalSpareSlots;
 	}
 
 	//region getters and setters
-
 	public Long getId() {
 		return id;
 	}
@@ -176,6 +180,14 @@ public class ArmorSet{
 		this.charm = charm;
 	}
 
+	public List<Decoration> getDecorations() {
+		return decorations;
+	}
+
+	public void setDecorations(List<Decoration> decorations) {
+		this.decorations = decorations;
+	}
+
 	public HashMap<String, Integer> getAllSkills() {
 		return allSkills;
 	}
@@ -184,12 +196,12 @@ public class ArmorSet{
 		this.allSkills = allSkills;
 	}
 
-	public int[] getTotalSlots() {
-		return totalSlots;
+	public int[] getTotalSpareSlots() {
+		return totalSpareSlots;
 	}
 
-	public void setTotalSlots(int[] totalSlots) {
-		this.totalSlots = totalSlots;
+	public void setTotalSpareSlots(int[] totalSpareSlots) {
+		this.totalSpareSlots = totalSpareSlots;
 	}
 
 	//endregion
