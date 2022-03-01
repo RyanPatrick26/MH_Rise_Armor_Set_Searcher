@@ -40,11 +40,11 @@ public class SetBuilderWorker extends Worker {
                 WorkerDataHolder.getInstance().getWaists(), WorkerDataHolder.getInstance().getLegs());
         HashMap<String, Integer> searchSkills = Convertors.toSkillMap(getInputData().getString(Constants.SEARCH_SKILLS));
 
-        Log.i(TAG, "doWork: " + searchSkills);
+        List<Charm> charmsList = WorkerDataHolder.getInstance().getCharmList();
 
-        List<Armor> firstSet = armorSearch(allArmorsByType, new Armor[5], searchSkills, 0);
+        ArmorSet firstSet = startSearch(allArmorsByType, charmsList, new Armor[5], searchSkills);
         if(firstSet != null){
-            armorSetList.add(createArmorSet(firstSet, null));
+            armorSetList.add(firstSet);
         }
 
 
@@ -55,8 +55,27 @@ public class SetBuilderWorker extends Worker {
             return Result.success();
     }
 
+    private ArmorSet startSearch(List<List<Armor>> allArmorsByType, List<Charm> charmsList, Armor[] armors,
+                                 HashMap<String, Integer> searchSkills) {
+        List<Armor> armorList;
+        for (Charm charm : charmsList) {
+            if(isCharmRelevant(charm, searchSkills)) {
+                armorList = armorSearch(allArmorsByType, charm, armors, searchSkills, 0);
+                if (armorList != null) {
+                    return createArmorSet(armorList, charm);
+                }
+            }
+        }
+        armorList = armorSearch(allArmorsByType, null, armors, searchSkills, 0);
+        if(armorList != null){
+            return createArmorSet(armorList, charmsList.size() > 0 ? charmsList.get(0) : null);
+        }
+        return null;
+    }
+
+
     //function to find the first armor set to meet the conditions
-    private List<Armor> armorSearch(List<List<Armor>> allArmors, Armor[] potentialSet, HashMap<String, Integer> searchSkills, int armorType){
+    private List<Armor> armorSearch(List<List<Armor>> allArmors, Charm charm, Armor[] potentialSet, HashMap<String, Integer> searchSkills, int armorType){
         //Log.i(TAG, "armorSearch: " + Arrays.toString(potentialSet));
         //returns all one the search has reached the final list(legs)
         if(armorType >= allArmors.size())
@@ -74,11 +93,11 @@ public class SetBuilderWorker extends Worker {
             //Log.i(TAG, "armorSearch: " + armor);
             //check to see if a given armor piece is relevant to the armor set
             //(if it has any of the skills that are being searched for or slots for the set)
-            if(isRelevant(armor, searchSkills)){
+            if(isArmorRelevant(armor, searchSkills)){
                 //add the armor to the array of potential armors
                 potentialSet[armorType] = armor;
                 //checks to see if the current set meets the search conditions
-                if(meetsConditions(Arrays.asList(potentialSet), searchSkills)) {
+                if(meetsConditions(Arrays.asList(potentialSet), charm, searchSkills)) {
                     //loop through the array and set default armor pieces for armor slots
                     //that haven't been filled yet
                     for (int i = 0; i < 5; i++) {
@@ -91,9 +110,9 @@ public class SetBuilderWorker extends Worker {
                     return Arrays.asList(potentialSet);
                 }
                 //loop through the next type of armors
-                armorSearch(allArmors, potentialSet, searchSkills, armorType + 1);
+                armorSearch(allArmors, charm, potentialSet, searchSkills, armorType + 1);
                 //check again to see if the conditions are met
-                if(meetsConditions(Arrays.asList(potentialSet), searchSkills)){
+                if(meetsConditions(Arrays.asList(potentialSet), charm, searchSkills)){
                     //return the armor set
                     return Arrays.asList(potentialSet);
                 }
@@ -104,8 +123,8 @@ public class SetBuilderWorker extends Worker {
         }
         //if there are no armor pieces of the current type that have a skill relevant to the set,
         //move to the next type of armor pieces, saving the result to a new variablead
-        List<Armor> armorList = armorSearch(allArmors, potentialSet, searchSkills, armorType + 1);
-        if(meetsConditions(armorList, searchSkills))
+        List<Armor> armorList = armorSearch(allArmors, charm, potentialSet, searchSkills, armorType + 1);
+        if(meetsConditions(armorList, charm, searchSkills))
             return armorList;
 
         //return null if no armor sets were found
@@ -114,6 +133,10 @@ public class SetBuilderWorker extends Worker {
 
     //helper function to build an armor set
     private ArmorSet createArmorSet(List<Armor> potentialSet, Charm charm) {
+        for (Armor armor :
+                potentialSet) {
+            Log.i(TAG, "createArmorSet: " + armor);
+        }
         //region calculate total defenses
         int totalBaseDefense = potentialSet.get(0).getBaseDefense() + potentialSet.get(1).getBaseDefense() + potentialSet.get(2).getBaseDefense()
                 + potentialSet.get(3).getBaseDefense() + potentialSet.get(4).getBaseDefense();
@@ -211,6 +234,23 @@ public class SetBuilderWorker extends Worker {
                     break;
             }
         }
+        if(charm != null){
+            for (int slot : charm.getSlots()) {
+                switch (slot) {
+                    case 1:
+                        lvl1Slots++;
+                        break;
+                    case 2:
+                        lvl2Slots++;
+                        break;
+                    case 3:
+                        lvl3Slots++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         int[] totalSlots = new int[]{lvl1Slots, lvl2Slots, lvl3Slots};
         //endregion
@@ -224,7 +264,7 @@ public class SetBuilderWorker extends Worker {
     }
 
     //helper function to determine if a provided combination of armor pieces meets the user's requirements
-    private boolean meetsConditions(List<Armor> potentialSet,  HashMap<String, Integer> searchSkills) {
+    private boolean meetsConditions(List<Armor> potentialSet, Charm charm,  HashMap<String, Integer> searchSkills) {
         //create a map of all the skills on the proposed armor set
         HashMap<String, Integer> skillsOnSet = filterSkills(potentialSet);
 
@@ -236,14 +276,18 @@ public class SetBuilderWorker extends Worker {
         //add up the levels of all the skills on the proposed set that the user requested
         for(String key : skillsOnSet.keySet()){
             if(searchSkills.containsKey(key)){
-                if(skillLevels.containsKey(key)){
-                    skillLevels.replace(key, skillLevels.get(key) + skillsOnSet.get(key));
-                }
-                else{
-                    skillLevels.put(key, skillsOnSet.get(key));
-                }
+                skillLevels.merge(key, searchSkills.get(key), Integer::sum);
             }
         }
+        if(charm != null){
+            if(charm.getSkill1() != null){
+                skillLevels.merge(charm.getSkill1().getSkillName(), charm.getSkill1().getSkillLevel(), Integer::sum);
+            }
+            if(charm.getSkill2() != null){
+                skillLevels.merge(charm.getSkill2().getSkillName(), charm.getSkill2().getSkillLevel(), Integer::sum);
+            }
+        }
+
 
         //returns false if any of the skills on the set do not have enough points into them
         for (String key : searchSkills.keySet()) {
@@ -267,11 +311,19 @@ public class SetBuilderWorker extends Worker {
     }
 
     //helper function to see if a given armor piece is relevant to the set
-    private boolean isRelevant(Armor armor, HashMap<String, Integer> searchSkills) {
+    private boolean isArmorRelevant(Armor armor, HashMap<String, Integer> searchSkills) {
         for (String key : searchSkills.keySet()) {
             if (armor.getSkills().containsKey(key))
                 return true;
         }
+        return false;
+    }
+
+    private boolean isCharmRelevant(Charm charm, HashMap<String, Integer> searchSkills){
+        if(charm.getSkill1() != null && searchSkills.containsKey(charm.getSkill1().getSkillName()))
+            return true;
+        if(charm.getSkill2() != null && searchSkills.containsKey(charm.getSkill2().getSkillName()))
+            return true;
         return false;
     }
 }

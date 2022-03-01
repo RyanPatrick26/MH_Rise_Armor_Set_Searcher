@@ -671,19 +671,6 @@ public class SetBuilderFragment extends Fragment{
                 && tempSkills[1].getSkillName().equals("") && tempSkills[2].getSkillName().equals("")
                 && tempSkills[3].getSkillName().equals("") && tempSkills[4].getSkillName().equals("")
                 && tempSkills[6].getSkillName().equals(""))){
-            //create list of integers to hold each of the rarities
-            List<Integer> rarities = new ArrayList<>();
-
-            //create the input data for database worker
-            Data dbInputData = new Data.Builder()
-                    .putString(Constants.GENDER, gender)
-                    .build();
-            //create a work request for the database worker
-            OneTimeWorkRequest databaseRequest = new OneTimeWorkRequest.Builder(DatabaseWorker.class)
-                    .setInputData(dbInputData)
-                    .build();
-
-            //region create the input data for the set builder worker
             //create a map for all of the search skills
             HashMap<String, Integer> searchSkills = new HashMap<>();
             for (Skill skill : tempSkills) {
@@ -692,11 +679,21 @@ public class SetBuilderFragment extends Fragment{
                 }
             }
 
+            //create the input data for database worker
+            Data dbInputData = new Data.Builder()
+                    .putString(Constants.SEARCH_SKILLS, Convertors.fromSkillMap(searchSkills))
+                    .putString(Constants.GENDER, gender)
+                    .build();
+            //create a work request for the database worker
+            OneTimeWorkRequest databaseRequest = new OneTimeWorkRequest.Builder(DatabaseWorker.class)
+                    .setInputData(dbInputData)
+                    .build();
+
+            //create the input data for the set builder worker
             Data setSearchInputData = new Data.Builder()
                     .putString(Constants.SEARCH_SKILLS, Convertors.fromSkillMap(searchSkills))
                     .putIntArray(Constants.WEAPON_SLOTS, new int[]{slot1, slot2, slot3})
                     .build();
-            //endregion
 
             //create a work request for the set builder worker
             OneTimeWorkRequest setBuilderWorkRequest = new OneTimeWorkRequest.Builder(SetBuilderWorker.class)
@@ -1187,9 +1184,4 @@ public class SetBuilderFragment extends Fragment{
 
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        setList.clear();
-    }
 }

@@ -1417,5 +1417,6 @@
     <string name="spare_slots">Spare Slots</string>
     <string name="extra_skills">Extra Skills</string>
     <string name="sorting_default">Defaults to Max Defense</string>
+    <string name="charm">Charm</string>
     <!--endregion-->
 </resources>
