@@ -65,7 +65,7 @@ public class SkillsListAdapter extends RecyclerView.Adapter<SkillsListAdapter.Vi
 
             itemView.setOnClickListener(v ->{
                 if(onSkillClickListener != null){
-                    onSkillClickListener.onSkillClick(skillNameText.getText().toString(), getAbsoluteAdapterPosition());
+                    onSkillClickListener.onSkillClick(skillNames[getAbsoluteAdapterPosition()], getAbsoluteAdapterPosition());
                 }
             });
         }

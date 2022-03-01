@@ -1,5 +1,6 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -63,7 +64,6 @@ public class ArmorSet{
 	}
 
 	//region getters and setters
-
 	public Long getId() {
 		return id;
 	}
@@ -193,4 +193,11 @@ public class ArmorSet{
 	}
 
 	//endregion
+
+
+	public boolean equals(@Nullable ArmorSet armorSet) {
+		return (armorSet.getHead().equals(this.head)) && armorSet.getChest().equals(this.chest)
+				&& armorSet.getArms().equals(this.arms) && armorSet.getWaist().equals(this.waist)
+				&& armorSet.getLegs().equals(this.legs) && armorSet.getCharm().equals(this.charm);
+	}
 }

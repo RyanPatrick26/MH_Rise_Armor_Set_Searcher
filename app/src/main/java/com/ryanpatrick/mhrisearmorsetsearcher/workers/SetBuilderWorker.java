@@ -49,6 +49,7 @@ public class SetBuilderWorker extends Worker {
         if(armorSetList.isEmpty())
             return Result.failure();
         else
+            WorkerDataHolder.getInstance().setSetList(armorSetList);
             return Result.success();
     }
 

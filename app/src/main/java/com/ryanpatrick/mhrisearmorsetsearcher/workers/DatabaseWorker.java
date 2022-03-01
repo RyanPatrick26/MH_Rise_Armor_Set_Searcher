@@ -26,9 +26,7 @@ public class DatabaseWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        List<Armor> armorList = armorRepository
-                .getAllArmorOfRarity(getInputData().getIntArray(Constants.RARITIES),
-                        Gender.valueOf(getInputData().getString(Constants.GENDER)));
+        List<Armor> armorList = armorRepository.getArmorlist();
         List<Armor> heads = new ArrayList<>();
         List<Armor> chests = new ArrayList<>();
         List<Armor> arms = new ArrayList<>();
