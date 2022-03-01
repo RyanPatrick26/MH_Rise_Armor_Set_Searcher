@@ -53,9 +53,9 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.ViewHold
         //endregion
 
         //display how many of each level of slot the set has
-        binding.level1Slots.setText(Integer.toString(set.getTotalSlots()[0]));
-        binding.level2Slots.setText(Integer.toString(set.getTotalSlots()[1]));
-        binding.level3Slots.setText(Integer.toString(set.getTotalSlots()[2]));
+        binding.level1Slots.setText(Integer.toString(set.getTotalSpareSlots()[0]));
+        binding.level2Slots.setText(Integer.toString(set.getTotalSpareSlots()[1]));
+        binding.level3Slots.setText(Integer.toString(set.getTotalSpareSlots()[2]));
 
         //set the adapter for the sets skills
         binding.totalSkillListView.setAdapter(adapter);

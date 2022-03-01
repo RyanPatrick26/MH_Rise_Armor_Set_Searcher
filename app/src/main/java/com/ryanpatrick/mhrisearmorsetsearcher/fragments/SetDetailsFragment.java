@@ -117,9 +117,9 @@ public class SetDetailsFragment extends Fragment {
         //endregion
 
         //region set the text views for the slots
-        binding.level1Slots.setText(Integer.toString(armorSet.getTotalSlots()[0]));
-        binding.level2Slots.setText(Integer.toString(armorSet.getTotalSlots()[1]));
-        binding.level3Slots.setText(Integer.toString(armorSet.getTotalSlots()[2]));
+        binding.level1Slots.setText(Integer.toString(armorSet.getTotalSpareSlots()[0]));
+        binding.level2Slots.setText(Integer.toString(armorSet.getTotalSpareSlots()[1]));
+        binding.level3Slots.setText(Integer.toString(armorSet.getTotalSpareSlots()[2]));
         //endregion
 
         //region set the layout managers and adapters for the recycler views
