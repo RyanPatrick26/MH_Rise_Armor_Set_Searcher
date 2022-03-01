@@ -3,6 +3,7 @@ package com.ryanpatrick.mhrisearmorsetsearcher.fragments;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
@@ -39,7 +40,7 @@ public class BuilderHostFragment extends Fragment implements SetListAdapter.OnSe
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentBuilderHostBinding.inflate(inflater, container, false);
 
@@ -57,7 +58,6 @@ public class BuilderHostFragment extends Fragment implements SetListAdapter.OnSe
         setViewModel.setTempSet(setList.get(position));
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE
             || Utilities.isTablet(requireContext())){
-            Log.i("here", "onSetClick: ");
             binding.setDetailsContainer.setVisibility(View.VISIBLE);
             builderFragmentManager.beginTransaction()
                     .replace(R.id.set_details_container, new SetDetailsFragment())

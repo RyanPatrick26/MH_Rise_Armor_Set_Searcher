@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Decoration;
 import com.ryanpatrick.mhrisearmorsetsearcher.repositories.DecorationRepository;
@@ -12,16 +13,16 @@ import java.util.List;
 
 public class DecorationViewModel extends AndroidViewModel {
     private DecorationRepository decorationRepository;
-    private List<Decoration> allDecorations;
+    private LiveData<List<Decoration>> allDecorations;
     Application application;
 
     public DecorationViewModel(@NonNull Application application) {
         super(application);
         this.application = application;
-        decorationRepository = new DecorationRepository(application);
-        allDecorations = decorationRepository.getDecorationList();
+        decorationRepository = new DecorationRepository(application.getApplicationContext());
+        allDecorations = decorationRepository.getAllDecorations();
     }
-    public List<Decoration> getAllDecorations(){
+    public LiveData<List<Decoration>> getAllDecorations(){
         return allDecorations;
     }
     public Decoration getDecoration(long id){return decorationRepository.getDecoration(id);}

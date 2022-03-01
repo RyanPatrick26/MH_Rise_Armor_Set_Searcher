@@ -1,6 +1,5 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.repositories;
 
-import android.app.Application;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
@@ -8,7 +7,7 @@ import androidx.lifecycle.LiveData;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.daos.ArmorDao;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
-import com.ryanpatrick.mhrisearmorsetsearcher.util.DbConstants;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.ArmorType;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
@@ -35,14 +34,14 @@ public class ArmorRepository {
     public LiveData<List<Armor>> getAllArmorOfType(ArmorType type, Gender gender){
         return armorDao.getAllArmorOfType(type, gender);
     }
-    public LiveData<List<Armor>> getAllArmorOfRarity(int[] rarity, Gender gender) {
+    public List<Armor> getAllArmorOfRarity(int[] rarity, Gender gender) {
         return armorDao.getAllArmorOfRarity(rarity, gender);
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() -> {
-            if(armorDao.getArmorList().size() < DbConstants.prepopulateArmors.length &&
+            if(armorDao.getArmorList().size() < Constants.prepopulateArmors.length &&
                     armorDao.getArmorList().size() > 0){
-                List<Armor> updateList = Arrays.asList(DbConstants.prepopulateArmors);
+                List<Armor> updateList = Arrays.asList(Constants.prepopulateArmors);
                 updateList.removeAll(updateList.subList(0, armorDao.getArmorList().size()));
 
                 armorDao.insertAll((Armor[]) updateList.toArray());

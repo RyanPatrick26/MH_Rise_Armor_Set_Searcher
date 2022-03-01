@@ -71,4 +71,12 @@ public class Skill {
 		this.onCharm = onCharm;
 	}
 	//endregion
+
+
+
+	@NonNull
+	@Override
+	public String toString() {
+		return skillName + " " + skillLevel + " ";
+	}
 }

@@ -1,14 +1,13 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.repositories;
 
 import android.app.Application;
-import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.daos.SkillDao;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
-import com.ryanpatrick.mhrisearmorsetsearcher.util.DbConstants;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,9 +34,9 @@ public class SkillRepository {
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() -> {
-            if (skillDao.getSkillsList().size() < DbConstants.prepopulateSkills.length &&
+            if (skillDao.getSkillsList().size() < Constants.prepopulateSkills.length &&
                     skillDao.getSkillsList().size() > 0) {
-                List<Skill> updateList = Arrays.asList(DbConstants.prepopulateSkills);
+                List<Skill> updateList = Arrays.asList(Constants.prepopulateSkills);
                 updateList.removeAll(updateList.subList(0, skillDao.getSkillsList().size()));
                 skillDao.insertAll((Skill[]) updateList.toArray());
             }
