@@ -10,6 +10,7 @@ import androidx.work.WorkerParameters;
 import com.google.common.collect.Lists;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
 
@@ -41,7 +42,7 @@ public class SetBuilderWorker extends Worker {
 
         List<Armor> firstSet = armorSearch(allArmorsByType, new Armor[5], searchSkills, 0);
         if(firstSet != null){
-            armorSetList.add(createArmorSet(firstSet));
+            armorSetList.add(createArmorSet(firstSet, null));
         }
 
 
@@ -100,7 +101,7 @@ public class SetBuilderWorker extends Worker {
     }
 
     //helper function to build an armor set
-    private ArmorSet createArmorSet(List<Armor> potentialSet) {
+    private ArmorSet createArmorSet(List<Armor> potentialSet, Charm charm) {
         //region calculate total defenses
         int totalBaseDefense = potentialSet.get(0).getBaseDefense() + potentialSet.get(1).getBaseDefense() + potentialSet.get(2).getBaseDefense()
                 + potentialSet.get(3).getBaseDefense() + potentialSet.get(4).getBaseDefense();
@@ -206,7 +207,7 @@ public class SetBuilderWorker extends Worker {
         HashMap<String, Integer> allSkills = filterSkills(potentialSet);
 
         return new ArmorSet(potentialSet.get(0), potentialSet.get(1), potentialSet.get(2), potentialSet.get(3), potentialSet.get(4), totalBaseDefense, totalMaxDefense, totalFireRes,
-                totalWaterRes, totalIceRes, totalThunderRes, totalDragonRes, allSkills, totalSlots);
+                totalWaterRes, totalIceRes, totalThunderRes, totalDragonRes, charm, allSkills, totalSlots);
 
     }
 
