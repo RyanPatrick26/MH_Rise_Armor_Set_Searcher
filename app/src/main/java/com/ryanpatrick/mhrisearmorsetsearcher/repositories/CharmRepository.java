@@ -25,7 +25,6 @@ public class CharmRepository {
     public LiveData<List<Charm>> getAllCharms(){
         return charms;
     }
-
     public LiveData<Charm> getCharm(long id){
         return charmDao.getCharm(id);
     }
@@ -38,6 +37,7 @@ public class CharmRepository {
     public void deleteCharm(Charm charm){
         ApplicationDatabase.databaseWriter.execute(() -> charmDao.deleteCharm(charm));
     }
+    public List<Charm> getCharmsList() {return charmDao.getCharmsList();}
     public boolean exists(long id){
         return charmDao.exists(id);
     }

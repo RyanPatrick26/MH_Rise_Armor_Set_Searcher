@@ -28,6 +28,9 @@ public interface CharmDao {
     @Query("SELECT * FROM charm_tbl WHERE charmId = :id")
     LiveData<Charm> getCharm(long id);
 
+    @Query("SELECT * FROM charm_tbl")
+    List<Charm> getCharmsList();
+
     @Delete
     void deleteCharm(Charm charm);
 
