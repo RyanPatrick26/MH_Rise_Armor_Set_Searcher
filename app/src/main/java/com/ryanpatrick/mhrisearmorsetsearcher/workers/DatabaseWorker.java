@@ -8,27 +8,40 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
 import com.ryanpatrick.mhrisearmorsetsearcher.repositories.ArmorRepository;
+import com.ryanpatrick.mhrisearmorsetsearcher.repositories.CharmRepository;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
+import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.enums.Gender;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DatabaseWorker extends Worker {
-    private ArmorRepository armorRepository;
+    private Context context;
 
     public DatabaseWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
-        armorRepository = new ArmorRepository(context);
+        this.context = context;
     }
 
     @NonNull
     @Override
     public Result doWork() {
-        List<Armor> armorList = armorRepository
-                .getAllArmorOfRarity(getInputData().getIntArray(Constants.RARITIES),
-                        Gender.valueOf(getInputData().getString(Constants.GENDER)));
+        //get references to the armor and charm repositories
+        ArmorRepository armorRepository = new ArmorRepository(context);
+        CharmRepository charmRepository = new CharmRepository(context);
+
+        //reference to the search skills
+        HashMap<String, Integer> searchSkills = Convertors.toSkillMap(getInputData().getString(Constants.SEARCH_SKILLS));
+
+        //region get a list of all armor pieces, then
+        //divides it based on the armor type into separate lists
+        List<Armor> armorList = armorRepository.getArmorlist();
         List<Armor> heads = new ArrayList<>();
         List<Armor> chests = new ArrayList<>();
         List<Armor> arms = new ArrayList<>();
@@ -54,13 +67,17 @@ public class DatabaseWorker extends Worker {
                     break;
             }
         }
+        //endregion
+
+        //get a list of all of the charms, and find all of the relevant ones
+        List<Charm> charmsList  = charmRepository.getCharmsList();
 
         WorkerDataHolder.getInstance().setHeads(heads);
         WorkerDataHolder.getInstance().setChests(chests);
         WorkerDataHolder.getInstance().setArms(arms);
         WorkerDataHolder.getInstance().setWaists(waists);
         WorkerDataHolder.getInstance().setLegs(legs);
-
+        WorkerDataHolder.getInstance().setCharmList(charmsList);
 
         return Result.success();
     }

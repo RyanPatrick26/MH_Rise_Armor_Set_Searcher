@@ -1372,9 +1372,12 @@
     <string name="set_builder">Set Builder</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="skill_1">Skill 1:</string>
-    <string name="skill_level">Level: </string>
+    <string name="skill_level">Level:</string>
     <string name="skill_2">Skill 2:</string>
     <string name="skill_3">Skill 3:</string>
+    <string name="skill_4">Skill 4:</string>
+    <string name="skill_5">Skill 5:</string>
+    <string name="skill_6">Skill 6:</string>
     <string name="level_1_slots">Level 1 Slots:</string>
     <string name="level_2_slots">Level 2 Slots:</string>
     <string name="level_3_slots">Level 3 Slots:</string>
@@ -1406,5 +1409,14 @@
     <string name="slot_3">Slot 3:</string>
     <string name="your_charms">Your Charms</string>
     <string name="weapon_slots">Weapon Slots</string>
+    <string name="searching_text">Searching for set</string>
+    <string name="set_already_saved">Set already saved</string>
+    <string name="sort_by">Sort By:</string>
+    <string name="base_defense">Base Defense</string>
+    <string name="max_defense">Max Defense</string>
+    <string name="spare_slots">Spare Slots</string>
+    <string name="extra_skills">Extra Skills</string>
+    <string name="sorting_default">Defaults to Max Defense</string>
+    <string name="charm">Charm</string>
     <!--endregion-->
 </resources>

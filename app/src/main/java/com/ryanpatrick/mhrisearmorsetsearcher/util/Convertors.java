@@ -5,6 +5,7 @@ import androidx.room.TypeConverter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Decoration;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
@@ -180,6 +181,25 @@ public class Convertors {
         Type type = new TypeToken<Charm>(){}.getType();
 
         return gson.fromJson(charm, type);
+    }
+
+    public static String fromSetList(List<ArmorSet> armorSetList){
+        if(armorSetList == null){
+            return null;
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<ArmorSet>>(){}.getType();
+
+        return gson.toJson(armorSetList, type);
+    }
+    public static List<ArmorSet> toSetList(String armorSetList){
+        if(armorSetList == null){
+            return null;
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<ArmorSet>>(){}.getType();
+
+        return gson.fromJson(armorSetList, type);
     }
 
     @TypeConverter

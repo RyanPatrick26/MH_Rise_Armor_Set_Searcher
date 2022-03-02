@@ -75,6 +75,7 @@ public class SetDetailsFragment extends Fragment {
         skillsListAdapter.setOnSkillClickListener((skillName, position) ->
                 //get the skill from the database that corresponds with the skill the user selected
                 skillViewModel.getSkill(skillName).observe(getViewLifecycleOwner(), skill -> {
+                    Log.i("here", "onCreateView: " + skillName);
                     for (int i = 0; i < skillsListAdapter.getItemCount(); i++) {
                         if(binding.setSkillList.getChildAt(i) != null) {
                             if (i == position) {
@@ -148,14 +149,20 @@ public class SetDetailsFragment extends Fragment {
     }
 
     private void saveSet(){
-        ApplicationDatabase.databaseWriter.execute(() -> {
-            armorSetViewModel.insertArmorSet(armorSet);
-
-            ApplicationDatabase.dbHandler.post(() ->
-                    Toast.makeText(getContext(), R.string.set_saved, Toast.LENGTH_LONG).show());
-
-            requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new ArmorSetListFragment()).commit();
+        armorSetViewModel.getAllArmorSets().observe(getViewLifecycleOwner(), new Observer<List<ArmorSet>>() {
+            @Override
+            public void onChanged(List<ArmorSet> armorSets) {
+                if(!setAlreadySaved(armorSets, armorSet)){
+                    armorSetViewModel.insertArmorSet(armorSet);
+                    Toast.makeText(getContext(), R.string.set_saved, Toast.LENGTH_LONG).show();
+                    requireActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new ArmorSetListFragment()).commit();
+                    armorSetViewModel.getAllArmorSets().removeObserver(this);
+                }
+                else{
+                    Toast.makeText(getContext(), R.string.set_already_saved, Toast.LENGTH_SHORT).show();
+                }
+            }
         });
     }
     private void deleteSet(){
@@ -163,5 +170,14 @@ public class SetDetailsFragment extends Fragment {
         Toast.makeText(getContext(), R.string.set_deleted, Toast.LENGTH_LONG).show();
         requireActivity().getSupportFragmentManager().beginTransaction().
                 replace(R.id.fragment_container, new ArmorSetListFragment()).commit();
+    }
+
+    private boolean setAlreadySaved(List<ArmorSet> allArmorSets, ArmorSet armorSet){
+        for (ArmorSet tempSet : allArmorSets) {
+            if (armorSet.equals(tempSet))
+                Log.i("here", "setAlreadySaved: here");
+                return true;
+        }
+        return false;
     }
 }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.SetBuilderListItemBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
 
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.ViewHold
         SetBuilderListItemBinding binding = holder.binding;
         ArmorSet set = setList.get(position);
         SkillsListAdapter adapter = new SkillsListAdapter(set.getAllSkills(), context);
+        Charm charm = set.getCharm();
         //endregion
 
         //region set the text views for each of the set's individual pieces
@@ -51,6 +53,32 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.ViewHold
         binding.piecesLayout.legsText.setText(context.getResources().getIdentifier(set.getLegs().getArmorName(),
                 "string", context.getPackageName()));
         //endregion
+
+        //set the text view for the sets charm, if one exists, otherwise hides the view
+        if(charm != null){
+            if(!charm.getSkill1().getSkillName().equals("----")) {
+                binding.charmLayout.skill1Name.setText(context.getResources().getIdentifier(charm.getSkill1().getSkillName(),
+                        "string", context.getPackageName()));
+                binding.charmLayout.skill1Level.setText(Integer.toString(charm.getSkill1().getSkillLevel()));
+            }
+            else{
+                binding.charmLayout.skill1Name.setVisibility(View.GONE);
+                binding.charmLayout.skill1Level.setVisibility(View.GONE);
+            }
+
+            if(!charm.getSkill2().getSkillName().equals("----")){
+                binding.charmLayout.skill2Name.setText(context.getResources().getIdentifier(charm.getSkill2().getSkillName(),
+                        "string", context.getPackageName()));
+                binding.charmLayout.skill2Level.setText(Integer.toString(charm.getSkill2().getSkillLevel()));
+            }
+            else{
+                binding.charmLayout.skill2Name.setVisibility(View.GONE);
+                binding.charmLayout.skill2Level.setVisibility(View.GONE);
+            }
+        }
+        else{
+            binding.charmLayout.getRoot().setVisibility(View.GONE);
+        }
 
         //display how many of each level of slot the set has
         binding.level1Slots.setText(Integer.toString(set.getTotalSpareSlots()[0]));

@@ -1,7 +1,10 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.workers;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Armor;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WorkerDataHolder {
@@ -11,6 +14,9 @@ public class WorkerDataHolder {
     private List<Armor> arms;
     private List<Armor> waists;
     private List<Armor> legs;
+    private List<ArmorSet> setList;
+    private List<Charm> charmList;
+    private List<Charm> relevantCharms;
 
     public static synchronized  WorkerDataHolder getInstance(){
         if(INSTANCE == null){
@@ -18,6 +24,7 @@ public class WorkerDataHolder {
         }
         return INSTANCE;
     }
+
     public List<Armor> getHeads() {
         return heads;
     }
@@ -47,5 +54,26 @@ public class WorkerDataHolder {
     }
     public void setLegs(List<Armor> legs) {
         this.legs = legs;
+    }
+    public List<ArmorSet> getSetList() {
+        if(setList == null){
+            setList = new ArrayList<>();
+        }
+        return setList;
+    }
+    public void setSetList(List<ArmorSet> setList) {
+        this.setList = setList;
+    }
+    public List<Charm> getCharmList() {
+        return charmList;
+    }
+    public void setCharmList(List<Charm> charmList) {
+        this.charmList = charmList;
+    }
+    public List<Charm> getRelevantCharms() {
+        return relevantCharms;
+    }
+    public void setRelevantCharms(List<Charm> relevantCharms) {
+        this.relevantCharms = relevantCharms;
     }
 }

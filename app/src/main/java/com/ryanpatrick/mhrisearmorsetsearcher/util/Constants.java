@@ -1875,11 +1875,11 @@ public class Constants {
 
     public static final String SET_BUILDER_WORK_NAME = "set_builder_work";
     public static final String GENDER = "gender";
-    public static final String RARITIES = "rarities";
     public static final String SEARCH_SKILLS = "search_skills";
     public static final String WEAPON_SLOTS = "weapon_slots";
     public static final String SET_SEARCH_TAG = "set_search";
-    public static final String TOTAL_REQUIRED_LEVELS_TAG = "total_required_levels";
+    public static final String SORT_TAG = "sorting";
+    public static final String SET_LIST_TAG = "set_list";
 
     private static HashMap<String, Integer> createSkillMap(String[] skillNames, int[]  skillLevels){
         HashMap<String, Integer> skillMap = new HashMap<>();

@@ -33,6 +33,8 @@ import com.ryanpatrick.mhrisearmorsetsearcher.util.Constants;
 import com.ryanpatrick.mhrisearmorsetsearcher.util.Convertors;
 import com.ryanpatrick.mhrisearmorsetsearcher.workers.DatabaseWorker;
 import com.ryanpatrick.mhrisearmorsetsearcher.workers.SetBuilderWorker;
+import com.ryanpatrick.mhrisearmorsetsearcher.workers.SortWorker;
+import com.ryanpatrick.mhrisearmorsetsearcher.workers.WorkerDataHolder;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.checkerframework.checker.units.qual.A;
@@ -40,6 +42,7 @@ import org.checkerframework.checker.units.qual.A;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class SetBuilderFragment extends Fragment{
     //region class variables
@@ -51,14 +54,14 @@ public class SetBuilderFragment extends Fragment{
     ArmorSetViewModel armorSetViewModel;
     private SetListAdapter adapter;
     SetListAdapter.OnSetClickListener onSetClickListener;
-    
+    String[] sortTypes;
+    String sortingType;
     Skill[] tempSkills;
 
     String gender = "";
-
     int slot1, slot2, slot3;
 
-    boolean rarity4, rarity5, rarity6, rarity7;
+    WorkManager workManager;
     //endregion
 
     public SetBuilderFragment() {
@@ -84,19 +87,23 @@ public class SetBuilderFragment extends Fragment{
         setList = new ArrayList<>();
         adapter = new SetListAdapter(setList, getContext(), onSetClickListener);
         
-        tempSkills = new Skill[3];
+        tempSkills = new Skill[6];
         for (int i = 0; i < tempSkills.length; i++) {
             tempSkills[i] = new Skill();
         }
+
+        sortTypes = new String[]{getString(R.string.base_defense), getString(R.string.max_defense),
+                                getString(R.string.fire_res_skill), getString(R.string.water_res_skill),
+                                getString(R.string.thunder_res_skill), getString(R.string.ice_res_skill),
+                                getString(R.string.dragon_res_skill), getString(R.string.spare_slots),
+                                getString(R.string.extra_skills)};
 
         skillViewModel = new ViewModelProvider(requireActivity()).get(SkillViewModel.class);
         armorViewModel = new ViewModelProvider(requireActivity()).get(ArmorViewModel.class);
         armorSetViewModel = new ViewModelProvider(requireActivity()).get(ArmorSetViewModel.class);
 
-        rarity4 = false;
-        rarity5 = false;
-        rarity6 = false;
-        rarity7 = false;
+        workManager = WorkManager.getInstance(requireContext());
+        workManager.pruneWork();
         //endregion
 
         //setup the all the skill spinners within an observer
@@ -106,6 +113,9 @@ public class SetBuilderFragment extends Fragment{
             ArrayList<String> skill1Level = new ArrayList<>();
             ArrayList<String> skill2Level = new ArrayList<>();
             ArrayList<String> skill3Level = new ArrayList<>();
+            ArrayList<String> skill4Level = new ArrayList<>();
+            ArrayList<String> skill5Level = new ArrayList<>();
+            ArrayList<String> skill6Level = new ArrayList<>();
 
             //remove the (if upgrade) text from stormsoul
             for (Skill skill : skills) {
@@ -123,6 +133,9 @@ public class SetBuilderFragment extends Fragment{
             ArrayAdapter<String> skill1LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill1Level);
             ArrayAdapter<String> skill2LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill2Level);
             ArrayAdapter<String> skill3LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill3Level);
+            ArrayAdapter<String> skill4LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill4Level);
+            ArrayAdapter<String> skill5LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill5Level);
+            ArrayAdapter<String> skill6LevelAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner_item, skill6Level);
             //endregion
 
             //region set the adapters and selection listeners for the skill spinners
@@ -253,6 +266,133 @@ public class SetBuilderFragment extends Fragment{
 
                 }
             });
+            binding.skill4Spinner.setAdapter(skillAdapter);
+            binding.skill4Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //region programmatically update the arrays for the skill level spinners based on the selected skill
+                    //and set the name for the temp skill
+
+                    //first empty the skill level list
+                    skill4Level.clear();
+
+                    //setup the spinner and temp skill values based on which item is selected
+                    if(position == 0){
+                        //if the first item in the spinner is selected, disable the corresponding skill level spinner
+                        //and set the name of the temp skill to a blank string
+                        binding.skill4LevelSpinner.setEnabled(false);
+                        tempSkills[3].setSkillName("");
+                    }
+                    else{
+                        //otherwise, first re-enable the corresponding skill level spinner
+                        binding.skill4LevelSpinner.setEnabled(true);
+                        //then, create a new skill object based on which item has been selected
+                        Skill skill = skills.get(position-1);
+
+                        //set the name and max level of the temp skill to match that of the skill the user selected
+                        tempSkills[3].setSkillName(skill.getSkillName());
+                        tempSkills[3].setSkillMaxLevel(skill.getSkillMaxLevel());
+
+                        //repopulate skill level list with all possible levels of the selected skill
+                        for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
+                            skill4Level.add(Integer.toString(i));
+                        }
+                    }
+
+                    //notify the corresponding skill level adapter that values have changed
+                    skill4LevelAdapter.notifyDataSetChanged();
+                    //endregion
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+            binding.skill5Spinner.setAdapter(skillAdapter);
+            binding.skill5Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //region programmatically update the arrays for the skill level spinners based on the selected skill
+                    //and set the name for the temp skill
+
+                    //first empty the skill level list
+                    skill5Level.clear();
+
+                    //setup the spinner and temp skill values based on which item is selected
+                    if(position == 0){
+                        //if the first item in the spinner is selected, disable the corresponding skill level spinner
+                        //and set the name of the temp skill to a blank string
+                        binding.skill5LevelSpinner.setEnabled(false);
+                        tempSkills[4].setSkillName("");
+                    }
+                    else{
+                        //otherwise, first re-enable the corresponding skill level spinner
+                        binding.skill5LevelSpinner.setEnabled(true);
+                        //then, create a new skill object based on which item has been selected
+                        Skill skill = skills.get(position-1);
+
+                        //set the name and max level of the temp skill to match that of the skill the user selected
+                        tempSkills[4].setSkillName(skill.getSkillName());
+                        tempSkills[4].setSkillMaxLevel(skill.getSkillMaxLevel());
+
+                        //repopulate skill level list with all possible levels of the selected skill
+                        for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
+                            skill5Level.add(Integer.toString(i));
+                        }
+                    }
+                    //notify the corresponding skill level adapter that values have changed
+                    skill5LevelAdapter.notifyDataSetChanged();
+                    //endregion
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+            binding.skill6Spinner.setAdapter(skillAdapter);
+            binding.skill6Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //region programmatically update the arrays for the skill level spinners based on the selected skill
+                    //and set the name for the temp skill
+
+                    //first empty the skill level list
+                    skill6Level.clear();
+
+                    //setup the spinner and temp skill values based on which item is selected
+                    if(position == 0){
+                        //if the first item in the spinner is selected, disable the corresponding skill level spinner
+                        //and set the name of the temp skill to a blank string
+                        binding.skill6LevelSpinner.setEnabled(false);
+                        tempSkills[5].setSkillName("");
+                    }
+                    else{
+                        //otherwise, first re-enable the corresponding skill level spinner
+                        binding.skill6LevelSpinner.setEnabled(true);
+                        //then, create a new skill object based on which item has been selected
+                        Skill skill = skills.get(position-1);
+
+                        //set the name and max level of the temp skill to match that of the skill the user selected
+                        tempSkills[5].setSkillName(skill.getSkillName());
+                        tempSkills[5].setSkillMaxLevel(skill.getSkillMaxLevel());
+
+                        //repopulate skill level list with all possible levels of the selected skill
+                        for (int i = 1; i <= skill.getSkillMaxLevel(); i++) {
+                            skill6Level.add(Integer.toString(i));
+                        }
+                    }
+                    //notify the corresponding skill level adapter that values have changed
+                    skill6LevelAdapter.notifyDataSetChanged();
+                    //endregion
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
             //endregion
 
             //region setup the skill level spinners
@@ -299,6 +439,59 @@ public class SetBuilderFragment extends Fragment{
                     //if yes, set the temp skill level to be the selected item, otherwise set it to 0
                     if (NumberUtils.isParsable(skill3Level.get(position)))
                         tempSkills[2].setSkillLevel(Integer.parseInt(skill3Level.get(position)));
+                    else
+                        tempSkills[2].setSkillLevel(0);
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+            binding.skill4LevelSpinner.setAdapter(skill4LevelAdapter);
+            binding.skill4LevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //check to see if the selected string is able to be converted into an int
+                    //if yes, set the temp skill level to be the selected item, otherwise set it to 0
+                    if (NumberUtils.isParsable(skill4Level.get(position)))
+                        tempSkills[0].setSkillLevel(Integer.parseInt(skill4Level.get(position)));
+                    else
+                        tempSkills[0].setSkillLevel(0);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+            binding.skill5LevelSpinner.setAdapter(skill5LevelAdapter);
+            binding.skill5LevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //check to see if the selected string is able to be converted into an int
+                    //if yes, set the temp skill level to be the selected item, otherwise set it to 0
+                    if (NumberUtils.isParsable(skill5Level.get(position)))
+                        tempSkills[1].setSkillLevel(Integer.parseInt(skill5Level.get(position)));
+                    else
+                        tempSkills[1].setSkillLevel(0);
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+            binding.skill6LevelSpinner.setAdapter(skill6LevelAdapter);
+            binding.skill6LevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //check to see if the selected string is able to be converted into an int
+                    //if yes, set the temp skill level to be the selected item, otherwise set it to 0
+                    if (NumberUtils.isParsable(skill6Level.get(position)))
+                        tempSkills[2].setSkillLevel(Integer.parseInt(skill6Level.get(position)));
                     else
                         tempSkills[2].setSkillLevel(0);
 
@@ -358,13 +551,6 @@ public class SetBuilderFragment extends Fragment{
         binding.setBuilderList.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.setBuilderList.setAdapter(adapter);
 
-        //region setup the rarity checkboxes
-        binding.rarity4Checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> rarity4 = isChecked);
-        binding.rarity5Checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> rarity5 = isChecked);
-        binding.rarity6Checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> rarity6 = isChecked);
-        binding.rarity7Checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> rarity7 = isChecked);
-        //endregion
-
         //setup the radio group
         binding.genderRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             switch(checkedId){
@@ -375,48 +561,128 @@ public class SetBuilderFragment extends Fragment{
             }
         });
 
+        //setup the sort spinner
+        ArrayAdapter<String> sortAdapter = new ArrayAdapter<>(requireContext(), R.layout.spinner_item, sortTypes);
+        binding.sortSpinner.setAdapter(sortAdapter);
+        binding.sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                sortingType = sortTypes[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
         //set the on click listener for the save button to generate armor sets based on the users specifications
         binding.searchSetButton.setOnClickListener(v -> generateArmorSets());
 
-        WorkManager.getInstance(requireContext()).getWorkInfosByTagLiveData(Constants.SET_SEARCH_TAG)
+        workManager.getWorkInfosByTagLiveData(Constants.SORT_TAG)
                 .observe(getViewLifecycleOwner(), workInfos -> {
                     if(workInfos == null || workInfos.isEmpty())
                         return;
+                    boolean finished = workInfos.get(0).getState().isFinished();
+
                     Log.i(TAG, "onCreateView: " + workInfos.get(0).getState());
 
-
+                    if(!finished)
+                        showWorkInProgress();
+                    else
+                        completeSearch(workInfos.get(0).getOutputData());
                 });
 
 
         return binding.getRoot();
     }
 
+    private void completeSearch(Data outputData) {
+        setList.clear();
+        String setListString = outputData.getString(Constants.SET_LIST_TAG);
+        if(setListString != null)
+            setList.addAll(Objects.requireNonNull(Convertors.toSetList(setListString)));
+        if(setList.size() > 0) {
+            binding.setListText.setVisibility(View.GONE);
+            binding.setBuilderList.setVisibility(View.VISIBLE);
+        }
+        else{
+            binding.setListText.setVisibility(View.VISIBLE);
+            binding.setBuilderList.setVisibility(View.GONE);
+        }
+        binding.searchCardView.setVisibility(View.GONE);
+        adapter.notifyDataSetChanged();
 
-    //Temp function for generating the armor sets
-    //will be replaced when search algorithm is built
+        //region re-enable all the buttons and spinners after the search is complete
+        binding.searchSetButton.setEnabled(true);
+        binding.genderRadioGroup.setEnabled(true);
+        binding.skill1Spinner.setEnabled(true);
+        binding.skill1LevelSpinner.setEnabled(true);
+        binding.skill2Spinner.setEnabled(true);
+        binding.skill2LevelSpinner.setEnabled(true);
+        binding.skill3Spinner.setEnabled(true);
+        binding.skill3LevelSpinner.setEnabled(true);
+        binding.skill4Spinner.setEnabled(true);
+        binding.skill4LevelSpinner.setEnabled(true);
+        binding.skill5Spinner.setEnabled(true);
+        binding.skill5LevelSpinner.setEnabled(true);
+        binding.skill6Spinner.setEnabled(true);
+        binding.skill6LevelSpinner.setEnabled(true);
+        binding.weaponSlot1Spinner.setEnabled(true);
+        binding.weaponSlot2Spinner.setEnabled(true);
+        binding.weaponSlot3Spinner.setEnabled(true);
+        //endregion
+        
+    }
+
+    private void showWorkInProgress() {
+        //show the progress notification
+        binding.searchCardView.setVisibility(View.VISIBLE);
+        //ensure the recycler view and the armor set list are both gone
+        binding.setListText.setVisibility(View.GONE);
+        binding.setBuilderList.setVisibility(View.GONE);
+        
+        //region disable all the buttons and spinners while the search is in progress
+        binding.searchSetButton.setEnabled(false);
+        binding.genderRadioGroup.setEnabled(false);
+        binding.skill1Spinner.setEnabled(false);
+        binding.skill1LevelSpinner.setEnabled(false);
+        binding.skill2Spinner.setEnabled(false);
+        binding.skill2LevelSpinner.setEnabled(false);
+        binding.skill3Spinner.setEnabled(false);
+        binding.skill3LevelSpinner.setEnabled(false);
+        binding.skill4Spinner.setEnabled(false);
+        binding.skill4LevelSpinner.setEnabled(false);
+        binding.skill5Spinner.setEnabled(false);
+        binding.skill5LevelSpinner.setEnabled(false);
+        binding.skill6Spinner.setEnabled(false);
+        binding.skill6LevelSpinner.setEnabled(false);
+        binding.weaponSlot1Spinner.setEnabled(false);
+        binding.weaponSlot2Spinner.setEnabled(false);
+        binding.weaponSlot3Spinner.setEnabled(false);
+        //endregion
+    }
+    
+    //starts searching for armor sets
     private void generateArmorSets(){
         //check to make sure the user selected a gender and set at least 1 skill
         if(!gender.equals("") || (tempSkills[0].getSkillName().equals("")
-                && tempSkills[1].getSkillName().equals("") && tempSkills[2].getSkillName().equals(""))){
-            //create list of integers to hold each of the rarities
-            List<Integer> rarities = new ArrayList<>();
-            //region add the rarities to search based on which checkboxes the user selected
-            //(a checked rarity is excluded)
-            if(!rarity4)
-                rarities.add(4);
-            if(!rarity5)
-                rarities.add(5);
-            if(!rarity6)
-                rarities.add(6);
-            if(!rarity7)
-                rarities.add(7);
-            //endregion
-
+                && tempSkills[1].getSkillName().equals("") && tempSkills[2].getSkillName().equals("")
+                && tempSkills[3].getSkillName().equals("") && tempSkills[4].getSkillName().equals("")
+                && tempSkills[6].getSkillName().equals(""))){
+            //create a map for all of the search skills
+            HashMap<String, Integer> searchSkills = new HashMap<>();
+            for (Skill skill : tempSkills) {
+                if(!skill.getSkillName().equals("") && !searchSkills.containsKey(skill.getSkillName())) {
+                    searchSkills.put(skill.getSkillName(), skill.getSkillLevel());
+                }
+            }
 
             //create the input data for database worker
             Data dbInputData = new Data.Builder()
+                    .putString(Constants.SEARCH_SKILLS, Convertors.fromSkillMap(searchSkills))
                     .putString(Constants.GENDER, gender)
-                    .putIntArray(Constants.RARITIES, rarities.stream().mapToInt(i->i).toArray())
                     .build();
             //create a work request for the database worker
             OneTimeWorkRequest databaseRequest = new OneTimeWorkRequest.Builder(DatabaseWorker.class)
@@ -424,19 +690,8 @@ public class SetBuilderFragment extends Fragment{
                     .build();
 
             //create the input data for the set builder worker
-            //create a map for all of the search skills
-            HashMap<String, Integer> searchSkills = new HashMap<>();
-            int totalRequiredSkillLevels = 0;
-            for (Skill skill : tempSkills) {
-                if(!skill.getSkillName().equals("") && !searchSkills.containsKey(skill.getSkillName())) {
-                    searchSkills.put(skill.getSkillName(), skill.getSkillLevel());
-                    totalRequiredSkillLevels += skill.getSkillLevel();
-                }
-            }
-
             Data setSearchInputData = new Data.Builder()
                     .putString(Constants.SEARCH_SKILLS, Convertors.fromSkillMap(searchSkills))
-                    .putInt(Constants.TOTAL_REQUIRED_LEVELS_TAG, totalRequiredSkillLevels)
                     .putIntArray(Constants.WEAPON_SLOTS, new int[]{slot1, slot2, slot3})
                     .build();
 
@@ -446,10 +701,21 @@ public class SetBuilderFragment extends Fragment{
                     .addTag(Constants.SET_SEARCH_TAG)
                     .build();
 
+            //create input data for the sort worker
+            Data sortInputData = new Data.Builder()
+                    .putString(Constants.SORT_TAG, sortingType)
+                    .build();
+
+            OneTimeWorkRequest sortWorkRequest = new OneTimeWorkRequest.Builder(SortWorker.class)
+                    .setInputData(sortInputData)
+                    .addTag(Constants.SORT_TAG)
+                    .build();
+
             //create a work continuation using the database and set builder workers
             WorkContinuation continuation = WorkManager.getInstance(requireContext())
                     .beginUniqueWork(Constants.SET_BUILDER_WORK_NAME, ExistingWorkPolicy.REPLACE, databaseRequest)
-                    .then(setBuilderWorkRequest);
+                    .then(setBuilderWorkRequest)
+                    .then(sortWorkRequest);
             //run the work
             continuation.enqueue();
         }
