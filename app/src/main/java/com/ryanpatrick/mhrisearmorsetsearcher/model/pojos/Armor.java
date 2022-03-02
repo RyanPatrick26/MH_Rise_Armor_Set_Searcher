@@ -1,5 +1,6 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -170,6 +171,11 @@ public class Armor{
 	public void setSlots(int[] slots) {
 		this.slots = slots;
 	}
-
 	//endregion
+
+	@NonNull
+	@Override
+	public String toString() {
+		return armorName;
+	}
 }
