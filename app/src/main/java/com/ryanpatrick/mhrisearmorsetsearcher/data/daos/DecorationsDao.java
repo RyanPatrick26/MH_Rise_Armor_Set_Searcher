@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Decoration;
@@ -26,7 +25,7 @@ public interface DecorationsDao {
     void deleteAll();
 
     @Query("SELECT * FROM decoration_tbl")
-    List<Decoration> getAllDecorations();
+    LiveData<List<Decoration>> getAllDecorations();
 
     @Query("SELECT * FROM decoration_tbl")
     List<Decoration> getDecorationList();

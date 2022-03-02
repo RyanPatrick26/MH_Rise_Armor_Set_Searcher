@@ -63,13 +63,13 @@ public class SetBuilderWorker extends Worker {
             if(isCharmRelevant(charm, searchSkills)) {
                 armorList = armorSearch(allArmorsByType, charm, armors, searchSkills, 0);
                 if (armorList != null) {
-                    return createArmorSet(armorList, charm);
+                    return createArmorSet(armorList, charm, null);
                 }
             }
         }
         armorList = armorSearch(allArmorsByType, null, armors, searchSkills, 0);
         if(armorList != null){
-            return createArmorSet(armorList, charmsList.size() > 0 ? charmsList.get(0) : null);
+            return createArmorSet(armorList, charmsList.size() > 0 ? charmsList.get(0) : null, null);
         }
         return null;
     }

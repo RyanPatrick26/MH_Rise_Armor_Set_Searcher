@@ -14,18 +14,15 @@ import java.util.List;
 
 public class DecorationRepository {
     private final DecorationsDao decorationsDao;
-    private final List<Decoration> decorationsList;
+    private final LiveData<List<Decoration>> decorationsList;
 
     public DecorationRepository(Context context) {
         ApplicationDatabase db = ApplicationDatabase.getInstance(context);
         decorationsDao = db.gemDao();
         decorationsList = decorationsDao.getAllDecorations();
     }
-    public List<Decoration> getAllDecorations(){
+    public LiveData<List<Decoration>> getAllDecorations(){
         return decorationsList;
-    }
-    public List<Decoration> getDecorationList() {
-        return decorationsDao.getDecorationList();
     }
     public void insert(Decoration decoration){
         ApplicationDatabase.databaseWriter.execute(() -> decorationsDao.insert(decoration));
