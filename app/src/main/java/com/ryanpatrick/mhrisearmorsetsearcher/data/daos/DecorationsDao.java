@@ -26,7 +26,7 @@ public interface DecorationsDao {
     void deleteAll();
 
     @Query("SELECT * FROM decoration_tbl")
-    LiveData<List<Decoration>> getAllDecorations();
+    List<Decoration> getAllDecorations();
 
     @Query("SELECT * FROM decoration_tbl")
     List<Decoration> getDecorationList();
