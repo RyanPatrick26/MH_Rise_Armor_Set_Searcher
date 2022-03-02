@@ -222,6 +222,4 @@ public class Convertors {
 
         return gson.fromJson(decorations, type);
     }
-
-
 }
