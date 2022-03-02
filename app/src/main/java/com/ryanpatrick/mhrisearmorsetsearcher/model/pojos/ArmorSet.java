@@ -38,7 +38,7 @@ public class ArmorSet{
 	@ColumnInfo(name = "charm")
 	private Charm charm;
 	@ColumnInfo(name = "decorations")
-	private List<Decoration> decorations;
+	private HashMap<String, Integer> decorations;
 	@ColumnInfo(name = "total_skills")
 	private HashMap<String, Integer> allSkills;
 	@ColumnInfo(name="total_slots")
@@ -47,7 +47,7 @@ public class ArmorSet{
 	public ArmorSet(Armor head, Armor chest, Armor arms, Armor waist, Armor legs,
 					int totalBaseDefense, int totalMaxDefense, int totalFireRes,
 					int totalWaterRes, int totalIceRes, int totalThunderRes, int totalDragonRes,
-					Charm charm, List<Decoration> decorations, HashMap<String, Integer> allSkills,
+					Charm charm, HashMap<String, Integer> decorations, HashMap<String, Integer> allSkills,
 					int[] totalSpareSlots) {
 		this.head = head;
 		this.chest = chest;
@@ -180,11 +180,11 @@ public class ArmorSet{
 		this.charm = charm;
 	}
 
-	public List<Decoration> getDecorations() {
+	public HashMap<String, Integer> getDecorations() {
 		return decorations;
 	}
 
-	public void setDecorations(List<Decoration> decorations) {
+	public void setDecorations(HashMap<String, Integer> decorations) {
 		this.decorations = decorations;
 	}
 
