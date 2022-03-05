@@ -140,6 +140,9 @@ public class SetDetailsFragment extends Fragment {
 
         binding.saveSetButton.setOnClickListener(v -> saveSet());
         binding.deleteSetButton.setOnClickListener(v -> deleteSet());
+
+        Log.i("here", "onCreateView: " + armorSet.getDecorations());
+
         return binding.getRoot();
     }
 

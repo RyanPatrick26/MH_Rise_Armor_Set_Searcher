@@ -33,8 +33,8 @@ public class DecorationRepository {
     public Decoration getDecoBySkillName(String skillName){
         return decorationsDao.getDecoBySkillName(skillName);
     }
-    public Decoration getDecoByName(String decoName){
-        return decorationsDao.getDecoByName(decoName);
+    public List<Decoration> getDecosByName(List<String> decoNames){
+        return decorationsDao.getDecosByNames(decoNames);
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() ->{
