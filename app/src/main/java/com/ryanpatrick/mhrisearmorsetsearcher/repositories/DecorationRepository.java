@@ -24,9 +24,6 @@ public class DecorationRepository {
     public List<Decoration> getAllDecorations(){
         return decorationsList;
     }
-    public List<Decoration> getDecorationList() {
-        return decorationsDao.getDecorationList();
-    }
     public void insert(Decoration decoration){
         ApplicationDatabase.databaseWriter.execute(() -> decorationsDao.insert(decoration));
     }
@@ -35,6 +32,9 @@ public class DecorationRepository {
     }
     public Decoration getDecoBySkillName(String skillName){
         return decorationsDao.getDecoBySkillName(skillName);
+    }
+    public Decoration getDecoByName(String decoName){
+        return decorationsDao.getDecoByName(decoName);
     }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() ->{
