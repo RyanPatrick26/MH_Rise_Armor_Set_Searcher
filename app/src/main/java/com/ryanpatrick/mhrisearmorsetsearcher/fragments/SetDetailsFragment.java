@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.App;
 import com.ryanpatrick.mhrisearmorsetsearcher.R;
+import com.ryanpatrick.mhrisearmorsetsearcher.adapters.DecorationListAdapter;
 import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SkillDetailsAdapter;
 import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SkillsListAdapter;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
@@ -41,7 +42,9 @@ public class SetDetailsFragment extends Fragment {
     List<String> skillDescriptionList;
     SkillsListAdapter skillsListAdapter;
     SkillDetailsAdapter detailsAdapter;
+    DecorationListAdapter decorationListAdapter;
     HashMap<String, Integer> skills;
+
 
     public SetDetailsFragment() {
         // Required empty public constructor
@@ -64,6 +67,7 @@ public class SetDetailsFragment extends Fragment {
         skills = armorSet.getAllSkills();
         skillsListAdapter = new SkillsListAdapter(skills, getContext());
         detailsAdapter = new SkillDetailsAdapter(skillDescriptionList, getContext());
+        decorationListAdapter = new DecorationListAdapter(armorSet.getDecorations(), getContext());
         //endregion
         if(armorSet.getId() != null){
             binding.saveSetButton.setVisibility(View.GONE);
@@ -129,6 +133,9 @@ public class SetDetailsFragment extends Fragment {
 
         binding.skillDescriptionList.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.skillDescriptionList.setAdapter(detailsAdapter);
+
+        binding.decorationsList.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.decorationsList.setAdapter(decorationListAdapter);
         //endregion
 
         binding.saveSetButton.setOnClickListener(v -> saveSet());

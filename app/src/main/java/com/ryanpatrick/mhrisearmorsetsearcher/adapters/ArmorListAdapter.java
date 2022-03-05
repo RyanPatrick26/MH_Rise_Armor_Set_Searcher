@@ -33,7 +33,6 @@ public class ArmorListAdapter extends RecyclerView.Adapter<ArmorListAdapter.View
         return new ViewHolder(ArmorListItemBinding.inflate(LayoutInflater.from(context), parent, false));
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull ArmorListAdapter.ViewHolder holder, int position) {
         //region variables for the view holder

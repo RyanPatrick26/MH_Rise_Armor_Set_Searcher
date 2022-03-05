@@ -6,12 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.SetBuilderListItemBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.ViewHolder> {
@@ -37,8 +39,10 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.ViewHold
         //region define variables for use in the viewholder
         SetBuilderListItemBinding binding = holder.binding;
         ArmorSet set = setList.get(position);
-        SkillsListAdapter adapter = new SkillsListAdapter(set.getAllSkills(), context);
+        SkillsListAdapter skillsAdapter = new SkillsListAdapter(set.getAllSkills(), context);
+        DecorationListAdapter decorationsAdapter = new DecorationListAdapter(set.getDecorations(), context);
         Charm charm = set.getCharm();
+        HashMap<String, Integer> decorations = set.getDecorations();
         //endregion
 
         //region set the text views for each of the set's individual pieces
@@ -85,8 +89,11 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.ViewHold
         binding.level2Slots.setText(Integer.toString(set.getTotalSpareSlots()[1]));
         binding.level3Slots.setText(Integer.toString(set.getTotalSpareSlots()[2]));
 
+        binding.decorationsList.setLayoutManager(new LinearLayoutManager(context));
+        binding.decorationsList.setAdapter(decorationsAdapter);
+
         //set the adapter for the sets skills
-        binding.totalSkillListView.setAdapter(adapter);
+        binding.totalSkillListView.setAdapter(skillsAdapter);
     }
 
     @Override

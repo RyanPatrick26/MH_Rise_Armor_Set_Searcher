@@ -13,7 +13,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <include
                 android:id="@+id/pieces_layout"
@@ -22,12 +23,23 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <include
-                layout="@layout/charm_layout"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:visibility="visible" />
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/charm_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/decorations_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
 
         <include
@@ -83,9 +95,10 @@
                 android:layout_weight="1"
                 android:text="@string/placeholder_number" />
         </LinearLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textView7"
