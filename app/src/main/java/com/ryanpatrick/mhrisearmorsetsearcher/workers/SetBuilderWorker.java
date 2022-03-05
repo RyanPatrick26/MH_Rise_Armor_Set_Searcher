@@ -102,7 +102,7 @@ public class SetBuilderWorker extends Worker {
     }
 
     //helper function to build an armor set
-    private ArmorSet createArmorSet(List<Armor> potentialSet, Charm charm, List<Decoration> decorations) {
+    private ArmorSet createArmorSet(List<Armor> potentialSet, Charm charm, HashMap<String, Integer> decorations) {
         //region calculate total defenses
         int totalBaseDefense = potentialSet.get(0).getBaseDefense() + potentialSet.get(1).getBaseDefense() + potentialSet.get(2).getBaseDefense()
                 + potentialSet.get(3).getBaseDefense() + potentialSet.get(4).getBaseDefense();
