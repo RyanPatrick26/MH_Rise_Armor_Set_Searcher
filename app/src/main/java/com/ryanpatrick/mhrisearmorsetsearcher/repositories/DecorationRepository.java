@@ -33,6 +33,9 @@ public class DecorationRepository {
     public Decoration getDecoBySkillName(String skillName){
         return decorationsDao.getDecoBySkillName(skillName);
     }
+    public Decoration getDecoByName(String decoName){
+        return decorationsDao.getDecoByName(decoName);
+    }
     public void updateDb(){
         ApplicationDatabase.databaseWriter.execute(() ->{
             if(decorationsDao.getDecorationList().size() < Constants.prepopulateDecorations.length &&

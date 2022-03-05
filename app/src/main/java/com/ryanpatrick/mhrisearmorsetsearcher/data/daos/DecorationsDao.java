@@ -33,6 +33,9 @@ public interface DecorationsDao {
     @Query("SELECT * FROM decoration_tbl WHERE id = :id")
     Decoration getDecoration(long id);
 
+    @Query("SELECT * FROM decoration_tbl WHERE decoration_name == :decoName")
+    Decoration getDecoByName(String decoName);
+
     @Query("SELECT * FROM decoration_tbl WHERE skill_name == :skillName")
     Decoration getDecoBySkillName(String skillName);
 }
