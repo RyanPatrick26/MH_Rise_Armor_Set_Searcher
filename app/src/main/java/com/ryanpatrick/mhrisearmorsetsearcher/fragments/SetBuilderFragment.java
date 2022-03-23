@@ -591,19 +591,20 @@ public class SetBuilderFragment extends Fragment{
                     if(!finished)
                         showWorkInProgress();
                     else
-                        completeSearch(workInfos.get(0).getOutputData());
+                        completeSearch();
                 });
 
 
         return binding.getRoot();
     }
 
-    private void completeSearch(Data outputData) {
+    private void completeSearch() {
         setList.clear();
-        String setListString = outputData.getString(Constants.SET_LIST_TAG);
+        String setListString = WorkerDataHolder.getInstance().getSetListString();
         if(setListString != null)
             setList.addAll(Objects.requireNonNull(Convertors.toSetList(setListString)));
         if(setList.size() > 0) {
+            Log.i(TAG, "completeSearch: " + setList.size());
             binding.setListText.setVisibility(View.GONE);
             binding.setBuilderList.setVisibility(View.VISIBLE);
         }

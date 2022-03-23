@@ -61,23 +61,21 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.ViewHold
         //set the text view for the sets charm, if one exists, otherwise hides the view
         if(charm != null){
             if(!charm.getSkill1().getSkillName().equals("----")) {
-                binding.charmLayout.skill1Name.setText(context.getResources().getIdentifier(charm.getSkill1().getSkillName(),
+                binding.charmLayout.skill1Layout.skillName.setText(context.getResources().getIdentifier(charm.getSkill1().getSkillName(),
                         "string", context.getPackageName()));
-                binding.charmLayout.skill1Level.setText(Integer.toString(charm.getSkill1().getSkillLevel()));
+                binding.charmLayout.skill1Layout.skillLevel.setText(Integer.toString(charm.getSkill1().getSkillLevel()));
             }
             else{
-                binding.charmLayout.skill1Name.setVisibility(View.GONE);
-                binding.charmLayout.skill1Level.setVisibility(View.GONE);
+                binding.charmLayout.skill1Layout.getRoot().setVisibility(View.GONE);
             }
 
             if(!charm.getSkill2().getSkillName().equals("----")){
-                binding.charmLayout.skill2Name.setText(context.getResources().getIdentifier(charm.getSkill2().getSkillName(),
+                binding.charmLayout.skill2Layout.skillName.setText(context.getResources().getIdentifier(charm.getSkill2().getSkillName(),
                         "string", context.getPackageName()));
-                binding.charmLayout.skill2Level.setText(Integer.toString(charm.getSkill2().getSkillLevel()));
+                binding.charmLayout.skill2Layout.skillLevel.setText(Integer.toString(charm.getSkill2().getSkillLevel()));
             }
             else{
-                binding.charmLayout.skill2Name.setVisibility(View.GONE);
-                binding.charmLayout.skill2Level.setVisibility(View.GONE);
+                binding.charmLayout.skill2Layout.getRoot().setVisibility(View.GONE);
             }
         }
         else{

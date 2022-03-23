@@ -1,5 +1,6 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.model.pojos;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -204,13 +205,17 @@ public class ArmorSet{
 	public void setTotalSpareSlots(int[] totalSpareSlots) {
 		this.totalSpareSlots = totalSpareSlots;
 	}
-
 	//endregion
-
-
 	public boolean equals(@Nullable ArmorSet armorSet) {
 		return (armorSet.getHead().equals(this.head)) && armorSet.getChest().equals(this.chest)
 				&& armorSet.getArms().equals(this.arms) && armorSet.getWaist().equals(this.waist)
 				&& armorSet.getLegs().equals(this.legs) && armorSet.getCharm().equals(this.charm);
+	}
+
+	@NonNull
+	@Override
+	public String toString() {
+		return this.head + " " + this.chest + " " + this.arms + " "
+				+ this.waist + " " + this.legs + "\n";
 	}
 }

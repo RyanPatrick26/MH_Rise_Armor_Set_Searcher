@@ -22,28 +22,22 @@
                 android:id="@+id/pieces_layout"
                 layout="@layout/set_pieces_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/decorations_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:orientation="vertical">
-
-                <include
-                    android:id="@+id/charm_layout"
-                    layout="@layout/charm_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/decorations_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
         </LinearLayout>
+
+        <include
+            android:id="@+id/charm_layout"
+            layout="@layout/charm_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"

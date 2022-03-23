@@ -16,7 +16,7 @@ public class WorkerDataHolder {
     private List<Armor> legs;
     private List<ArmorSet> setList;
     private List<Charm> charmList;
-    private List<Charm> relevantCharms;
+    private String setListString;
 
     public static synchronized  WorkerDataHolder getInstance(){
         if(INSTANCE == null){
@@ -70,10 +70,10 @@ public class WorkerDataHolder {
     public void setCharmList(List<Charm> charmList) {
         this.charmList = charmList;
     }
-    public List<Charm> getRelevantCharms() {
-        return relevantCharms;
+    public String getSetListString() {
+        return setListString;
     }
-    public void setRelevantCharms(List<Charm> relevantCharms) {
-        this.relevantCharms = relevantCharms;
+    public void setSetListString(String setListString) {
+        this.setListString = setListString;
     }
 }
