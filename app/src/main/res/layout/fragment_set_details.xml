@@ -30,6 +30,7 @@
                 android:orientation="vertical">
 
                 <include
+                    android:id="@+id/charm_layout"
                     layout="@layout/charm_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

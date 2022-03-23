@@ -25,6 +25,7 @@ import com.ryanpatrick.mhrisearmorsetsearcher.adapters.SkillsListAdapter;
 import com.ryanpatrick.mhrisearmorsetsearcher.data.ApplicationDatabase;
 import com.ryanpatrick.mhrisearmorsetsearcher.databinding.FragmentSetDetailsBinding;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.ArmorSet;
+import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Charm;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.pojos.Skill;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.ArmorSetViewModel;
 import com.ryanpatrick.mhrisearmorsetsearcher.model.viewmodels.SkillViewModel;
@@ -68,6 +69,7 @@ public class SetDetailsFragment extends Fragment {
         skillsListAdapter = new SkillsListAdapter(skills, getContext());
         detailsAdapter = new SkillDetailsAdapter(skillDescriptionList, getContext());
         decorationListAdapter = new DecorationListAdapter(armorSet.getDecorations(), getContext());
+        Charm charm = armorSet.getCharm();
         //endregion
         if(armorSet.getId() != null){
             binding.saveSetButton.setVisibility(View.GONE);
@@ -127,6 +129,30 @@ public class SetDetailsFragment extends Fragment {
         binding.level3Slots.setText(Integer.toString(armorSet.getTotalSpareSlots()[2]));
         //endregion
 
+        //region set the text views for the charm
+        if(charm != null){
+            if(!charm.getSkill1().getSkillName().equals("----")) {
+                binding.charmLayout.skill1Layout.skillName.setText(getResources().getIdentifier(charm.getSkill1().getSkillName(),
+                        "string", requireActivity().getPackageName()));
+                binding.charmLayout.skill1Layout.skillLevel.setText(Integer.toString(charm.getSkill1().getSkillLevel()));
+            }
+            else {
+                binding.charmLayout.skill1Layout.getRoot().setVisibility(View.GONE);
+            }
+            if(!charm.getSkill2().getSkillName().equals("----")) {
+                binding.charmLayout.skill2Layout.skillName.setText(getResources().getIdentifier(charm.getSkill2().getSkillName(),
+                        "string", requireActivity().getPackageName()));
+                binding.charmLayout.skill2Layout.skillLevel.setText(Integer.toString(charm.getSkill1().getSkillLevel()));
+            }
+            else {
+                binding.charmLayout.skill2Layout.getRoot().setVisibility(View.GONE);
+            }
+        }
+        else{
+            binding.charmLayout.getRoot().setVisibility(View.GONE);
+        }
+        //endregion
+
         //region set the layout managers and adapters for the recycler views
         binding.setSkillList.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.setSkillList.setAdapter(skillsListAdapter);
@@ -140,6 +166,8 @@ public class SetDetailsFragment extends Fragment {
 
         binding.saveSetButton.setOnClickListener(v -> saveSet());
         binding.deleteSetButton.setOnClickListener(v -> deleteSet());
+
+
         return binding.getRoot();
     }
 

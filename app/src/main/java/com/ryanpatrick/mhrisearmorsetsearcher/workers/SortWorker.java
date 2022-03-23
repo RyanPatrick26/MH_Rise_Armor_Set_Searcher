@@ -1,6 +1,7 @@
 package com.ryanpatrick.mhrisearmorsetsearcher.workers;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.work.Data;
@@ -23,10 +24,8 @@ public class SortWorker extends Worker {
     @Override
     public Result doWork() {
         List<ArmorSet> armorSetList = WorkerDataHolder.getInstance().getSetList();
+        WorkerDataHolder.getInstance().setSetListString(Convertors.fromSetList(armorSetList));
         WorkerDataHolder.getInstance().setSetList(new ArrayList<>());
-        Data outputData = new Data.Builder()
-                .putString(Constants.SET_LIST_TAG, Convertors.fromSetList(armorSetList))
-                .build();
-        return Result.success(outputData);
+        return Result.success();
     }
 }
